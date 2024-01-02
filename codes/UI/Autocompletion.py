@@ -49,7 +49,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        cocktail = pandas.read_csv("items_for_filtering/ingredients.csv")
+        cocktail = pandas.read_csv("codes/BackEnd/ingredients.csv")
         cocktail = cocktail['strIngredient1']
         words = cocktail
 
@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):
         # Création du QTextEdit personnalisé
         self.textEdit = CompleterTextEdit(completer)
 
-  
+
         layout = QVBoxLayout()
         layout.addWidget(self.textEdit)
 

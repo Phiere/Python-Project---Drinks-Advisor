@@ -10,7 +10,9 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtWidgets import QWidget
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
 import matplotlib.pyplot as plt
-import back_recherche as br
+import back_recherche
+import Autocompletion
+
 
 vins_complet = pd.read_csv('dataBases/Samples/wine_review_samples.csv')
 vins_details = vins_complet[['country','designation','points','province']]
@@ -29,8 +31,8 @@ class Filtre(QWidget):
         self.name_edit = QLineEdit()
         self.name_edit.setPlaceholderText(displayed_text)
 
-##BUENO
-class MenuLayout(QWidget): ##Servira de classe mère pour les retours menus, home profil. Pour l'instant c'est juste du layout
+##Servira de classe mère pour les retours menus, home profil. Pour l'instant c'est juste du layout
+class MenuLayout(QWidget): 
     def __init__(self) -> None:
         super().__init__()
         self.menuLayout = QHBoxLayout()
@@ -41,8 +43,8 @@ class MenuLayout(QWidget): ##Servira de classe mère pour les retours menus, hom
         self.menuLayout.addWidget(boutonRetour, alignment=Qt.AlignLeft)
         self.menuLayout.addWidget(boutonSettings)
 
-##BUENO
-class ComboBoxDemo(QWidget):
+##Creer une combobox sur le nombre d'éléments à afficher dans la la liste filtrée
+class ComboBoxNbElements(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -59,8 +61,8 @@ class ComboBoxDemo(QWidget):
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.comboBox)
 
-##BUENO
-class VraieComboBox(QWidget):
+##Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
+class ComboBoxColumnNames(QWidget):
     def __init__(self,L) -> None:
         super().__init__()
 
@@ -75,23 +77,25 @@ class VraieComboBox(QWidget):
         self.layout = QVBoxLayout()
         self.layout.addWidget(self.comboBox)
 
-##BUENO
-class FilterOptions(QWidget):
+##Barre d'options pour gérer l'affichage de la liste filtrée
+class FilterOptionsBar(QWidget):
     def __init__(self,data_frame) -> None:
         super().__init__()
 
         self.listoption = QHBoxLayout()
         self.rdchoice = QPushButton("random")
-        self.ascchoice = VraieComboBox(data_frame.columns)
+        self.ascchoice = ComboBoxColumnNames(data_frame.columns)
         self.ascgo = QPushButton('dsc')
-        self.nbchoix = ComboBoxDemo()
+        self.nbchoix = ComboBoxNbElements()
         self.listoption.addWidget(self.rdchoice)
         self.listoption.addLayout(self.nbchoix.layout)
         self.listoption.addLayout(self.ascchoice.layout)
         self.listoption.addWidget(self.ascgo)
 
-##BUENO
-class CustomListItem(QWidget):
+##Creer l'affichage de tous les éléments trier comme des texte_edits. CLairement c'est le points à modifier les
+##text edit vont pas du tout.
+        
+class CustomListAffichageTri(QWidget):
     def __init__(self,textearemplir):
         super().__init__()
         layout = QHBoxLayout(self)
@@ -102,7 +106,7 @@ class CustomListItem(QWidget):
             lineEdit.setText(textearemplir[i])
             layout.addWidget(lineEdit)
 
-##NOBUENO
+##Creation de l'écran
 class ScreenResearch(QWidget):
     def __init__(self) -> None:
         super().__init__()
@@ -124,7 +128,7 @@ class ScreenResearch(QWidget):
             self.filtresLayout.addWidget(self.L[i].name_edit)
 
         #Ajout de la barre d'option des filtres
-        self.optionsdefiltres = FilterOptions(self.data_frame)
+        self.optionsdefiltres = FilterOptionsBar(self.data_frame)
         self.optionsdefiltres.nbchoix.comboBox.activated[str].connect(self.taketext)
         self.optionsdefiltres.ascchoice.comboBox.activated[str].connect(self.taketext)
         self.optionsdefiltres.ascgo.clicked.connect(self.changersens)
@@ -147,7 +151,8 @@ class ScreenResearch(QWidget):
         self.screenLayout.addLayout(descriptionLayout)
         self.setLayout(self.screenLayout)
         
-
+    
+    ##On créer les filtres dynamiquements selon les catégories de la bdd choisie
     def creationFiltre(self,df_p):
         colonnes = df_p.columns
         L = []
@@ -183,6 +188,7 @@ class ScreenResearch(QWidget):
         tempdf = tempdf.sort_values(colonne,ascending=self.etat)
         self.changer_text(tempdf)
 
+    ##Pour choisir si l'affichage se fera en croissant ou décroissant
     def changersens(self):
         texte  = self.optionsdefiltres.ascgo.text()
 
@@ -194,7 +200,8 @@ class ScreenResearch(QWidget):
 
         self.etat = not(self.etat)
         self.taketext()
-
+    
+    ##Gere l'affichage en fonction de tous les éléments choisis
     def changer_text(self,newdf):
         #choix du nombre d'éléments
         choix = self.optionsdefiltres.nbchoix.comboBox.currentText()
@@ -224,7 +231,7 @@ class ScreenResearch(QWidget):
             for i in range(len(newdf)):  
                 listItem = QListWidgetItem(self.listWidget)
                 texte = [str(newdf.iat[i,j]) for j in range(2,len(newdf.columns))]
-                customItemWidget = CustomListItem(textearemplir=texte)
+                customItemWidget = CustomListAffichageTri(textearemplir=texte)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)
                 self.listWidget.setItemWidget(listItem, customItemWidget)
