@@ -1,3 +1,9 @@
+###
+#Extrait de code permettant de rajouter une recette de cocktail à la data base qu'on avait trouvé. 
+#C'est assez explicite jsp si vaut le coup d'otpimiser un peu ça
+
+# Rajouter une option pour les non cocktails ?
+
 import pandas
 import csv
 
@@ -5,6 +11,7 @@ cocktail = pandas.read_csv("Raw_databases/all_drinks.csv")
 
 
 cocktail_samples = cocktail.head(100)
+
 
 
 def cocktail_write(L,data):

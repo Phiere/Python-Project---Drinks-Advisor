@@ -12,7 +12,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
 import matplotlib.pyplot as plt
 import back_recherche as br
 
-vins_complet = pd.read_csv('Samples/wine_review_samples.csv')
+vins_complet = pd.read_csv('dataBases/Samples/wine_review_samples.csv')
 vins_details = vins_complet[['country','designation','points','province']]
 
 ###Ok c'est bien mais je peux pas lier de méthode, c'est dommage ça fait des répétitions. Peut être faire une plus grosse classe gloabel et du fais le layout àc oter

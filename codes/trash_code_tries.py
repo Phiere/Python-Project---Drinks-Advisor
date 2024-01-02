@@ -1,3 +1,11 @@
+############################################################
+############################################################
+############################################################
+# c'est ma poubelle les codes la servent à rien.
+
+############################################################
+############################################################
+############################################################
 import pandas as pd
 import csv
 import sys
@@ -11,6 +19,7 @@ from PyQt5.QtWidgets import QWidget
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
 import matplotlib.pyplot as plt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListWidget, QListWidgetItem, QLineEdit, QHBoxLayout
+
 
 class CustomListItem(QWidget):
     def __init__(self):
