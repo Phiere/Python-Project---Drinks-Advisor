@@ -11,11 +11,12 @@ from PyQt5.QtWidgets import QWidget
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
 import matplotlib.pyplot as plt
 import back_recherche as br 
-import Autocompletion
+import Autocompletion as autoc
 
 
 vins_complet = pd.read_csv('dataBases/Samples/wine_review_samples.csv')
 vins_details = vins_complet[['country','designation','points','province']]
+cocktail = pd.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
 
 ###Ok c'est bien mais je peux pas lier de méthode, c'est dommage ça fait des répétitions. Peut être faire une plus grosse classe gloabel et du fais le layout àc oter
 
@@ -29,7 +30,12 @@ class Filtre(QWidget):
         super().__init__()
         self.nom_col = name_column
 
-        self.name_edit = QLineEdit()
+        colonne_ingredients = cocktail['Ingredients']
+        colonne_ingredients = colonne_ingredients.drop_duplicates()
+        colonne_ingredients = colonne_ingredients.dropna()
+
+        autocompleter = autoc.Autocompleter(colonne_ingredients)
+        self.name_edit = autocompleter.lineEdit
         self.name_edit.setPlaceholderText(displayed_text)
 
 ##Servira de classe mère pour les retours menus, home profil. Pour l'instant c'est juste du layout

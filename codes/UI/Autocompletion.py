@@ -25,9 +25,10 @@ cocktail = pd.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project
 
 class Autocompleter(QLineEdit):
     def __init__(self,colonne):
-
         super().__init__()
-        self.lineEdit = QLineEdit(self)
+
+
+        self.lineEdit = QLineEdit()
         autocomplete_list = colonne.tolist()
         print(autocomplete_list)
 
@@ -42,12 +43,14 @@ class Autocompleter(QLineEdit):
 
 
 
+####################################
+# Test sur une fenetre vite
+####################################
+
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.initUI()
-
-    def initUI(self):
+    
         layout = QVBoxLayout()    
 
         colonne_ingredients = cocktail['Ingredients']
@@ -57,7 +60,6 @@ class MainWindow(QWidget):
         Autocompletion_line = Autocompleter(colonne_ingredients)
         layout.addWidget(Autocompletion_line)
         self.setLayout(layout)
-        self.show()
 
 
 
@@ -65,5 +67,6 @@ class MainWindow(QWidget):
 if __name__ == '__main__':
     app = QApplication([])
     window = MainWindow()
+    window.show()
     app.exec_()
 
