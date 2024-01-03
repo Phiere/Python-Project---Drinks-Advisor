@@ -3,11 +3,11 @@ import csv
 
 
 # fabrication sample cocktail
-'''
-cocktail = pandas.read_csv("all_drinks.csv")
-cocktail_samples = cocktail.head(100)
-cocktail_samples.to_csv("Samples/cocktail_samples.csv")
-'''
+
+cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/all_drinks.csv")
+#cocktail_samples = cocktail.head(100)
+#cocktail_samples.to_csv("Samples/cocktail_samples.csv")
+
 
 # fabrication sample wine
 
@@ -46,38 +46,14 @@ mocktail = mocktail.head(100)
 mocktail.to_csv('Samples/mocktail_samples.csv')
 '''
 
-#  Extraction de chaque catégorie pour les cocktails :
 
-
-#cocktail = pandas.read_csv("Raw_databases/all_drinks.csv")
-
-# déjà les 'catégories'
-#temp = cocktail.drop_duplicates('strCategory')
-#print(temp['strCategory'])
-#### Ici on devrait peur être séparer juste shot et cocktail ? Pcq toute les
-#### autres catégories pour moi ça reste des cocktails
-
-#ensuite les ingrédients
-'''nbIng = 15
-ingredients = cocktail.drop_duplicates("strIngredient1")
-ingredients = ingredients['strIngredient1']
-for i in range(2,nbIng+1):
-    temp = cocktail.drop_duplicates(f"strIngredient{i}")
-    pandas.concat([ingredients,temp[f"strIngredient{i}"]])
-
-
-ingredients = ingredients.drop_duplicates()
-print(ingredients)
-ingredients.to_csv('items_for_filtering/ingredients.csv')'''
-#La on est sur 540 différents, on fait un truc en auto complétion ? Ou alors on 
-#décompose selon plusieurs catégorie ? (alcool, pas alcool)
-#j'ai rempli un fichier avec alcool/pas alcool pour chaque ingrédieent
 
 
 #######################
 ####Extraction de chaque catégorie pour les vins :
 #######################
 
+"""
 wines = pandas.read_csv("Raw_databases/winemag-data_first150k.csv")
 
 '''pays = wines.drop_duplicates('country')
@@ -115,7 +91,7 @@ print(len(region2))
 print(region2['winery'])
 
 ####14810 vignobles
-
+"""
 #######################
 ####Extraction de chaque catégorie pour les vins :
 #######################

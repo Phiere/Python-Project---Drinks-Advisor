@@ -28,6 +28,7 @@ class Filtre(QWidget):
     def __init__(self,name_column,displayed_text) -> None:
         super().__init__()
         self.nom_col = name_column
+
         self.name_edit = QLineEdit()
         self.name_edit.setPlaceholderText(displayed_text)
 

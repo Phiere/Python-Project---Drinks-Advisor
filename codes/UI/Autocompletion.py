@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit, QVBoxLayout, QWidget, QCompleter
+from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit,QLineEdit ,QVBoxLayout, QWidget, QCompleter
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QTextCursor
 import pandas
@@ -68,6 +68,17 @@ class MainWindow(QMainWindow):
 
    
         self.setCentralWidget(centralWidget)
+
+class AutocompletionWidget():
+    def __init__(self) -> None:
+        cocktail = pandas.read_csv("codes/BackEnd/ingredients.csv")
+        cocktail = cocktail['strIngredient1']
+        words = cocktail        
+
+        self.completer = QCompleter(words)
+        self.autocompletion_text_edit = CompleterTextEdit(self.completer)
+
+
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
