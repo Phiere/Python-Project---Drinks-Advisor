@@ -10,7 +10,7 @@ from PyQt5.QtWidgets import *
 from PyQt5.QtWidgets import QWidget
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
 import matplotlib.pyplot as plt
-import back_recherche
+import back_recherche as br 
 import Autocompletion
 
 
@@ -218,7 +218,7 @@ class ScreenResearch(QWidget):
             for i in range(n):# Exemple avec 10 éléments
                 listItem = QListWidgetItem(self.listWidget)
                 texte = [str(newdf.iat[i,j]) for j in range(2,len(newdf.columns))]
-                customItemWidget = CustomListItem(textearemplir=texte)
+                customItemWidget = CustomListAffichageTri(textearemplir=texte)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)
                 self.listWidget.setItemWidget(listItem, customItemWidget)

@@ -21,37 +21,44 @@ import matplotlib.pyplot as plt
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListWidget, QListWidgetItem, QLineEdit, QHBoxLayout
 
 
-class CustomListItem(QWidget):
-    def __init__(self):
-        super().__init__()
-        layout = QHBoxLayout(self)
-
-        # Créer quatre zones de texte
-        self.lineEdits = [QLineEdit(self) for _ in range(4)]
-        for lineEdit in self.lineEdits:
-            layout.addWidget(lineEdit)
+cocktail = pd.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.resize(900,700)
-        layout = QVBoxLayout(self)
 
-        # Créer le QListWidget
-        self.listWidget = QListWidget()
-        layout.addWidget(self.listWidget)
+        self.initUI()
 
-        # Ajouter des éléments personnalisés à QListWidget
-        for i in range(10):  # Exemple avec 10 éléments
-            listItem = QListWidgetItem(self.listWidget)
-            customItemWidget = CustomListItem()
-            listItem.setSizeHint(customItemWidget.sizeHint())
-            self.listWidget.addItem(listItem)
-            self.listWidget.setItemWidget(listItem, customItemWidget)
+    def initUI(self):
+        layout = QVBoxLayout()
 
-if __name__ == "__main__":
+        # Création d'un QLineEdit
+        self.lineEdit = QLineEdit(self)
+
+        # Utilisation de la colonne 'Fruits' comme liste d'autocomplétion
+        colonne_ingredients = cocktail['Ingredients']
+        colonne_ingredients = colonne_ingredients.drop_duplicates()
+        colonne_ingredients = colonne_ingredients.dropna()
+        autocomplete_list = colonne_ingredients.tolist()
+        print(autocomplete_list)
+        # Création d'un QCompleter avec la liste des suggestions
+        completer = QCompleter(autocomplete_list, self.lineEdit)
+
+        # Définir la casse (Qt.CaseInsensitive pour une recherche insensible à la casse)
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
+
+        # Définir le QCompleter pour le QLineEdit
+        self.lineEdit.setCompleter(completer)
+
+        # Ajout du QLineEdit au layout
+        layout.addWidget(self.lineEdit)
+
+        # Affichage de la fenêtre
+        self.setLayout(layout)
+        self.show()
+
+if __name__ == '__main__':
     app = QApplication([])
     window = MainWindow()
-    window.show()
     app.exec_()
 

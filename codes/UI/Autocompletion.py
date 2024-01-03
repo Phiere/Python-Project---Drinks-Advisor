@@ -1,87 +1,69 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTextEdit,QLineEdit ,QVBoxLayout, QWidget, QCompleter
-from PyQt5.QtCore import Qt
-from PyQt5.QtGui import QTextCursor
-import pandas
+############################################################
+############################################################
+############################################################
+# c'est ma poubelle les codes la servent à rien.
+
+############################################################
+############################################################
+############################################################
+import pandas as pd
 import csv
+import sys
+import typing
+import numpy as np
+from PyQt5 import QtCore
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
+from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget
+from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
+import matplotlib.pyplot as plt
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListWidget, QListWidgetItem, QLineEdit, QHBoxLayout
 
-class CompleterTextEdit(QTextEdit):
-    def __init__(self, completer, parent=None):
-        super().__init__(parent)
-        self.completer = completer
-        self.completer.setWidget(self)
-        self.completer.setCompletionMode(QCompleter.PopupCompletion)
-        self.completer.activated.connect(self.insertCompletion)
 
-    def insertCompletion(self, completion):
-        tc = self.textCursor()
-        extra = len(completion) - len(self.completer.completionPrefix())
-        tc.movePosition(QTextCursor.Left)
-        tc.movePosition(QTextCursor.EndOfWord)
-        tc.insertText(completion[-extra:])  
-        self.setTextCursor(tc)
+cocktail = pd.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
 
-    def textUnderCursor(self):
-        tc = self.textCursor()
-        tc.select(QTextCursor.WordUnderCursor)
-        return tc.selectedText()
+class Autocompleter(QLineEdit):
+    def __init__(self,colonne):
 
-    def keyPressEvent(self, event):
-        if self.completer.popup().isVisible():
-            if event.key() in (Qt.Key_Enter, Qt.Key_Return, Qt.Key_Escape, Qt.Key_Tab, Qt.Key_Backtab):
-                event.ignore()
-                return
+        super().__init__()
+        self.lineEdit = QLineEdit(self)
+        autocomplete_list = colonne.tolist()
+        print(autocomplete_list)
 
-        super().keyPressEvent(event)
+        # Création d'un QCompleter avec la liste des suggestions
+        completer = QCompleter(autocomplete_list, self.lineEdit)
 
-        completionPrefix = self.textUnderCursor()
-        if len(completionPrefix) < 1:
-            self.completer.popup().hide()
-            return
+        # Définir la casse (Qt.CaseInsensitive pour une recherche insensible à la casse)
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
 
-        self.completer.setCompletionPrefix(completionPrefix)
-        self.completer.popup().setCurrentIndex(self.completer.completionModel().index(0, 0))
-        cr = self.cursorRect()
-        cr.setWidth(self.completer.popup().sizeHintForColumn(0) + self.completer.popup().verticalScrollBar().sizeHint().width())
-        self.completer.complete(cr)  # popup it up!
+        # Définir le QCompleter pour le QLineEdit
+        self.lineEdit.setCompleter(completer)
 
-class MainWindow(QMainWindow):
+
+
+class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
+        self.initUI()
 
-        cocktail = pandas.read_csv("codes/BackEnd/ingredients.csv")
-        cocktail = cocktail['strIngredient1']
-        words = cocktail
+    def initUI(self):
+        layout = QVBoxLayout()    
 
-        # Création du QCompleter avec les mots = ingrédients
-        completer = QCompleter(words)
+        colonne_ingredients = cocktail['Ingredients']
+        colonne_ingredients = colonne_ingredients.drop_duplicates()
+        colonne_ingredients = colonne_ingredients.dropna()
 
-        # Création du QTextEdit personnalisé
-        self.textEdit = CompleterTextEdit(completer)
-
-
-        layout = QVBoxLayout()
-        layout.addWidget(self.textEdit)
-
-        centralWidget = QWidget()
-        centralWidget.setLayout(layout)
-
-   
-        self.setCentralWidget(centralWidget)
-
-class AutocompletionWidget():
-    def __init__(self) -> None:
-        cocktail = pandas.read_csv("codes/BackEnd/ingredients.csv")
-        cocktail = cocktail['strIngredient1']
-        words = cocktail        
-
-        self.completer = QCompleter(words)
-        self.autocompletion_text_edit = CompleterTextEdit(self.completer)
+        Autocompletion_line = Autocompleter(colonne_ingredients)
+        layout.addWidget(Autocompletion_line)
+        self.setLayout(layout)
+        self.show()
 
 
 
-if __name__ == "__main__":
-    app = QApplication(sys.argv)
-    mainWin = MainWindow()
-    mainWin.show()
-    sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    app = QApplication([])
+    window = MainWindow()
+    app.exec_()
+
