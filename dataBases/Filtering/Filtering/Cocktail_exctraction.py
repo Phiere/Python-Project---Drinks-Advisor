@@ -6,6 +6,7 @@ import csv
 ################################################################
 #Fichier où on va créer les samples et extraire les éléments uniques 
 #pour faire de l'autocomplétion sur les filtres 
+#Mêmes questions que pour les bières
 ################################################################
 ################################################################
 ################################################################
@@ -23,55 +24,46 @@ cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTH
 ################################################################
 
 nbIng = 15
-ingredients = cocktail.drop_duplicates("strIngredient1")
-ingredients = ingredients['strIngredient1']
+strIngredient = cocktail.drop_duplicates("strIngredient1")
+strIngredient = strIngredient['strIngredient1']
 for i in range(2,nbIng+1):
     temp = cocktail.drop_duplicates(f"strIngredient{i}")
-    pandas.concat([ingredients,temp[f"strIngredient{i}"]])
+    pandas.concat([strIngredient,temp[f"strIngredient{i}"]])
 
-ingredients = ingredients.drop_duplicates()
+ingredients = strIngredient.drop_duplicates()
 #print(ingredients)
 
 #####
-#Exctraction de tous les noms différents pour l'autocomplétion
+#Noms
 #####
 
-nbnames = 1
-names = cocktail["strDrink"]
-names = names.drop_duplicates()
-
-#print(names)
+strDrink = cocktail["strDrink"]
+strDrink = strDrink.drop_duplicates()
 
 #####
-#Exctraction des Catégories
+#Catégories
 #####
 
-nbnames = 1
-categories = cocktail["strCategory"]
-categories = categories.drop_duplicates()
-
-#print(categories)
+strCategory = cocktail["strCategory"]
+strCategory = strCategory.drop_duplicates()
 
 #####
-#Exctraction des verres
+#Verres
 #####
 
-nbnames = 1
-verres = cocktail["strGlass"]
-verres = verres.drop_duplicates()
-
-#print(verres)
+strGlass = cocktail["strGlass"]
+strGlass = strGlass.drop_duplicates()
 
 #####
 #Création de la df
 #####
 
 data = {
-    'Ingredients': ingredients,
-    'Name': names,
-    'Categorie': categories,
-    'Verres' : verres
+    'strIngredient': strIngredient,
+    'strDrink': strDrink,
+    'strCategory': strCategory,
+    'strGlass' : strGlass
 }
 
 Uniques_elements = pandas.DataFrame(data)
-Uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/cocktail_unique_elements.csv")
+Uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")

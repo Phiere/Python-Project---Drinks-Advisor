@@ -6,6 +6,7 @@ import csv
 ################################################################
 #Fichier où on va créer les samples et extraire les éléments uniques 
 #pour faire de l'autocomplétion sur les filtres 
+#Même question que bière
 ################################################################
 ################################################################
 ################################################################
@@ -22,11 +23,8 @@ wines = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/
 #Pays
 #####
 
-nbIng = 1
-
-pays = wines['country']
-pays = pays.drop_duplicates()
-
+country = wines['country']
+country = country.drop_duplicates()
 
 #####
 #Designation
@@ -46,8 +44,8 @@ points = points.drop_duplicates()
 #Prix
 #####
 
-prix = wines["price"]
-prix = prix.drop_duplicates()
+price = wines["price"]
+price = price.drop_duplicates()
 
 #####
 #Province
@@ -60,9 +58,9 @@ province = province.drop_duplicates()
 #Region
 #####
 
-regions = wines['region_1']
-pandas.concat([regions,wines['region_2']])
-regions = regions.drop_duplicates()
+region = wines['region_1']
+pandas.concat([region,wines['region_2']])
+region = region.drop_duplicates()
 
 #####
 #Variété
@@ -83,14 +81,14 @@ winery = winery.drop_duplicates()
 #####
 
 data = {
-    'Pays' : pays,
-    'Designation' : designation,
-    'Points': points,
-    'Prix': prix,
-    'Region': regions,
-    'Variete' : variety,
-    'Vignoble' : winery
+    'country' : country,
+    'designation' : designation,
+    'points': points,
+    'price': price,
+    'region': region,
+    'variety' : variety,
+    'winery' : winery
 }
 
 Uniques_elements = pandas.DataFrame(data)
-Uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/wines_unique_elements.csv")
+Uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/wines_unique_elements.csv")

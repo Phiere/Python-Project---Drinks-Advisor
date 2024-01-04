@@ -4,17 +4,21 @@ import csv
 
 # fabrication sample cocktail
 
-cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/all_drinks.csv")
+#cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/all_drinks.csv")
 #cocktail_samples = cocktail.head(100)
 #cocktail_samples.to_csv("Samples/cocktail_samples.csv")
 
 
 # fabrication sample wine
 
-'''vin = pandas.read_csv('winemag-data_first150k.csv')
+vin = pandas.read_csv('/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/winemag-data_first150k.csv')
+# Supprimer la colonne "Unnamed: 0.1"
+vin.drop("Unnamed: 0", axis=1, inplace=True)
+print(vin.columns)
 vin_sample = vin.head(100)
-vin_sample.to_csv('Samples/wine_review_samples.csv')
-'''
+#print(vin_sample)
+vin_sample.to_csv('dataBases/Samples/wine_review_samples.csv')
+
 
 # fabrication sample beer
 

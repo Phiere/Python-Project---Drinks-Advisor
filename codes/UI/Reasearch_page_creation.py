@@ -1,39 +1,19 @@
-import pandas as pd
-import csv
-import sys
-import typing
-import numpy as np
-from PyQt5 import QtCore
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtWidgets import QWidget
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
-import matplotlib.pyplot as plt
-import back_recherche as br 
-import Autocompletion as autoc
-
-
-vins_complet = pd.read_csv('dataBases/Samples/wine_review_samples.csv')
-vins_details = vins_complet[['country','designation','points','province']]
-cocktail = pd.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
-
-###Ok c'est bien mais je peux pas lier de méthode, c'est dommage ça fait des répétitions. Peut être faire une plus grosse classe gloabel et du fais le layout àc oter
+from Importations import *
 
 #### la bouton random n'a pas été activé
-
-### Je fais souvent appel à columns sans back_recherche. Peut etre faudrait stocker les colonne quelques parts ?
 
 ##BUENO
 class Filtre(QWidget):
     def __init__(self,name_column,displayed_text) -> None:
         super().__init__()
         self.nom_col = name_column
+        print(name_column)
 
-        colonne_ingredients = cocktail['Ingredients']
+        
+        colonne_ingredients = DB.Wines_uniques_elements[name_column]
         colonne_ingredients = colonne_ingredients.drop_duplicates()
         colonne_ingredients = colonne_ingredients.dropna()
-
+        colonne_ingredients = colonne_ingredients.astype(str)
         autocompleter = autoc.Autocompleter(colonne_ingredients)
         self.name_edit = autocompleter.lineEdit
         self.name_edit.setPlaceholderText(displayed_text)
@@ -121,7 +101,7 @@ class ScreenResearch(QWidget):
         self.resize(900,500)
 
         ##Cette info viendra de la page d'acceuil
-        self.data_frame = vins_complet
+        self.data_frame = DB.Wines_filters
 
         #Création des layouts généraux
         menuLayout = MenuLayout()
@@ -162,6 +142,7 @@ class ScreenResearch(QWidget):
     ##On créer les filtres dynamiquements selon les catégories de la bdd choisie
     def creationFiltre(self,df_p):
         colonnes = df_p.columns
+       
         L = []
         for i in range(len(colonnes)):
             filtre = Filtre(colonnes[i],colonnes[i])
@@ -223,7 +204,7 @@ class ScreenResearch(QWidget):
 
             for i in range(n):# Exemple avec 10 éléments
                 listItem = QListWidgetItem(self.listWidget)
-                texte = [str(newdf.iat[i,j]) for j in range(2,len(newdf.columns))]
+                texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]
                 customItemWidget = CustomListAffichageTri(textearemplir=texte)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)
@@ -237,7 +218,7 @@ class ScreenResearch(QWidget):
 
             for i in range(len(newdf)):  
                 listItem = QListWidgetItem(self.listWidget)
-                texte = [str(newdf.iat[i,j]) for j in range(2,len(newdf.columns))]
+                texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]
                 customItemWidget = CustomListAffichageTri(textearemplir=texte)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)

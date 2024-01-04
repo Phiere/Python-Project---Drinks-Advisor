@@ -6,13 +6,14 @@ import csv
 ################################################################
 #Fichier où on va créer les samples et extraire les éléments uniques 
 #pour faire de l'autocomplétion sur les filtres 
+#Même questions que pour beer
 ################################################################
 ################################################################
 ################################################################
 
 coffee = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/coffee_analysis.csv")
-#beers_samples = beers.head(100)
-#beers_samples.to_csv("Samples/beers_samples.csv")
+#coffee_samples = beers.head(100)
+#coffee_samples.to_csv("Samples/coffee_samples.csv")
 
 ################################################################
 #Extraction de chaque éléments pour les cafés
@@ -22,11 +23,8 @@ coffee = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON
 #Noms
 #####
 
-nbIng = 1
-
-names = coffee['name']
-names = names.drop_duplicates()
-
+name = coffee['name']
+name = name.drop_duplicates()
 
 #####
 #Toréfacteur
@@ -46,47 +44,44 @@ roast = roast.drop_duplicates()
 #Localisation
 #####
 
-country = coffee["loc_country"]
-country = country.drop_duplicates()
+loc_country = coffee["loc_country"]
+loc_country = loc_country.drop_duplicates()
 
 #####
 #Origine
 #####
 
-origins = coffee["origin_1"]
-pandas.concat([origins, coffee["origin_2"]])
-origins = origins.drop_duplicates()
+origin_ = coffee["origin_1"]
+pandas.concat([origin_, coffee["origin_2"]])
+origin_ = origin_.drop_duplicates()
 
 #####
 #Prix
 #####
 
-price = coffee["100g_USD"]
-price = price.drop_duplicates()
+a100g_USD = coffee["100g_USD"]
+a100g_USD = a100g_USD.drop_duplicates()
 
 #####
 #Note 
 #####
 
-note = coffee["rating"]
-note = note.drop_duplicates()
-
-
-
+rating = coffee["rating"]
+rating = rating.drop_duplicates()
 
 ################################################################
 #Création de la df
 ################################################################
 
 data = {
-    'Nom' : names,
-    'Torefacteur' : roaster,
-    'Torefaction': roast,
-    'Pays': country,
-    'Origine': origins,
-    'Prix 100g': price,
-    'Note': note
+    'names' : name,
+    'roaster' : roaster,
+    'roast': roast,
+    'loc_country': loc_country,
+    'origin_': origin_,
+    '100g_USD': a100g_USD,
+    'rating': rating
 }
 
 Uniques_elements = pandas.DataFrame(data)
-Uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/coffee_unique_elements.csv")
+Uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv")
