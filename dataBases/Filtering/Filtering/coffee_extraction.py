@@ -74,11 +74,11 @@ rating = rating.drop_duplicates()
 ################################################################
 
 data = {
-    'names' : name,
+    'name' : name,
     'roaster' : roaster,
     'roast': roast,
     'loc_country': loc_country,
-    'origin_': origin_,
+    'origin': origin_,
     '100g_USD': a100g_USD,
     'rating': rating
 }

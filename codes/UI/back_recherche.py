@@ -6,6 +6,9 @@ import csv
 def filtrer(f,colonne,data_Frame):
     return data_Frame[data_Frame[colonne] == f]
 
+def filtrer_list(f,colonne,data_Frame):
+    return data_Frame[data_Frame[colonne].apply(lambda liste: f in liste)]
+
 #Retourne les noms des colonnes de la bdd chargée ainsi que les types des colonnes (utile pour les comparaisons)
 def colonnes(data_Frame):
     columns = data_Frame.columns

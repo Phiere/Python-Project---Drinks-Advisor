@@ -7,6 +7,24 @@
 ############################################################
 ############################################################
 import pandas as pd
+
+#Jvais essayer de créer des listes dans les colonnes au lieu des colonnes doubles
+
+
+cocktails = pd.read_csv('/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Samples/cocktail_samples.csv')
+
+cocktails['strIngredient'] = cocktails.apply(lambda row: [row[f'strIngredient{i}'] for i in range(1,16)], axis=1)
+cocktails['strMeasure'] = cocktails.apply(lambda row: [row[f'strMeasure{i}'] for i in range(1,16)], axis=1)
+for i in range(1,16) :
+    cocktails.drop(f'strIngredient{i}', axis=1, inplace=True)
+    cocktails.drop(f'strMeasure{i}', axis=1, inplace=True)
+
+cocktails.drop('Unnamed: 0', axis=1, inplace=True)
+cocktails.drop('Unnamed: 0.1', axis=1, inplace=True)
+
+cocktails.to_csv('codes/TrashFolder/trashcsv.csv')
+
+"""
 import csv
 import sys
 import typing
@@ -62,3 +80,4 @@ if __name__ == '__main__':
     window = MainWindow()
     app.exec_()
 
+"""

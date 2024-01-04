@@ -58,7 +58,7 @@ data = {
     'Cocktail Name' : Cocktail0Name,
     'Ingredient' : Ingredient,
     'Flavor Profile': Flavor0Profile,
-    'User Rating ': User0Rating,
+    'User Rating': User0Rating,
 }
 
 Uniques_elements = pandas.DataFrame(data)

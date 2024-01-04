@@ -1,8 +1,15 @@
 from Importations import *
 
 #### la bouton random n'a pas été activé
+### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
+dbs = DB.choix_db('Wines')
 
-##BUENO
+
+"""Wines = pandas.read_csv('dataBases/Samples/wine_review_samples.csv')
+Wines_filters = Wines[['country','designation','points','price']]
+Wines_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/wines_unique_elements.csv')
+dbs = [Wines,Wines_filters,Wines_uniques_elements]"""
+
 class Filtre(QWidget):
     def __init__(self,name_column,displayed_text) -> None:
         super().__init__()
@@ -10,7 +17,7 @@ class Filtre(QWidget):
         print(name_column)
 
         
-        colonne_ingredients = DB.Wines_uniques_elements[name_column]
+        colonne_ingredients = dbs[2][name_column]
         colonne_ingredients = colonne_ingredients.drop_duplicates()
         colonne_ingredients = colonne_ingredients.dropna()
         colonne_ingredients = colonne_ingredients.astype(str)
@@ -101,7 +108,7 @@ class ScreenResearch(QWidget):
         self.resize(900,500)
 
         ##Cette info viendra de la page d'acceuil
-        self.data_frame = DB.Wines_filters
+        self.data_frame = dbs[1]
 
         #Création des layouts généraux
         menuLayout = MenuLayout()
@@ -163,13 +170,17 @@ class ScreenResearch(QWidget):
     def chargerNewDf(self,G):
         tempdf = self.data_frame.copy()
         for i in range(len(G)) :
+            print("L[i]",self.L[i])
             if G[i] != '':
-                nedt = self.L[i]
                 if tempdf.dtypes[i] == type(1) :
                     tempdf = br.filtrer(int(G[i]),self.L[i].nom_col,tempdf)
+
+                elif tempdf.dtypes[i] == type([]) :
+                    tempdf = br.filtrer_list(G[i],self.L[i].nom_col,tempdf)
+
                 else :
                     tempdf = br.filtrer(G[i],self.L[i].nom_col,tempdf)
-            print(tempdf)
+            #print(tempdf)
 
 
         colonne = self.optionsdefiltres.ascchoice.comboBox.currentText()
@@ -225,11 +236,6 @@ class ScreenResearch(QWidget):
                 self.listWidget.setItemWidget(listItem, customItemWidget)
         
         
-
-
-    
- 
-### C'est bien, peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
         
             
 
