@@ -56,8 +56,8 @@ User0Rating = User0Rating.drop_duplicates()
 
 data = {
     'Cocktail Name' : Cocktail0Name,
-    'Ingredient' : Ingredient,
-    'Flavor Profile': Flavor0Profile,
+    'Ingredientlist3' : Ingredient,
+    'Flavor Profilelist2': Flavor0Profile,
     'User Rating': User0Rating,
 }
 

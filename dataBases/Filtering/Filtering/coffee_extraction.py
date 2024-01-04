@@ -78,7 +78,7 @@ data = {
     'roaster' : roaster,
     'roast': roast,
     'loc_country': loc_country,
-    'origin': origin_,
+    'originlist2': origin_,
     '100g_USD': a100g_USD,
     'rating': rating
 }

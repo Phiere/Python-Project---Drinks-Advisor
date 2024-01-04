@@ -59,7 +59,7 @@ strGlass = strGlass.drop_duplicates()
 #####
 
 data = {
-    'strIngredient': strIngredient,
+    'strIngredientlist15': strIngredient,
     'strDrink': strDrink,
     'strCategory': strCategory,
     'strGlass' : strGlass

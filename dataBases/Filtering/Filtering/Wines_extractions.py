@@ -39,13 +39,16 @@ designation = designation.drop_duplicates()
 
 points = wines["points"]
 points = points.drop_duplicates()
-
+points = points.astype(int)
 #####
 #Prix
 #####
 
 price = wines["price"]
 price = price.drop_duplicates()
+
+price.fillna(0, inplace=True)
+price = price.astype(int)
 
 #####
 #Province
@@ -91,4 +94,10 @@ data = {
 }
 
 Uniques_elements = pandas.DataFrame(data)
+
+Uniques_elements['price'].fillna(-1, inplace=True)
+Uniques_elements['price'] = Uniques_elements['price'].astype(int)
+Uniques_elements['points'].fillna(-1, inplace=True)
+Uniques_elements['points'] = Uniques_elements['points'].astype(int)
+
 Uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/wines_unique_elements.csv")
