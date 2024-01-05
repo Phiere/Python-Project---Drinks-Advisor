@@ -4,10 +4,21 @@ import csv
 
 #Filtre les databases sur une colone donée avec un filtre précis
 def filtrer(f,colonne,data_Frame):
-    return data_Frame[data_Frame[colonne] == f]
-
-def filtrer_list(f,colonne,data_Frame):
-    return data_Frame[data_Frame[colonne].apply(lambda liste: f in liste)]
+    try:
+        int(f)
+        return data_Frame[data_Frame[colonne] == int(f)]
+    except ValueError :    
+        if "," not in f :
+            print("oui")
+            return data_Frame[data_Frame[colonne] == f]
+        else :
+            f = f.split(",")
+            tempdf = data_Frame.copy()
+            for i in f :
+                if i != "" :
+                    tempdf = tempdf[tempdf[colonne].apply(lambda liste: i in liste)]
+            
+        return tempdf
 
 #Retourne les noms des colonnes de la bdd chargée ainsi que les types des colonnes (utile pour les comparaisons)
 def colonnes(data_Frame):

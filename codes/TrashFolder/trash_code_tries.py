@@ -10,7 +10,56 @@ import pandas as pd
 
 #Jvais essayer de créer des listes dans les colonnes au lieu des colonnes doubles
 
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
+from PyQt5.QtCore import Qt  # Import Qt from PyQt5.QtCore
 
+# Chaîne de caractères avec plusieurs virgules
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit
+from PyQt5.QtCore import Qt, QObject, pyqtSignal
+from PyQt5.QtCore import QEvent
+
+class KeyEventFilter(QObject):
+    enterPressed = pyqtSignal()
+
+    def eventFilter(self, obj, event):
+        if event.type() == QEvent.KeyPress and event.key() == Qt.Key_Return:
+            self.enterPressed.emit()
+        return super().eventFilter(obj, event)
+
+class MaFenetre(QWidget):
+    def __init__(self):
+        super().__init__()
+
+        # Créer un QLineEdit
+        self.input_text = QLineEdit(self)
+
+        # Créer un layout vertical et ajouter le QLineEdit
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.input_text)
+
+        # Installer un filtre d'événements au niveau de l'application
+        self.key_event_filter = KeyEventFilter()
+        app.installEventFilter(self.key_event_filter)
+
+        # Connecter le signal du filtre d'événements à la fonction que vous souhaitez déclencher
+        self.key_event_filter.enterPressed.connect(self.ma_fonction)
+
+
+    def ma_fonction(self):
+        # Fonction à déclencher lorsque "Entrée" est pressée
+        print("La touche Entrée a été pressée.")
+        print("Texte actuel dans le QLineEdit :", self.input_text.text())
+
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+    fenetre = MaFenetre()
+    fenetre.show()
+    sys.exit(app.exec_())
+
+
+"""
 cocktails = pd.read_csv('/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Samples/cocktail_samples.csv')
 
 cocktails['strIngredient'] = cocktails.apply(lambda row: [row[f'strIngredient{i}'] for i in range(1,16)], axis=1)
@@ -23,7 +72,7 @@ cocktails.drop('Unnamed: 0', axis=1, inplace=True)
 cocktails.drop('Unnamed: 0.1', axis=1, inplace=True)
 
 cocktails.to_csv('codes/TrashFolder/trashcsv.csv')
-
+"""
 """
 import csv
 import sys
