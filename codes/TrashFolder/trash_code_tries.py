@@ -1,132 +1,59 @@
-############################################################
-############################################################
-############################################################
-# c'est ma poubelle les codes la servent à rien.
-
-############################################################
-############################################################
-############################################################
-import pandas as pd
-
-#Jvais essayer de créer des listes dans les colonnes au lieu des colonnes doubles
-
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
-from PyQt5.QtCore import Qt  # Import Qt from PyQt5.QtCore
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget
 
-# Chaîne de caractères avec plusieurs virgules
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit
-from PyQt5.QtCore import Qt, QObject, pyqtSignal
-from PyQt5.QtCore import QEvent
-
-class KeyEventFilter(QObject):
-    enterPressed = pyqtSignal()
-
-    def eventFilter(self, obj, event):
-        if event.type() == QEvent.KeyPress and event.key() == Qt.Key_Return:
-            self.enterPressed.emit()
-        return super().eventFilter(obj, event)
-
-class MaFenetre(QWidget):
+class FirstScreen(QWidget):
     def __init__(self):
         super().__init__()
-
-        # Créer un QLineEdit
-        self.input_text = QLineEdit(self)
-
-        # Créer un layout vertical et ajouter le QLineEdit
         layout = QVBoxLayout(self)
-        layout.addWidget(self.input_text)
+        layout.addWidget(QPushButton("Bouton sur le premier écran", clicked=self.next_screen))
 
-        # Installer un filtre d'événements au niveau de l'application
-        self.key_event_filter = KeyEventFilter()
-        app.installEventFilter(self.key_event_filter)
+    def next_screen(self):
+        main_window.next_screen()
 
-        # Connecter le signal du filtre d'événements à la fonction que vous souhaitez déclencher
-        self.key_event_filter.enterPressed.connect(self.ma_fonction)
+class SecondScreen(QWidget):
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout(self)
+        layout.addWidget(QPushButton("Bouton sur le deuxième écran", clicked=self.next_screen))
 
+    def next_screen(self):
+        main_window.next_screen()
 
-    def ma_fonction(self):
-        # Fonction à déclencher lorsque "Entrée" est pressée
-        print("La touche Entrée a été pressée.")
-        print("Texte actuel dans le QLineEdit :", self.input_text.text())
+class ThirdScreen(QWidget):
+    def __init__(self):
+        super().__init__()
+        layout = QVBoxLayout(self)
+        layout.addWidget(QPushButton("Bouton sur le troisième écran", clicked=self.next_screen))
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    fenetre = MaFenetre()
-    fenetre.show()
-    sys.exit(app.exec_())
-
-
-"""
-cocktails = pd.read_csv('/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Samples/cocktail_samples.csv')
-
-cocktails['strIngredient'] = cocktails.apply(lambda row: [row[f'strIngredient{i}'] for i in range(1,16)], axis=1)
-cocktails['strMeasure'] = cocktails.apply(lambda row: [row[f'strMeasure{i}'] for i in range(1,16)], axis=1)
-for i in range(1,16) :
-    cocktails.drop(f'strIngredient{i}', axis=1, inplace=True)
-    cocktails.drop(f'strMeasure{i}', axis=1, inplace=True)
-
-cocktails.drop('Unnamed: 0', axis=1, inplace=True)
-cocktails.drop('Unnamed: 0.1', axis=1, inplace=True)
-
-cocktails.to_csv('codes/TrashFolder/trashcsv.csv')
-"""
-"""
-import csv
-import sys
-import typing
-import numpy as np
-from PyQt5 import QtCore
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-from PyQt5.QtWidgets import QWidget
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
-import matplotlib.pyplot as plt
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListWidget, QListWidgetItem, QLineEdit, QHBoxLayout
-
-
-cocktail = pd.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
+    def next_screen(self):
+        main_window.next_screen()
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
 
-        self.initUI()
+        self.stacked_widget = QStackedWidget(self)
+        self.first_screen = FirstScreen()
+        self.second_screen = SecondScreen()
+        self.third_screen = ThirdScreen()
 
-    def initUI(self):
-        layout = QVBoxLayout()
+        self.stacked_widget.addWidget(self.first_screen)
+        self.stacked_widget.addWidget(self.second_screen)
+        self.stacked_widget.addWidget(self.third_screen)
 
-        # Création d'un QLineEdit
-        self.lineEdit = QLineEdit(self)
+        layout = QVBoxLayout(self)
+        layout.addWidget(self.stacked_widget)
 
-        # Utilisation de la colonne 'Fruits' comme liste d'autocomplétion
-        colonne_ingredients = cocktail['Ingredients']
-        colonne_ingredients = colonne_ingredients.drop_duplicates()
-        colonne_ingredients = colonne_ingredients.dropna()
-        autocomplete_list = colonne_ingredients.tolist()
-        print(autocomplete_list)
-        # Création d'un QCompleter avec la liste des suggestions
-        completer = QCompleter(autocomplete_list, self.lineEdit)
+        self.current_screen_index = 0
 
-        # Définir la casse (Qt.CaseInsensitive pour une recherche insensible à la casse)
-        completer.setCaseSensitivity(Qt.CaseInsensitive)
-
-        # Définir le QCompleter pour le QLineEdit
-        self.lineEdit.setCompleter(completer)
-
-        # Ajout du QLineEdit au layout
-        layout.addWidget(self.lineEdit)
-
-        # Affichage de la fenêtre
-        self.setLayout(layout)
-        self.show()
+    def next_screen(self):
+        self.current_screen_index = (self.current_screen_index + 1) % self.stacked_widget.count()
+        self.stacked_widget.setCurrentIndex(self.current_screen_index)
 
 if __name__ == '__main__':
-    app = QApplication([])
-    window = MainWindow()
-    app.exec_()
-
-"""
+    app = QApplication(sys.argv)
+    
+    main_window = MainWindow()
+    main_window.show()
+    
+    sys.exit(app.exec_())

@@ -1,6 +1,6 @@
 from Importations import *
 import Research_page_create_back as Rb
-
+import Navigation as Nav
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit
 from PyQt5.QtCore import Qt, QObject, pyqtSignal
 from PyQt5.QtCore import QEvent
@@ -35,17 +35,7 @@ class KeyEventFilter(QObject):
         return super().eventFilter(obj, event)
     
 
-##Servira de classe mère pour les retours menus, home profil. Pour l'instant c'est juste du layout
-class MenuLayout(QWidget): 
-    def __init__(self) -> None:
-        super().__init__()
-        self.menuLayout = QHBoxLayout()
-        boutonAcceuil = QPushButton('Home')
-        boutonRetour = QPushButton('Back')
-        boutonSettings = QPushButton('Settings')
-        self.menuLayout.addWidget(boutonAcceuil)
-        self.menuLayout.addWidget(boutonRetour)
-        self.menuLayout.addWidget(boutonSettings)
+
 
 ##Creer une combobox sur le nombre d'éléments à afficher dans la la liste filtrée
 class ComboBoxNbElements(QWidget):
@@ -150,7 +140,7 @@ class ScreenResearch(QWidget):
         self.data_frame = dbs[1]
 
         #Création des layouts généraux
-        menuLayout = MenuLayout()
+        menuLayout = Nav.MenuLayout()
         descriptionLayout = QHBoxLayout()
         self.filtresLayout = QVBoxLayout()
         self.screenLayout = QVBoxLayout()
@@ -180,7 +170,7 @@ class ScreenResearch(QWidget):
         self.listWidget = QListWidget()
         self.listlayout.addLayout(Line_Of_Categories_Names.layout_category_names)
         self.listlayout.addWidget(self.listWidget)
-        self.listWidget.setMinimumSize(QSize(600,500))
+        #self.listWidget.setMinimumSize(QSize(600,500))
 
         #remplissage aléaotire pour un premier affichage
         self.changer_text(dbs[1][dbs[3]])

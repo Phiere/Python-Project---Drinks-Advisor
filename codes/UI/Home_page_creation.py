@@ -1,6 +1,7 @@
 from Importations import *
-
+import Navigation as Nav
     
+
 class ScreenHomeWindow(QWidget):
     def __init__(self) -> None:
         super().__init__()
@@ -8,7 +9,11 @@ class ScreenHomeWindow(QWidget):
         self.resize(1000,600)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
+        menuLayout = Nav.MenuLayout()
+
         globalLayout = QVBoxLayout()
+        globalLayout.addLayout(menuLayout.menuLayout)
+        
         alccolLayout = QHBoxLayout()
         alcoolfreeLayout = QHBoxLayout()
 

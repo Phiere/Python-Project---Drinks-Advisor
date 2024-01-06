@@ -12,7 +12,12 @@ import csv
 ################################################################
 
 wines = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/winemag-data_first150k.csv")
+
 #wines_samples = wines.head(100)
+
+# Ajouter une nouvelle colonne avec des valeurs nulles
+#wines_samples['Favoris'] = None
+
 #wines_samples.to_csv("Samples/wines_samples.csv")
 
 ################################################################

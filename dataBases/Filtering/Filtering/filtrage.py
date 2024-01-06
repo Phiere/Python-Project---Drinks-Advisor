@@ -6,17 +6,24 @@ import csv
 
 #cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/all_drinks.csv")
 #cocktail_samples = cocktail.head(100)
-#cocktail_samples.to_csv("Samples/cocktail_samples.csv")
+
+cocktail_samples = pandas.read_csv('dataBases/Samples/cocktail_samples.csv')
+cocktail_samples['PersonalRating'] = None
+cocktail_samples.to_csv("dataBases/Samples/cocktail_samples.csv")
 
 
 # fabrication sample wine
 
+"""
 vin = pandas.read_csv('/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/winemag-data_first150k.csv')
 # Supprimer la colonne "Unnamed: 0.1"
 vin.drop("Unnamed: 0", axis=1, inplace=True)
 print(vin.columns)
 vin_sample = vin.head(100)
 #print(vin_sample)
+"""
+vin_sample = pandas.read_csv('dataBases/Samples/wine_review_samples.csv')
+vin_sample['PersonalRating'] = None
 vin_sample.to_csv('dataBases/Samples/wine_review_samples.csv')
 
 
@@ -33,22 +40,30 @@ biere =  biere[['brewery_name','beer_style','beer_name','beer_beerid']]
 biere = biere.merge(biere_diff,'inner',on = 'beer_beerid')
 
 beer_samples = biere.head(100)
-beer_samples.to_csv('Samples/beer_samples.csv')
 '''
+beer_samples = pandas.read_csv('dataBases/Samples/beer_samples.csv')
+beer_samples['PersonalRating'] = None
+beer_samples.to_csv('dataBases/Samples/beer_samples.csv')
 
 # fabrication sample coffee
 
 '''coffee = pandas.read_csv('Raw_databases/coffee_analysis.csv')
 coffee = coffee.head(100)
-coffee.to_csv('Samples/coffee_samples.csv')
 '''
+coffee_samples = pandas.read_csv('dataBases/Samples/coffee_samples.csv')
+coffee_samples['PersonalRating'] = None
+coffee_samples.to_csv('dataBases/Samples/coffee_samples.csv')
+
 ######3 descriptions différentes ?
 
 '''
 mocktail = pandas.read_csv('Raw_databases/moctail.csv')
 mocktail = mocktail.head(100)
-mocktail.to_csv('Samples/mocktail_samples.csv')
 '''
+mocktail = pandas.read_csv('dataBases/Samples/mocktail_samples.csv')
+mocktail['PersonalRating'] = None
+mocktail.to_csv('dataBases/Samples/mocktail_samples.csv')
+
 
 
 

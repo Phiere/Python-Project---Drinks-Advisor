@@ -1,26 +1,18 @@
 ############################################################
 ############################################################
 ############################################################
+#DESCRIPTION
+############################################################
+############################################################
+############################################################
 
-############################################################
-############################################################
-############################################################
-import pandas as pd
-import csv
-import sys
-import typing
-import numpy as np
-from PyQt5 import QtCore
+
+import pandas
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-from PyQt5.QtWidgets import QWidget
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureWidget
-import matplotlib.pyplot as plt
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QListWidget, QListWidgetItem, QLineEdit, QHBoxLayout
 
 
-cocktail = pd.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
 
 class Autocompleter(QLineEdit):
     def __init__(self,colonne):
@@ -42,25 +34,31 @@ class Autocompleter(QLineEdit):
 
 
 
-####################################
-# Test sur une fenetre vite
-####################################
+############################################################
+############################################################
+############################################################
+# Test 
+############################################################
+############################################################
+############################################################
+
+#Test sur les verres de la bdd cocktails. Peut être testé sur toutes les bases de données.
+        
+cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
+colonne_autocompleteur = cocktail['strGlass']
+colonne_autocompleteur = colonne_autocompleteur.drop_duplicates()
+colonne_autocompleteur = colonne_autocompleteur.dropna()
+colonne_autocompleteur = colonne_autocompleteur.astype(str)
 
 class MainWindow(QWidget):
     def __init__(self):
         super().__init__()
     
         layout = QVBoxLayout()    
-
-        colonne_ingredients = cocktail['Ingredients']
-        colonne_ingredients = colonne_ingredients.drop_duplicates()
-        colonne_ingredients = colonne_ingredients.dropna()
-
         Autocompletion_line = Autocompleter(colonne_ingredients)
-        layout.addWidget(Autocompletion_line)
+
+        layout.addWidget(Autocompletion_line.lineEdit)
         self.setLayout(layout)
-
-
 
 
 if __name__ == '__main__':
