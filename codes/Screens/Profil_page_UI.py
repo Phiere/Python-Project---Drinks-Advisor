@@ -1,19 +1,13 @@
 ############################################################
 ############################################################
 ############################################################
-#DESCRIPTION
+#Construction de la page correspondant au profil de l'utilisateur. 
 ############################################################
 ############################################################
 ############################################################
 
-# Trier les importations
-from Importations import *
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit
-from PyQt5.QtCore import Qt, QObject, pyqtSignal
-from PyQt5.QtCore import QEvent
-import Reasearch_page_creation_UI as RU
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QListWidget,QGridLayout
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
 import Navigation as Nav
@@ -114,14 +108,14 @@ class quatriemeGraphique(QWidget):
 
 ##Creation de l'écran
 class ScreenProfile(QWidget):
-    def __init__(self) -> None:
+    def __init__(self,screens_call) -> None:
         super().__init__()
         self.setWindowTitle("Profil Window")
         self.resize(1000,500)
 
         ##Cette info viendra de la page d'acceuil
 
-        menuLayout = Nav.MenuLayout()
+        menuLayout = Nav.MenuLayout(screens_call)
         ecranLayout = QVBoxLayout()
         grid_layout = QGridLayout()
 
@@ -142,11 +136,23 @@ class ScreenProfile(QWidget):
 
         self.setLayout(ecranLayout)
        
-
+############################################################
+############################################################
+############################################################
+# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
+# - 1 :
+# - 2 :                 
+############################################################
+############################################################
+############################################################
+                
+def testeur():
+    pass
+testeurs = [testeur for _ in range(4)]
             
 def main():
     app = QApplication(sys.argv)
-    fenetre = ScreenProfile()
+    fenetre = ScreenProfile(testeurs)
     fenetre.show()
     sys.exit(app.exec_())
 

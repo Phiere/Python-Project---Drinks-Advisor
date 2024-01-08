@@ -1,13 +1,14 @@
+############################################################
+############################################################
+############################################################
+# Description          
+############################################################
+############################################################
+############################################################
+
 from Importations import *
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit
-from PyQt5.QtCore import Qt, QObject, pyqtSignal
-from PyQt5.QtCore import QEvent
-import Reasearch_page_creation_UI as RU
-import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QWidget
-from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
-import matplotlib.pyplot as plt
-
+import Navigation as Nav
 import Db_gestions as Db
 import Creation_page_back as Cb
 
@@ -66,13 +67,13 @@ class ListeElementToComplete(QWidget):
 
 ##Creation de l'écran
 class ScreenCreation(QWidget):
-    def __init__(self) -> None:
+    def __init__(self,screens_call) -> None:
         super().__init__()
         self.setWindowTitle("Creation Window")
         self.resize(1000,500)
 
 
-        menuLayout = Nav.MenuLayout()
+        menuLayout = Nav.MenuLayout(screens_call)
         
         self.adding_element_layout = QVBoxLayout()
         self.radio_button = DropdownButtonWidget(self.adding_lines_for_completion)
@@ -98,11 +99,23 @@ class ScreenCreation(QWidget):
     def create_new_drink(self):
         Cb.create_new_drink(dbs[0],self.listWidget)
 
-
+############################################################
+############################################################
+############################################################
+# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
+# - 1 :
+# - 2 :                 
+############################################################
+############################################################
+############################################################
+                
+def testeur():
+    pass
+testeurs = [testeur,testeur,testeur,testeur]
             
 def main():
     app = QApplication(sys.argv)
-    fenetre = ScreenCreation()
+    fenetre = ScreenCreation(testeurs)
     fenetre.show()
     sys.exit(app.exec_())
 

@@ -1,19 +1,27 @@
+############################################################
+############################################################
+############################################################
+# Description : Home page to welcome the user and chose the data base.          
+############################################################
+############################################################
+############################################################
+
 from Importations import *
 import Navigation as Nav
     
 
 class ScreenHomeWindow(QWidget):
-    def __init__(self) -> None:
+    def __init__(self,screens_call) -> None:
         super().__init__()
         self.setWindowTitle("Home Window")
         self.resize(1000,600)
         sizePolicy = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
 
-        menuLayout = Nav.MenuLayout()
+        menuLayout = Nav.MenuLayout(screens_call)
 
         globalLayout = QVBoxLayout()
         globalLayout.addLayout(menuLayout.menuLayout)
-        
+
         alccolLayout = QHBoxLayout()
         alcoolfreeLayout = QHBoxLayout()
 
@@ -58,12 +66,24 @@ class ScreenHomeWindow(QWidget):
 
         self.setLayout(globalLayout)
 
-
+############################################################
+############################################################
+############################################################
+# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
+# - 1 :
+# - 2 :                 
+############################################################
+############################################################
+############################################################
+                
+def testeur():
+    pass
+testeurs = [testeur,testeur,testeur,testeur]
    
 
 def main():
     app = QApplication(sys.argv)
-    fenetre = ScreenHomeWindow()
+    fenetre = ScreenHomeWindow(testeurs)
     fenetre.show()
     app.exec()
 

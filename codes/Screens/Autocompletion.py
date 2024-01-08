@@ -1,7 +1,9 @@
 ############################################################
 ############################################################
 ############################################################
-#DESCRIPTION
+#Créer la classe Autocompleter qui sert à remplir les filtres avec les éléments effectivements présents dans les bases de données.
+#Pour exemple si l'on cherche parmis nos cocktails un ingrédient spécifique, commencer par "V..." donnera tous les ingrédients commencant 
+#par cette lettre. On saura donc directement si cet ingrédient exsite ou non.
 ############################################################
 ############################################################
 ############################################################
@@ -11,7 +13,6 @@ import pandas
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
-
 
 
 class Autocompleter(QLineEdit):
@@ -55,11 +56,10 @@ class MainWindow(QWidget):
         super().__init__()
     
         layout = QVBoxLayout()    
-        Autocompletion_line = Autocompleter(colonne_ingredients)
+        Autocompletion_line = Autocompleter(colonne_autocompleteur)
 
         layout.addWidget(Autocompletion_line.lineEdit)
         self.setLayout(layout)
-
 
 if __name__ == '__main__':
     app = QApplication([])
