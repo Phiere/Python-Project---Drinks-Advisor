@@ -6,4 +6,5 @@ Here we write all the questions that come in mind or ideas that should be explor
 - create other things than cocktails ? 
 
 What's left to do :
-- List all the different entries possibles in ingredients.csv for autocompletion
+- List all the different entries possibles in ingredients.csv for autocompletion (ok)
+- make correspond unique elements with filter used

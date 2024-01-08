@@ -1,4 +1,4 @@
-,Pays,Designation,Points,Prix,Region,Variete,Vignoble
+,country,designation,points,price,region,variety,winery
 0,US,Martha's Vineyard,96.0,235.0,Napa Valley,Cabernet Sauvignon,Heitz
 1,Spain,Carodorum Selección Especial Reserva,,110.0,Toro,Tinta de Toro,Bodega Carmen Rodríguez
 2,,Special Selected Late Harvest,,90.0,Knights Valley,Sauvignon Blanc,Macauley
