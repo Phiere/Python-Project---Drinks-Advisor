@@ -8,11 +8,9 @@
 ############################################################
 ############################################################
 
-
 import pandas
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget,QLineEdit,QApplication,QVBoxLayout,QCompleter
 
 
 class Autocompleter(QLineEdit):
@@ -22,7 +20,6 @@ class Autocompleter(QLineEdit):
 
         self.lineEdit = QLineEdit()
         autocomplete_list = colonne.tolist()
-        #print(autocomplete_list)
 
         # Création d'un QCompleter avec la liste des suggestions
         completer = QCompleter(autocomplete_list, self.lineEdit)

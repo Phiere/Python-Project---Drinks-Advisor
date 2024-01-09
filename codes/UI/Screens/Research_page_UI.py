@@ -7,13 +7,14 @@
 ############################################################
 
 import sys
-
 from PyQt5.QtGui import QMouseEvent
-import Db_gestions as Db
-import Research_page_back as RB
-import Navigation as Nav
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit,QHBoxLayout,QPushButton,QComboBox,QLabel,QListWidget,QListWidgetItem
 from PyQt5.QtCore import Qt, QObject, pyqtSignal,QEvent
+
+import Navigation as Nav
+sys.path.append('codes/BackEnd/')
+import Db_gestions as Db
+import Research_page_back as RB 
 
 #### la bouton random n'a pas été activé
 ### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas

@@ -1,8 +1,5 @@
-import pandas
 import Db_gestions as Db
 import Autocompletion as autoc 
-import Research_page_UI as RU
-import back_recherche as br
 from PyQt5.QtWidgets import QWidget
 
 dbs = Db.choix_db("Wines")
@@ -49,7 +46,7 @@ def from_filters_to_newDF(df_used,filters_list,colonne_to_sort,sorted_state):
                 text_from_filter = filters_list[i].name_edit.text()
                 if  text_from_filter != '':
                     
-                    df_temporary = br.filtrer(text_from_filter,filters_list[i].nom_col,df_temporary)
+                    df_temporary = filtrer(text_from_filter,filters_list[i].nom_col,df_temporary)
         
 
         #df_temporary = df_temporary.sort_values(colonne_to_sort,ascending=sorted_state)
@@ -74,7 +71,6 @@ def filtrer(f,colonne,data_Frame):
         return data_Frame[data_Frame[colonne] == int(f)]
     except ValueError :    
         if "," not in f :
-            print("oui")
             return data_Frame[data_Frame[colonne] == f]
         else :
             f = f.split(",")

@@ -14,23 +14,24 @@ import Navigation as Nav
 class Description(QWidget):
     def __init__(self, drink_name,screen_calls):
         super().__init__()
-
+        
         # Initialisation de l'interface
         self.drink_name = drink_name
         self.init_ui(screen_calls)
 
     def init_ui(self,screen_calls):
+        self.resize(1000,600)
         # 1er layout - Barre de navigation
         home_button = QPushButton(self)
-        home_button.setIcon(QIcon("Icones/home.png"))
+        home_button.setIcon(QIcon("codes/UI/Icones/home.png"))
         home_button.setFixedSize(QSize(30, 30))  # Ajustez la taille selon vos besoins      
         
         back_button = QPushButton(self)
-        back_button.setIcon(QIcon("Icones/back.png"))
+        back_button.setIcon(QIcon("codes/UI/Icones/back.png"))
         back_button.setFixedSize(QSize(30, 30))  # Ajustez la taille selon vos besoins
         
         profile_button = QPushButton(self)
-        profile_button.setIcon(QIcon("Icones/profile.png"))
+        profile_button.setIcon(QIcon("codes/UI/Icones/profile.png"))
         profile_button.setFixedSize(QSize(30, 30))  # Ajustez la taille selon vos besoins
         
         navigation_layout = QHBoxLayout()
@@ -46,15 +47,15 @@ class Description(QWidget):
         description_text.setPlaceholderText('Description de la boisson...')
         
         add_favorite_button = QPushButton(' Ajouter en favori')
-        add_favorite_button.setIcon(QIcon("Icones/favori.png"))
+        add_favorite_button.setIcon(QIcon("codes/UI/Icones/favori.png"))
         add_favorite_button.setFixedSize(QSize(550, 30))  # Ajustez la taille selon vos besoins
         
         comment_button = QPushButton(' Commenter')
-        comment_button.setIcon(QIcon("Icones/comment.png"))
+        comment_button.setIcon(QIcon("codes/UI/Icones/comment.png"))
         comment_button.setFixedSize(QSize(550, 30))  # Ajustez la taille selon vos besoins 
        
         rate_button = QPushButton(' Noter')
-        rate_button.setIcon(QIcon("Icones/rate.png"))
+        rate_button.setIcon(QIcon("codes/UI/Icones/rate.png"))
         rate_button.setFixedSize(QSize(550, 30))  # Ajustez la taille selon vos besoins 
 
         info_layout = QVBoxLayout()
@@ -66,7 +67,7 @@ class Description(QWidget):
 
         # 2ème layout à droite - Image de la boisson (à remplacer par le chemin de votre image)
         image_label = QLabel()
-        image_label.setPixmap(QPixmap("Icones/boisson.jpg").scaled(250,800))
+        image_label.setPixmap(QPixmap("codes/UI/Icones/boisson.jpg"))#.scaled(250,800))
         image_layout = QVBoxLayout()
         image_layout.addWidget(image_label)
         
