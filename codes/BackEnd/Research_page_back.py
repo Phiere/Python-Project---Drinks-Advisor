@@ -2,7 +2,7 @@ import Db_gestions as Db
 import Autocompletion as autoc 
 from PyQt5.QtWidgets import QWidget
 
-dbs = Db.choix_db("Wines")
+dbs = Db.choix_db("Cocktail")
 
 class Filtre(QWidget):
     def __init__(self,name_column,displayed_text) -> None:

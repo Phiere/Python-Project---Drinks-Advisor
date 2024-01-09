@@ -16,11 +16,10 @@ sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Research_page_back as RB 
 
-#### la bouton random n'a pas été activé
-### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
-### Comment faire avec les listes ? Pour l'instant ça ne fonctionne pas
 
-dbs = Db.choix_db("Wines")
+### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
+
+dbs = Db.choix_db("Cocktail")
 
 
 class ColomnOfFilter(QWidget):
