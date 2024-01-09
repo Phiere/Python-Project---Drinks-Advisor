@@ -10,7 +10,9 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QListWidget,QGridLayout
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
+
 import Navigation as Nav
+sys.path.append('codes/BackEnd/')
 import Profil_page_back as Pb
 
 categories = ['Vins', 'Cocktails', 'Cafés', 'Mocktails', 'Bières']

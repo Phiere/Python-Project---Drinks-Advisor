@@ -1,7 +1,8 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget,QHBoxLayout
+
 import Research_page_UI as RU
-import Home_page_creation as HC
+import Home_page_UI as HC
 import Profil_page_UI as PU
 import Creation_page_UI as CU
 import Description_page as DU

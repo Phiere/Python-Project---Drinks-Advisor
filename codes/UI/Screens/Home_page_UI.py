@@ -6,7 +6,9 @@
 ############################################################
 ############################################################
 
-from Importations import *
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QSizePolicy,QHBoxLayout,QLabel
+from PyQt5.QtWidgets import QFrame, QPushButton
 import Navigation as Nav
     
 

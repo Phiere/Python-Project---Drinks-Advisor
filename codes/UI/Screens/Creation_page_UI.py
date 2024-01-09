@@ -6,9 +6,13 @@
 ############################################################
 ############################################################
 
-from Importations import *
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit
+import sys
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit,QComboBox,QListWidget,QListWidgetItem
+from PyQt5.QtWidgets import QPushButton
+from PyQt5.QtCore import QSize 
+
 import Navigation as Nav
+sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Creation_page_back as Cb
 
