@@ -21,7 +21,6 @@ def nb_notes_per_categories():
     return nb_notes 
 
 
-print(nb_notes_per_categories())
 
 ###2eme graphique : compte le nombre de favories notées par catégorie
 def nb_of_favories(df):

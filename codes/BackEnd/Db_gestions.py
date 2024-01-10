@@ -7,15 +7,21 @@ import pandas
 ####################################
 ####################################
 
-#vins_unique_ingredients.drop("Unnamed: 0", axis=1, inplace=True)
+def initialisation_wines():
 
-########################################################################
-########################################################################
+    ## Appels des databases préalablement nettoyées
+    Wines_cleaned = pandas.read_csv('dataBases/Samples/wine_review_samples.csv')
+    Wines_pertinents_elements = ['Unnamed: 0','winery','designation','price']
+    Wines_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/wines_unique_elements.csv')
+
+    return [Wines_cleaned,Wines_filters,Wines_uniques_elements,Wines_pertinents_elements]
+
+def initilisation_coffee():
+    pass    
 
 Wines = pandas.read_csv('dataBases/Samples/wine_review_samples.csv')
-Wines_elements_pertinents = ['winery','designation','price']
+Wines_elements_pertinents = ['Unnamed: 0','winery','designation','price']
 Wines_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/wines_unique_elements.csv')
-Wines_uniques_elements.drop('Unnamed: 0', axis=1, inplace=True)
 
 Wines_with_lists = Wines.copy()
 Wines_with_lists["region"] = Wines_with_lists.apply(lambda row: [row['region_1'],row['region_2']],axis=1)
@@ -31,9 +37,9 @@ Wines_filters = Wines_with_lists[Wines_uniques_elements.columns]
 ########################################################################
 
 Coffee = pandas.read_csv('dataBases/Samples/coffee_samples.csv')
-Coffee_elements_pertinents = ['name','loc_country','rating']
+Coffee_elements_pertinents = ['Unnamed: 0','name','loc_country','rating']
 Coffee_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv')
-Coffee_uniques_elements.drop('Unnamed: 0', axis=1, inplace=True)
+
 #les listes à créer sont origine et description
 Coffee_with_lists = Coffee.copy()
 Coffee_with_lists["origin"] = Coffee_with_lists.apply(lambda row: [row['origin_1'],row['origin_2']],axis=1)
@@ -54,7 +60,7 @@ Coffee_filters = Coffee_with_lists[Coffee_uniques_elements.columns]
 
 Cocktail = pandas.read_csv('dataBases/Samples/cocktail_samples.csv')
 Cocktail_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv')
-Cocktail_uniques_elements.drop('Unnamed: 0', axis=1, inplace=True)
+#Cocktail_uniques_elements.drop('Unnamed: 0', axis=1, inplace=True)
 #Les listes à créer sont les ingrédients et les dosages
 Cocktail_with_lists = Cocktail.copy()
 Cocktail_with_lists['strIngredient'] = Cocktail_with_lists.apply(lambda row: [row[f'strIngredient{i}'] for i in range(1,16)], axis=1)
@@ -63,7 +69,7 @@ for i in range(1,16) :
     Cocktail_with_lists.drop(f'strIngredient{i}', axis=1, inplace=True)
     Cocktail_with_lists.drop(f'strMeasure{i}', axis=1, inplace=True)
 
-Cocktail_element_pertinent = ['strDrink','strCategory']
+Cocktail_element_pertinent = ['Unnamed: 0','strDrink','strCategory']
 Cocktail_filters = Cocktail_with_lists[Cocktail_uniques_elements.columns]
 
 ########################################################################
@@ -72,7 +78,7 @@ Cocktail_filters = Cocktail_with_lists[Cocktail_uniques_elements.columns]
 Beers = pandas.read_csv('dataBases/Samples/beer_samples.csv')
 Beers_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/beers_unique_elements.csv')
 Beers_filters = Beers[Beers_uniques_elements.columns]
-Beers_elements_pertinent = ['beer_name','brewery_name','beer_style']
+Beers_elements_pertinent = ['Unnamed: 0','beer_name','brewery_name','beer_style']
 #Pas de listes à créer
 
 ########################################################################
@@ -89,7 +95,7 @@ for i in range(1,2) :
     Mocktail_with_lists.drop(f'Flavor Profile {i}', axis=1, inplace=True)
 
 Mocktail_filters = Mocktail_with_lists[Mocktail_uniques_elements.columns]
-Mocktail_elements_pertinents = ['Cocktail Name','User Rating']
+Mocktail_elements_pertinents = ['Unnamed: 0','Cocktail Name','User Rating']
 
 ########################################################################
 ########################################################################

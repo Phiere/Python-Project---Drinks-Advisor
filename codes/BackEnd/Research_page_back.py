@@ -1,11 +1,16 @@
-import pandas
 import Db_gestions as Db
 import Autocompletion as autoc 
-import Reasearch_page_creation_UI as RU
-import back_recherche as br
+from PyQt5.QtWidgets import QWidget
 
 dbs = Db.choix_db("Cocktail")
 
+class Filtre(QWidget):
+    def __init__(self,name_column,displayed_text) -> None:
+        super().__init__()
+        self.nom_col = name_column
+        autocompleter = from_name_to_unique_elements_completer(name_column)
+        self.name_edit = autocompleter.lineEdit
+        self.name_edit.setPlaceholderText(displayed_text)
 
 ## Se charge de créer le completeur qui servira pour l'autocomplétion sur un QLineEdit
 ## On prend seulement en entrée la colonne dont on veut les éléments de complétion
@@ -24,8 +29,8 @@ def from_name_to_unique_elements_completer(name_column):
 def from_df_to_filters(df_used,take_text):
     columns_names = df_used.columns 
     filters_list = []
-    for i in range(len(columns_names)):
-        filtre =RU.Filtre(columns_names[i],columns_names[i])
+    for i in range(1,len(columns_names)):
+        filtre = Filtre(columns_names[i],columns_names[i])
         filters_list.append(filtre)
     for i in range(len(filters_list)):
             filters_list[i].name_edit.textEdited.connect(take_text)
@@ -41,7 +46,7 @@ def from_filters_to_newDF(df_used,filters_list,colonne_to_sort,sorted_state):
                 text_from_filter = filters_list[i].name_edit.text()
                 if  text_from_filter != '':
                     
-                    df_temporary = br.filtrer(text_from_filter,filters_list[i].nom_col,df_temporary)
+                    df_temporary = filtrer(text_from_filter,filters_list[i].nom_col,df_temporary)
         
 
         #df_temporary = df_temporary.sort_values(colonne_to_sort,ascending=sorted_state)
@@ -49,7 +54,7 @@ def from_filters_to_newDF(df_used,filters_list,colonne_to_sort,sorted_state):
         return df_temporary[dbs[3]]
 
 
-#Permet juste de choisir dans quelle sens on va tier 
+#Permet juste de choisir dans quelle sens on va trier 
 def chose_sorted_sens(chosed_option):
 
         if chosed_option == "dsc" :
@@ -58,4 +63,29 @@ def chose_sorted_sens(chosed_option):
             return 'dsc'
 
     
-    
+    #Filtre les databases sur une colone donée avec un filtre précis
+
+def filtrer(f,colonne,data_Frame):
+    try:
+        int(f)
+        return data_Frame[data_Frame[colonne] == int(f)]
+    except ValueError :    
+        if "," not in f :
+            return data_Frame[data_Frame[colonne] == f]
+        else :
+            f = f.split(",")
+            tempdf = data_Frame.copy()
+            for i in f :
+                if i != "" :
+                    tempdf = tempdf[tempdf[colonne].apply(lambda liste: i in liste)]
+            
+        return tempdf
+
+#Retourne les noms des colonnes de la bdd chargée ainsi que les types des colonnes (utile pour les comparaisons)
+def colonnes(data_Frame):
+    columns = data_Frame.columns
+    types = data_Frame.dtypes
+    L = []
+    for i in range(len(colonnes)):
+        L.append([columns[i],types[i]])
+    return L

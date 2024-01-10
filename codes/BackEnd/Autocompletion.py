@@ -1,17 +1,16 @@
 ############################################################
 ############################################################
 ############################################################
-#DESCRIPTION
+#Créer la classe Autocompleter qui sert à remplir les filtres avec les éléments effectivements présents dans les bases de données.
+#Pour exemple si l'on cherche parmis nos cocktails un ingrédient spécifique, commencer par "V..." donnera tous les ingrédients commencant 
+#par cette lettre. On saura donc directement si cet ingrédient exsite ou non.
 ############################################################
 ############################################################
 ############################################################
-
 
 import pandas
-from PyQt5.QtCore import *
-from PyQt5.QtGui import *
-from PyQt5.QtWidgets import *
-
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import QWidget,QLineEdit,QApplication,QVBoxLayout,QCompleter
 
 
 class Autocompleter(QLineEdit):
@@ -21,7 +20,6 @@ class Autocompleter(QLineEdit):
 
         self.lineEdit = QLineEdit()
         autocomplete_list = colonne.tolist()
-        #print(autocomplete_list)
 
         # Création d'un QCompleter avec la liste des suggestions
         completer = QCompleter(autocomplete_list, self.lineEdit)
@@ -55,11 +53,10 @@ class MainWindow(QWidget):
         super().__init__()
     
         layout = QVBoxLayout()    
-        Autocompletion_line = Autocompleter(colonne_ingredients)
+        Autocompletion_line = Autocompleter(colonne_autocompleteur)
 
         layout.addWidget(Autocompletion_line.lineEdit)
         self.setLayout(layout)
-
 
 if __name__ == '__main__':
     app = QApplication([])

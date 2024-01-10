@@ -1,22 +1,18 @@
 ############################################################
 ############################################################
 ############################################################
-#DESCRIPTION
+#Construction de la page correspondant au profil de l'utilisateur. 
 ############################################################
 ############################################################
 ############################################################
 
-# Trier les importations
-from Importations import *
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit
-from PyQt5.QtCore import Qt, QObject, pyqtSignal
-from PyQt5.QtCore import QEvent
-import Reasearch_page_creation_UI as RU
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QGridLayout, QWidget
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QListWidget,QGridLayout,QHBoxLayout
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
+
 import Navigation as Nav
+sys.path.append('codes/BackEnd/')
 import Profil_page_back as Pb
 
 categories = ['Vins', 'Cocktails', 'Cafés', 'Mocktails', 'Bières']
@@ -43,7 +39,7 @@ class premierGraphique(QWidget):
         # Mettre à jour le canevas
         self.canvas.draw()
 
-class deuxiemeGraphique(QWidget):
+class MeanByCategories(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -89,7 +85,7 @@ class troisiemeGraphique(QWidget):
                 self.listWidget.setItemWidget(listItem, customItemWidget)
            """ 
 
-class quatriemeGraphique(QWidget):
+class FavoriesByCategories(QWidget):
     def __init__(self):
         super().__init__()
 
@@ -111,7 +107,6 @@ class quatriemeGraphique(QWidget):
         # Mettre à jour le canevas
         self.canvas.draw()
 
-
 ##Creation de l'écran
 class ScreenProfile(QWidget):
     def __init__(self) -> None:
@@ -119,29 +114,32 @@ class ScreenProfile(QWidget):
         self.setWindowTitle("Profil Window")
         self.resize(1000,500)
 
-        ##Cette info viendra de la page d'acceuil
-
-        menuLayout = Nav.MenuLayout()
-        ecranLayout = QVBoxLayout()
-        grid_layout = QGridLayout()
-
-        first_graph = premierGraphique()
-        second_graph = deuxiemeGraphique()
-        third_graph  = troisiemeGraphique()
-        fourth_graph = quatriemeGraphique()
-
-        grid_layout.addWidget(first_graph,0,0)
-        grid_layout.addWidget(second_graph,0,1)
-        grid_layout.addLayout(third_graph.listlayout,1,0)
-        grid_layout.addWidget(fourth_graph,1,1)
         
 
-        # Créer un widget central et définir la grille comme layout
-        ecranLayout.addLayout(menuLayout.menuLayout)
-        ecranLayout.addLayout(grid_layout)
+        ##Partie droite avec les graphiques
+        graphiques_layout = QVBoxLayout()
+        graphiques_layout.addWidget( MeanByCategories() )
+        graphiques_layout.addWidget(FavoriesByCategories())
 
-        self.setLayout(ecranLayout)
+        ##
+        favories_list_layout = QVBoxLayout()
+
+        ##
+        ecran_layout = QHBoxLayout()
+        ecran_layout.addLayout(favories_list_layout,5)
+        ecran_layout.addLayout(graphiques_layout,5)
+
+        self.setLayout(ecran_layout)
        
+############################################################
+############################################################
+############################################################
+# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
+# - 1 :
+# - 2 :                 
+############################################################
+############################################################
+############################################################
 
             
 def main():

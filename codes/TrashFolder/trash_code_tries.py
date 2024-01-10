@@ -1,59 +1,47 @@
-import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget
+import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.patheffects as path_effects
+# Génération de données aléatoires pour l'exemple
+data = np.random.randn(1000)
 
-class FirstScreen(QWidget):
-    def __init__(self):
-        super().__init__()
-        layout = QVBoxLayout(self)
-        layout.addWidget(QPushButton("Bouton sur le premier écran", clicked=self.next_screen))
+# Préparation de la figure
+plt.figure(figsize=(10, 6))
+bins = 30
 
-    def next_screen(self):
-        main_window.next_screen()
+# Création de l'histogramme avec ombres
+n, bins, patches = plt.hist(data, bins=bins, color='#4169e1', edgecolor='black', alpha=0.7)
+import matplotlib.pyplot as plt
+import numpy as np
 
-class SecondScreen(QWidget):
-    def __init__(self):
-        super().__init__()
-        layout = QVBoxLayout(self)
-        layout.addWidget(QPushButton("Bouton sur le deuxième écran", clicked=self.next_screen))
+# Génération de données aléatoires pour l'exemple
+data = np.random.randn(1000)
 
-    def next_screen(self):
-        main_window.next_screen()
 
-class ThirdScreen(QWidget):
-    def __init__(self):
-        super().__init__()
-        layout = QVBoxLayout(self)
-        layout.addWidget(QPushButton("Bouton sur le troisième écran", clicked=self.next_screen))
 
-    def next_screen(self):
-        main_window.next_screen()
+# Application d'un motif pour simuler l'aspect du bois
+for patch in patches:
+    patch.set_facecolor('#8B4513')  # Couleur marron foncé pour le bois
+    patch.set_hatch('///')  # Motif pour imiter la texture du bois
 
-class MainWindow(QWidget):
-    def __init__(self):
-        super().__init__()
 
-        self.stacked_widget = QStackedWidget(self)
-        self.first_screen = FirstScreen()
-        self.second_screen = SecondScreen()
-        self.third_screen = ThirdScreen()
 
-        self.stacked_widget.addWidget(self.first_screen)
-        self.stacked_widget.addWidget(self.second_screen)
-        self.stacked_widget.addWidget(self.third_screen)
+# Ajout d'ombres pour chaque barre
+for patch in patches:
+    x = patch.get_x() + patch.get_width() / 2
+    y = patch.get_height()
+    plt.text(x, y, f'{int(y)}', ha='center', va='bottom', fontweight='bold', color='black')
 
-        layout = QVBoxLayout(self)
-        layout.addWidget(self.stacked_widget)
+    # Création de l'effet d'ombre
+    patch.set_edgecolor('white')
+    patch.set_linewidth(0.8)
+    patch.set_path_effects([path_effects.withStroke(linewidth=3, foreground='black')])
 
-        self.current_screen_index = 0
+# Personnalisation de la figure
+plt.gca().set_facecolor('#f5f5f5')  # Couleur de fond
+plt.title("Histogramme Avancé - Style Professionnel", fontsize=18, fontweight='bold')
+plt.xlabel("Valeurs", fontsize=14, fontweight='bold')
+plt.ylabel("Fréquence", fontsize=14, fontweight='bold')
+plt.grid(axis='y', linestyle='--', alpha=0.7)
 
-    def next_screen(self):
-        self.current_screen_index = (self.current_screen_index + 1) % self.stacked_widget.count()
-        self.stacked_widget.setCurrentIndex(self.current_screen_index)
-
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-    
-    main_window = MainWindow()
-    main_window.show()
-    
-    sys.exit(app.exec_())
+# Affichage de l'histogramme
+plt.show()
