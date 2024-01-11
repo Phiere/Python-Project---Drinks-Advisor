@@ -1,6 +1,6 @@
 import pandas
 import csv
-
+import re
 ################################################################
 ################################################################
 ################################################################
@@ -11,7 +11,84 @@ import csv
 ################################################################
 ################################################################
 
-wines = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/winemag-data_first150k.csv")
+
+
+try:
+    wines = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/winemag-data_first150k.csv")
+    wines = wines.head(10)
+except FileNotFoundError:
+    print("Fichier pas présent sur l'ordinateur. Présent seulement en local sur l'odinateur de Pierre")
+
+else :
+
+    ##Sort les indices des colonnes en doubles 
+    def trouver_indices(name_liste):
+        indices_dict = {}
+        for i, element in enumerate(name_liste):
+            if element not in indices_dict:
+                indices_dict[element] = []
+            indices_dict[element].append(i)
+
+        return [indices for indices in indices_dict.values() if len(indices) > 1]
+
+    
+    noms = wines.columns
+    noms_colonnes = []
+    for colonne in noms :
+        noms_colonnes.append(re.sub(r'\d+', '', colonne))
+
+    
+    
+    ##Concater les colonnes doubles et supprime les originaux (n'ajoue pas la colonne concaténée)
+    def concatenation_creation():
+        double_column = trouver_indices(noms_colonnes)
+        colonnes_a_rajouter = []
+
+        for colonnes_group in double_column :
+            wines_new_column = pandas.concat([wines[wines.columns[index]] for index in colonnes_group])
+            wines_new_column.reset_index()
+            colonnes_a_rajouter.append(wines_new_column.drop_duplicates)
+
+        wines['region_1'] = wines_new_column
+        return wines
+    
+    def supprime_les_doublons():
+
+        colonnes_a_rajouter = concatenation_creation()
+        
+        for colonne in wines.columns :
+            colonnes_a_rajouter.append( wines[colonne].drop_duplicates())
+            
+        return pandas.DataFrame(colonnes_a_rajouter)
+
+    print(concatenation_creation())
+        
+
+
+    ##Supprime tous 
+
+     
+    
+
+        
+
+
+
+    
+
+    """uniques_elements = wines.copy()
+    ##Suppressions des éléments en doubles 
+    for column in uniques_elements.columns :
+        print(column)
+        uniques_elements[column] = uniques_elements[column] .drop_duplicates()
+
+    uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/wines_unique_elements.csv")
+"""
+    ##Création des listes
+
+
+
+"""
 
 #wines_samples = wines.head(100)
 
@@ -97,3 +174,4 @@ data = {
 
 Uniques_elements = pandas.DataFrame(data)
 Uniques_elements.to_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/wines_unique_elements.csv")
+"""
