@@ -1,7 +1,8 @@
 import pandas as pd
+import Db_gestions as Db
 
 
-
+dbs = Db.initilisationSoft()[0]
 
 def create_new_drink(data_frame,liste_colonnes):
     textes_recuperees = liste_colonnes.get_texts()

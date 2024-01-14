@@ -16,7 +16,7 @@ sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Creation_page_back as Cb
 
-dbs = Db.choix_db('Wines')
+dbs = Cb.dbs
 
 #Boutton permettant le choix de la database à utiliser
 class DataBaseChoice(QComboBox):
@@ -36,8 +36,7 @@ class DataBaseChoice(QComboBox):
 
         
     def on_selection_changed(self,index):
-        selected_option = self.itemText(index)
-        self.fonction(Db.choix_db(selected_option)[0].columns)
+        self.fonction(Db.choisir_db(index,0).columns)
 
 #Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
 class ListeElementToComplete(QListWidget):

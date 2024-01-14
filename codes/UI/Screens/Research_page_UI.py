@@ -15,13 +15,18 @@ import Navigation as Nav
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Research_page_back as RB 
+import Description_page as Dp
 
 
 ### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
 
-dbs = Db.choix_db("Cocktail")
+dbs = Db.dbs
 
-#détcter le signal quand j'appuie sur entrée
+choix_de_la_data_base = 0
+
+boisson_choisie = []
+
+#Détecter le signal quand j'appuie sur entrée
 class KeyEventFilter(QObject):
     enterPressed = pyqtSignal()
 
@@ -30,6 +35,9 @@ class KeyEventFilter(QObject):
             self.enterPressed.emit()
         return super().eventFilter(obj, event)
     
+
+############################################################
+############################################################
 ##Creer une combobox sur le nombre d'éléments à afficher dans la la liste filtrée
 class NumberOfElementChoice(QComboBox):
     def __init__(self,layout_interaction):
@@ -43,7 +51,6 @@ class NumberOfElementChoice(QComboBox):
 
         self.activated[str].connect(layout_interaction)
 
-
 ##Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
 class SortColumnChoice(QComboBox):
     def __init__(self,columns_names_list,layout_interaction) -> None:
@@ -54,14 +61,18 @@ class SortColumnChoice(QComboBox):
             self.addItem(columns_names_list[i])
 
         self.activated[str].connect(layout_interaction)
-
+    
+    def update_sort(self):
+        pass
+        #ew_sorted_choice = RB.chose_sorted_sens(self.optionsdefiltres.ascgo.text())
+        #self.optionsdefiltres.ascgo.setText(new_sorted_choice)
 
 ##Barre d'options pour gérer l'affichage de la liste filtrée
 class FilterOptionsBar(QHBoxLayout):
-    def __init__(self,ecran,data_frame) -> None:
+    def __init__(self,ecran,data_frame,db_choice,upload_screen) -> None:
         super().__init__()
 
-        self.choixbdd = BaseDeDonneChoice()
+        self.choixbdd = BaseDeDonneChoice(db_choice,upload_screen)
         self.rdchoice = QPushButton("random")
         self.ascgo = QPushButton('dsc')
 
@@ -84,8 +95,31 @@ class FilterOptionsBar(QHBoxLayout):
         else :
             return 0
 
+##
+class BaseDeDonneChoice(QComboBox):
+    def __init__(self,db_choice,upload_screen):
+        super().__init__()
+
+        self.fonction = upload_screen
+
+        self.db_choice = db_choice
+        self.addItem('Wines')
+        self.addItem('Cocktails')
+        self.addItem('Beers')
+        self.addItem('Coffee')
+        self.addItem('Mocktails')
+
+        # Connecter un signal pour détecter le changement de sélection
+        self.currentIndexChanged.connect(self.on_selection_changed)
+
+        
+    def on_selection_changed(self,index):
+        global choix_de_la_data_base
+        choix_de_la_data_base = index
+        self.fonction()
+############################################################
+############################################################
 ##Creer l'affichage de tous les éléments trier comme des texte_edits. CLairement c'est le points à modifier les
-##text edit vont pas du tout.
 class CustomListAffichageTri(QWidget):
     def __init__(self,data_base_utilisee,index_element,completion_text_to_display,GoToDescription):
         super().__init__()
@@ -104,9 +138,13 @@ class CustomListAffichageTri(QWidget):
             layout.addWidget(lineEdit)
     
     def mousePressEvent(self, a0: QMouseEvent) -> None:
+        global boisson_choisie
+
+        boisson_choisie = self.db.iloc[self.ind] 
         print('appel  à la page décription', self.ind)
         self.appel_a_description()
 
+##
 class ColumnCategoriesNames(QWidget):
     def __init__(self,texte):
         super().__init__()
@@ -119,96 +157,109 @@ class ColumnCategoriesNames(QWidget):
 
         layout = QVBoxLayout(self)
         layout.addWidget(label)
-       
-class LineOfCategoriesNames(QWidget):
-     def __init__(self,pertinent_columns_names):
-        super().__init__()
 
-        self.layout_category_names = QHBoxLayout()
+##       
+class LineOfCategoriesNames(QHBoxLayout):
+     def __init__(self):
+        super().__init__()
+        self.upload_names()
+  
+     def upload_names(self):
+        
+        global choix_de_la_data_base
+        pertinent_columns_names = Db.choisir_db(choix_de_la_data_base,3)
+
+        while self.count():
+                item = self.takeAt(0)
+                widget = item.widget()
+                if widget :
+                    widget.deleteLater()
 
         for i in range(1,len(pertinent_columns_names)):
             Etiquette = ColumnCategoriesNames(pertinent_columns_names[i])
-            self.layout_category_names.addWidget(Etiquette)
+            self.addWidget(Etiquette)
 
-class BaseDeDonneChoice(QWidget):
-    def __init__(self):
+##
+class ColumnOfFilter(QVBoxLayout):
+    def __init__(self,data_frame,chargerNewDf):
         super().__init__()
+    
+        self.filters_list = RB.from_df_to_filters(data_frame,chargerNewDf)
 
-        layout = QVBoxLayout(self)
+    def upload_filters(self,data_frame,chargerNewDf):
+        global choix_de_la_data_base
+    
+        self.filters_list = RB.from_df_to_filters(data_frame,chargerNewDf)
+        while self.count():
+            item = self.takeAt(0)
+            widget = item.widget()
+            if widget :
+                widget.deleteLater()
 
-        self.dropdown = QComboBox(self)
-        self.dropdown .addItem('Wines')
-        self.dropdown .addItem('Cocktails')
-        self.dropdown .addItem('Beers')
-        self.dropdown .addItem('Coffee')
-        self.dropdown .addItem('Mocktails')
-
-        # Connecter un signal pour détecter le changement de sélection
-        self.dropdown .currentIndexChanged.connect(self.on_selection_changed)
-
-        
-    def on_selection_changed(self,index):
-        pass
-
+        for filter in self.filters_list :
+            self.addWidget(filter.name_edit)
+############################################################
+############################################################
 ##Creation de l'écran
 class ScreenResearch(QWidget):
-    def __init__(self) -> None:
+    def __init__(self,change_screen) -> None:
         super().__init__()
         self.setWindowTitle("Description Window")
         self.resize(1000,500)
 
-        self.GoToDescription = lambda : 1
-        ##Cette info viendra de la page d'acceuil
-        self.data_frame = dbs[1]
+        self.GoToDescription = change_screen
 
-        #Création des layouts généraux
- 
-        descriptionLayout = QHBoxLayout()
-        self.filtresLayout = QVBoxLayout()
-        self.screenLayout = QVBoxLayout()
+    
+        #global choix_de_la_data_base
+        global choix_de_la_data_base
+        self.data_frame = Db.choisir_db(choix_de_la_data_base,1)
+
+        #Création de la barre d'option pour manipuler les données
+        self.optionsdefiltres = FilterOptionsBar(self,self.data_frame,choix_de_la_data_base,self.upload_screen)
         
-        #Ajout des filtres dynamiques
-        self.filters_list = RB.from_df_to_filters(self.data_frame,self.chargerNewDf)
+        #Créations des filtres dynamique
+        self.column_of_filter = ColumnOfFilter(self.data_frame,self.chargerNewDf)
+        self.column_of_filter.upload_filters(self.data_frame,self.chargerNewDf)
 
-        for i in range(len(self.filters_list)):
-             self.filtresLayout.addWidget(self.filters_list[i].name_edit)
-
-
-        #je veux déclanger une recherche en appuant sur entrée.
-             
+        #Déclenger une recherche avec le bouton entrée
         self.key_event_filter = KeyEventFilter()
         QApplication.instance().installEventFilter(self.key_event_filter)
-
-        # Connecter le signal du filtre d'événements à la fonction que vous souhaitez déclencher
         self.key_event_filter.enterPressed.connect(self.chargerNewDf)
         
-        self.optionsdefiltres = FilterOptionsBar(self,self.data_frame)
-        self.etat = True
-
-        Line_Of_Categories_Names = LineOfCategoriesNames(dbs[3])
+        #Créations des titres des colonnes des données affichées
+        self.Line_Of_Categories_Names = LineOfCategoriesNames()
 
         #Complétion des layout
         self.listlayout = QVBoxLayout()
         self.listWidget = QListWidget()
-        self.listlayout.addLayout(Line_Of_Categories_Names.layout_category_names)
+        self.listlayout.addLayout(self.Line_Of_Categories_Names)
         self.listlayout.addWidget(self.listWidget)
-        #self.listWidget.setMinimumSize(QSize(600,500))
-
-        #remplissage aléaotire pour un premier affichage
-        self.changer_text(dbs[1][dbs[3]])
-
+        
         #Assemblage layout
+        descriptionLayout = QHBoxLayout()
+        self.screenLayout = QVBoxLayout()
         descriptionLayout.addLayout(self.listlayout,8)
-        descriptionLayout.addLayout(self.filtresLayout,2)
+        descriptionLayout.addLayout(self.column_of_filter,2)
         self.screenLayout.addLayout(self.optionsdefiltres)
         self.screenLayout.addLayout(descriptionLayout)
         self.setLayout(self.screenLayout)
-        
 
+        #remplissage aléaotire pour un premier affichage
+        self.changer_text(Db.choisir_db(choix_de_la_data_base,1)[Db.choisir_db(choix_de_la_data_base,3)])
+        
+    def upload_screen(self):
+        global choix_de_la_data_base
+        self.data_frame = Db.choisir_db(choix_de_la_data_base,2)
+        self.column_of_filter.upload_filters(self.data_frame,self.chargerNewDf)
+        self.chargerNewDf()
+        self.Line_Of_Categories_Names.upload_names()
 
     #Charher la df filtrée avec les filtres
     def chargerNewDf(self):
-        tempdf = RB.from_filters_to_newDF(self.data_frame,self.filters_list,self.optionsdefiltres.ascchoice.comboBox.currentText(),self.etat)
+        global choix_de_la_data_base
+        frame1 = Db.choisir_db(choix_de_la_data_base,1)
+        frame2 = Db.choisir_db(choix_de_la_data_base,3)
+        tempdf = RB.from_filters_to_newDF(frame1,frame2,self.column_of_filter.filters_list)#,self.optionsdefiltres.ascchoice.comboBox.currentText(),self.etat)
         self.changer_text(tempdf)
 
 
@@ -238,11 +289,14 @@ class ScreenResearch(QWidget):
             for i in range(n):# Exemple avec 10 éléments
                 listItem = QListWidgetItem(self.listWidget)
                 texte = [str(newdf.iat[i,j]) for j in range(1,len(newdf.columns))]
-                customItemWidget = CustomListAffichageTri(dbs[0],newdf.iat[i,0],texte,self.GoToDescription)
+                global choix_de_la_data_base
+                #index_element = Db.choisir_db(choix_de_la_data_base,0)[0,i]
+                index = newdf.loc[i].index
+                customItemWidget = CustomListAffichageTri(Db.choisir_db(choix_de_la_data_base,0),int(newdf.iat[i,0]),texte,self.GoToDescription)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)
                 self.listWidget.setItemWidget(listItem, customItemWidget)
-            #self.listlayout.updae()
+
      
         
         elif not(newdf.empty) :
@@ -252,7 +306,7 @@ class ScreenResearch(QWidget):
             for i in range(len(newdf)):  
                 listItem = QListWidgetItem(self.listWidget)
                 texte = [str(newdf.iat[i,j]) for j in range(1,len(newdf.columns))]
-                customItemWidget = CustomListAffichageTri(dbs[0],newdf.iat[i,0],texte,self.GoToDescription)
+                customItemWidget = CustomListAffichageTri(Db.choisir_db(choix_de_la_data_base,0),int(newdf.iat[i,0]),texte,self.GoToDescription)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)
                 self.listWidget.setItemWidget(listItem, customItemWidget)
@@ -268,13 +322,10 @@ class ScreenResearch(QWidget):
 ############################################################
 ############################################################
                 
-def testeur():
-    pass
-
             
 def main():
     app = QApplication(sys.argv)
-    fenetre = ScreenResearch()
+    fenetre = ScreenResearch(lambda : 1)
     fenetre.show()
     sys.exit(app.exec_())
 

@@ -1,547 +1,463 @@
-,strIngredient,strDrink,strCategory,strGlass
-0,Creme de Cacao,'57 Chevy with a White License Plate,Cocktail,Highball glass
-1,Absolut Kurant,1-900-FUK-MEUP,Shot,Old-fashioned glass
-2,Lager,110 in the shade,Beer,Beer Glass
-3,Malibu rum,151 Florida Bushwacker,Milk / Float / Shake,Beer mug
-4,Dark rum,155 Belmont,,White wine glass
-5,Goldschlager,24k nightmare,,Shot glass
-6,151 proof rum,252,,
-7,Jack Daniels,3 Wise Men,,Collins glass
-8,Gin,3-Mile Long Island Iced Tea,Ordinary Drink,Collins Glass
-9,Peach Vodka,410 Gone,,
-10,Vanilla vodka,50/50,,
-11,Blue Curacao,501 Blue,,
-12,,69 Special,,
-13,Kahlua,747,,
-14,Absolut Citron,9 1/2 Weeks,,Cocktail glass
-15,Coconut rum,A Day at the Beach,,
-16,Light rum,A Furlong Too Late,,
-17,Vodka,A Gilligan's Island,,
-18,,A Night In Old Mandalay,,
-19,Amaretto,A Piece of Ass,Other/Unknown,
-20,Cranberry juice,A Splash of Nash,,
-21,,A True Amaretto Sour,,
-22,,A midsummernight dream,,
-23,Applejack,A. J.,,
-24,White Creme de Menthe,A.D.M. (After Dinner Mint),,Irish coffee cup
-25,,A1,,
-26,,ABC,,
-27,,ACID,,
-28,Absolut Vodka,AT&T,,Highball Glass
-29,,Abbey Cocktail,,
-30,,Abbey Martini,,
-31,,Abilene,,
-32,,Absinthe #2,Homemade Liqueur,Jar
-33,,Absolut Evergreen,,
-34,,Absolut Sex,,
-35,,Absolut Stress #2,,
-36,,Absolut Summertime,,
-37,,Absolut limousine,,
-38,,Absolutely Cranberry Smash,,
-39,,Absolutely Fabulous,,Champagne flute
-40,,Absolutly Screwed Up,,
-41,,Acapulco,,
-42,,Ace,,Martini Glass
-43,,Adam,,
-44,,Adam & Eve,,
-45,Rum,Adam Bomb,Punch / Party Drink,Margarita/Coupette glass
-46,,Adam Sunrise,,
-47,Sweet Vermouth,Addington,,
-48,,Addison,,
-49,,Addison Special,,
-50,,Adios Amigos Cocktail,,
-51,,Adonis Cocktail,,
-52,Strawberry schnapps,Affair,,
-53,Scotch,Affinity,,
-54,Apricot brandy,After Dinner Cocktail,,
-55,Peppermint schnapps,After Five,,
-56,Triple sec,After Supper Cocktail,,
-57,,After sex,,
-58,Grenadine,Afterglow,,
-59,,Afternoon,Coffee / Tea,
-60,Southern Comfort,Alabama Slammer,,
-61,Orange bitters,Alaska Cocktail,,
-62,,Alexander,,
-63,Lemon vodka,Alfie Cocktail,,
-64,Blended whiskey,Algonquin,,
-65,,Alice Cocktail,,
-66,,Alice in Wonderland,,
-67,Dry Vermouth,Allegheny,,
-68,,Allies Cocktail,,
-69,,Almeria,,
-70,,Almond Chocolate Coffee,,Coffee mug
-71,,Almond Joy,,
-72,Water,Aloha Fruit punch,,
-73,,Amaretto And Cream,,
-74,Sugar,Amaretto Liqueur,,
-75,,Amaretto Mist,,
-76,,Amaretto Rose,,
-77,Chocolate ice-cream,Amaretto Shake,,
-78,,Amaretto Sour,,
-79,,Amaretto Stinger,,
-80,,Amaretto Stone Sour,,
-81,Sour mix,Amaretto Stone Sour #3,,
-82,,Amaretto Sunrise,,
-83,,Amaretto Sunset,,
-84,,Amaretto Sweet & Sour,,
-85,Tea,Amaretto Tea,,Pousse cafe glass
-86,Campari,Americano,,
-87,,Angel Face,,
-88,Angelica root,Angelica Liqueur,,
-89,Orange juice,Apello,,
-90,Berries,Apple Berry Smoothie,,
-91,Apple cider,Apple Cider Punch #1,,
-92,Tequila,Apple Grande,,Punch Bowl
-93,Apple juice,Apple Karate,,
-94,,Apple Pie with A Crust,,
-95,7-Up,Apple Slammer,,
-96,,Applecar,,
-97,,Applejack,,
-98,,Apricot Lady,,
-99,,Apricot punch,,Punch bowl
-100,,Archbishop,,
-101,,Arctic Fish,,Beer pilsner
-102,Maui,Arctic Mouthwash,,
-103,Champagne,Arise My Love,,
-104,,Arizona Antifreeze,,
-105,,Arizona Stingers,,Hurricane glass
-106,,Arizona Twister,,
-107,,Army special,,
-108,,Arthur Tompkins,,Whiskey sour glass
-109,,Artillery,,
-110,,Artillery Punch,,
-111,,Atlantic Sun,,
-112,Lemonade,Atomic Lokade,,
-113,Jägermeister,Auburn Headbanger,,
-114,,Autodafé,,
-115,Crown Royal,Avalanche,,
-116,,Avalon,,
-117,,Aviation,,
-118,,Aztec Punch,,
-119,Bailey's irish cream,B-52,,
-120,,B-53,,
-121,,Baby Eskimo,,
-122,,Baby Guinness,,
-123,,Bacardi Cocktail,,
-124,,Bailey's Dream Shake,Soft Drink / Soda,
-125,,Balmoral,,
-126,Cantaloupe,Banana Cantaloupe Smoothie,,
-127,,Banana Daiquiri,,
-128,Milk,Banana Milk Shake,,
-129,Strawberries,Banana Strawberry Shake,,
-130,,Banana Strawberry Shake Daiquiri-type,,Cocktail Glass
-131,,Barracuda,,Margarita glass
-132,,Belgian Blue,,
-133,,Bellini,,Champagne Flute
-134,Ice,Bellini Martini,,
-135,Brandy,Bermuda Highball,,
-136,Everclear,Berry Deadly,,
-137,,Between The Sheets,,
-138,,Bible Belt,,
-139,Irish cream,Big Red,,
-140,Ale,Black & Tan,,Pint glass
-141,,Black Forest Shake,,
-142,Coffee liqueur,Black Russian,,
-143,Guinness stout,Black and Brown,,
-144,,Blackthorn,,
-145,,Bleeding Surgeon,,
-146,,Blind Russian,,
-147,,Bloody Maria,,
-148,,Bloody Mary,,
-149,,Blue Lagoon,,
-150,,Blue Margarita,,
-151,Añejo rum,Blue Mountain,,
-152,,Bluebird,,
-153,Midori melon liqueur,Bob Marley,,
-154,,Bobby Burns Cocktail,,
-155,,Boomerang,,
-156,Vanilla Ice-Cream,Boozy Snickers Milkshake,,Mason jar
-157,Pineapple juice,Bora Bora,,
-158,,Boston Sidecar,,
-159,,Boston Sour,,
-160,,Bourbon Sling,,
-161,Bourbon,Bourbon Sour,,
-162,,Boxcar,,
-163,,Brain Fart,,
-164,Sambuca,Brainteaser,,Shot Glass
-165,,Bramble,,Old-Fashioned glass
-166,Vanilla ice-cream,Brandon and Will's Coke Float,,
-167,,Brandy Alexander,,
-168,,Brandy Cobbler,,
-169,,Brandy Flip,,
-170,,Brandy Sour,,
-171,,Brave Bull Shooter,,
-172,,Bruce's Puce,,
-173,,Bruised Heart,,
-174,,Bubble Gum,,
-175,Corona,Buccaneer,,
-176,,Bumble Bee #1,,
-177,,Butter Baby,,
-178,Coffee,Cafe Savoy,,
-179,,Caipirinha,,
-180,Lime,Caipirissima,,
-181,,California Lemonade,,
-182,,California Root Beer,,
-183,,Campari Beer,,
-184,,Caribbean Boilermaker,,
-185,Orange,Caribbean Orange Liqueur,,
-186,,Casino,,
-187,,Casino Royale,,
-188,Cocoa powder,Castillian Hot Chocolate,Cocoa,
-189,,Champagne Cocktail,,
-190,,Cherry Electric Lemonade,,
-191,,Cherry Rum,,
-192,,Chicago Fizz,,
-193,,Chocolate Beverage,,
-194,,Chocolate Black Russian,,
-195,Chocolate,Chocolate Drink,,
-196,Chocolate liqueur,Chocolate Milk,,
-197,Banana liqueur,Chocolate Monkey,,Parfait glass
-198,Bacardi Limon,Citrus Coke,,
-199,,City Slicker,,
-200,Bitters,Classic Old-Fashioned,,
-201,,Clove Cocktail,,
-202,,Clover Club,,
-203,,Coffee Liqueur,,
-204,,Coffee-Vodka,,
-205,Coca-Cola,Coke and Drops,,
-206,,Cosmopolitan,,
-207,Cointreau,Cosmopolitan Martini,,
-208,Cranberries,Cranberry Cordial,,
-209,,Cranberry Punch,,
-210,Spiced rum,Cream Soda,,
-211,,Creme de Menthe,,
-212,,Cuba Libra,,
-213,,Cuba Libre,,
-214,,Daiquiri,,
-215,Whiskey,Damned if you do,,
-216,,Danbooka,,Coffee Mug
-217,demerara Sugar,Dark Caipirinha,,
-218,Dark Rum,Dark and Stormy,,
-219,Cherry Heering,Darkwood Sling,,
-220,gin,Derby,,
-221,,Diesel,,
-222,,Dirty Martini,,
-223,,Dirty Nipple,,
-224,Fruit punch,Downshift,,
-225,,Dragonfly,,
-226,Heavy cream,Drinking Chocolate,,
-227,,Dry Rob Roy,,
-228,Dubonnet Rouge,Dubonnet Cocktail,,
-229,Pisco,Duchamp's Punch,,
-230,Chocolate syrup,Egg Cream,,
-231,Egg yolk,Egg Nog #4,,
-232,Egg,Egg Nog - Healthy,,
-233,,Egg-Nog - Classic Cooked,,Pitcher
-234,,English Highball,,
-235,,English Rose Cocktail,,
-236,,Espresso Martini,,
-237,Firewater,Fahrenheit 5000,,
-238,,Flaming Dr. Pepper,,
-239,,Flaming Lamborghini,,
-240,,Flander's Flake-Out,,
-241,,Flying Dutchman,,
-242,,Flying Scotchman,,
-243,,Foxy Lady,,
-244,,Frappé,,
-245,,Freddy Kruger,,
-246,,"French ""75""",,
-247,,French 75,,
-248,Cognac,French Connection,,
-249,,French Martini,,
-250,,Frisco Sour,,
-251,,Frozen Daiquiri,,
-252,,Frozen Mint Daiquiri,,
-253,,Frozen Pineapple Daiquiri,,
-254,,Fruit Cooler,,
-255,Yoghurt,Fruit Flip-Flop,,
-256,,Fruit Shake,,
-257,,Fuzzy Asshole,,
-258,Galliano,GG,,
-259,,Gagliardo,,
-260,,Gentleman's Club,,
-261,,Gideon's Green Dinosaur,,
-262,,Gin And Tonic,,
-263,,Gin Cooler,,
-264,,Gin Daisy,,
-265,,Gin Fizz,,
-266,,Gin Rickey,,
-267,,Gin Sling,,
-268,,Gin Smash,,
-269,,Gin Sour,,
-270,,Gin Squirt,,
-271,Lime juice,Gin Swizzle,,
-272,,Gin Toddy,,
-273,Cachaca,Girl From Ipanema,,Wine Glass
-274,Red wine,Gluehwein,,
-275,,Godchild,,
-276,,Godfather,,
-277,,Godmother,,
-278,,Golden dream,,
-279,,Grand Blue,,
-280,Grapes,Grape lemon pineapple Smoothie,,
-281,,Grass Skirt,,
-282,Green Creme de Menthe,Grasshopper,,
-283,Cider,Green Goblin,,
-284,,Grim Reaper,,
-285,,Grizzly Bear,,
-286,Whisky,H.D.,,
-287,,Happy Skipper,,
-288,,Harvey Wallbanger,,
-289,,Havana Cocktail,,
-290,,Hawaiian Cocktail,,
-291,,Hemingway Special,,
-292,Hot Damn,Herbal flame,,
-293,,Highland Fling Cocktail,,
-294,Grape juice,Holloween Punch,,
-295,,Homemade Kahlua,,
-296,Lemon peel,Horse's Neck,,
-297,,Hot Chocolate to Die for,,
-298,Irish whiskey,Hot Creamy Bush,,
-299,,Ice Pick #1,,
-300,,Iced Coffee,,
-301,,Iced Coffee Fillip,,
-302,,Imperial Cocktail,,
-303,,Imperial Fizz,,
-304,,Ipamena,,
-305,,Irish Coffee,,
-306,,Irish Cream,,
-307,,Irish Curdling Cow,,
-308,,Irish Russian,,
-309,,Irish Spring,,
-310,Apple brandy,Jack Rose Cocktail,,
-311,,Jack's Vanilla Coke,,
-312,,Jackhammer,,
-313,Baileys irish cream,Jam Donut,,
-314,,Jamaica Kiss,,
-315,,Jamaican Coffee,,
-316,,Japanese Fizz,,
-317,,Jello shots,,
-318,Blackberry brandy,Jelly Bean,,Cordial glass
-319,,Jewel Of The Nile,,
-320,,Jitterbug,,
-321,,John Collins,,
-322,,Just a Moonmint,,
-323,,Kamikaze,,
-324,,Karsk,,
-325,,Kentucky B And B,,Brandy snifter
-326,,Kentucky Colonel,,
-327,Ginger,Kill the cold Smoothie,,
-328,,Kioki Coffee,,
-329,Creme de Cassis,Kir,,
-330,,Kir Royale,,
-331,Cranberry vodka,Kiss me Quick,,
-332,Kiwi liqueur,Kiwi Lemon,,
-333,Kiwi,Kiwi Papaya Smoothie,,
-334,,Kool First Aid,,
-335,,Kool-Aid Shot,,
-336,Kool-Aid,Kool-Aid Slammer,,
-337,,Kurant Tea,,
-338,,Lady Love Fizz,,
-339,,Lassi - A South Indian Drink,,
-340,Mango,Lassi - Mango,,
-341,,Lassi - Sweet,,
-342,,Lassi Khara,,
-343,,Lassi Raita,,
-344,,Lemon Drop,,
-345,,Lemon Shot,,
-346,,Lemouroudji,,
-347,,Limeade,,
-348,,Limona Corona,,
-349,,Loch Lomond,,
-350,,London Town,,
-351,,Lone Tree Cocktail,,
-352,Carbonated water,Lone Tree Cooler,,
-353,,Long Island Iced Tea,,
-354,,Long Island Tea,,
-355,,Long vodka,,
-356,,Lord And Lady,,
-357,Beer,Lunch Box,,
-358,,Mai Tai,,
-359,,Malibu Twister,,
-360,,Mango Orange Smoothie,,
-361,,Manhattan,,
-362,,Margarita,,
-363,,Martinez Cocktail,,
-364,,Martini,,
-365,,Mary Pickford,,
-366,,Masala Chai,,
-367,Espresso,Melya,,
-368,,Miami Vice,,
-369,,Microwave Hot Cocoa,,
-370,,Midnight Cowboy,,
-371,,Midnight Manx,,
-372,,Midnight Mint,,
-373,,Mimosa,,
-374,,Mississippi Planters Punch,,
-375,,Mocha-Berry,,
-376,,Mojito,,
-377,Mint,Mojito #3,,
-378,,Monkey Gland,,
-379,,Monkey Wrench,,
-380,Absinthe,Moranguito,,
-381,,Moscow Mule,,Copper Mug
-382,,Mother's Milk,,
-383,,Mudslinger,,
-384,,Mulled Wine,,
-385,,National Aquarium,,
-386,,Negroni,,
-387,,New York Lemonade,,
-388,,New York Sour,,
-389,,Nuked Hot Chocolate,,
-390,,Nutty Irishman,,
-391,,Old Fashioned,,
-392,,Orange Crush,,
-393,Cherry brandy,Orange Oasis,,
-394,,Orange Push-up,,
-395,,Orange Scented Hot Chocolate,,
-396,,Orange Whip,,
-397,Lemon juice,Orangeade,,
-398,,Oreo Mudslide,,
-399,,Orgasm,,
-400,,Owen's Grandmother's Revenge,,
-401,,Paradise,,
-402,,Pina Colada,,
-403,,Pineapple Gingerale Smoothie,,
-404,,Pink Gin,,
-405,,Pink Lady,,
-406,Sprite,Pink Panty Pulldowns,,
-407,,Pink Penocha,,
-408,,Pisco Sour,,
-409,,Planter's Punch,,
-410,,Popped cherry,,
-411,,Poppy Cocktail,,
-412,,Port And Starboard,,
-413,Port,Port Wine Cocktail,,
-414,,Port Wine Flip,,
-415,,Porto flip,,
-416,,Pysch Vitamin Light,,
-417,,Quaker's Cocktail,,
-418,,Quarter Deck Cocktail,,
-419,Coffee brandy,Queen Bee,,
-420,,Queen Charlotte,,
-421,,Queen Elizabeth,,
-422,,Quentin,,
-423,,Quick F**K,,
-424,Black Sambuca,Quick-sand,,
-425,,Radioactive Long Island Iced Tea,,
-426,,Radler,,
-427,Sugar syrup,Rail Splitter,,
-428,Raspberry vodka,Raspberry Cooler,,
-429,,Red Snapper,,
-430,,Rose,,
-431,Frangelico,Royal Bitch,,
-432,,Royal Fizz,,
-433,,Royal Flush,,
-434,,Royal Gin Fizz,,
-435,,Ruby Tuesday,,
-436,,Rum Cobbler,,
-437,,Rum Cooler,,
-438,,Rum Milk Punch,,
-439,,Rum Old-fashioned,,
-440,,Rum Punch,,
-441,,Rum Runner,,
-442,,Rum Screwdriver,,
-443,,Rum Sour,,
-444,,Rum Toddy,,
-445,,Russian Spring Punch,,
-446,,Rusty Nail,,
-447,Grapefruit juice,Salty Dog,,
-448,,San Francisco,,
-449,,Sangria #1,,
-450,,Sangria - The World's Best,,
-451,Ricard,Sazerac,,
-452,,Scooter,,
-453,,Scotch Cobbler,,
-454,,Scotch Sour,,
-455,Johnnie Walker,Scottish Highland Liqueur,,
-456,,Screaming Orgasm,,
-457,,Screwdriver,,
-458,,Sea breeze,,
-459,,Sex on the Beach,,
-460,,Shanghai Cocktail,,
-461,,Shark Attack,,
-462,Sherry,Sherry Eggnog,,
-463,,Sherry Flip,,
-464,Jim Beam,Shot-gun,,
-465,,Sidecar,,
-466,,Sidecar Cocktail,,
-467,,Singapore Sling,,
-468,Sloe gin,Sloe Gin Cocktail,,
-469,,Smut,,
-470,,Snake Bite (UK),,
-471,,Snakebite and Black,,
-472,Advocaat,Snowball,,
-473,,Sol Y Sombra,,
-474,,Space Odyssey,,
-475,,Spanish chocolate,,
-476,Peach nectar,Spiced Peach Punch,,
-477,,Spiking coffee,,
-478,Prosecco,Spritz,,
-479,,Stinger,,
-480,,Stone Sour,,
-481,,Strawberry Daiquiri,,
-482,Lemon,Strawberry Lemonade,,
-483,,Strawberry Margarita,,
-484,,Strawberry Shivers,,
-485,,Sunny Holiday Punch,,
-486,Ouzo,Surf City Lifesaver,,
-487,,Swedish Coffee,,
-488,,Sweet Bananas,,
-489,,Sweet Sangria,,
-490,Godiva liqueur,Sweet Tooth,,
-491,Grand Marnier,Talos Coffee,,
-492,,Tennesee Mud,,
-493,,Tequila Fizz,,
-494,,Tequila Sour,,
-495,,Tequila Sunrise,,
-496,,Tequila Surprise,,
-497,Yukon Jack,Texas Rattlesnake,,
-498,,Texas Sling,,
-499,,Thai Coffee,,
-500,,Thai Iced Coffee,,
-501,,Thai Iced Tea,,
-502,,The Evil Blue Thing,,
-503,,Thriller,,
-504,,Tia-Maria,,
-505,,Tom Collins,,
-506,Tomato juice,Tomato Tang,,
-507,,Tommy's Margarita,,
-508,,Turf Cocktail,,
-509,Wild Turkey,Turkeyball,,
-510,,Tuxedo Cocktail,,
-511,,Valencia Cocktail,,
-512,,Vampiro,,
-513,,Van Vleet,,
-514,,Vermouth Cassis,,
-515,,Vesper,,
-516,,Vesuvio,,
-517,,Veteran,,
-518,,Victor,,
-519,,Victory Collins,,
-520,,Vodka And Tonic,,
-521,,Vodka Fizz,,
-522,,Vodka Martini,,
-523,,Vodka Russian,,
-524,,Waikiki Beachcomber,,
-525,,Whiskey Sour,,
-526,,Whisky Mac,,
-527,,White Lady,,
-528,,White Russian,,
-529,,Whitecap Margarita,,
-530,,Wine Cooler,,
-531,,Wine Punch,,
-532,White Rum,Yellow Bird,,
-533,,Yoghurt Cooler,,
-534,,Zambeer,,
-535,,Zenmeister,,
-536,Vermouth,Ziemes Martini Apfelsaft,,
-537,Zima,Zima Blaster,,
-538,,Zimadori Zinger,,
-539,Peachtree schnapps,Zinger,,
-540,Chambord raspberry liqueur,Zipperhead,,
-541,,Zippy's Revenge,,
-542,,Zizi Coin-coin,,
-543,,Zoksel,,
-544,,Zorbatini,,
-545,,Zorro,,
+,Unnamed: 0,Name,dateModified,idDrink,strAlcoholic,strCategory,strDrinkThumb,strGlass,strIBA,strInstructions,strVideo,Unnamed: .,strIngredient,strMeasure
+0,0.0,'57 Chevy with a White License Plate,2016-07-18 22:49:04,14029.0,Alcoholic,Cocktail,http://www.thecocktaildb.com/images/media/drink/qyyvtu1468878544.jpg,Highball glass,,1. Fill a rocks glass with ice 2.add white creme de cacao and vodka 3.stir,,0,Creme de Cacao,1 oz white 
+1,1.0,1-900-FUK-MEUP,2016-07-18 22:27:04,15395.0,,Shot,http://www.thecocktaildb.com/images/media/drink/uxywyw1468877224.jpg,Old-fashioned glass,,Shake ingredients in a mixing tin filled with ice cubes. Strain into a rocks glass.,,1,Absolut Kurant,1/2 oz 
+2,2.0,110 in the shade,2016-02-03 14:51:57,15423.0,,Beer,http://www.thecocktaildb.com/images/media/drink/xxyywq1454511117.jpg,Beer Glass,,Drop shooter in glass. Fill with beer,,2,Lager,16 oz 
+3,3.0,151 Florida Bushwacker,2016-07-18 22:28:43,14588.0,,Milk / Float / Shake,http://www.thecocktaildb.com/images/media/drink/rvwrvv1468877323.jpg,Beer mug,,Combine all ingredients. Blend until smooth. Garnish with chocolate shavings if desired.,,3,Malibu rum,
+4,4.0,155 Belmont,2016-10-05 12:36:28,15346.0,,,http://www.thecocktaildb.com/images/media/drink/yqvvqs1475667388.jpg,White wine glass,,Blend with ice. Serve in a wine glass. Garnish with carrot.,,4,Dark rum,1 shot 
+5,5.0,24k nightmare,2016-07-18 22:31:38,17060.0,,,http://www.thecocktaildb.com/images/media/drink/yyrwty1468877498.jpg,Shot glass,,"Add over ice,shake and pour.",,5,Goldschlager,
+6,6.0,252,2016-07-18 22:32:42,15288.0,,,http://www.thecocktaildb.com/images/media/drink/rtpxqw1468877562.jpg,,,"Add both ingredients to shot glass, shoot, and get drunk quick",,6,151 proof rum,1/2 shot Bacardi 
+7,7.0,3 Wise Men,2016-07-18 22:34:37,13899.0,,,http://www.thecocktaildb.com/images/media/drink/wxqpyw1468877677.jpg,Collins glass,,put them them in a glass... and slam it to tha head.,,7,Jack Daniels,1/3 oz 
+8,8.0,3-Mile Long Island Iced Tea,2016-08-31 19:42:52,15300.0,,Ordinary Drink,http://www.thecocktaildb.com/images/media/drink/rrtssw1472668972.jpg,Collins Glass,,Fill 14oz glass with ice and alcohol. Fill 2/3 glass with cola and remainder with sweet & sour. Top with dash of bitters and lemon wedge.,,8,Gin,
+9,9.0,410 Gone,2016-08-31 19:43:46,13581.0,,,http://www.thecocktaildb.com/images/media/drink/xtuyqv1472669026.jpg,,,,,9,Peach Vodka,2-3 oz
+10,10.0,50/50,2016-04-29 09:41:56,14598.0,,,http://www.thecocktaildb.com/images/media/drink/wwpyvr1461919316.jpg,,,fill glass with crushed ice. Add vodka. Add a splash of grand-marnier. Fill with o.j.,,10,Vanilla vodka,2 1/2 oz 
+11,11.0,501 Blue,2016-04-28 19:11:37,17105.0,,,http://www.thecocktaildb.com/images/media/drink/ywxwqs1461867097.jpg,,,Mix equal amounts into a glass with ice.,,11,Blue Curacao,"
+"
+12,12.0,69 Special,2016-08-31 19:44:55,13940.0,,,http://www.thecocktaildb.com/images/media/drink/vqyxqx1472669095.jpg,,,"Pour 2 oz. gin. Add 4 oz. 7-up. Add Lemon Juice for flavor. If you are weak, top up glass with more 7-Up.",,12,,2 oz dry 
+13,13.0,747,2016-08-31 19:28:26,14229.0,,,http://www.thecocktaildb.com/images/media/drink/xxsxqy1472668106.jpg,,,"pour kaluha, then Baileys, then Frangelico not chilled and not layered -- SERVE!!!",,13,Kahlua,1/3 part 
+14,14.0,9 1/2 Weeks,2016-08-31 19:48:22,16108.0,,,http://www.thecocktaildb.com/images/media/drink/xvwusr1472669302.jpg,Cocktail glass,,Combine all ingredients in glass mixer. Chill and strain into Cocktail glass. Garnish with sliced strawberry.,,14,Absolut Citron,2 oz 
+15,15.0,A Day at the Beach,2016-02-03 15:47:54,15200.0,,,http://www.thecocktaildb.com/images/media/drink/trptts1454514474.jpg,,,"Shake Rum, Amaretto, and Orange Juice in a shaker filled with ice. Strain over ice into a highball glass. Add Grenadine and garnish with a Pineapple Wedge and a Strawberry.",,15,Coconut rum,1 oz 
+16,16.0,A Furlong Too Late,2016-08-31 19:46:06,11000.0,,,http://www.thecocktaildb.com/images/media/drink/ssxvww1472669166.jpg,,,Pour the rum and ginger beer into a highball glass almost filled with ice cubes. Stir well. Garnish with the lemon twist.,,16,Light rum,
+17,17.0,A Gilligan's Island,2016-04-28 19:12:56,16943.0,,,http://www.thecocktaildb.com/images/media/drink/wysqut1461867176.jpg,,,"Shaken, not stirred!",,17,Vodka,
+18,18.0,A Night In Old Mandalay,2016-04-29 09:43:00,11001.0,,,http://www.thecocktaildb.com/images/media/drink/vyrvxt1461919380.jpg,,,"In a shaker half-filled with ice cubes, combine the light rum, añejo rum, orange juice, and lemon juice. Shake well. Strain into a highball glass almost filled with ice cubes. Top with the ginger ale. Garnish with the lemon twist.",,18,,
+19,19.0,A Piece of Ass,2016-09-01 09:48:57,16405.0,,Other/Unknown,http://www.thecocktaildb.com/images/media/drink/tqxyxx1472719737.jpg,,,Put ice in glass. Pour in shots. Fill with Sour Mix.,,19,Amaretto,
+20,20.0,A Splash of Nash,2016-08-31 19:30:01,14564.0,,,http://www.thecocktaildb.com/images/media/drink/rsvtrr1472668201.jpg,,,Drop shot glass with banana & melon liquers into a 9 oz hi- ball glass containing soda water and cranberry juice. Drink in one shot.,,20,Cranberry juice,
+21,21.0,A True Amaretto Sour,2016-08-31 19:49:32,17005.0,,,http://www.thecocktaildb.com/images/media/drink/rptuxy1472669372.jpg,,,"Rub the rim of an old fashioned glass with lemon, and dip repeatedly into granulated sugar until it has a good ""frosted"" rim. Shake a jigger of Amaretto with the juice of 1/2 a lemon. Strain into glass and add ice. Garnish with a Marachino Cherry.",,21,,1 jigger 
+22,22.0,A midsummernight dream,2016-04-28 19:14:52,15675.0,,,http://www.thecocktaildb.com/images/media/drink/ysqvqp1461867292.jpg,,,"Mix the strawberrys in a blender Pour it together with the vodka,kirch and strawberry liquer over ice in a shaker. Shake well and pour in a highballglass. Fill up with the Russchian water",,22,,
+23,23.0,A. J.,2016-09-02 11:16:58,11002.0,,,http://www.thecocktaildb.com/images/media/drink/uryyrr1472811418.jpg,,,"Shake ingredients with ice, strain into a cocktail glass, and serve.",,23,Applejack,1 1/2 oz 
+24,24.0,A.D.M. (After Dinner Mint),2016-08-31 19:53:20,14560.0,,,http://www.thecocktaildb.com/images/media/drink/ruxuvp1472669600.jpg,Irish coffee cup,,shake vigorously,,24,White Creme de Menthe,
+25,25.0,A1,2017-09-07 21:42:09,17222.0,,,http://www.thecocktaildb.com/images/media/drink/2x8thr1504816928.jpg,,,"Pour all ingredients into a cocktail shaker, mix and serve over ice into a chilled glass.",,25,,1 3/4 shot 
+26,26.0,ABC,2016-08-31 19:32:08,13501.0,,,http://www.thecocktaildb.com/images/media/drink/tqpvqp1472668328.jpg,,,Layered in a shot glass.,,26,,1/3 
+27,27.0,ACID,2016-11-15 11:28:37,14610.0,,,http://www.thecocktaildb.com/images/media/drink/xuxpxt1479209317.jpg,,,Poor in the 151 first followed by the 101 served with a Coke or Dr Pepper chaser.,,27,,1 oz Bacardi 
+28,28.0,AT&T,2017-04-24 22:00:19,13938.0,,,http://www.thecocktaildb.com/images/media/drink/rhhwmp1493067619.jpg,Highball Glass,,"Pour Vodka and Gin over ice, add Tonic and Stir",,28,Absolut Vodka,
+29,29.0,Abbey Cocktail,2016-09-02 11:19:28,11003.0,,,http://www.thecocktaildb.com/images/media/drink/quyyuw1472811568.jpg,,,Shake all ingredients (except for the cherry) with ice and strain into a cocktail glass. Top with the cherry and serve.,,29,,
+30,30.0,Abbey Martini,2017-09-07 21:50:03,17223.0,,,http://www.thecocktaildb.com/images/media/drink/2mcozt1504817403.jpg,,,"Put all ingredients into a shaker and mix, then strain contents into a chilled cocktail glass.",,30,,2 shots 
+31,31.0,Abilene,2016-04-29 09:44:25,11004.0,,,http://www.thecocktaildb.com/images/media/drink/ysqwwt1461919465.jpg,,,Pour all of the ingredients into a highball glass almost filled with ice cubes. Stir well.,,31,,
+32,32.0,Absinthe #2,2016-08-31 19:13:17,12790.0,,Homemade Liqueur,http://www.thecocktaildb.com/images/media/drink/uxxtrt1472667197.jpg,Jar,,"Mix together and let sit a few days. Strain through a coffee filter. To serve mix 1 part absinthe to 4 parts water, add ice, enjoy.",,32,,1 bottle 
+33,33.0,Absolut Evergreen,2016-09-02 11:36:49,14374.0,,,http://www.thecocktaildb.com/images/media/drink/wrxrxp1472812609.jpg,,,"Mix, pour over ice and top up with Bitter Lemon.",,33,,2/3 part 
+34,34.0,Absolut Sex,2016-08-31 19:33:56,14360.0,,,http://www.thecocktaildb.com/images/media/drink/xtrvtx1472668436.jpg,,,"Shake Absolut Kurant, Midori, and Cranberry juice in shaker with ice: Strain into rocks glass: Splash of seven on top.Absolut Sex.",,34,,3/4 oz 
+35,35.0,Absolut Stress #2,2016-09-02 11:23:45,15597.0,,,http://www.thecocktaildb.com/images/media/drink/xuyqrw1472811825.jpg,,,Mix well. Garnish with Orange and Cherry. Enjoy,,35,,
+36,36.0,Absolut Summertime,2016-08-31 19:54:22,14107.0,,,http://www.thecocktaildb.com/images/media/drink/trpxxs1472669662.jpg,,,Add all ingredients except lemon to shaker filled with ice. Cover and shake vigorously. Strain contents into ice filled collins glass. Garnish with lemon.,,36,,
+37,37.0,Absolut limousine,2016-09-01 09:50:44,14372.0,,,http://www.thecocktaildb.com/images/media/drink/ssqpyw1472719844.jpg,,,Fill Absolut into a glass. Add Lime juice. Add Ice and lime wedges.,,37,,2/3 
+38,38.0,Absolutely Cranberry Smash,2016-09-02 11:24:44,15024.0,,,http://www.thecocktaildb.com/images/media/drink/vqwstv1472811884.jpg,,,Stir ingredients together. Serve over ice.,,38,,
+39,39.0,Absolutely Fabulous,2017-09-07 21:55:34,17224.0,,,http://www.thecocktaildb.com/images/media/drink/abcpwr1504817734.jpg,Champagne flute,,Mix the Vodka and Cranberry juice together in a shaker and strain into a glass. Top up with Champagne.,,39,,
+40,40.0,Absolutly Screwed Up,2016-08-31 19:55:28,16134.0,,,http://www.thecocktaildb.com/images/media/drink/yvxrwv1472669728.jpg,,,"Shake it up it tasts better that way, but you can stir it if you want. 6 of those and you will be wasted for the rest of the night.",,40,,
+41,41.0,Acapulco,2016-09-02 11:26:16,11005.0,,,http://www.thecocktaildb.com/images/media/drink/vtpsvr1472811976.jpg,,,Combine and shake all ingredients (except mint) with ice and strain into an old-fashioned glass over ice cubes. Add the sprig of mint and serve.,,41,,
+42,42.0,Ace,2017-09-07 22:05:06,17225.0,,,http://www.thecocktaildb.com/images/media/drink/l3cd7f1504818306.jpg,Martini Glass,,Shake all the ingredients in a cocktail shaker and ice then strain in a cold glass.,,42,,
+43,43.0,Adam,2016-09-02 11:29:29,11006.0,,,http://www.thecocktaildb.com/images/media/drink/rwuxsv1472812169.jpg,,,"In a shaker half-filled with ice cubes, combine all of the ingredients. Shake well. Strain into a cocktail glass.",,43,,
+44,44.0,Adam & Eve,2017-09-07 22:17:58,17226.0,,,http://www.thecocktaildb.com/images/media/drink/vfeumw1504819077.jpg,,,Shake together all the ingredients and strain into a cold glass.,,44,,
+45,45.0,Adam Bomb,2016-02-03 15:23:36,16333.0,,Punch / Party Drink,http://www.thecocktaildb.com/images/media/drink/tpxurs1454513016.jpg,Margarita/Coupette glass,,"Add ice to blender (or to glass if prefer on the rocks) then fruit, and fruite juice depending on personal prefference then add the Rum, Vodka, Tequila, and triple sec. blend till smooth, rim glass with sugar or salt and pour mixture in. garnish with lemon or lime slice.",,45,Rum,1 part 
+46,46.0,Adam Sunrise,2016-09-02 11:28:32,15567.0,,,http://www.thecocktaildb.com/images/media/drink/vtuyvu1472812112.jpg,,,"Fill blender up with ice. Fill half with Bartons Vodka. Put 10 tsp of sugar, add 1/2 can lemonade concentrate, fill to top with water. Blend for 60 seconds.",,46,,1/2 
+47,47.0,Addington,2017-09-07 22:15:25,17227.0,,,http://www.thecocktaildb.com/images/media/drink/ib0b7g1504818925.jpg,,,Mix both the vermouth's in a shaker and strain into a cold glass. Top up with a squirt of Soda Water. ,,47,Sweet Vermouth,
+48,48.0,Addison,2017-09-07 22:38:20,17228.0,,,http://www.thecocktaildb.com/images/media/drink/yzva7x1504820300.jpg,,,,,48,,1 1/2 shot 
+49,49.0,Addison Special,2017-04-24 22:14:53,14272.0,,,http://www.thecocktaildb.com/images/media/drink/4vo5651493068493.jpg,,,Combine ingredients in the order listed into a shaker. Fill half full with ice and shake well. Strain into glass with ice and garnish with a cherry and orange wedge.,,49,,
+50,50.0,Adios Amigos Cocktail,2017-09-07 22:31:33,17229.0,,,http://www.thecocktaildb.com/images/media/drink/8nk2mp1504819893.jpg,,,,,50,,
+51,51.0,Adonis Cocktail,2016-09-02 11:27:11,11007.0,,,http://www.thecocktaildb.com/images/media/drink/xrvruq1472812030.jpg,,,"Stir all ingredients with ice, strain contents into a cocktail glass, and serve.",,51,,
+52,52.0,Affair,2016-09-01 10:05:34,11008.0,,,http://www.thecocktaildb.com/images/media/drink/wxrsxx1472720734.jpg,,,"Pour schnapps, orange juice, and cranberry juice over ice in a highball glass. Top with club soda and serve.",,52,Strawberry schnapps,
+53,53.0,Affinity,2017-09-07 21:44:05,11009.0,,,http://www.thecocktaildb.com/images/media/drink/nwatpb1504817045.jpg,,,"In a mixing glass half-filled with ice cubes, combine all of the ingredients. Stir well. Strain into a cocktail glass.",,53,Scotch,
+54,54.0,After Dinner Cocktail,2017-01-02 20:06:18,11010.0,,,http://www.thecocktaildb.com/images/media/drink/vtytxq1483387578.jpg,,,Shake all ingredients (except lime wedge) with ice and strain into a cocktail glass. Add the wedge of lime and serve.,,54,Apricot brandy,
+55,55.0,After Five,2017-04-24 22:16:35,13807.0,,,http://www.thecocktaildb.com/images/media/drink/sk3lr91493068595.jpg,,,"1. Pour Kahlua into shot glass to about 1/2 full. 2. Using a spoon(inverted), slowly pour in the Peppermint Schnapps until glass is about 3/4 full. Done correctly, the Schnapps will flow under the Kahlua for a clear layer. 3. Again using a spoon, but this time right side up, slowly top off the glass with a layer of Bailey's. Be careful to place the spoon right at the top of the Kahlua layer and to raise it as the glass fills up. Done correctly, this will provide a layer of Bailey's floating over the Kahlua. 4. Toss it down all at once for something like a Peppermint Pattie, WITH A BANG!!! NOTE: Best if all ingredients are chilled",,55,Peppermint schnapps,
+56,56.0,After Supper Cocktail,2017-01-02 20:06:50,11011.0,,,http://www.thecocktaildb.com/images/media/drink/quyxwu1483387610.jpg,,,"Shake all ingredients with ice, strain into a cocktail glass, and serve.",,56,Triple sec,
+57,57.0,After sex,2017-04-24 22:18:22,15182.0,,,http://www.thecocktaildb.com/images/media/drink/xrl66i1493068702.jpg,,,Pour the vodka and creme over some ice cubes in a tall glass and fill up with juice. to make it beuty full make the top of the glass with a grenadine and sugar,,57,,2 cl 
+58,58.0,Afterglow,2016-07-18 22:07:32,12560.0,Non alcoholic,,http://www.thecocktaildb.com/images/media/drink/vuquyv1468876052.jpg,,,Mix. Serve over ice.,,58,Grenadine,
+59,59.0,Afternoon,2016-08-31 19:22:57,13162.0,,Coffee / Tea,http://www.thecocktaildb.com/images/media/drink/vyrurp1472667777.jpg,,,"Build into a suiting glass, with no ice. Cream on top if wanted. Served directly.",,59,,1 cl 
+60,60.0,Alabama Slammer,2017-01-02 20:07:27,11012.0,,,http://www.thecocktaildb.com/images/media/drink/qtwxwr1483387647.jpg,,,"Pour all ingredients (except for lemon juice) over ice in a highball glass. Stir, add a dash of lemon juice, and serve.",,60,Southern Comfort,
+61,61.0,Alaska Cocktail,2017-01-02 20:08:40,11013.0,,,http://www.thecocktaildb.com/images/media/drink/wsyryt1483387720.jpg,,,"Stir all ingredients with ice, strain contents into a cocktail glass. Drop in a twist of lemon and serve.",,61,Orange bitters,2 dashes 
+62,62.0,Alexander,2016-11-04 09:50:39,11014.0,,,http://www.thecocktaildb.com/images/media/drink/urystu1478253039.jpg,,Unforgettables,Shake all ingredients with ice and strain contents into a cocktail glass. Sprinkle nutmeg on top and serve.,,62,,
+63,63.0,Alfie Cocktail,2017-01-02 20:10:29,11019.0,,,http://www.thecocktaildb.com/images/media/drink/ypxsqy1483387829.jpg,,,"Combine and shake all ingredients with ice, strain into a cocktail glass, and serve.",,63,Lemon vodka,
+64,64.0,Algonquin,2017-01-02 20:11:13,11020.0,,,http://www.thecocktaildb.com/images/media/drink/uwryxx1483387873.jpg,,,"Combine and shake all ingredients with ice, strain contents into a cocktail glass, and serve.",,64,Blended whiskey,
+65,65.0,Alice Cocktail,2016-07-18 22:09:04,12562.0,,,http://www.thecocktaildb.com/images/media/drink/qyqtpv1468876144.jpg,,,"Shake well, strain into a large cocktail glass.",,65,,
+66,66.0,Alice in Wonderland,2017-04-24 22:29:51,17094.0,,,http://www.thecocktaildb.com/images/media/drink/g12lj41493069391.jpg,,,Just mix the three ingredients one to one to one,,66,,
+67,67.0,Allegheny,2017-01-02 20:12:14,11021.0,,,http://www.thecocktaildb.com/images/media/drink/uwvyts1483387934.jpg,,,Shake all ingredients (except lemon peel) with ice and strain into a cocktail glass. Top with the twist of lemon peel and serve.,,67,Dry Vermouth,
+68,68.0,Allies Cocktail,2017-01-02 20:15:04,11022.0,,,http://www.thecocktaildb.com/images/media/drink/qvprvp1483388104.jpg,,,,,68,,
+69,69.0,Almeria,2017-01-02 20:16:21,11023.0,,,http://www.thecocktaildb.com/images/media/drink/rwsyyu1483388181.jpg,,,,,69,,
+70,70.0,Almond Chocolate Coffee,2017-04-24 22:30:41,16082.0,,,http://www.thecocktaildb.com/images/media/drink/jls02c1493069441.jpg,Coffee mug,,Pour in order into coffee cup. Top with whipped creme and chocolate shcvings.,,70,,
+71,71.0,Almond Joy,2017-01-02 20:18:16,11024.0,,,http://www.thecocktaildb.com/images/media/drink/xutuqs1483388296.jpg,,,,,71,,
+72,72.0,Aloha Fruit punch,2016-07-18 22:11:07,12862.0,,,http://www.thecocktaildb.com/images/media/drink/wsyvrt1468876267.jpg,,,"Add 1/4 cup water to ginger root. Boil 3 minutes. Strain. Add the liquid to the guava, lemon and pineapple juices. Make a syrup of sugar and remaining water. Cool. Combine with juices and pineapple. Chill throroughly.",,72,Water,3/4 cup 
+73,73.0,Amaretto And Cream,2017-09-02 18:56:58,11025.0,,,http://www.thecocktaildb.com/images/media/drink/dj8n0r1504375018.jpg,,,"Shake well with cracked ice, strain contents into a cocktail glass, and serve.",,73,,
+74,74.0,Amaretto Liqueur,2016-09-01 09:47:29,12792.0,,,http://www.thecocktaildb.com/images/media/drink/swqxuv1472719649.jpg,,,"Combine sugar and 3/4 cup water in a small saucepan. Bring to a boil, stirring constantly. Reduce heat and simmer until all sugar is dissolved. Remove from heat and cool. In an aging container, combine apricot halves, almond extract, grain alcohol with 1/2 cup water, and brandy. Stir in cooled sugar syrup mixture. Cap and let age for 2 days. Remove apricot halves. (Save apricot halves, can be used for cooking). Add food coloring and glycerine. Stir, recap and continue aging for 1 to 2 months. Re-bottle as desired. Liqueur is ready to serve but will continue to improve with additional aging.",,74,Sugar,1 cup
+75,75.0,Amaretto Mist,2017-01-02 20:19:31,11026.0,,,http://www.thecocktaildb.com/images/media/drink/utpxxq1483388370.jpg,,,"Pour amaretto in an old-fashioned glass over crushed ice. Add the wedge of lime and serve. (A wedge of lemon may be substituted for lime, if preferred.)",,75,,
+76,76.0,Amaretto Rose,2017-04-24 22:32:59,11027.0,,,http://www.thecocktaildb.com/images/media/drink/3jm41q1493069578.jpg,,,Pour amaretto and lime juice over ice in a collins glass. Fill with club soda and serve.,,76,,
+77,77.0,Amaretto Shake,2017-04-24 22:34:16,15194.0,,,http://www.thecocktaildb.com/images/media/drink/xk79al1493069655.jpg,,,Combine all ingredients in a blender and blend at high speed until smooth. Serve in chilled glass garnished with bittersweet chocolate shavings.,,77,Chocolate ice-cream,2 scoops 
+78,78.0,Amaretto Sour,2017-04-24 22:43:32,13731.0,,,http://www.thecocktaildb.com/images/media/drink/xnzc541493070211.jpg,,,Shake and strain. Garnish with a cherry and an orange slice.,,78,,
+79,79.0,Amaretto Stinger,2017-04-24 22:38:54,11028.0,,,http://www.thecocktaildb.com/images/media/drink/vvop4w1493069934.jpg,,,"Shake ingredients well with cracked ice, strain into a cocktail glass, and serve.",,79,,
+80,80.0,Amaretto Stone Sour,2016-09-01 09:52:01,14306.0,,,http://www.thecocktaildb.com/images/media/drink/xwryyx1472719921.jpg,,,Shake and Serve over ice,,80,,
+81,81.0,Amaretto Stone Sour #3,2016-09-01 09:53:32,16100.0,,,http://www.thecocktaildb.com/images/media/drink/wutxqr1472720012.jpg,,,"Shake sour mix, tequila and amaretto with ice. Strain into highball glass. Add a splash of OJ. Garnish with orange slice and a cherry.",,81,Sour mix,
+82,82.0,Amaretto Sunrise,2017-04-24 22:44:27,14578.0,,,http://www.thecocktaildb.com/images/media/drink/akcpsh1493070267.jpg,,,Mix together the amaretto and orange juice. Pour into glass and then add the grenadine untill you see the sunrise.,,82,,
+83,83.0,Amaretto Sunset,2017-04-24 22:36:00,17168.0,,,http://www.thecocktaildb.com/images/media/drink/apictz1493069760.jpg,,,"Shake ingredients in bartender's mixer quickly, just 5 shakes. Strain out ice, serve in glass immediately with a slice of orange.",,83,,1/2 jigger 
+84,84.0,Amaretto Sweet & Sour,2016-08-31 19:35:46,16202.0,,,http://www.thecocktaildb.com/images/media/drink/vswwus1472668546.jpg,,,"Fill the blender with 3/4 ice. Add sweet & sour mix to the top of the ice. Add about 1"" of pineapple juice, 1/2"" of melon liqeur, and 1/2 to 1/4"" of amaretto. Then blend the mix until it is of margaritta consistency or thinner.",,84,,
+85,85.0,Amaretto Tea,2017-04-24 22:42:47,11029.0,,,http://www.thecocktaildb.com/images/media/drink/b7qzo21493070167.jpg,Pousse cafe glass,,"Pour hot tea into a pousse-cafe glass, using a spoon in glass to prevent cracking. Add amaretto, but do not stir. Top with chilled whipped cream and serve.",,85,Tea,6 oz hot 
+86,86.0,Americano,2016-11-04 09:52:06,15941.0,,,http://www.thecocktaildb.com/images/media/drink/trwruu1478253126.jpg,,,"Pour the Campari and vermouth over ice into glass, add a splash of soda water and garnish with half orange slice.",,86,Campari,
+87,87.0,Angel Face,2016-11-04 09:52:58,11034.0,,,http://www.thecocktaildb.com/images/media/drink/vqpptp1478253178.jpg,,,Shake all ingredients with ice and strain contents into a cocktail glass.,,87,,
+88,88.0,Angelica Liqueur,2016-08-31 19:21:12,12794.0,,,http://www.thecocktaildb.com/images/media/drink/yuurps1472667672.jpg,,,"Combine all herbs, nuts and spices with vodka in a 1 quart or larger aging container. Cap tightly and shake daily for 2 weeks. Strain through a fine muslin cloth or coffee filter, discarding solids. Clean out aging container. Place liquid back in container. Place sugar and water in saucepan and stir to combine over medium heat. When sugar is completely dissolved, set aside and let cool. When cool combine with food coloring and add to liqueur liquid. Cap and allow to age and mellow in a cool, dark place for one month.",,88,Angelica root,3 tblsp chopped
+89,89.0,Apello,2016-07-18 22:13:35,15106.0,,,http://www.thecocktaildb.com/images/media/drink/uptxtv1468876415.jpg,,,Stirr. Grnish with maraschino cherry.,,89,Orange juice,4 cl 
+90,90.0,Apple Berry Smoothie,2016-07-18 22:14:33,12710.0,,,http://www.thecocktaildb.com/images/media/drink/xwqvur1468876473.jpg,,,Throw everything into a blender and liquify.,,90,Berries,1 cup 
+91,91.0,Apple Cider Punch #1,2016-02-03 15:26:58,12864.0,Optional alcohol,,http://www.thecocktaildb.com/images/media/drink/xrqxuv1454513218.jpg,,,"If you use the whole all spice and cloves, tie them in cheesecloth. Heat the mixture. Stir occasionally. If you want an alcoholic drink, rum would be nice.",,91,Apple cider,4 qt 
+92,92.0,Apple Grande,2016-08-31 19:37:02,16289.0,,,http://www.thecocktaildb.com/images/media/drink/wqrptx1472668622.jpg,Punch Bowl,,Chill both ingredients!! Mix in a tumbler and enjoy!,,92,Tequila,3 oz 
+93,93.0,Apple Karate,2016-07-18 22:17:14,12564.0,,,http://www.thecocktaildb.com/images/media/drink/syusvw1468876634.jpg,,,"Place all ingredients in the blender jar - cover and whiz on medium speed until well blended. Pour in one tall, 2 medium or 3 small glasses and drink up.",,93,Apple juice,2 cups 
+94,94.0,Apple Pie with A Crust,2016-09-01 09:54:38,16958.0,,,http://www.thecocktaildb.com/images/media/drink/qspqxt1472720078.jpg,,,Just mix the two liquids and sprinkle in the cinnamon. Serve either cold or heated.,,94,,3 parts 
+95,95.0,Apple Slammer,2017-04-24 22:37:32,13683.0,,,http://www.thecocktaildb.com/images/media/drink/09yd5f1493069852.jpg,,,"pour into a shot glass and present to consumer, they are expected to cover the top of the shotglass with thier palm, raise the glass, slam it on the bar and the swallow quickly.",,95,7-Up,
+96,96.0,Applecar,2017-09-02 23:02:44,11046.0,,,http://www.thecocktaildb.com/images/media/drink/sbffau1504389764.jpg,,,,,96,,
+97,97.0,Applejack,2016-11-15 11:24:22,16311.0,,,http://www.thecocktaildb.com/images/media/drink/sutyqp1479209062.jpg,,,"Add all ingredients into mixing glass, chill and strain into cocktail glass",,97,,
+98,98.0,Apricot Lady,2017-09-02 23:03:34,11050.0,,,http://www.thecocktaildb.com/images/media/drink/146f251504389814.jpg,,,"In a shaker half-filled with ice cubes, combine the rum, apricot brandy, triple sec, lemon juice, and egg white. Shake well. Strain into an old-fashioned glass almost filled with ice cubes. Garnish with the orange slice.",,98,,
+99,99.0,Apricot punch,2016-08-31 19:37:47,15849.0,,,http://www.thecocktaildb.com/images/media/drink/tuxxtp1472668667.jpg,Punch bowl,,Pour all ingrediants into a large punch bowl. Add ice and 4 oranges that are peeled and divided.,,99,,1 qt 
+100,,,,,,,,,,,,,,
+101,,,,,,,,,,,,,, 
+174,,,,,,,,,,,,,Food coloring,2 drops blue 
+188,,,,,,,,,,,,,,1/4 cup 
+274,,,,,,,,,,,,,Glycerine,1/2 tsp 
+288,,,,,,,,,,,,,,1 drop yellow 
+300,,,,,,,,,,,,"[0, 0, 0]",,
+301,,,,,,,,,,,,"[1, 1, 1]",,
+302,,,,,,,,,,,,"[2, 2, 2]",,
+303,,,,,,,,,,,,"[3, 3, 3]",,
+304,,,,,,,,,,,,"[4, 4, 4]",,
+305,,,,,,,,,,,,"[5, 5, 5]",,
+306,,,,,,,,,,,,"[6, 6, 6]",,
+307,,,,,,,,,,,,"[7, 7, 7]",,
+308,,,,,,,,,,,,"[8, 8, 8]",,
+309,,,,,,,,,,,,"[9, 9, 9]",,
+310,,,,,,,,,,,,"[10, 10, 10]",,
+311,,,,,,,,,,,,"[11, 11, 11]",,
+312,,,,,,,,,,,,"[12, 12, 12]",,
+313,,,,,,,,,,,,"[13, 13, 13]",,
+314,,,,,,,,,,,,"[14, 14, 14]",,
+315,,,,,,,,,,,,"[15, 15, 15]",,
+316,,,,,,,,,,,,"[16, 16, 16]",,
+317,,,,,,,,,,,,"[17, 17, 17]",,
+318,,,,,,,,,,,,"[18, 18, 18]",,
+319,,,,,,,,,,,,"[19, 19, 19]",,
+320,,,,,,,,,,,,"[20, 20, 20]",,
+321,,,,,,,,,,,,"[21, 21, 21]",,
+322,,,,,,,,,,,,"[22, 22, 22]",,
+323,,,,,,,,,,,,"[23, 23, 23]",,
+324,,,,,,,,,,,,"[24, 24, 24]",,
+325,,,,,,,,,,,,"[25, 25, 25]",,
+326,,,,,,,,,,,,"[26, 26, 26]",,
+327,,,,,,,,,,,,"[27, 27, 27]",,
+328,,,,,,,,,,,,"[28, 28, 28]",,
+329,,,,,,,,,,,,"[29, 29, 29]",,
+330,,,,,,,,,,,,"[30, 30, 30]",,
+331,,,,,,,,,,,,"[31, 31, 31]",,
+332,,,,,,,,,,,,"[32, 32, 32]",,
+333,,,,,,,,,,,,"[33, 33, 33]",,
+334,,,,,,,,,,,,"[34, 34, 34]",,
+335,,,,,,,,,,,,"[35, 35, 35]",,
+336,,,,,,,,,,,,"[36, 36, 36]",,
+337,,,,,,,,,,,,"[37, 37, 37]",,
+338,,,,,,,,,,,,"[38, 38, 38]",,
+339,,,,,,,,,,,,"[39, 39, 39]",,
+340,,,,,,,,,,,,"[40, 40, 40]",,
+341,,,,,,,,,,,,"[41, 41, 41]",,
+342,,,,,,,,,,,,"[42, 42, 42]",,
+343,,,,,,,,,,,,"[43, 43, 43]",,
+344,,,,,,,,,,,,"[44, 44, 44]",,
+345,,,,,,,,,,,,"[45, 45, 45]",,
+346,,,,,,,,,,,,"[46, 46, 46]",,
+347,,,,,,,,,,,,"[47, 47, 47]",,
+348,,,,,,,,,,,,"[48, 48, 48]",,
+349,,,,,,,,,,,,"[49, 49, 49]",,
+350,,,,,,,,,,,,"[50, 50, 50]",,
+351,,,,,,,,,,,,"[51, 51, 51]",,
+352,,,,,,,,,,,,"[52, 52, 52]",,
+353,,,,,,,,,,,,"[53, 53, 53]",,
+354,,,,,,,,,,,,"[54, 54, 54]",,
+355,,,,,,,,,,,,"[55, 55, 55]",,
+356,,,,,,,,,,,,"[56, 56, 56]",,
+357,,,,,,,,,,,,"[57, 57, 57]",,
+358,,,,,,,,,,,,"[58, 58, 58]",,
+359,,,,,,,,,,,,"[59, 59, 59]",,
+360,,,,,,,,,,,,"[60, 60, 60]",,
+361,,,,,,,,,,,,"[61, 61, 61]",,
+362,,,,,,,,,,,,"[62, 62, 62]",,
+363,,,,,,,,,,,,"[63, 63, 63]",,
+364,,,,,,,,,,,,"[64, 64, 64]",,
+365,,,,,,,,,,,,"[65, 65, 65]",,
+366,,,,,,,,,,,,"[66, 66, 66]",,
+367,,,,,,,,,,,,"[67, 67, 67]",,
+368,,,,,,,,,,,,"[68, 68, 68]",,
+369,,,,,,,,,,,,"[69, 69, 69]",,
+370,,,,,,,,,,,,"[70, 70, 70]",,
+371,,,,,,,,,,,,"[71, 71, 71]",,
+372,,,,,,,,,,,,"[72, 72, 72]",,
+373,,,,,,,,,,,,"[73, 73, 73]",,
+374,,,,,,,,,,,,"[74, 74, 74]",,
+375,,,,,,,,,,,,"[75, 75, 75]",,
+376,,,,,,,,,,,,"[76, 76, 76]",,
+377,,,,,,,,,,,,"[77, 77, 77]",,
+378,,,,,,,,,,,,"[78, 78, 78]",,
+379,,,,,,,,,,,,"[79, 79, 79]",,
+380,,,,,,,,,,,,"[80, 80, 80]",,
+381,,,,,,,,,,,,"[81, 81, 81]",,
+382,,,,,,,,,,,,"[82, 82, 82]",,
+383,,,,,,,,,,,,"[83, 83, 83]",,
+384,,,,,,,,,,,,"[84, 84, 84]",,
+385,,,,,,,,,,,,"[85, 85, 85]",,
+386,,,,,,,,,,,,"[86, 86, 86]",,
+387,,,,,,,,,,,,"[87, 87, 87]",,
+388,,,,,,,,,,,,"[88, 88, 88]",,1 drop green 
+389,,,,,,,,,,,,"[89, 89, 89]",,
+390,,,,,,,,,,,,"[90, 90, 90]",,
+391,,,,,,,,,,,,"[91, 91, 91]",,
+392,,,,,,,,,,,,"[92, 92, 92]",,
+393,,,,,,,,,,,,"[93, 93, 93]",,
+394,,,,,,,,,,,,"[94, 94, 94]",,
+395,,,,,,,,,,,,"[95, 95, 95]",,
+396,,,,,,,,,,,,"[96, 96, 96]",,
+397,,,,,,,,,,,,"[97, 97, 97]",,
+398,,,,,,,,,,,,"[98, 98, 98]",,
+399,,,,,,,,,,,,"[99, 99, 99]",,
+701,,,,,,,,,,,,,Grand Marnier,1/4 oz 
+702,,,,,,,,,,,,,,1.5 oz 
+705,,,,,,,,,,,,,Jägermeister,
+706,,,,,,,,,,,,,Wild Turkey,1/2 shot 
+707,,,,,,,,,,,,,Johnnie Walker,
+709,,,,,,,,,,,,,Coca-Cola,
+710,,,,,,,,,,,,,,1 splash 
+711,,,,,,,,,,,,,Blueberry schnapps,
+712,,,,,,,,,,,,,,4 oz 
+713,,,,,,,,,,,,,Bailey's irish cream,
+714,,,,,,,,,,,,,Orange Curacao,
+716,,,,,,,,,,,,,Ginger beer,
+717,,,,,,,,,,,,,Peach schnapps,
+718,,,,,,,,,,,,,Añejo rum,
+720,,,,,,,,,,,,,Soda water,
+721,,,,,,,,,,,,,Lemon,Juice of 1/2 
+722,,,,,,,,,,,,,Kirschwasser,
+723,,,,,,,,,,,,,Grapefruit juice,
+725,,,,,,,,,,,,,,1 Shot 
+729,,,,,,,,,,,,,,1 dash 
+731,,,,,,,,,,,,,Peach nectar,
+732,,,,,,,,,,,,,,50 gr 
+733,,,,,,,,,,,,,Pisang Ambon,
+734,,,,,,,,,,,,,Midori melon liqueur,
+736,,,,,,,,,,,,,Sweet and sour,
+737,,,,,,,,,,,,,Lime juice,
+739,,,,,,,,,,,,,Cranberry Juice,
+741,,,,,,,,,,,,,,1 1/2 tsp 
+743,,,,,,,,,,,,,Lemon juice,
+744,,,,,,,,,,,,,Cognac,
+746,,,,,,,,,,,,,Lemonade,1/2 can 
+748,,,,,,,,,,,,,Vermouth,
+749,,,,,,,,,,,,,,1 tblsp 
+751,,,,,,,,,,,,,Sherry,1 1/2 oz dry 
+757,,,,,,,,,,,,,Creme de Banane,
+758,,,,,,,,,,,,,,4 parts 
+762,,,,,,,,,,,,,,1/2 oz white 
+767,,,,,,,,,,,,,Bourbon,
+770,,,,,,,,,,,,,Dark Creme de Cacao,
+772,,,,,,,,,,,,,Ginger,2 tsp 
+773,,,,,,,,,,,,,Light cream,
+775,,,,,,,,,,,,,Lime,1 
+777,,,,,,,,,,,,,Brandy,
+783,,,,,,,,,,,,,,3 shots 
+786,,,,,,,,,,,,,,1 oz red 
+787,,,,,,,,,,,,,Apple brandy,
+788,,,,,,,,,,,,,Almond,1 tblsp chopped 
+789,,,,,,,,,,,,,,3 cl 
+790,,,,,,,,,,,,,Apple,2 
+791,,,,,,,,,,,,,Brown sugar,
+792,,,,,,,,,,,,,,12 oz 
+793,,,,,,,,,,,,,Carrot,1 large 
+795,,,,,,,,,,,,,Apple schnapps,
+799,,,,,,,,,,,,,Champagne,4 fifth 
+801,,,,,,,,,,,,,Chambord raspberry liqueur,
+803,,,,,,,,,,,,,,1/2 oz Bacardi 
+805,,,,,,,,,,,,,Rumple Minze,
+807,,,,,,,,,,,,,Jim Beam,
+810,,,,,,,,,,,,,,Fill with 
+812,,,,,,,,,,,,,,0.75 oz 
+813,,,,,,,,,,,,,Frangelico,
+814,,,,,,,,,,,,,Strawberry liqueur,
+816,,,,,,,,,,,,,Lemon peel,1 twist of 
+819,,,,,,,,,,,,,Ice," cubes
+"
+820,,,,,,,,,,,,,,0.5 oz 
+822,,,,,,,,,,,,,,1 tsp 
+825,,,,,,,,,,,,,Lemon Juice,1/4 Shot
+828,,,,,,,,,,,,,Tonic water,
+829,,,,,,,,,,,,,Orange,Juice of 1/4 
+830,,,,,,,,,,,,,Orange Juice,
+832,,,,,,,,,,,,,Anise,50 ml pure 
+835,,,,,,,,,,,,,Coconut liqueur,
+836,,,,,,,,,,,,,Sprite,
+838,,,,,,,,,,,,,Ginger ale,
+839,,,,,,,,,,,,,,Top up with
+842,,,,,,,,,,,,,Heavy cream,
+844,,,,,,,,,,,,,Creme de Cassis,
+847,,,,,,,,,,,,,Soda Water,"Top up with
+"
+848,,,,,,,,,,,,,,"
+"
+854,,,,,,,,,,,,,,Juice of 1 
+858,,,,,,,,,,,,,Pineapple juice,
+859,,,,,,,,,,,,,,1 1/2 
+860,,,,,,,,,,,,,Sloe gin,
+861,,,,,,,,,,,,,Yellow Chartreuse,
+867,,,,,,,,,,,,,Blackberry brandy,
+868,,,,,,,,,,,,,Kummel,
+869,,,,,,,,,,,,,Egg white,
+870,,,,,,,,,,,,,Coffee,8 oz 
+872,,,,,,,,,,,,,Guava juice,
+874,,,,,,,,,,,,,Apricot,
+876,,,,,,,,,,,,,Club soda,
+882,,,,,,,,,,,,,,1/4 cl 
+883,,,,,,,,,,,,,Cider,1/2 cup 
+885,,,,,,,,,,,,,Whipped cream,Chilled 
+886,,,,,,,,,,,,,,Twist of 
+888,,,,,,,,,,,,,Allspice,1 cracked 
+891,,,,,,,,,,,,,,6 oz frozen 
+894,,,,,,,,,,,,,Cinnamon,3 dashes 
+899,,,,,,,,,,,,,,1 fifth 
+921,,,,,,,,,,,,,Maraschino cherry,
+922,,,,,,,,,,,,,Strawberries,5 
+924,,,,,,,,,,,,,Hot chocolate,
+925,,,,,,,,,,,,,,1/8 Shot
+929,,,,,,,,,,,,,Cherry,
+930,,,,,,,,,,,,,Angostura Bitters,
+932,,,,,,,,,,,,,Licorice root,
+933,,,,,,,,,,,,,Bitter lemon,
+937,,,,,,,,,,,,,,Top it up with 
+938,,,,,,,,,,,,,,Add 
+940,,,,,,,,,,,,,,Fill to top 
+942,,,,,,,,,,,,,Milk,
+944,,,,,,,,,,,,,Fresh Lemon Juice,1/8 shot 
+945,,,,,,,,,,,,,,1/2 part 
+946,,,,,,,,,,,,,,10 tsp 
+959,,,,,,,,,,,,,,4 cl hot 
+962,,,,,,,,,,,,,Nutmeg,
+965,,,,,,,,,,,,,Cream,
+972,,,,,,,,,,,,,,1 1/2 tblsp 
+974,,,,,,,,,,,,,Almond flavoring,
+981,,,,,,,,,,,,,,Add splash 
+983,,,,,,,,,,,,,,Add 1/2 cup 
+986,,,,,,,,,,,,,Orange peel,
+988,,,,,,,,,,,,,,1 one-inch 
+999,,,,,,,,,,,,,,4 L 
+1003,,,,,,,,,,,,,Cointreau,
+1022,,,,,,,,,,,,,Schweppes Russchian,
+1032,,,,,,,,,,,,,Wormwood,
+1036,,,,,,,,,,,,,,1 slice 
+1042,,,,,,,,,,,,,Egg White,1/2 Fresh
+1045,,,,,,,,,,,,,Fruit,
+1050,,,,,,,,,,,,,Fresh Lime Juice,1/4 shot
+1072,,,,,,,,,,,,,Pineapple,1 1/2 cup 
+1074,,,,,,,,,,,,,Grain alcohol,1/2 cup pure 
+1088,,,,,,,,,,,,,,3-6 crushed 
+1091,,,,,,,,,,,,,Cloves,6 whole 
+1099,,,,,,,,,,,,,,1/2 gal 
+1141,,,,,,,,,,,,,Mint,
+1150,,,,,,,,,,,,,Sugar Syrup,
+1188,,,,,,,,,,,,,Coriander,1/8 tsp powdered 
+1208,,,,,,,,,,,,,,1-2 dash 
+1245,,,,,,,,,,,,,Salt,1-3 pint 
+1272,,,,,,,,,,,,,,3-4 cups 
+1288,,,,,,,,,,,,,Marjoram leaves,1 tblsp fresh chopped 
+1291,,,,,,,,,,,,,,1 tsp ground 
+1303,,,,,,,,,,,,,Vanilla ice-cream,
+1308,,,,,,,,,,,,,Bitters,1 wedge 
+1345,,,,,,,,,,,,,Fruit juice,
+1374,,,,,,,,,,,,,,3 drops yellow 
+1388,,,,,,,,,,,,,,1.5 cup 
+1391,,,,,,,,,,,,,,3 sticks 
+1474,,,,,,,,,,,,,,6 drops red 
+1488,,,,,,,,,,,,,,1/2 cup granulated 
+1500,,,,,,,,,,,,,"['Creme de Cacao', nan, nan, nan, nan, nan, nan, 'Vodka', nan, nan, nan, nan, nan, nan, nan]","['1 oz white ', nan, nan, nan, nan, nan, nan, '1 oz ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1501,,,,,,,,,,,,,"['Absolut Kurant', nan, nan, nan, nan, nan, nan, 'Grand Marnier', 'Chambord raspberry liqueur', 'Midori melon liqueur', 'Malibu rum', 'Amaretto', 'Cranberry juice', 'Pineapple juice', nan]","['1/2 oz ', ' ', ' ', ' ', ' ', nan, nan, '1/4 oz ', '1/4 oz ', '1/4 oz ', '1/4 oz ', '1/4 oz ', '1/2 oz ', '1/4 oz ', ' ']"
+1502,,,,,,,,,,,,,"['Lager', nan, nan, nan, nan, nan, nan, 'Tequila', nan, nan, nan, nan, nan, nan, nan]","['16 oz ', nan, nan, nan, nan, nan, nan, '1.5 oz ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1503,,,,,,,,,,,,,"['Malibu rum', nan, nan, nan, nan, nan, nan, 'Light rum', '151 proof rum', 'Dark Creme de Cacao', 'Cointreau', 'Milk', 'Coconut liqueur', 'Vanilla ice-cream', nan]","['1/2 oz ', ' ', ' ', ' ', ' ', nan, nan, '1/2 oz ', '1/2 oz Bacardi ', '1 oz ', '1 oz ', '3 oz ', '1 oz ', '1 cup ', ' ']"
+1504,,,,,,,,,,,,,"['Dark rum', nan, nan, nan, nan, nan, nan, 'Light rum', 'Vodka', 'Orange juice', nan, nan, nan, nan, nan]","['1 shot ', nan, nan, nan, nan, nan, nan, '2 shots ', '1 shot ', '1 shot ', ' ', ' ', ' ', ' ', ' ']"
+1505,,,,,,,,,,,,,"['Goldschlager', nan, nan, nan, nan, nan, nan, 'Jägermeister', 'Rumple Minze', '151 proof rum', nan, nan, nan, nan, nan]","['1/2 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz ', '1/2 oz ', '1/2 oz Bacardi ', ' ', ' ', ' ', ' ', ' ']"
+1506,,,,,,,,,,,,,"['151 proof rum', nan, nan, nan, nan, nan, nan, 'Wild Turkey', nan, nan, nan, nan, nan, nan, nan]","['1/2 shot Bacardi ', nan, nan, nan, nan, nan, nan, '1/2 shot ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1507,,,,,,,,,,,,,"['Jack Daniels', nan, nan, nan, nan, nan, nan, 'Johnnie Walker', 'Jim Beam', nan, nan, nan, nan, nan, nan]","['1/3 oz ', nan, nan, nan, nan, nan, nan, '1/3 oz ', '1/3 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1508,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, 'Light rum', 'Tequila', 'Triple sec', 'Vodka', 'Coca-Cola', 'Sweet and sour', 'Bitters', 'Lemon']","['1/2 oz ', ' ', ' ', ' ', ' ', nan, nan, '1/2 oz ', '1/2 oz ', '1/2 oz ', '1/2 oz ', '\n', '1-2 dash ', '1 wedge ', ' ']"
+1509,,,,,,,,,,,,,"['Peach Vodka', nan, nan, nan, nan, nan, nan, 'Coca-Cola', nan, nan, nan, nan, nan, nan, nan]","['2-3 oz', nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan, nan]"
+1510,,,,,,,,,,,,,"['Vanilla vodka', nan, nan, nan, nan, nan, nan, 'Grand Marnier', 'Orange juice', nan, nan, nan, nan, nan, nan]","['2 1/2 oz ', nan, nan, nan, nan, nan, nan, '1 splash ', 'Fill with ', ' ', ' ', ' ', ' ', ' ', nan]"
+1511,,,,,,,,,,,,,"['Blue Curacao', nan, nan, nan, nan, nan, nan, 'Blueberry schnapps', 'Vodka', 'Sour mix', '7-Up', nan, nan, nan, nan]","['\n', nan, nan, nan, nan, nan, nan, '\n', '\n', '\n', '\n', '\n', '\n', '\n', nan]"
+1512,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, '7-Up', 'Lemon juice', nan, nan, nan, nan, nan, nan]","['2 oz dry ', nan, nan, nan, nan, nan, nan, '4 oz ', '0.75 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1513,,,,,,,,,,,,,"['Kahlua', nan, nan, nan, nan, nan, nan, ""Bailey's irish cream"", 'Frangelico', nan, nan, nan, nan, nan, nan]","['1/3 part ', nan, nan, nan, nan, nan, nan, '1/3 part ', '1/3 part ', ' ', ' ', ' ', ' ', ' ', nan]"
+1514,,,,,,,,,,,,,"['Absolut Citron', nan, nan, nan, nan, nan, nan, 'Orange Curacao', 'Strawberry liqueur', 'Orange juice', nan, nan, nan, nan, nan]","['2 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz ', '1 splash ', '1 oz ', ' ', ' ', ' ', ' ', ' ']"
+1515,,,,,,,,,,,,,"['Coconut rum', nan, nan, nan, nan, nan, nan, 'Amaretto', 'Orange juice', 'Grenadine', nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz ', '4 oz ', '1/2 oz ', ' ', ' ', ' ', ' ', ' ']"
+1516,,,,,,,,,,,,,"['Light rum', nan, nan, nan, nan, nan, nan, 'Ginger beer', 'Lemon peel', nan, nan, nan, nan, nan, nan]","['2 oz ', nan, nan, nan, nan, nan, nan, '4 oz ', '1 twist of ', ' ', ' ', ' ', ' ', ' ', nan]"
+1517,,,,,,,,,,,,,"['Vodka', nan, nan, nan, nan, nan, nan, 'Peach schnapps', 'Orange juice', 'Cranberry juice', nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '3 oz ', '3 oz ', ' ', ' ', ' ', ' ', ' ']"
+1518,,,,,,,,,,,,,"['Light rum', nan, nan, nan, nan, nan, nan, 'Añejo rum', 'Orange juice', 'Lemon juice', 'Ginger ale', 'Lemon peel', nan, nan, nan]","['1 oz ', ' ', ' ', nan, nan, nan, nan, '1 oz ', '1 oz ', '1/2 oz ', '3 oz ', '1 twist of ', ' ', ' ', ' ']"
+1519,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Southern Comfort', 'Ice', 'Sour mix', nan, nan, nan, nan, nan]","['1 shot ', nan, nan, nan, nan, nan, nan, '1 shot ', ' cubes\n', '\n', '\n', '\n', '\n', '\n', '\n']"
+1520,,,,,,,,,,,,,"['Cranberry juice', nan, nan, nan, nan, nan, nan, 'Soda water', 'Midori melon liqueur', 'Creme de Banane', nan, nan, nan, nan, nan]","['2 oz ', nan, nan, nan, nan, nan, nan, '2 oz ', '0.5 oz ', '0.5 oz ', ' ', ' ', ' ', ' ', ' ']"
+1521,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Lemon', 'Ice', 'Maraschino cherry', nan, nan, nan, nan, nan]","['1 jigger ', nan, nan, nan, nan, nan, nan, 'Juice of 1/2 ', '\n', ' ', ' ', ' ', ' ', ' ', nan]"
+1522,,,,,,,,,,,,,"['Vodka', nan, nan, nan, nan, nan, nan, 'Kirschwasser', 'Strawberry liqueur', 'Strawberries', 'Schweppes Russchian', nan, nan, nan, nan]","['2 oz ', '\n', nan, nan, nan, nan, nan, '1 oz ', '1 tsp ', '5 ', '\n', '\n', '\n', '\n', '\n']"
+1523,,,,,,,,,,,,,"['Applejack', nan, nan, nan, nan, nan, nan, 'Grapefruit juice', nan, nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1524,,,,,,,,,,,,,"['White Creme de Menthe', nan, nan, nan, nan, nan, nan, 'Southern Comfort', 'Vodka', 'Hot chocolate', nan, nan, nan, nan, nan]","['1/2 oz ', nan, nan, nan, nan, nan, nan, '3/4 oz ', '1/2 oz ', 'Fill with ', ' ', ' ', ' ', ' ', ' ']"
+1525,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, 'Grand Marnier', 'Lemon Juice', 'Grenadine', nan, nan, nan, nan, nan]","['1 3/4 shot ', nan, nan, nan, nan, nan, nan, '1 Shot ', '1/4 Shot', '1/8 Shot', '\r\n', '\r\n', '\r\n', nan, nan]"
+1526,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, ""Bailey's irish cream"", 'Cognac', nan, nan, nan, nan, nan, nan]","['1/3 ', nan, nan, nan, nan, nan, nan, '1/3 ', '1/3 ', ' ', ' ', ' ', ' ', ' ', nan]"
+1527,,,,,,,,,,,,,"['151 proof rum', nan, nan, nan, nan, nan, nan, 'Wild Turkey', nan, nan, nan, nan, nan, nan, nan]","['1 oz Bacardi ', nan, nan, nan, nan, nan, nan, '1 oz ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1528,,,,,,,,,,,,,"['Absolut Vodka', nan, nan, nan, nan, nan, nan, 'Gin', 'Tonic water', nan, nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '4 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1529,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, 'Orange bitters', 'Orange', 'Cherry', nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '1 dash ', 'Juice of 1/4 ', '1 ', ' ', ' ', ' ', ' ', ' ']"
+1530,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, 'Sweet Vermouth', 'Orange Juice', 'Angostura Bitters', nan, nan, nan, nan, nan]","['2 shots ', nan, nan, nan, nan, nan, nan, '1 shot ', '1 shot ', '3 dashes ', '\r\n', '\r\n', '\r\n', nan, nan]"
+1531,,,,,,,,,,,,,"['Dark rum', nan, nan, nan, nan, nan, nan, 'Peach nectar', 'Orange juice', nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '2 oz ', '3 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1532,,,,,,,,,,,,,"['Vodka', nan, nan, nan, nan, nan, nan, 'Sugar', 'Anise', 'Licorice root', 'Wormwood', nan, nan, nan, nan]","['1 bottle ', ' ', nan, nan, nan, nan, nan, '50 gr ', '50 ml pure ', '1 tblsp ', '1 ', ' ', ' ', ' ', ' ']"
+1533,,,,,,,,,,,,,"['Absolut Citron', nan, nan, nan, nan, nan, nan, 'Pisang Ambon', 'Ice', 'Bitter lemon', nan, nan, nan, nan, nan]","['2/3 part ', nan, nan, nan, nan, nan, nan, '1/3 part ', ' cubes\n', '\n', '\n', '\n', '\n', '\n', '\n']"
+1534,,,,,,,,,,,,,"['Absolut Kurant', nan, nan, nan, nan, nan, nan, 'Midori melon liqueur', 'Cranberry juice', 'Sprite', nan, nan, nan, nan, nan]","['3/4 oz ', nan, nan, nan, nan, nan, nan, '3/4 oz ', '1 oz ', '1 splash ', ' ', ' ', ' ', ' ', ' ']"
+1535,,,,,,,,,,,,,"['Absolut Vodka', nan, nan, nan, nan, nan, nan, 'Peach schnapps', 'Coconut liqueur', 'Cranberry juice', 'Pineapple juice', nan, nan, nan, nan]","['1 1/2 oz ', ' ', nan, nan, nan, nan, nan, '1/2 oz ', '1/2 oz ', '1 1/2 oz ', '1 1/2 oz ', ' ', ' ', ' ', ' ']"
+1536,,,,,,,,,,,,,"['Absolut Citron', nan, nan, nan, nan, nan, nan, 'Sweet and sour', 'Sprite', 'Soda water', 'Lemon', nan, nan, nan, nan]","['1 1/2 oz ', ' ', nan, nan, nan, nan, nan, '3/4 oz ', '1/2 oz ', '3 oz ', '1 slice ', ' ', ' ', ' ', ' ']"
+1537,,,,,,,,,,,,,"['Absolut Citron', nan, nan, nan, nan, nan, nan, 'Lime juice', 'Ice', 'Tonic water', nan, nan, nan, nan, nan]","['2/3 ', nan, nan, nan, nan, nan, nan, '1/3 ', 'Fill with ', 'Top it up with ', ' ', ' ', ' ', ' ', ' ']"
+1538,,,,,,,,,,,,,"['Absolut Vodka', nan, nan, nan, nan, nan, nan, 'Cranberry juice', 'Ginger ale', 'Ice', nan, nan, nan, nan, nan]","['2 oz ', nan, nan, nan, nan, nan, nan, '4 oz ', '2 oz ', 'Add ', ' ', ' ', ' ', ' ', ' ']"
+1539,,,,,,,,,,,,,"['Vodka', nan, nan, nan, nan, nan, nan, 'Cranberry Juice', 'Champagne', nan, nan, nan, nan, nan, nan]","['1 shot ', nan, nan, nan, nan, nan, nan, '2 shots ', 'Top up with', '\r\n', '\r\n', '\r\n', '\r\n', nan, nan]"
+1540,,,,,,,,,,,,,"['Absolut Citron', nan, nan, nan, nan, nan, nan, 'Orange juice', 'Triple sec', 'Ginger ale', nan, nan, nan, nan, nan]","['1 shot ', nan, nan, nan, nan, nan, nan, '1 shot ', '1 shot ', 'Fill to top ', ' ', ' ', ' ', ' ', ' ']"
+1541,,,,,,,,,,,,,"['Light rum', nan, nan, nan, nan, nan, nan, 'Triple sec', 'Lime juice', 'Sugar', 'Egg white', 'Mint', nan, nan, nan]","['1 1/2 oz ', ' ', ' ', nan, nan, nan, nan, '1 1/2 tsp ', '1 tblsp ', '1 tsp ', '1 ', '1 ', ' ', ' ', ' ']"
+1542,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, 'Grenadine', 'Heavy cream', 'Milk', 'Egg White', nan, nan, nan, nan]","['2 shots ', nan, nan, nan, nan, nan, nan, '1/2 shot ', '1/2 shot ', '1/2 shot ', '1/2 Fresh', '\r\n', '\r\n', nan, nan]"
+1543,,,,,,,,,,,,,"['Dark rum', nan, nan, nan, nan, nan, nan, 'Lemon juice', 'Grenadine', nan, nan, nan, nan, nan, nan]","['2 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '1 tsp ', ' ', ' ', ' ', ' ', ' ', nan]"
+1544,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, 'Cognac', 'Creme de Cassis', 'Fresh Lemon Juice', nan, nan, nan, nan, nan]","['1 shot ', nan, nan, nan, nan, nan, nan, '1 shot ', '1 shot ', '1/8 shot ', nan, nan, nan, nan, nan]"
+1545,,,,,,,,,,,,,"['Rum', nan, nan, nan, nan, nan, nan, 'Vodka', 'Tequila', 'Triple sec', 'Fruit', 'Ice', 'Salt', 'Fruit juice', nan]","['1 part ', ' ', ' ', ' ', nan, nan, nan, '1 part ', '1 part ', '1/2 part ', '\n', '\n', '1-3 pint ', ' ', ' ']"
+1546,,,,,,,,,,,,,"['Vodka', nan, nan, nan, nan, nan, nan, 'Lemonade', 'Water', 'Sugar', nan, nan, nan, nan, nan]","['1/2 ', nan, nan, nan, nan, nan, nan, '1/2 can ', '1/2 ', '10 tsp ', ' ', ' ', ' ', ' ', ' ']"
+1547,,,,,,,,,,,,,"['Sweet Vermouth', nan, nan, nan, nan, nan, nan, 'Dry Vermouth', 'Soda Water', nan, nan, nan, nan, nan, nan]","['2 shots ', nan, nan, nan, nan, nan, nan, '1 shot ', 'Top up with\r\n', '\r\n', '\r\n', '\r\n', '\r\n', nan, nan]"
+1548,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, 'Vermouth', nan, nan, nan, nan, nan, nan, nan]","['1 1/2 shot ', nan, nan, nan, nan, nan, nan, '1 1/2 shot ', '\r\n', '\r\n', '\r\n', '\r\n', '\r\n', nan, nan]"
+1549,,,,,,,,,,,,,"['Vodka', nan, nan, nan, nan, nan, nan, 'Grenadine', 'Orange juice', nan, nan, nan, nan, nan, nan]","['1 shot ', nan, nan, nan, nan, nan, nan, '1 tblsp ', 'Fill with ', ' ', ' ', ' ', ' ', ' ', nan]"
+1550,,,,,,,,,,,,,"['Rum', nan, nan, nan, nan, nan, nan, 'Dry Vermouth', 'Cognac', 'Gin', 'Fresh Lime Juice', 'Sugar Syrup', 'Water', nan, nan]","['1 shot ', nan, nan, nan, nan, nan, nan, '1/2 shot ', '1/2 shot ', '1/2 shot ', '1/4 shot', '1/4 shot', '1/2 shot ', nan, nan]"
+1551,,,,,,,,,,,,,"['Sweet Vermouth', nan, nan, nan, nan, nan, nan, 'Sherry', 'Orange bitters', nan, nan, nan, nan, nan, nan]","['3/4 oz ', nan, nan, nan, nan, nan, nan, '1 1/2 oz dry ', '1 dash ', ' ', ' ', ' ', ' ', ' ', nan]"
+1552,,,,,,,,,,,,,"['Strawberry schnapps', nan, nan, nan, nan, nan, nan, 'Orange juice', 'Cranberry juice', 'Club soda', nan, nan, nan, nan, nan]","['2 oz ', nan, nan, nan, nan, nan, nan, '2 oz ', '2 oz ', '\n', '\n', '\n', '\n', '\n', '\n']"
+1553,,,,,,,,,,,,,"['Scotch', nan, nan, nan, nan, nan, nan, 'Sweet Vermouth', 'Dry Vermouth', 'Orange bitters', nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '1 oz ', '2 dashes ', ' ', ' ', ' ', ' ', ' ']"
+1554,,,,,,,,,,,,,"['Apricot brandy', nan, nan, nan, nan, nan, nan, 'Triple sec', 'Lime', 'Lime', nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', 'Juice of 1 ', '1 ', ' ', ' ', ' ', ' ', ' ']"
+1555,,,,,,,,,,,,,"['Peppermint schnapps', nan, nan, nan, nan, nan, nan, 'Kahlua', ""Bailey's irish cream"", nan, nan, nan, nan, nan, nan]","['\n', nan, nan, nan, nan, nan, nan, '\n', '\n', '\n', '\n', '\n', '\n', nan, nan]"
+1556,,,,,,,,,,,,,"['Triple sec', nan, nan, nan, nan, nan, nan, 'Apricot brandy', 'Lemon juice', nan, nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '1/2 tsp ', ' ', ' ', ' ', ' ', ' ', nan]"
+1557,,,,,,,,,,,,,"['Vodka', nan, nan, nan, nan, nan, nan, 'Creme de Banane', 'Orange juice', nan, nan, nan, nan, nan, nan]","['2 cl ', nan, nan, nan, nan, nan, nan, '1 cl ', '\n', '\n', '\n', '\n', '\n', '\n', nan]"
+1558,,,,,,,,,,,,,"['Grenadine', nan, nan, nan, nan, nan, nan, 'Orange juice', 'Pineapple juice', nan, nan, nan, nan, nan, nan]","['1 part ', nan, nan, nan, nan, nan, nan, '4 parts ', '4 parts ', ' ', ' ', ' ', ' ', ' ', nan]"
+1559,,,,,,,,,,,,,"['Kahlua', nan, nan, nan, nan, nan, nan, ""Bailey's irish cream"", 'Frangelico', 'Coffee', 'Cream', nan, nan, nan, nan]","['1 cl ', '\n', nan, nan, nan, nan, nan, '1 cl ', '1 1/2 ', '4 cl hot ', '\n', '\n', '\n', '\n', '\n']"
+1560,,,,,,,,,,,,,"['Southern Comfort', nan, nan, nan, nan, nan, nan, 'Amaretto', 'Sloe gin', 'Lemon juice', nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '1/2 oz ', '1 dash ', ' ', ' ', ' ', ' ', ' ']"
+1561,,,,,,,,,,,,,"['Orange bitters', nan, nan, nan, nan, nan, nan, 'Gin', 'Yellow Chartreuse', 'Lemon peel', nan, nan, nan, nan, nan]","['2 dashes ', nan, nan, nan, nan, nan, nan, '1 1/2 oz ', '3/4 oz ', 'Twist of ', ' ', ' ', ' ', ' ', ' ']"
+1562,,,,,,,,,,,,,"['Gin', nan, nan, nan, nan, nan, nan, 'Creme de Cacao', 'Light cream', 'Nutmeg', nan, nan, nan, nan, nan]","['1/2 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz white ', '2 oz ', nan, nan, nan, nan, nan, nan]"
+1563,,,,,,,,,,,,,"['Lemon vodka', nan, nan, nan, nan, nan, nan, 'Triple sec', 'Pineapple juice', nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '1 dash ', '1 tblsp ', ' ', ' ', ' ', ' ', ' ', nan]"
+1564,,,,,,,,,,,,,"['Blended whiskey', nan, nan, nan, nan, nan, nan, 'Dry Vermouth', 'Pineapple juice', nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '1 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1565,,,,,,,,,,,,,"['Grenadine', nan, nan, nan, nan, nan, nan, 'Orange juice', 'Pineapple juice', 'Cream', nan, nan, nan, nan, nan]","['1 cl ', nan, nan, nan, nan, nan, nan, '1 cl ', '2 cl ', '4 cl ', ' ', ' ', ' ', ' ', ' ']"
+1566,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Grand Marnier', 'Southern Comfort', nan, nan, nan, nan, nan, nan]","['1 shot ', nan, nan, nan, nan, nan, nan, '1 shot ', '1 shot ', ' ', ' ', ' ', ' ', ' ', nan]"
+1567,,,,,,,,,,,,,"['Dry Vermouth', nan, nan, nan, nan, nan, nan, 'Bourbon', 'Blackberry brandy', 'Lemon juice', 'Lemon peel', nan, nan, nan, nan]","['1 oz ', ' ', nan, nan, nan, nan, nan, '1 oz ', '1 1/2 tsp ', '1 1/2 tsp ', '1 twist of ', ' ', ' ', ' ', ' ']"
+1568,,,,,,,,,,,,,"['Dry Vermouth', nan, nan, nan, nan, nan, nan, 'Gin', 'Kummel', nan, nan, nan, nan, nan, nan]",
+1569,,,,,,,,,,,,,"['Dark rum', nan, nan, nan, nan, nan, nan, 'Kahlua', 'Egg white', nan, nan, nan, nan, nan, nan]","['2 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '1 ', ' ', ' ', ' ', ' ', ' ', nan]"
+1570,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Dark Creme de Cacao', 'Coffee', nan, nan, nan, nan, nan, nan]","['3/4 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz ', '8 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1571,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Creme de Cacao', 'Light cream', nan, nan, nan, nan, nan, nan]","['1/2 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz white ', '2 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1572,,,,,,,,,,,,,"['Water', nan, nan, nan, nan, nan, nan, 'Ginger', 'Guava juice', 'Lemon juice', 'Pineapple', 'Sugar', 'Pineapple juice', nan, nan]","['3/4 cup ', ' ', ' ', ' ', nan, nan, nan, '2 tsp ', '2 cups ', '1 1/2 tblsp ', '1 1/2 cup ', '1 cup ', '3-4 cups ', ' ', ' ']"
+1573,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Light cream', nan, nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '1 1/2 oz ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1574,,,,,,,,,,,,,"['Sugar', 'Food coloring', 'Glycerine', nan, nan, nan, nan, 'Water', 'Apricot', 'Almond flavoring', 'Grain alcohol', 'Water', 'Brandy', 'Food coloring', 'Food coloring']","['1 cup', '2 drops blue ', '1/2 tsp ', ' ', ' ', ' ', ' ', '3/4 cup ', '2 ', '1 tblsp ', '1/2 cup pure ', '1/2 cup ', '1 cup ', '3 drops yellow ', '6 drops red ']"
+1575,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Lime', nan, nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '1 ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1576,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Lime juice', 'Club soda', nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz ', '\n', '\n', '\n', '\n', '\n', '\n', nan]"
+1577,,,,,,,,,,,,,"['Chocolate ice-cream', nan, nan, nan, nan, nan, nan, 'Brandy', 'Amaretto', nan, nan, nan, nan, nan, nan]","['2 scoops ', nan, nan, nan, nan, nan, nan, '2 oz ', '2 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1578,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Sour mix', nan, nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '3 oz ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1579,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'White Creme de Menthe', nan, nan, nan, nan, nan, nan, nan]","['1 1/2 oz ', nan, nan, nan, nan, nan, nan, '3/4 oz ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1580,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Sour mix', 'Orange juice', nan, nan, nan, nan, nan, nan]","['1 part ', nan, nan, nan, nan, nan, nan, '1 part ', '1 part ', ' ', ' ', ' ', ' ', ' ', nan]"
+1581,,,,,,,,,,,,,"['Sour mix', nan, nan, nan, nan, nan, nan, 'Amaretto', 'Tequila', 'Orange juice', nan, nan, nan, nan, nan]","['2 oz ', nan, nan, nan, nan, nan, nan, '2 oz ', '2 oz ', 'Add splash ', ' ', ' ', ' ', ' ', ' ']"
+1582,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Orange juice', 'Grenadine', nan, nan, nan, nan, nan, nan]","['1 cl ', nan, nan, nan, nan, nan, nan, '4 oz ', '1/4 cl ', ' ', ' ', ' ', ' ', ' ', nan]"
+1583,,,,,,,,,,,,,"['Triple sec', nan, nan, nan, nan, nan, nan, 'Amaretto', 'Cider', 'Ice', nan, nan, nan, nan, nan]","['1/2 jigger ', nan, nan, nan, nan, nan, nan, '3 shots ', '1/2 cup ', 'Add 1/2 cup ', ' ', ' ', ' ', ' ', ' ']"
+1584,,,,,,,,,,,,,"['Amaretto', nan, nan, nan, nan, nan, nan, 'Sweet and sour', 'Midori melon liqueur', 'Pineapple juice', nan, nan, nan, nan, nan]","['\n', nan, nan, nan, nan, nan, nan, '\n', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1585,,,,,,,,,,,,,"['Tea', nan, nan, nan, nan, nan, nan, 'Amaretto', 'Whipped cream', nan, nan, nan, nan, nan, nan]","['6 oz hot ', nan, nan, nan, nan, nan, nan, '2 oz ', 'Chilled ', ' ', ' ', ' ', ' ', ' ', nan]"
+1586,,,,,,,,,,,,,"['Campari', nan, nan, nan, nan, nan, nan, 'Sweet Vermouth', 'Lemon peel', 'Orange peel', nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1 oz red ', 'Twist of ', 'Twist of ', ' ', ' ', ' ', ' ', ' ']"
+1587,,,,,,,,,,,,,"['Apricot brandy', nan, nan, nan, nan, nan, nan, 'Apple brandy', 'Gin', nan, nan, nan, nan, nan, nan]","['1/2 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz ', '1 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1588,,,,,,,,,,,,,"['Angelica root', 'Water', 'Food coloring', 'Food coloring', nan, nan, nan, 'Almond', 'Allspice', 'Cinnamon', 'Anise', 'Coriander', 'Marjoram leaves', 'Vodka', 'Sugar']","['3 tblsp chopped', '1/4 cup ', '1 drop yellow ', '1 drop green ', ' ', ' ', ' ', '1 tblsp chopped ', '1 cracked ', '1 one-inch ', '3-6 crushed ', '1/8 tsp powdered ', '1 tblsp fresh chopped ', '1.5 cup ', '1/2 cup granulated ']"
+1589,,,,,,,,,,,,,"['Orange juice', nan, nan, nan, nan, nan, nan, 'Grapefruit juice', 'Apple juice', 'Maraschino cherry', nan, nan, nan, nan, nan]","['4 cl ', nan, nan, nan, nan, nan, nan, '3 cl ', '1 cl ', '1 ', ' ', ' ', ' ', ' ', ' ']"
+1590,,,,,,,,,,,,,"['Berries', nan, nan, nan, nan, nan, nan, 'Apple', nan, nan, nan, nan, nan, nan, nan]","['1 cup ', nan, nan, nan, nan, nan, nan, '2 ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1591,,,,,,,,,,,,,"['Apple cider', nan, nan, nan, nan, nan, nan, 'Brown sugar', 'Lemonade', 'Orange juice', 'Cloves', 'Allspice', 'Nutmeg', 'Cinnamon', nan]","['4 qt ', ' ', ' ', ' ', ' ', nan, nan, '1 cup ', '6 oz frozen ', '6 oz frozen ', '6 whole ', '6 whole ', '1 tsp ground ', '3 sticks ', ' ']"
+1592,,,,,,,,,,,,,"['Tequila', nan, nan, nan, nan, nan, nan, 'Apple cider', nan, nan, nan, nan, nan, nan, nan]","['3 oz ', nan, nan, nan, nan, nan, nan, '12 oz ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1593,,,,,,,,,,,,,"['Apple juice', nan, nan, nan, nan, nan, nan, 'Carrot', nan, nan, nan, nan, nan, nan, nan]","['2 cups ', nan, nan, nan, nan, nan, nan, '1 large ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1594,,,,,,,,,,,,,"['Apple juice', nan, nan, nan, nan, nan, nan, 'Malibu rum', 'Cinnamon', nan, nan, nan, nan, nan, nan]","['3 parts ', nan, nan, nan, nan, nan, nan, '1 part ', '3 dashes ', ' ', ' ', ' ', ' ', ' ', nan]"
+1595,,,,,,,,,,,,,"['7-Up', nan, nan, nan, nan, nan, nan, 'Apple schnapps', nan, nan, nan, nan, nan, nan, nan]","['1 part ', nan, nan, nan, nan, nan, nan, '1 part ', ' ', ' ', ' ', ' ', ' ', nan, nan]"
+1596,,,,,,,,,,,,,"['Applejack', nan, nan, nan, nan, nan, nan, 'Triple sec', 'Lemon juice', nan, nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1 oz ', '1 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1597,,,,,,,,,,,,,"['Jack Daniels', nan, nan, nan, nan, nan, nan, 'Midori melon liqueur', 'Sour mix', nan, nan, nan, nan, nan, nan]","['1 oz ', nan, nan, nan, nan, nan, nan, '1/2 oz ', '2 oz ', ' ', ' ', ' ', ' ', ' ', nan]"
+1598,,,,,,,,,,,,,"['Light rum', nan, nan, nan, nan, nan, nan, 'Apricot brandy', 'Triple sec', 'Lemon juice', 'Egg white', 'Orange', nan, nan, nan]","['1 1/2 oz ', ' ', ' ', nan, nan, nan, nan, '1 oz ', '1 tsp ', '1/2 oz ', '1 ', '1 ', ' ', ' ', ' ']"
+1599,,,,,,,,,,,,,"['Apricot brandy', nan, nan, nan, nan, nan, nan, 'Champagne', 'Vodka', '7-Up', 'Orange juice', nan, nan, nan, nan]","['1 qt ', ' ', nan, nan, nan, nan, nan, '4 fifth ', '1 fifth ', '4 L ', '1/2 gal ', ' ', ' ', ' ', ' ']"

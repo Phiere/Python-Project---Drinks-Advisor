@@ -4,7 +4,8 @@ from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QSt
 import Research_page_UI as RU
 import Profil_page_UI as PU
 import Creation_page_UI as CU
-import Description_page as DU
+import Choice_page_UI as CH
+
 
 class MenuLayout(QHBoxLayout): 
     def __init__(self,fenetre_totale) -> None:
@@ -27,15 +28,13 @@ class ScreensToDisplay(QStackedWidget):
     def __init__(self):
         super().__init__()
 
-        research_screen = RU.ScreenResearch()
+        research_screen = CH.Composee()
         profil_screen = PU.ScreenProfile()
         creation_screen = CU.ScreenCreation()
-        description_screen = DU.Description('Nom Page')
 
         self.addWidget(research_screen)
         self.addWidget(profil_screen)
         self.addWidget(creation_screen)
-        self.addWidget(description_screen)
 
 class FenetrePrincipale(QWidget):
     def __init__(self):
