@@ -31,7 +31,7 @@ def from_df_to_filters(df_used,take_text):
 
 # Lis tout les QLineEdit qui font office de filtres et retourne tout leurs textes.
 # Filtre la df en fonction des filtres utilisés et donne la df des éléments filtrés
-def from_filters_to_newDF(df_used,frame2,filters_list):#,colonne_to_sort,sorted_state):
+def from_filters_to_newDF(df_used,frame2,filters_list,colonne_to_sort,sorted_state):
         df_temporary = df_used.copy()
 
         for i in range(len(filters_list)) :
@@ -41,8 +41,9 @@ def from_filters_to_newDF(df_used,frame2,filters_list):#,colonne_to_sort,sorted_
                     df_temporary = filtrer(text_from_filter,filters_list[i].nom_col,df_temporary)
         
 
-        #df_temporary = df_temporary.sort_values(colonne_to_sort,ascending=sorted_state)
-        
+        if colonne_to_sort != 'Random':
+            df_temporary = df_temporary.sort_values(colonne_to_sort,ascending=sorted_state)
+            
         return df_temporary[frame2]
 
 

@@ -1,101 +1,101 @@
-,Unnamed: 0.1,brewery_name,beer_style,Name,beer_beerid,Unnamed: 0,brewery_id,review_time,review_overall,review_aroma,review_appearance,review_palate,review_taste,beer_abv
-0,0,Yellow Rose Brewing Company,American IPA,Cactus Queen IPA,3,0.0,2.0,1019075828.0,4.0,4.0,3.5,4.5,4.0,
-1,1,,American Stout,Wildcatter's Crude Stout,4,1.0,,1066876922.0,4.5,,4.0,4.0,,
-2,2,Abita Brewing Co.,Vienna Lager,Amber,5,2.0,3.0,1270055168.0,3.0,3.0,3.0,,3.0,4.5
-3,3,,English Brown Ale,Turbodog,6,3.0,,1234038897.0,,3.5,,3.5,,5.6
-4,4,,Fruit / Vegetable Beer,Purple Haze,7,4.0,,1120192454.0,,,,3.0,2.5,4.2
-5,5,,American Adjunct Lager,Wheat,8,5.0,,1307298369.0,3.5,2.5,,,,
-6,6,,American Pale Lager,Golden,9,6.0,,1199082154.0,,,,,3.5,
-7,7,Allagash Brewing Company,Dubbel,Allagash Dubbel Ale,10,7.0,4.0,1225585975.0,,,4.5,,,7.0
-8,8,Yakima Brewing Co. / Bert Grant's Ales,Scottish Ale,Bert Grant's Scottish Ale,11,8.0,5.0,1052583122.0,,,,,,4.7
-9,9,,Russian Imperial Stout,Bert Grant's Imperial Stout,12,9.0,,907200001.0,,,,,4.5,6.0
-10,10,,English India Pale Ale (IPA),Bert Grant's IPA,13,10.0,,1088950870.0,,,,,,
-11,11,Brouwerij Slaghmuylder,Belgian Pale Ale,Witkap Pater Singel / Stimulo,14,11.0,6.0,1285934527.0,,4.5,,,,
-12,12,"Wild Goose Brewery, LLC",Winter Warmer,Wild Goose Snow Goose Winter Ale,15,12.0,69.0,1261381348.0,,,,,,6.3
-13,13,Widmer Brothers Brewing Company,American Pale Ale (APA),Hop Jack Pale Ale,16,13.0,8.0,1046373493.0,,,,,,
-14,14,,American Pale Wheat Ale,Widmer Hefeweizen,17,14.0,,1232675975.0,,,,,,4.9
-15,15,,Kölsch,Sommerbräu,18,15.0,,1026102376.0,,,,,,4.8
-16,16,Whitbread PLC,Milk / Sweet Stout,Mackeson Triple XXX Stout,19,16.0,9.0,1090789876.0,,,,,,
-17,17,Whim Ales,Extra Special / Strong Bitter (ESB),Old Izaak,20,17.0,10.0,1076740325.0,,,5.0,,,5.0
-18,18,Freeminer Brewery Ltd.,Foreign / Export Stout,Deep Shaft Stout,21,18.0,18.0,1097629240.0,,,,,,6.2
-19,19,Wachusett Brewing Company,,Wachusett IPA (India Pale Ale),23,19.0,20.0,1118629445.0,,,,,,
-20,20,,American Porter,Wachusett Black Shack Porter,24,20.0,,1237265556.0,,,,,,
-21,21,,American Amber / Red Ale,Wachusett Octoberfest Ale,26,21.0,,1160087030.0,,,,,,5.2
-22,22,,Irish Red Ale,Quinn's Amber Ale,27,22.0,,1212254057.0,2.5,2.0,,,,
-23,23,,,Wachusett Winter Fest Ale,28,23.0,,888019201.0,,,,,,
-24,24,Union Export Brewery,German Pilsener,Peter's Brand Pilsner Beer,29,24.0,21.0,1231285902.0,,,2.5,,,
-25,25,Unibroue,Belgian Strong Dark Ale,Trois Pistoles,30,25.0,22.0,1037344878.0,,,,5.0,,9.0
-26,26,,Witbier,Blanche De Chambly,31,26.0,,1144282460.0,,,,,,
-27,27,,Tripel,Eau Benite,32,27.0,,1121649088.0,,,,,,7.7
-28,28,,,Maudite,33,28.0,,1083636151.0,5.0,5.0,,,5.0,8.0
-29,29,,,La Fin Du Monde,34,29.0,,1300241493.0,,,,2.5,,
-30,30,Twisted Pine Brewing Company,,Twisted Pine Amber Ale,35,30.0,23.0,1172369764.0,,,,,,5.3
-31,31,Traquair House Brewery Lld,Scotch Ale / Wee Heavy,Traquair House Ale,36,31.0,24.0,1168883170.0,,,,,,7.2
-32,32,Tollemache & Cobbold Brewery Ltd,,Cobnut Nut Brown Ale,37,32.0,25.0,893289601.0,,,,,,
-33,33,Three Floyds Brewing Co. & Brewpub,,Burnham Pilsner,38,33.0,26.0,1064851925.0,,,,,,
-34,34,,,Alpha King Pale Ale,39,34.0,,1239601632.0,,,,,,
-35,35,,,Three Floyds Extra Pale Ale,40,35.0,,1058627347.0,,,,,,5.25
-36,36,Upper Canada Brewing Company,Light Lager,Light Lager,41,36.0,155.0,889401601.0,,,,,,4.0
-37,37,,,Dark Ale,42,37.0,,1057129443.0,,,,,,
-38,38,,,Rebellion Lager,43,38.0,,1219600691.0,,,,,,
-39,39,,,Lager,44,39.0,,1128991161.0,,,,,,
-40,40,,,Woody's Wild Ale,45,40.0,,887846401.0,,,,,,
-41,41,,,Rebellion Ale,46,41.0,,,,,,2.0,2.0,
-42,42,Shipyard Brewing Co.,,Tremont Summer Ale,47,42.0,139.0,1238536367.0,,,,,,4.4
-43,43,"Tremont Brewery / Atlantic Coast Brewing, Ltd.",,Tremont Porter,48,43.0,154.0,950140801.0,,,,,,5.4
-44,44,,,Tremont Winter Ale,49,44.0,,1073009707.0,,,,,,
-45,45,,,Tremont Freedom Trail IPA,50,45.0,,1143399249.0,,,,,,6.4
-46,46,,English Pale Ale,Tremont Ale,51,46.0,,1168661375.0,,,,,,
-47,47,Melbourn Bros.,,Melbourn Bros. Apricot,52,47.0,101.0,1129778476.0,,,,,,3.4
-48,48,Redhook Ale Brewery,,Blackhook Porter,54,48.0,18134.0,1046101348.0,,,,,,5.23
-49,49,,American Double / Imperial Stout,Redhook Double Black Stout (with Coffee),55,49.0,,1230593872.0,,,,,,
-50,50,,,Melbourn Bros. Strawberry,56,50.0,,1168045063.0,,,,,,
-51,51,,Quadrupel (Quad),Allagash Grand Cru,58,51.0,,1129694252.0,,,,,,
-52,52,,,Allagash White,59,52.0,,1242786209.0,,,,,,
-53,53,,,Hard Hat American Beer,60,53.0,27.0,1020244856.0,,,,,,3.8
-54,54,Anchor Brewing Company,,Anchor Porter,61,54.0,28.0,1162794629.0,,,,,,
-55,55,,,Our Special Ale 1998 (Anchor Christmas Ale),62,55.0,,1134484393.0,,,,,,
-56,56,,California Common / Steam Beer,Anchor Steam Beer,63,56.0,,1279571643.0,,,,,,
-57,57,Anheuser-Busch,,Budweiser,65,57.0,29.0,1242438781.0,2.0,1.5,1.5,,,
-58,58,,American Malt Liquor,King Cobra Premium Malt Liquor,66,58.0,,1129135187.0,,,,,,
-59,59,Avery Brewing Company,,14'ER ESB,67,59.0,30.0,1236641494.0,,,,,,5.13
-60,60,,Rye Beer,Redhook Rye,68,60.0,,889315201.0,,,,,,
-61,61,,American Blonde Ale,Redhook Blonde,69,61.0,,1158634118.0,,,,,,5.77
-62,62,,Hefeweizen,Redhook Hefe-Weizen,71,62.0,,1068645500.0,,,,,,5.19
-63,63,,,Redhook Nut Brown Ale,72,63.0,,1042572156.0,,,,,,5.57
-64,64,Wells & Young's Ltd,,Young's Double Chocolate Stout,73,64.0,664.0,1292889256.0,,,,,,
-65,65,Brooklyn Brewery,Pumpkin Ale,Post Road Pumpkin Ale,74,65.0,45.0,1234591324.0,,,,,,
-66,66,"Lion Brewery, Inc.",,Pocono Caramel Porter,75,66.0,150.0,1134884609.0,,,,,,
-67,67,,,Brewery Hill Centennial Lager,76,67.0,,997575046.0,,,,,,
-68,68,Brasserie Lefèbvre SA,,Blanche De Bruxelles / Manneken Pis Belgian White,78,68.0,149.0,1238351541.0,,,,,,
-69,69,Belhaven Brewery Company Ltd.,,Wee Heavy,79,69.0,148.0,1191125234.0,,,,,,6.5
-70,70,Brauerei Pinkus Mueller,Altbier,Organic Münster Alt,80,70.0,31.0,1145365395.0,,,,,,5.1
-71,71,,,Organic Ur Pils,81,71.0,,1211698754.0,,,,,,
-72,72,,,Organic Hefe-Weizen,82,72.0,,1152413192.0,,,,,,
-73,73,Brauerei Beck & Co.,Märzen / Oktoberfest,Beck's Oktoberfest,83,73.0,32.0,1251254685.0,,,,,,
-74,74,Berkshire Brewing Company Inc.,,Independence Wheat Ale,84,74.0,33.0,902188801.0,,,,,,
-75,75,,,Coffeehouse Porter,85,75.0,,1173030806.0,,,,,,
-76,76,,,Drayman's Porter,86,76.0,,1131844082.0,,,,,,
-77,77,Stone Brewing Co.,,Stone Pale Ale,87,77.0,147.0,1300487389.0,,,,,,
-78,78,,,Stone IPA (India Pale Ale),88,78.0,,1121815280.0,,,,,,6.9
-79,79,,,Lost Sailor India Pale Ale,89,79.0,,1188190076.0,,,,,,5.5
-80,80,,,Stone Smoked Porter,90,80.0,,1204433960.0,,,,,,5.9
-81,81,,American Strong Ale,Arrogant Bastard Ale,92,81.0,,1231891383.0,,,,,,
-82,82,,,Steel Rail Extra Pale Ale,93,82.0,,1210801340.0,,,,,,
-83,83,St. Stan's Brewing Co.,,Red Sky Ale,94,83.0,146.0,1161979045.0,,,,,,
-84,84,Spring Street Brewing Company,,Wit Original,95,84.0,145.0,900979201.0,,,2.0,,,
-85,85,Sprecher Brewing Company,Schwarzbier,Black Bavarian,96,85.0,144.0,1213249378.0,,,,,,
-86,86,,,Special Amber,97,86.0,,1297892146.0,,,,,,
-87,87,Spaten-Franziskaner-Bräu,Doppelbock,Spaten Optimator,99,87.0,142.0,1228841956.0,,,,,,7.6
-88,88,Coors Brewing Company,,Blue Moon Harvest Moon Pumpkin Ale,100,88.0,306.0,1241393216.0,,,,,,5.7
-89,89,Boston Beer Company (Samuel Adams),Bock,Samuel Adams Winter Lager,101,89.0,35.0,1163085878.0,,,,,,
-90,90,,,Samuel Adams Octoberfest,102,90.0,,1191867427.0,,,,,,
-91,91,,,Samuel Adams Summer Ale,103,91.0,,1217352171.0,,,,,,
-92,92,,,Samuel Adams Boston Lager,104,92.0,,1181556267.0,,,,,,
-93,93,,,Samuel Adams Spring Ale,106,93.0,,1043861143.0,,,,,,
-94,94,,,Samuel Adams Cherry Wheat,108,94.0,,1297894809.0,,,,,,
-95,95,,,Samuel Adams Golden Pilsner,109,95.0,,1037441743.0,,,,,,4.63
-96,96,,Cream Ale,Samuel Adams Cream Ale,110,96.0,,885945601.0,,,,,,
-97,97,,,Samuel Adams Triple Bock,111,97.0,,1190954496.0,,,,,,17.5
-98,98,Brasserie Grain d' Orge (Brasserie Jeanne d'Arc SA),Belgian Strong Pale Ale,Belzebuth,114,98.0,36.0,1282712011.0,,,,,,13.0
-99,99,Tommyknocker Brewery,,Butthead Doppelbock,115,99.0,156.0,1119053198.0,,,,,,8.2
+,brewery_name,beer_style,Name,beer_beerid,brewery_id,review_time,review_overall,review_aroma,review_appearance,review_palate,review_taste,beer_abv
+0,Yellow Rose Brewing Company,American IPA,Cactus Queen IPA,3,2.0,1019075828.0,4.0,4.0,3.5,4.5,4.0,
+1,,American Stout,Wildcatter's Crude Stout,4,,1066876922.0,4.5,,4.0,4.0,,
+2,Abita Brewing Co.,Vienna Lager,Amber,5,3.0,1270055168.0,3.0,3.0,3.0,,3.0,4.5
+3,,English Brown Ale,Turbodog,6,,1234038897.0,,3.5,,3.5,,5.6
+4,,Fruit / Vegetable Beer,Purple Haze,7,,1120192454.0,,,,3.0,2.5,4.2
+5,,American Adjunct Lager,Wheat,8,,1307298369.0,3.5,2.5,,,,
+6,,American Pale Lager,Golden,9,,1199082154.0,,,,,3.5,
+7,Allagash Brewing Company,Dubbel,Allagash Dubbel Ale,10,4.0,1225585975.0,,,4.5,,,7.0
+8,Yakima Brewing Co. / Bert Grant's Ales,Scottish Ale,Bert Grant's Scottish Ale,11,5.0,1052583122.0,,,,,,4.7
+9,,Russian Imperial Stout,Bert Grant's Imperial Stout,12,,907200001.0,,,,,4.5,6.0
+10,,English India Pale Ale (IPA),Bert Grant's IPA,13,,1088950870.0,,,,,,
+11,Brouwerij Slaghmuylder,Belgian Pale Ale,Witkap Pater Singel / Stimulo,14,6.0,1285934527.0,,4.5,,,,
+12,"Wild Goose Brewery, LLC",Winter Warmer,Wild Goose Snow Goose Winter Ale,15,69.0,1261381348.0,,,,,,6.3
+13,Widmer Brothers Brewing Company,American Pale Ale (APA),Hop Jack Pale Ale,16,8.0,1046373493.0,,,,,,
+14,,American Pale Wheat Ale,Widmer Hefeweizen,17,,1232675975.0,,,,,,4.9
+15,,Kölsch,Sommerbräu,18,,1026102376.0,,,,,,4.8
+16,Whitbread PLC,Milk / Sweet Stout,Mackeson Triple XXX Stout,19,9.0,1090789876.0,,,,,,
+17,Whim Ales,Extra Special / Strong Bitter (ESB),Old Izaak,20,10.0,1076740325.0,,,5.0,,,5.0
+18,Freeminer Brewery Ltd.,Foreign / Export Stout,Deep Shaft Stout,21,18.0,1097629240.0,,,,,,6.2
+19,Wachusett Brewing Company,,Wachusett IPA (India Pale Ale),23,20.0,1118629445.0,,,,,,
+20,,American Porter,Wachusett Black Shack Porter,24,,1237265556.0,,,,,,
+21,,American Amber / Red Ale,Wachusett Octoberfest Ale,26,,1160087030.0,,,,,,5.2
+22,,Irish Red Ale,Quinn's Amber Ale,27,,1212254057.0,2.5,2.0,,,,
+23,,,Wachusett Winter Fest Ale,28,,888019201.0,,,,,,
+24,Union Export Brewery,German Pilsener,Peter's Brand Pilsner Beer,29,21.0,1231285902.0,,,2.5,,,
+25,Unibroue,Belgian Strong Dark Ale,Trois Pistoles,30,22.0,1037344878.0,,,,5.0,,9.0
+26,,Witbier,Blanche De Chambly,31,,1144282460.0,,,,,,
+27,,Tripel,Eau Benite,32,,1121649088.0,,,,,,7.7
+28,,,Maudite,33,,1083636151.0,5.0,5.0,,,5.0,8.0
+29,,,La Fin Du Monde,34,,1300241493.0,,,,2.5,,
+30,Twisted Pine Brewing Company,,Twisted Pine Amber Ale,35,23.0,1172369764.0,,,,,,5.3
+31,Traquair House Brewery Lld,Scotch Ale / Wee Heavy,Traquair House Ale,36,24.0,1168883170.0,,,,,,7.2
+32,Tollemache & Cobbold Brewery Ltd,,Cobnut Nut Brown Ale,37,25.0,893289601.0,,,,,,
+33,Three Floyds Brewing Co. & Brewpub,,Burnham Pilsner,38,26.0,1064851925.0,,,,,,
+34,,,Alpha King Pale Ale,39,,1239601632.0,,,,,,
+35,,,Three Floyds Extra Pale Ale,40,,1058627347.0,,,,,,5.25
+36,Upper Canada Brewing Company,Light Lager,Light Lager,41,155.0,889401601.0,,,,,,4.0
+37,,,Dark Ale,42,,1057129443.0,,,,,,
+38,,,Rebellion Lager,43,,1219600691.0,,,,,,
+39,,,Lager,44,,1128991161.0,,,,,,
+40,,,Woody's Wild Ale,45,,887846401.0,,,,,,
+41,,,Rebellion Ale,46,,,,,,2.0,2.0,
+42,Shipyard Brewing Co.,,Tremont Summer Ale,47,139.0,1238536367.0,,,,,,4.4
+43,"Tremont Brewery / Atlantic Coast Brewing, Ltd.",,Tremont Porter,48,154.0,950140801.0,,,,,,5.4
+44,,,Tremont Winter Ale,49,,1073009707.0,,,,,,
+45,,,Tremont Freedom Trail IPA,50,,1143399249.0,,,,,,6.4
+46,,English Pale Ale,Tremont Ale,51,,1168661375.0,,,,,,
+47,Melbourn Bros.,,Melbourn Bros. Apricot,52,101.0,1129778476.0,,,,,,3.4
+48,Redhook Ale Brewery,,Blackhook Porter,54,18134.0,1046101348.0,,,,,,5.23
+49,,American Double / Imperial Stout,Redhook Double Black Stout (with Coffee),55,,1230593872.0,,,,,,
+50,,,Melbourn Bros. Strawberry,56,,1168045063.0,,,,,,
+51,,Quadrupel (Quad),Allagash Grand Cru,58,,1129694252.0,,,,,,
+52,,,Allagash White,59,,1242786209.0,,,,,,
+53,,,Hard Hat American Beer,60,27.0,1020244856.0,,,,,,3.8
+54,Anchor Brewing Company,,Anchor Porter,61,28.0,1162794629.0,,,,,,
+55,,,Our Special Ale 1998 (Anchor Christmas Ale),62,,1134484393.0,,,,,,
+56,,California Common / Steam Beer,Anchor Steam Beer,63,,1279571643.0,,,,,,
+57,Anheuser-Busch,,Budweiser,65,29.0,1242438781.0,2.0,1.5,1.5,,,
+58,,American Malt Liquor,King Cobra Premium Malt Liquor,66,,1129135187.0,,,,,,
+59,Avery Brewing Company,,14'ER ESB,67,30.0,1236641494.0,,,,,,5.13
+60,,Rye Beer,Redhook Rye,68,,889315201.0,,,,,,
+61,,American Blonde Ale,Redhook Blonde,69,,1158634118.0,,,,,,5.77
+62,,Hefeweizen,Redhook Hefe-Weizen,71,,1068645500.0,,,,,,5.19
+63,,,Redhook Nut Brown Ale,72,,1042572156.0,,,,,,5.57
+64,Wells & Young's Ltd,,Young's Double Chocolate Stout,73,664.0,1292889256.0,,,,,,
+65,Brooklyn Brewery,Pumpkin Ale,Post Road Pumpkin Ale,74,45.0,1234591324.0,,,,,,
+66,"Lion Brewery, Inc.",,Pocono Caramel Porter,75,150.0,1134884609.0,,,,,,
+67,,,Brewery Hill Centennial Lager,76,,997575046.0,,,,,,
+68,Brasserie Lefèbvre SA,,Blanche De Bruxelles / Manneken Pis Belgian White,78,149.0,1238351541.0,,,,,,
+69,Belhaven Brewery Company Ltd.,,Wee Heavy,79,148.0,1191125234.0,,,,,,6.5
+70,Brauerei Pinkus Mueller,Altbier,Organic Münster Alt,80,31.0,1145365395.0,,,,,,5.1
+71,,,Organic Ur Pils,81,,1211698754.0,,,,,,
+72,,,Organic Hefe-Weizen,82,,1152413192.0,,,,,,
+73,Brauerei Beck & Co.,Märzen / Oktoberfest,Beck's Oktoberfest,83,32.0,1251254685.0,,,,,,
+74,Berkshire Brewing Company Inc.,,Independence Wheat Ale,84,33.0,902188801.0,,,,,,
+75,,,Coffeehouse Porter,85,,1173030806.0,,,,,,
+76,,,Drayman's Porter,86,,1131844082.0,,,,,,
+77,Stone Brewing Co.,,Stone Pale Ale,87,147.0,1300487389.0,,,,,,
+78,,,Stone IPA (India Pale Ale),88,,1121815280.0,,,,,,6.9
+79,,,Lost Sailor India Pale Ale,89,,1188190076.0,,,,,,5.5
+80,,,Stone Smoked Porter,90,,1204433960.0,,,,,,5.9
+81,,American Strong Ale,Arrogant Bastard Ale,92,,1231891383.0,,,,,,
+82,,,Steel Rail Extra Pale Ale,93,,1210801340.0,,,,,,
+83,St. Stan's Brewing Co.,,Red Sky Ale,94,146.0,1161979045.0,,,,,,
+84,Spring Street Brewing Company,,Wit Original,95,145.0,900979201.0,,,2.0,,,
+85,Sprecher Brewing Company,Schwarzbier,Black Bavarian,96,144.0,1213249378.0,,,,,,
+86,,,Special Amber,97,,1297892146.0,,,,,,
+87,Spaten-Franziskaner-Bräu,Doppelbock,Spaten Optimator,99,142.0,1228841956.0,,,,,,7.6
+88,Coors Brewing Company,,Blue Moon Harvest Moon Pumpkin Ale,100,306.0,1241393216.0,,,,,,5.7
+89,Boston Beer Company (Samuel Adams),Bock,Samuel Adams Winter Lager,101,35.0,1163085878.0,,,,,,
+90,,,Samuel Adams Octoberfest,102,,1191867427.0,,,,,,
+91,,,Samuel Adams Summer Ale,103,,1217352171.0,,,,,,
+92,,,Samuel Adams Boston Lager,104,,1181556267.0,,,,,,
+93,,,Samuel Adams Spring Ale,106,,1043861143.0,,,,,,
+94,,,Samuel Adams Cherry Wheat,108,,1297894809.0,,,,,,
+95,,,Samuel Adams Golden Pilsner,109,,1037441743.0,,,,,,4.63
+96,,Cream Ale,Samuel Adams Cream Ale,110,,885945601.0,,,,,,
+97,,,Samuel Adams Triple Bock,111,,1190954496.0,,,,,,17.5
+98,Brasserie Grain d' Orge (Brasserie Jeanne d'Arc SA),Belgian Strong Pale Ale,Belzebuth,114,36.0,1282712011.0,,,,,,13.0
+99,Tommyknocker Brewery,,Butthead Doppelbock,115,156.0,1119053198.0,,,,,,8.2

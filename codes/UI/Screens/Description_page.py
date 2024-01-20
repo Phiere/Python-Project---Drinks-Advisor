@@ -247,17 +247,16 @@ class NotationsInteractions(QHBoxLayout):
 
 
 class Description(QWidget):
-    def __init__(self, change_screen):
+    def __init__(self):
         super().__init__()
         self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
         self.setWindowTitle('Description de la Boisson')
         self.setGeometry(200,200,1000,500)
-        self.retour = QPushButton('back')
-        self.retour.clicked.connect(change_screen)
+
         self.drink_name = LabelPrincipal()
         self.informations_display = InformationsDisplay()
         info_layout = QVBoxLayout()
-        info_layout.addWidget(self.retour)
+  
         info_layout.addWidget(self.drink_name)
         info_layout.addLayout(self.informations_display)
         info_layout.addStretch()

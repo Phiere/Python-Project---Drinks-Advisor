@@ -10,7 +10,7 @@ import sys
 from PyQt5.QtGui import QPixmap, QIcon, QMouseEvent, QStandardItemModel, QStandardItem, QPalette, QColor
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit,QHBoxLayout,QPushButton,QComboBox,QLabel,QListWidget,QListWidgetItem
 from PyQt5.QtCore import Qt, QObject, pyqtSignal,QEvent
-
+import random
 import Navigation as Nav
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
@@ -59,6 +59,7 @@ class SortColumnChoice(QComboBox):
         super().__init__()
 
         ##
+        self.addItem('Random')
         for i in range(1,len(columns_names_list)):
             self.addItem(columns_names_list[i])
 
@@ -71,28 +72,42 @@ class SortColumnChoice(QComboBox):
         #ew_sorted_choice = RB.chose_sorted_sens(self.optionsdefiltres.ascgo.text())
         #self.optionsdefiltres.ascgo.setText(new_sorted_choice)
 
+class OrderSensChoice(QPushButton):
+    def __init__(self,update_screen) -> None:
+        super().__init__()
+
+        self.update_screen = update_screen
+        self.iconasc = QIcon("codes/UI/Icones/asc.png")
+        self.icondsc = QIcon("codes/UI/Icones/dsc.png")
+        self.setIcon(self.iconasc)
+        self.setText("Croissant")
+        self.setFixedSize(120, 40)
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
+        
+        self.clicked.connect(self.update)
+
+    def getSatus(self):
+        if self.text() == "Croissant":
+            return 1
+        return 0
+    
+    def update(self):
+        if self.getSatus():
+            self.setIcon(self.icondsc)
+            self.setText("Décroissant")
+        else :
+            self.setIcon(self.iconasc)
+            self.setText("Croissant")
+        self.update_screen()
+    
+    
 ##Barre d'options pour gérer l'affichage de la liste filtrée
 class FilterOptionsBar(QHBoxLayout):
     def __init__(self,ecran,data_frame,db_choice,upload_screen) -> None:
         super().__init__()
 
         self.choixbdd = BaseDeDonneChoice(db_choice,upload_screen)
-        
-        self.rdchoice = QPushButton()
-        self.empty_random_icon = QIcon("codes/UI/Icones/random_empty.png") 
-        self.rdchoice.setIcon(self.empty_random_icon)
-        self.rdchoice.setFixedSize(40, 40)
-        self.rdchoice.setStyleSheet("background-color: #404040; color: #ffffff;")
-        self.is_rdc = False
-
-        self.ascIcon = QIcon("codes/UI/Icones/asc.png")
-        self.ascgo = QPushButton("Croissant")
-        self.ascgo.setIcon(self.ascIcon)
-        self.ascgo.setFixedSize(120, 40)
-        self.ascgo.setStyleSheet("background-color: #404040; color: #ffffff;")
-        self.is_asc = False
-
-        ##
+        self.ascgo = OrderSensChoice(ecran.chargerNewDf)
         self.sort_column_choice = SortColumnChoice(data_frame.columns,ecran.chargerNewDf)
         self.number_of_element_choice = NumberOfElementChoice(ecran.chargerNewDf)
         
@@ -102,28 +117,7 @@ class FilterOptionsBar(QHBoxLayout):
         self.addStretch()
         self.addWidget(self.number_of_element_choice)
         self.addWidget(self.ascgo)
-        self.addWidget(self.rdchoice)
-
-        self.ascgo.clicked.connect(ecran.changersens)
-        self.rdchoice.clicked.connect(self.toggle_rdc)
-
-    def get_text_combo_box(self,combo_box):
-        if combo_box == "nb_of_elements" :
-            return self.number_of_element_choice.currentText()
-        else :
-            return 0
-        
-    def toggle_rdc(self):
-        # Fonction appelée lors du clic sur le bouton "Ajouter en favori"
-        filled_random_icon = QIcon("codes/UI/Icones/random_filled.png")
-
-        self.is_rdc = not self.is_rdc  # Inverser le statut du favori
-
-        # Changer l'icône du bouton en fonction du statut du favori
-        if self.is_rdc:
-            self.rdchoice.setIcon(filled_random_icon)
-        else:
-            self.rdchoice.setIcon(self.empty_random_icon)
+    
 
 ##
 class BaseDeDonneChoice(QComboBox):
@@ -301,39 +295,32 @@ class ScreenResearch(QWidget):
         global choix_de_la_data_base
         frame1 = Db.choisir_db(choix_de_la_data_base,1)
         frame2 = Db.choisir_db(choix_de_la_data_base,3)
-        tempdf = RB.from_filters_to_newDF(frame1,frame2,self.column_of_filter.filters_list)#,self.optionsdefiltres.ascchoice.comboBox.currentText(),self.etat)
+        colonne_choose_to_filter = self.optionsdefiltres.sort_column_choice.currentText()
+        sens_choose_to_filter = self.optionsdefiltres.ascgo.getSatus()
+        tempdf = RB.from_filters_to_newDF(frame1,frame2,self.column_of_filter.filters_list,colonne_choose_to_filter,sens_choose_to_filter)
         self.changer_text(tempdf)
 
-
-    ##Pour choisir si l'affichage se fera en croissant ou décroissant
-    def changersens(self):
-        new_sorted_choice = RB.chose_sorted_sens(self.optionsdefiltres.ascgo.text())
-        self.optionsdefiltres.ascgo.setText(new_sorted_choice)
-        self.etat=not(self.etat)
-        #self.chargerNewDf()
-        dscIcon = QIcon("codes/UI/Icones/dsc.png")
-        self.optionsdefiltres.is_asc = not self.optionsdefiltres.is_asc
-        if self.optionsdefiltres.is_asc:
-            self.optionsdefiltres.ascgo.setIcon(dscIcon)
-        else:
-            self.optionsdefiltres.ascgo.setIcon(self.optionsdefiltres.ascIcon)
     
     ##Gere l'affichage en fonction de tous les éléments choisis
     def changer_text(self,newdf):
         #choix du nombre d'éléments
 
-        choix = self.optionsdefiltres.get_text_combo_box("nb_of_elements")
+        choix = self.optionsdefiltres.number_of_element_choice.currentText()
         n=0
         if choix == 'All' :
             n = len(newdf)
         else :
-            n = int(self.optionsdefiltres.get_text_combo_box("nb_of_elements")) 
+            n = int(self.optionsdefiltres.number_of_element_choice.currentText())
         
 
         if not(newdf.empty) and len(newdf) > n:
             self.listWidget.clear()
-
-            for i in range(n):# Exemple avec 10 éléments
+            random_or_not = self.optionsdefiltres.sort_column_choice.currentText()
+            if random_or_not == 'Random':
+                L = random.sample(range(0, len(newdf)), n)
+            else :   
+                L = range(0,n)
+            for i in L:
                 listItem = QListWidgetItem(self.listWidget)
                 texte = [str(newdf.iat[i,j]) for j in range(1,len(newdf.columns))]
                 global choix_de_la_data_base

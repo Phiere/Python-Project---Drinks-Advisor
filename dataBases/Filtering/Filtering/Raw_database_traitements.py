@@ -12,6 +12,7 @@ import re
 # - Traitement 1 : remplace les colonnes doubles : (ingrédient1, ingrédient2,...) par uen colonne contenant la liste des éléments ([ingrédient1, ingrédient2])
 # - Traitement 2 : normalise les éléments dans une même colonne : (Vodka , vodka --> vodka).
 # - Traitement 3 : rajouter à chaque data_base les colonnes notes_personnelle, commentary, favories
+# - Traitement 4 : (à revoir ?) Enlever les colonnes unnamed 
 # - Attention : lors de rajout d'une nouvelle data_frame, il est préférable de modifier à la main le nom des colonnes afin d'un affichage plus agréable.
 ################################################################
 ################################################################
@@ -103,7 +104,14 @@ def creation_unique_elements_data_frame(data_base):
             uniques_elements_columns_list.append(uniques_elements_column)
 
         return pandas.DataFrame(dict(zip(columns_names_without_twin,uniques_elements_columns_list)))
-    
+
+def suppression_unnamed(data_base):
+     liste_columns_nuisibles = [element for element in data_base.columns if "Unnamed" in element]
+     return data_base.drop(liste_columns_nuisibles,axis = 1)
+  
+     
+
+
 def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_element_data_frame_path):
         
         try:
@@ -115,9 +123,11 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
         else :
             #Applique l'ensemble des traitements nécessaire à l'utilisation des data_bases
             listed_doubles_columns = creation_list_colonnes_doubles(raw_data_frame)
+            listed_doubles_columns = suppression_unnamed(listed_doubles_columns)
             listed_doubles_columns.to_csv(listed_data_frame_path)
 
             uniques_elements_data_frame = creation_unique_elements_data_frame(raw_data_frame)
+            uniques_elements_data_frame = suppression_unnamed(uniques_elements_data_frame)
             uniques_elements_data_frame.to_csv(uniques_element_data_frame_path)
 
     #Attention à modifier les noms des colonnes de la database listed
@@ -135,24 +145,24 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
 
 
 wines_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/winemag-data_first150k.csv"
-wines_listed_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Samples/wines_samples.csv"
-wines_uniques_element_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/wines_unique_elements.csv"
+wines_listed_data_frame_path = "dataBases/Samples/wines_samples.csv"
+wines_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/wines_unique_elements.csv"
 
 coffees_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/coffee_analysis.csv"
-coffees_listed_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Samples/coffee_samples.csv"
-coffees_uniques_element_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv"
+coffees_listed_data_frame_path = "dataBases/Samples/coffee_samples.csv"
+coffees_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv"
 
 cocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/all_drinks.csv"
-cocktails_listed_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Samples/cocktails_samples.csv"
-cocktails_uniques_element_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv"
+cocktails_listed_data_frame_path = "dataBases/Samples/cocktails_samples.csv"
+cocktails_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv"
 
 mocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/Mocktail_dataset.csv"
-mocktails_listed_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Samples/mocktail_samples.csv"
-mocktails_uniques_element_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv"
+mocktails_listed_data_frame_path = "dataBases/Samples/mocktail_samples.csv"
+mocktails_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv"
 
 beers_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/beer_reviews.csv"
-beers_listed_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Samples/beer_samples.csv"
-beers_uniques_element_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/beers_unique_elements.csv"
+beers_listed_data_frame_path = "dataBases/Samples/beer_samples.csv"
+beers_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/beers_unique_elements.csv"
 
 if __name__ == '__main__':
 

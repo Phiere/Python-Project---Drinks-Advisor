@@ -73,5 +73,6 @@ def initilisationSoft():
 dbsall = initilisationSoft()
 dbs = dbsall[0]
 
+
 def choisir_db(index,index_col):
     return dbsall[index][index_col]

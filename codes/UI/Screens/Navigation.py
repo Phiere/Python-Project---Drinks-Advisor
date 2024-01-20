@@ -6,6 +6,7 @@ import Research_page_UI as RU
 import Profil_page_UI as PU
 import Creation_page_UI as CU
 import Choice_page_UI as CH
+import Description_page as DU
 
 
 class MenuLayout(QHBoxLayout): 
@@ -37,16 +38,18 @@ class MenuLayout(QHBoxLayout):
         boutonCreation.pressed.connect(lambda : fenetre_totale.goToScreen(2))
 
 class ScreensToDisplay(QStackedWidget):
-    def __init__(self):
+    def __init__(self,show_description):
         super().__init__()
 
-        research_screen = CH.Composee()
+        research_screen = RU.ScreenResearch(show_description)
         profil_screen = PU.ScreenProfile()
         creation_screen = CU.ScreenCreation()
+        self.description_screen = DU.Description()
 
         self.addWidget(research_screen)
         self.addWidget(profil_screen)
         self.addWidget(creation_screen)
+        self.addWidget(self.description_screen)
 
 class FenetrePrincipale(QWidget):
     def __init__(self):
@@ -56,7 +59,7 @@ class FenetrePrincipale(QWidget):
         final_layout = QVBoxLayout()
 
         Barre_menu = MenuLayout(self)
-        self.screens_to_display = ScreensToDisplay()
+        self.screens_to_display = ScreensToDisplay(show_description = lambda : self.goToScreen(3))
 
         final_layout.addLayout(Barre_menu)
         final_layout.addWidget(self.screens_to_display)
@@ -64,6 +67,8 @@ class FenetrePrincipale(QWidget):
 
 
     def goToScreen(self, index):
+        if index == 3 :
+            self.screens_to_display.description_screen.update()
         self.screens_to_display.setCurrentIndex(index)
 
 
