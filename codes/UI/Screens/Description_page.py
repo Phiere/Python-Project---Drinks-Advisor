@@ -10,34 +10,110 @@ from PyQt5.QtGui import QPixmap,QIcon
 from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,QTextEdit,QPushButton
 from PyQt5.QtCore import QSize,Qt
 import Research_page_UI as RU
+import ast
 
-class LabelPrincipal(QLabel):
-    def __init__(self, drink_name):
+class LabelPrincipal(QWidget):
+    def __init__(self):
         super().__init__()
-        self.setText(f'<font color="red"><b>Nom de la boisson : {drink_name}</b></font>')
 
+        self.setStyleSheet("background-color: #1f1f1f;")
+
+        self.drink_name = QLabel()
+        self.drink_name.setWordWrap(True)  # Pour que le texte s'ajuste automatiquement à la largeur du QLabel
+        self.drink_name.setTextInteractionFlags(Qt.TextSelectableByMouse)  # Rend le texte sélectionnable par la souris
+
+        layout = QHBoxLayout(self)  # Ajouter un QHBoxLayout au widget
+        layout.addWidget(self.drink_name)
+
+    def update(self):
+        boisson =  RU.boisson_choisie
+        if RU.choix_de_la_data_base == 0 or RU.choix_de_la_data_base == 2 : #index de la combo box (wines & beers)
+            drink_name = boisson[4]
+        else :
+            drink_name = boisson[2]
+        
+        self.drink_name.setText(f'<font color="red"><b>Boisson : {drink_name}</b></font>')
+    
 class InformationsDisplay(QHBoxLayout):
     def __init__(self):
         super().__init__()
-        self.description_text = QTextEdit()
-        self.description_text.setPlaceholderText('Description de la boisson...')
+
+        self.description_text = QLabel()
+        self.description_text.setWordWrap(True)  # Pour que le texte s'ajuste automatiquement à la largeur du QLabel
+        self.description_text.setTextInteractionFlags(Qt.TextSelectableByMouse)  # Rend le texte sélectionnable par la souris
 
         image_label = QLabel()
-        #image_label.setPixmap(QPixmap("codes/UI/Icones/boisson.jpg"))
+        image_label.setFixedSize(300,40)
+        # image_label.setPixmap(QPixmap("codes/UI/Icones/boisson.jpg"))
 
         self.addWidget(self.description_text)
         self.addWidget(image_label)
-    
+
     def update(self):
         boisson =  RU.boisson_choisie
-        text = ''
-        for element in boisson :
-            text += str(element)
-            text += '\n'
-        
-        self.description_text.setText(text)
-        
+        formatted_text = self.format_text(boisson)
+        self.description_text.setText(formatted_text)
 
+    def format_text(self, boisson):
+        formatted_lines = []
+        # Wines
+        if RU.choix_de_la_data_base == 0: 
+            column_index = [2, 3, 6, 7, 8, 9, 11]
+            column_names = ['Provenance', 'Description', 'Prix', 'Province', 'Variété', 'Domaine', 'Région']
+        # Cocktails
+        elif RU.choix_de_la_data_base == 1: 
+            column_index = [5, 6, 7, 8, 9, 13, 14, 10, 11]
+            column_names = ['Type de boisson', 'Catégorie', 'Lien Image Verre', 'Type de verre', 'strIBA', 'Ingrédients', 'Quantités', 'Préparation', 'Vidéo']
+        # Beers
+        elif RU.choix_de_la_data_base == 2: 
+            column_index = [2, 3, 10, 11, 12, 13, 8, 9]
+            column_names = ['Brasseur', 'Style', 'Arômes', 'Apparence', 'Palais', 'Goût', 'Nombre d''évaluations', 'Review globale']
+        # Coffee
+        elif RU.choix_de_la_data_base == 3: 
+            column_index = [5, 3, 4, 6, 10, 11, 7]
+            column_names = ['Provenance', 'Torréfacteur', 'Torréfaction', 'Prix', 'Origine', 'Description', 'Note (/100)']
+        # Mocktails
+        elif RU.choix_de_la_data_base == 4: 
+            column_index = [5, 6, 3]
+            column_names = ['Ingrédients', 'Saveurs', 'Note (/5)']
+
+        for i in range(len(column_index)):
+            index = column_index[i]
+            column_name = column_names[i]
+            value = boisson[index]
+            
+            # Convertir la valeur en chaîne de caractères
+            if isinstance(value, list):
+                value_str = ', '.join(str(item) for item in value)
+            elif column_name == 'Prix':
+                if RU.choix_de_la_data_base == 0: 
+                    value_str = f"{value} €"
+                elif RU.choix_de_la_data_base == 3: 
+                    value_str = f"{value} USD/100g"
+            else:
+                value_str = str(value)
+        
+            if value_str.startswith('[') and value_str.endswith(']'):
+                value_list = [item.strip("' ") for item in value_str[1:-1].split(',')]
+                seen_elements = set()
+                value_list_filtered = [item for item in value_list if item != 'nan' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
+                value_str = ', '.join(value_list_filtered)
+            
+            if RU.choix_de_la_data_base == 2 and column_name == 'Arômes':
+                formatted_lines.append(f"Evaluations (/5) : ")
+                remaining_elements = [col for col in column_names[i+1:]]
+                for element in remaining_elements:
+                    if element == 'Nombre d''évaluations':
+                        formatted_lines.append(f"\n   - {element} : {int(boisson[column_index[column_names.index(element)]]):,}")
+                    else :
+                        formatted_lines.append(f"\n   - {element} : {boisson[column_index[column_names.index(element)]]:,}")
+            elif column_name not in ['Apparence', 'Palais', 'Goût', 'Nombre d''évaluations', 'Review globale'] and value_str != 'nan':
+                formatted_line = f"{column_name} : {value_str}"
+                formatted_lines.append(formatted_line)
+                formatted_lines.append('')
+
+        return '\n'.join(formatted_lines)
+    
 class FavoriteInteraction(QPushButton):
     def __init__(self):
         super().__init__()
@@ -45,6 +121,7 @@ class FavoriteInteraction(QPushButton):
         self.star_icon = QIcon("codes/UI/Icones/star_empty.png")
         self.setText('Ajouter en Favori')
         self.setIcon(QIcon(self.star_icon))
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.clicked.connect(self.update_status)
         self.is_favorite = 0 ##for the moment, modify to the actual status after
 
@@ -62,6 +139,7 @@ class CommentInteracton(QPushButton):
         super().__init__()
         self.setText('Commenter')
         self.setIcon(QIcon("codes/UI/Icones/comment.png"))
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.clicked.connect(self.update)
 
     def update(self):
@@ -73,10 +151,11 @@ class RatingInteraction(QPushButton):
         super().__init__()
         self.setText(' Noter')
         self.setIcon(QIcon("codes/UI/Icones/rate.png"))
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.clicked.connect(self.open_rating_page)
 
     def open_rating_page(self):
-        rating_page = DrinkRatingPage('oui', QSize(200,200))
+        rating_page = DrinkRatingPage("OK", QSize(500,1000))
         rating_page.show()
 
 class DrinkRatingPage(QWidget):
@@ -85,10 +164,8 @@ class DrinkRatingPage(QWidget):
         self.drink_name = drink_name
         self.setWindowTitle("Noter la boisson")
 
-        # Rendre la fenêtre transparente
-        self.setWindowOpacity(0.95)
-
-        self.setGeometry(200, 200, parent_size.width(), parent_size.height())  # Utiliser la taille du parent
+        self.setWindowOpacity(0.95) # Rendre la fenêtre transparente
+        self.setGeometry(200, 200, parent_size.height(), parent_size.width())
         self.setStyleSheet("background-color: rgba(51, 51, 51, 0.8);")
 
         label1 = QLabel(self)
@@ -172,20 +249,24 @@ class NotationsInteractions(QHBoxLayout):
 class Description(QWidget):
     def __init__(self, change_screen):
         super().__init__()
+        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
         self.setWindowTitle('Description de la Boisson')
-        self.resize(1000,500)
+        self.setGeometry(200,200,1000,500)
         self.retour = QPushButton('back')
         self.retour.clicked.connect(change_screen)
+        self.drink_name = LabelPrincipal()
         self.informations_display = InformationsDisplay()
         info_layout = QVBoxLayout()
         info_layout.addWidget(self.retour)
-        info_layout.addWidget(LabelPrincipal('drink name'))
+        info_layout.addWidget(self.drink_name)
         info_layout.addLayout(self.informations_display)
+        info_layout.addStretch()
         info_layout.addLayout(NotationsInteractions())
 
         self.setLayout(info_layout)
     
     def update(self):
+        self.drink_name.update()
         self.informations_display.update()
         print("bien entré")
 

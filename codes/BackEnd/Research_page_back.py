@@ -46,13 +46,13 @@ def from_filters_to_newDF(df_used,frame2,filters_list):#,colonne_to_sort,sorted_
         return df_temporary[frame2]
 
 
-#Permet juste de choisir dans quelle sens on va trier 
+#Permet juste de choisir dans quel sens on va trier 
 def chose_sorted_sens(chosed_option):
 
-        if chosed_option == "dsc" :
-            return 'asc'
+        if chosed_option == "Croissant" :
+            return 'Décroissant'
         else :
-            return 'dsc'
+            return 'Croissant'
 
     
     #Filtre les databases sur une colone donée avec un filtre précis

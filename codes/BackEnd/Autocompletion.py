@@ -43,11 +43,11 @@ class Autocompleter(QLineEdit):
 
 #Test sur les verres de la bdd cocktails. Peut être testé sur toutes les bases de données.
         
-cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
-colonne_autocompleteur = cocktail['strGlass']
-colonne_autocompleteur = colonne_autocompleteur.drop_duplicates()
-colonne_autocompleteur = colonne_autocompleteur.dropna()
-colonne_autocompleteur = colonne_autocompleteur.astype(str)
+# cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
+# colonne_autocompleteur = cocktail['strGlass']
+# colonne_autocompleteur = colonne_autocompleteur.drop_duplicates()
+# colonne_autocompleteur = colonne_autocompleteur.dropna()
+# colonne_autocompleteur = colonne_autocompleteur.astype(str)
 
 class MainWindow(QWidget):
     def __init__(self):

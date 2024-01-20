@@ -7,7 +7,7 @@
 ############################################################
 
 import sys
-from PyQt5.QtGui import QMouseEvent
+from PyQt5.QtGui import QPixmap, QIcon, QMouseEvent, QStandardItemModel, QStandardItem, QPalette, QColor
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit,QHBoxLayout,QPushButton,QComboBox,QLabel,QListWidget,QListWidgetItem
 from PyQt5.QtCore import Qt, QObject, pyqtSignal,QEvent
 
@@ -49,6 +49,8 @@ class NumberOfElementChoice(QComboBox):
         self.addItem('50')
         self.addItem('All')
 
+        self.setFixedSize(120, 40)
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.activated[str].connect(layout_interaction)
 
 ##Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
@@ -61,7 +63,9 @@ class SortColumnChoice(QComboBox):
             self.addItem(columns_names_list[i])
 
         self.activated[str].connect(layout_interaction)
-    
+        self.setFixedSize(120,40)
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
+
     def update_sort(self):
         pass
         #ew_sorted_choice = RB.chose_sorted_sens(self.optionsdefiltres.ascgo.text())
@@ -73,8 +77,20 @@ class FilterOptionsBar(QHBoxLayout):
         super().__init__()
 
         self.choixbdd = BaseDeDonneChoice(db_choice,upload_screen)
-        self.rdchoice = QPushButton("random")
-        self.ascgo = QPushButton('dsc')
+        
+        self.rdchoice = QPushButton()
+        self.empty_random_icon = QIcon("codes/UI/Icones/random_empty.png") 
+        self.rdchoice.setIcon(self.empty_random_icon)
+        self.rdchoice.setFixedSize(40, 40)
+        self.rdchoice.setStyleSheet("background-color: #404040; color: #ffffff;")
+        self.is_rdc = False
+
+        self.ascIcon = QIcon("codes/UI/Icones/asc.png")
+        self.ascgo = QPushButton("Croissant")
+        self.ascgo.setIcon(self.ascIcon)
+        self.ascgo.setFixedSize(120, 40)
+        self.ascgo.setStyleSheet("background-color: #404040; color: #ffffff;")
+        self.is_asc = False
 
         ##
         self.sort_column_choice = SortColumnChoice(data_frame.columns,ecran.chargerNewDf)
@@ -82,18 +98,32 @@ class FilterOptionsBar(QHBoxLayout):
         
         ##
         self.addWidget(self.choixbdd)
-        self.addWidget(self.rdchoice)
-        self.addWidget(self.number_of_element_choice)
         self.addWidget(self.sort_column_choice)
+        self.addStretch()
+        self.addWidget(self.number_of_element_choice)
         self.addWidget(self.ascgo)
+        self.addWidget(self.rdchoice)
 
         self.ascgo.clicked.connect(ecran.changersens)
+        self.rdchoice.clicked.connect(self.toggle_rdc)
 
     def get_text_combo_box(self,combo_box):
         if combo_box == "nb_of_elements" :
             return self.number_of_element_choice.currentText()
         else :
             return 0
+        
+    def toggle_rdc(self):
+        # Fonction appelée lors du clic sur le bouton "Ajouter en favori"
+        filled_random_icon = QIcon("codes/UI/Icones/random_filled.png")
+
+        self.is_rdc = not self.is_rdc  # Inverser le statut du favori
+
+        # Changer l'icône du bouton en fonction du statut du favori
+        if self.is_rdc:
+            self.rdchoice.setIcon(filled_random_icon)
+        else:
+            self.rdchoice.setIcon(self.empty_random_icon)
 
 ##
 class BaseDeDonneChoice(QComboBox):
@@ -109,6 +139,8 @@ class BaseDeDonneChoice(QComboBox):
         self.addItem('Coffee')
         self.addItem('Mocktails')
 
+        self.setFixedSize(120,40)
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         # Connecter un signal pour détecter le changement de sélection
         self.currentIndexChanged.connect(self.on_selection_changed)
 
@@ -120,28 +152,35 @@ class BaseDeDonneChoice(QComboBox):
 ############################################################
 ############################################################
 ##Creer l'affichage de tous les éléments trier comme des texte_edits. CLairement c'est le points à modifier les
+
 class CustomListAffichageTri(QWidget):
-    def __init__(self,data_base_utilisee,index_element,completion_text_to_display,GoToDescription):
+    def __init__(self, data_base_utilisee, index_element, completion_text_to_display, GoToDescription):
         super().__init__()
 
         self.appel_a_description = GoToDescription
-
         self.db = data_base_utilisee
         self.ind = index_element
 
         layout = QHBoxLayout(self)
-        ## Créer des zones de textes pour chaque éléments (temporaire, faudra faire plus beau la c'est des texte basiques)
-      
+
         for i in range(len(completion_text_to_display)):
-            lineEdit = QLineEdit()
-            lineEdit.setText(completion_text_to_display[i])
-            layout.addWidget(lineEdit)
-    
+            label = QLabel(completion_text_to_display[i])
+            
+            # Centrer horizontalement pour toutes les colonnes
+            label.setAlignment(Qt.AlignCenter)
+            
+            layout.addWidget(label)
+
+        self.setLayout(layout)
+
+        # Définir le style CSS pour le fond et le texte
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
+
     def mousePressEvent(self, a0: QMouseEvent) -> None:
         global boisson_choisie
 
-        boisson_choisie = self.db.iloc[self.ind] 
-        print('appel  à la page décription', self.ind)
+        boisson_choisie = self.db.iloc[self.ind]
+        print('Appel à la page description', self.ind)
         self.appel_a_description()
 
 ##
@@ -153,7 +192,7 @@ class ColumnCategoriesNames(QWidget):
         label = QLabel(texte, self)
 
         label.setAlignment(Qt.AlignCenter) 
-        label.setStyleSheet("QLabel { color: black; background-color: lightgray; }")
+        label.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
 
         layout = QVBoxLayout(self)
         layout.addWidget(label)
@@ -198,6 +237,7 @@ class ColumnOfFilter(QVBoxLayout):
 
         for filter in self.filters_list :
             self.addWidget(filter.name_edit)
+
 ############################################################
 ############################################################
 ##Creation de l'écran
@@ -206,7 +246,8 @@ class ScreenResearch(QWidget):
         super().__init__()
         self.setWindowTitle("Description Window")
         self.resize(1000,500)
-
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
+        
         self.GoToDescription = change_screen
 
     
@@ -216,6 +257,7 @@ class ScreenResearch(QWidget):
 
         #Création de la barre d'option pour manipuler les données
         self.optionsdefiltres = FilterOptionsBar(self,self.data_frame,choix_de_la_data_base,self.upload_screen)
+        self.etat = True
         
         #Créations des filtres dynamique
         self.column_of_filter = ColumnOfFilter(self.data_frame,self.chargerNewDf)
@@ -268,8 +310,13 @@ class ScreenResearch(QWidget):
         new_sorted_choice = RB.chose_sorted_sens(self.optionsdefiltres.ascgo.text())
         self.optionsdefiltres.ascgo.setText(new_sorted_choice)
         self.etat=not(self.etat)
-        self.chargerNewDf()
-
+        #self.chargerNewDf()
+        dscIcon = QIcon("codes/UI/Icones/dsc.png")
+        self.optionsdefiltres.is_asc = not self.optionsdefiltres.is_asc
+        if self.optionsdefiltres.is_asc:
+            self.optionsdefiltres.ascgo.setIcon(dscIcon)
+        else:
+            self.optionsdefiltres.ascgo.setIcon(self.optionsdefiltres.ascIcon)
     
     ##Gere l'affichage en fonction de tous les éléments choisis
     def changer_text(self,newdf):

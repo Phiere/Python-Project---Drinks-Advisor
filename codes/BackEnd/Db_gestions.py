@@ -4,7 +4,7 @@ import pandas
 ####################################
 #Ouverture des BDD et créations des données filtrées pour l'autocomplétion etc
 #Strcuture des fonctions :
-#  ..._cleaned : Databases nettoyées et sous forme de liste pour les colonnes doubles. Contiennent toutes les donées
+#  ..._cleaned : Databases nettoyées et sous forme de liste pour les colonnes doubles. Contiennent toutes les données
 #  ..._pertinents_elements : Liste des colonnes qui serviront de filtres pour la recherche
 #  ..._unique_elements : Database des éléments uniques de toutes les colonnes
 #  ..._filters : Datanse des éléments uniques pour les filtres de l'autocomplétion

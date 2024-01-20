@@ -1,4 +1,5 @@
 import sys
+from PyQt5.QtGui import QPixmap, QIcon
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget,QHBoxLayout
 
 import Research_page_UI as RU
@@ -11,13 +12,24 @@ class MenuLayout(QHBoxLayout):
     def __init__(self,fenetre_totale) -> None:
         super().__init__()
 
+        boutonRetour = QPushButton()
+        boutonRetour.setIcon(QIcon("codes/UI/Icones/back.png"))
+        boutonRetour.setFixedSize(40, 40)
+        boutonRetour.setStyleSheet("background-color: #404040; color: #ffffff;")
 
-        boutonRetour = QPushButton('Explore')
-        boutonCreation = QPushButton('Creation')
-        boutonSettings = QPushButton('Profile')
-    
+        boutonCreation = QPushButton()
+        boutonCreation.setIcon(QIcon("codes/UI/Icones/plus.png"))
+        boutonCreation.setFixedSize(40, 40)
+        boutonCreation.setStyleSheet("background-color: #404040; color: #ffffff;")
+
+        boutonSettings = QPushButton()
+        boutonSettings.setIcon(QIcon("codes/UI/Icones/profile.png"))
+        boutonSettings.setFixedSize(40, 40)
+        boutonSettings.setStyleSheet("background-color: #404040; color: #ffffff;")
+
         self.addWidget(boutonRetour)
         self.addWidget(boutonCreation)
+        self.addStretch()
         self.addWidget(boutonSettings)
 
         boutonRetour.pressed.connect(lambda : fenetre_totale.goToScreen(0))
@@ -39,7 +51,8 @@ class ScreensToDisplay(QStackedWidget):
 class FenetrePrincipale(QWidget):
     def __init__(self):
         super().__init__()
-
+        self.setStyleSheet("background-color: #1f1f1f;")
+        
         final_layout = QVBoxLayout()
 
         Barre_menu = MenuLayout(self)
@@ -56,7 +69,7 @@ class FenetrePrincipale(QWidget):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    
+
     main_window = FenetrePrincipale()
     main_window.show()
     

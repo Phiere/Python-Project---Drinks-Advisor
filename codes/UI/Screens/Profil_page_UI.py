@@ -7,6 +7,7 @@
 ############################################################
 
 import sys
+import seaborn as sns
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QFrame,QGridLayout,QHBoxLayout,QLabel,QListWidgetItem,QListWidget
 from PyQt5.QtCore import QSize
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -20,7 +21,7 @@ categories = ['Vins', 'Cocktails', 'Cafés', 'Mocktails', 'Bières']
 class FavorieDataLine(QWidget):
     def __init__(self,textes_a_afficher):
         super().__init__()
-
+        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
         self.hbox = QHBoxLayout(self)
 
         label_list = []
@@ -61,9 +62,11 @@ class FavorieDataDisplay(QListWidget):
 class MeanByCategories(QWidget):
     def __init__(self):     
         super().__init__()
-
+        
+        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
         # Créer un canevas pour le graphique
         self.figure, self.ax = plt.subplots()
+        self.figure.set_facecolor('#1f1f1f')  # Définir la couleur du fond de la figure
         self.canvas = FigureCanvas(self.figure)
         layout = QGridLayout(self)
         layout.addWidget(self.canvas)
@@ -72,10 +75,20 @@ class MeanByCategories(QWidget):
         values = Pb.notes_mean()
         print(values)
         # Tracer l'histogramme
-        self.ax.bar(categories, values, color='skyblue')
+        sns.barplot(x=categories, y=values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
+        #self.ax.bar(categories, values, color='skyblue')
         #self.ax.set_title('Exemple d\'histogramme')
         #self.ax.set_xlabel('Catégories')
         #self.ax.set_ylabel('Valeurs')
+        self.ax.set_facecolor('#1f1f1f')
+
+        # Définir la couleur du texte sur l'axe
+        self.ax.xaxis.label.set_color('white')
+        self.ax.yaxis.label.set_color('white')
+        self.ax.tick_params(axis='both', colors='white')
+
+        for spine in self.ax.spines.values():
+            spine.set_edgecolor('white')
 
         # Mettre à jour le canevas
         self.canvas.draw()
@@ -84,8 +97,10 @@ class FavoriesByCategories(QWidget):
     def __init__(self):
         super().__init__()
 
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         # Créer un canevas pour le graphique
         self.figure, self.ax = plt.subplots()
+        self.figure.set_facecolor('#1f1f1f')  # Définir la couleur du fond de la figure
         self.canvas = FigureCanvas(self.figure)
         layout = QGridLayout(self)
         layout.addWidget(self.canvas)
@@ -94,10 +109,20 @@ class FavoriesByCategories(QWidget):
         values = Pb.favories_count()
 
         # Tracer l'histogramme
-        self.ax.bar(categories, values, color='skyblue')
+        sns.barplot(x=categories, y=values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
+        #self.ax.bar(categories, values, color='skyblue')
         #self.ax.set_title('Exemple d\'histogramme')
         #self.ax.set_xlabel('Catégories')
         #self.ax.set_ylabel('Valeurs')
+        self.ax.set_facecolor('#1f1f1f')
+
+        # Définir la couleur du texte sur l'axe
+        self.ax.xaxis.label.set_color('white')
+        self.ax.yaxis.label.set_color('white')
+        self.ax.tick_params(axis='both', colors='white')
+        
+        for spine in self.ax.spines.values():
+            spine.set_edgecolor('white')
 
         # Mettre à jour le canevas
         self.canvas.draw()
@@ -106,6 +131,9 @@ class FavoriesByCategories(QWidget):
 class ScreenProfile(QWidget):
     def __init__(self) -> None:
         super().__init__()
+
+        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
+
         self.setWindowTitle("Profil Window")
         self.resize(1000,500)
 
