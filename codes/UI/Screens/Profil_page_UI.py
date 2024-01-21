@@ -128,25 +128,25 @@ class FavoriesByCategories(QWidget):
         self.canvas.draw()
 
 ##Creation de l'écran
+##BENE
 class ScreenProfile(QWidget):
     def __init__(self) -> None:
         super().__init__()
-
         self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
-
         self.setWindowTitle("Profil Window")
         self.resize(1000,500)
 
         ##Partie droite avec les graphiques
-        graphiques_layout = QVBoxLayout()
-        graphiques_layout.addWidget( MeanByCategories() )
-        graphiques_layout.addWidget(FavoriesByCategories())
-
-        ##
+        mean_by_categories_graph = MeanByCategories()
+        favories_by_categories = FavoriesByCategories()
         favorie_data_diplay = FavorieDataDisplay()
-
-        ##
+        graphiques_layout = QVBoxLayout()
         ecran_layout = QHBoxLayout()
+
+        
+        graphiques_layout.addWidget(mean_by_categories_graph)
+        graphiques_layout.addWidget(favories_by_categories)
+
         ecran_layout.addWidget(favorie_data_diplay,5)
         ecran_layout.addLayout(graphiques_layout,5)
 

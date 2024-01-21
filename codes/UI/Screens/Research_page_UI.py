@@ -24,7 +24,7 @@ dbs = Db.dbs
 
 choix_de_la_data_base = 0
 
-boisson_choisie = []
+boisson_choisie = dbs[0].iloc[0]
 
 #Détecter le signal quand j'appuie sur entrée
 class KeyEventFilter(QObject):

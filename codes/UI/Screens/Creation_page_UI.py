@@ -16,9 +16,11 @@ sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Creation_page_back as Cb
 
-dbs = Cb.dbs
+global data_base_choose
+data_base_choose = 0
 
 #Boutton permettant le choix de la database à utiliser
+##BENE
 class DataBaseChoice(QComboBox):
     def __init__(self,change_completion_lines):
         super().__init__()
@@ -30,23 +32,25 @@ class DataBaseChoice(QComboBox):
         self.addItem('Beers')
         self.addItem('Coffee')
         self.addItem('Mocktails')
+        self.currentIndexChanged.connect(self.update)
 
-        # Connecter un signal pour détecter le changement de sélection
-        self.currentIndexChanged.connect(self.on_selection_changed)
-
-        
-    def on_selection_changed(self,index):
-        self.fonction(Db.choisir_db(index,0).columns)
+    def update(self,index):
+        global data_base_choose
+        data_base_choose = index
+        self.fonction()
 
 #Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
+##BENE
 class ListeElementToComplete(QListWidget):
-    def __init__(self,names_columns)-> None:
+    def __init__(self)-> None:
         super().__init__()
 
-        self.update(names_columns)
+        self.update()
 
-    def update(self,names_columns):
+    def update(self):
         self.clear()
+        global data_base_choose
+        names_columns = Db.choisir_db(data_base_choose,0).columns
 
         for i in range(1,len(names_columns)):
                 
@@ -66,36 +70,43 @@ class ListeElementToComplete(QListWidget):
                 text_list.append(widget.text())
         return text_list
 
+##BENE
+class CreationButton(QPushButton):
+    def __init__(self)-> None:
+        super().__init__()
+
+        self.setText("Créer")
+        self.clicked.connect(self.create_new_drink)
+
+    def create_new_drink(self):
+        global data_base_choose
+        Cb.create_new_drink(Db.choisir_db(data_base_choose,0),self)
 
 ##Creation de l'écran
+##BENE
 class ScreenCreation(QWidget):
     def __init__(self) -> None:
         super().__init__()
         self.setWindowTitle("Creation Window")
         self.resize(1000,500)
 
-        
+        data_base_choice = DataBaseChoice(self.update)
+        self.list_element_to_complete = ListeElementToComplete()
         screen_layout = QVBoxLayout()
-        screen_layout.addWidget(DataBaseChoice(self.adding_lines_for_completion))
+        creation_button = CreationButton()
 
+        screen_layout.addWidget(data_base_choice)
+        screen_layout.addWidget(self.list_element_to_complete)
+        screen_layout.addWidget(creation_button)
 
-        self.liste_element_to_complete = ListeElementToComplete(dbs[0].columns)
-        screen_layout.addWidget(self.liste_element_to_complete)
-        self.adding_lines_for_completion(dbs[0].columns)
-
-        launch_creation = QPushButton("Créer")
-        launch_creation.pressed.connect(self.create_new_drink)
-        screen_layout.addWidget(launch_creation)
-
-
+        self.update()
         self.setLayout(screen_layout)
     
-    def adding_lines_for_completion(self,names_columns):
-        self.liste_element_to_complete.update(names_columns)
+    def update(self):
+        self.list_element_to_complete.update()
     
-    def create_new_drink(self):
-        Cb.create_new_drink(dbs[0],self)
 
+    
 ############################################################
 ############################################################
 ############################################################

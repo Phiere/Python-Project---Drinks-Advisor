@@ -7,10 +7,11 @@ Created on Sun Jan  7 14:00:56 2024
 
 import sys
 from PyQt5.QtGui import QPixmap,QIcon
-from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,QTextEdit,QPushButton
+from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,QTextEdit,QPushButton,QLineEdit
 from PyQt5.QtCore import QSize,Qt
 import Research_page_UI as RU
 import ast
+import pandas as pd
 
 class LabelPrincipal(QWidget):
     def __init__(self):
@@ -33,6 +34,7 @@ class LabelPrincipal(QWidget):
             drink_name = boisson[2]
         
         self.drink_name.setText(f'<font color="red"><b>Boisson : {drink_name}</b></font>')
+  
     
 class InformationsDisplay(QHBoxLayout):
     def __init__(self):
@@ -113,39 +115,57 @@ class InformationsDisplay(QHBoxLayout):
                 formatted_lines.append('')
 
         return '\n'.join(formatted_lines)
-    
+
+##BENE  
 class FavoriteInteraction(QPushButton):
     def __init__(self):
         super().__init__()
 
-        self.star_icon = QIcon("codes/UI/Icones/star_empty.png")
+        self.star_icon_empty = QIcon("codes/UI/Icones/star_empty.png")
+        self.star_icon_filled = QIcon("codes/UI/Icones/star_filled.png")
+
         self.setText('Ajouter en Favori')
-        self.setIcon(QIcon(self.star_icon))
-        self.setStyleSheet("background-color: #404040; color: #ffffff;")
-        self.clicked.connect(self.update_status)
-        self.is_favorite = 0 ##for the moment, modify to the actual status after
-
-    def update_status(self):
-        filled_star_icon = QIcon("codes/UI/Icones/star_filled.png")
-
-        self.is_favorite = not self.is_favorite
-        if self.is_favorite:
-            self.setIcon(filled_star_icon)
-        else:
-            self.setIcon(self.star_icon)
-
-class CommentInteracton(QPushButton):
-    def __init__(self):
-        super().__init__()
-        self.setText('Commenter')
-        self.setIcon(QIcon("codes/UI/Icones/comment.png"))
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.clicked.connect(self.update)
 
-    def update(self):
-        pass
+        self.update()
 
-#Revoir ça, j'aime pas
+    def update(self):
+        
+        favory = RU.boisson_choisie[-1]
+        RU.boisson_choisie[-1] = not favory
+
+        if favory:
+            self.setIcon(self.star_icon_filled)
+        else:
+            self.setIcon(self.star_icon_empty)
+
+##BENE
+class CommentInteracton(QHBoxLayout):
+    def __init__(self):
+        super().__init__()
+
+        bouton = QPushButton('Commenter')
+        bouton.setIcon(QIcon("codes/UI/Icones/comment.png"))
+        bouton.setStyleSheet("background-color: #404040; color: #ffffff;")
+        bouton.clicked.connect(self.update)
+
+        self.texte = QLineEdit()
+        self.update()
+        
+        self.addWidget(bouton)
+        self.addWidget(self.texte)
+
+
+    def update(self):
+        commentaire = RU.boisson_choisie[-2]
+
+        if   pd.isna(commentaire):
+            self.texte.setPlaceholderText('Laisser un commentaire sur votre boisson')
+        else :
+            self.texte.setPlaceholderText(commentaire)
+
+
 class RatingInteraction(QPushButton):
     def __init__(self):
         super().__init__()
@@ -157,6 +177,10 @@ class RatingInteraction(QPushButton):
     def open_rating_page(self):
         rating_page = DrinkRatingPage("OK", QSize(500,1000))
         rating_page.show()
+    
+    def update(self):
+        pass
+
 
 class DrinkRatingPage(QWidget):
     def __init__(self, drink_name, parent_size):
@@ -237,15 +261,30 @@ class DrinkRatingPage(QWidget):
         self.close()
 
 
-class NotationsInteractions(QHBoxLayout):
+##BENE
+class NotationsInteractions(QVBoxLayout):
     def __init__(self, ):
         super().__init__()
 
-        self.addWidget(FavoriteInteraction())
-        self.addWidget(CommentInteracton())
-        self.addWidget(RatingInteraction())
+        self.favorite_interaction = FavoriteInteraction()
+        self.rating_interaction = RatingInteraction()
+        self.comment_interaction = CommentInteracton()
+        int_layout = QHBoxLayout()
 
 
+        int_layout.addWidget(self.favorite_interaction)
+        int_layout.addWidget(self.rating_interaction)
+
+        self.addLayout(int_layout)
+        self.addLayout(self.comment_interaction)
+
+    def update(self):
+        self.favorite_interaction.update()
+        self.rating_interaction.update()
+        self.comment_interaction.update()
+        
+
+##BENE
 class Description(QWidget):
     def __init__(self):
         super().__init__()
@@ -253,21 +292,23 @@ class Description(QWidget):
         self.setWindowTitle('Description de la Boisson')
         self.setGeometry(200,200,1000,500)
 
+
         self.drink_name = LabelPrincipal()
         self.informations_display = InformationsDisplay()
+        self.notations_interactions = NotationsInteractions()
         info_layout = QVBoxLayout()
   
         info_layout.addWidget(self.drink_name)
         info_layout.addLayout(self.informations_display)
         info_layout.addStretch()
-        info_layout.addLayout(NotationsInteractions())
+        info_layout.addLayout(self.notations_interactions)
 
         self.setLayout(info_layout)
     
     def update(self):
         self.drink_name.update()
         self.informations_display.update()
-        print("bien entré")
+        self.notations_interactions.update()
 
 ############################################################
 ############################################################
@@ -282,25 +323,10 @@ class Description(QWidget):
 
 def main():
     app = QApplication(sys.argv)
-    fenetre = Description(lambda : 1)
+    fenetre = Description()
     fenetre.show()
     sys.exit(app.exec_())
-
 
 if __name__ == '__main__':
     main()
     
-
-"""
-    # 1er layout - Barre de navigation
-        home_button = QPushButton(self)
-        home_button.setIcon(QIcon("codes/UI/Icones/home.png"))
-        home_button.setFixedSize(QSize(30, 30))  # Ajustez la taille selon vos besoins      
-        
-        back_button = QPushButton(self)
-        back_button.setIcon(QIcon("codes/UI/Icones/back.png"))
-        back_button.setFixedSize(QSize(30, 30))  # Ajustez la taille selon vos besoins
-        
-        profile_button = QPushButton(self)
-        profile_button.setIcon(QIcon("codes/UI/Icones/profile.png"))
-        profile_button.setFixedSize(QSize(30, 30))  # Ajustez la taille selon vos besoins"""
