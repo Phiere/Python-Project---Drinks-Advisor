@@ -24,7 +24,8 @@ dbs = Db.dbs
 
 choix_de_la_data_base = 0
 
-boisson_choisie = dbs[0].iloc[0]
+db,index = 0,0
+boisson_choisie = (db,index)
 
 #Détecter le signal quand j'appuie sur entrée
 class KeyEventFilter(QObject):
@@ -173,8 +174,7 @@ class CustomListAffichageTri(QWidget):
     def mousePressEvent(self, a0: QMouseEvent) -> None:
         global boisson_choisie
 
-        boisson_choisie = self.db.iloc[self.ind]
-        print('Appel à la page description', self.ind)
+        boisson_choisie = (0,self.ind)
         self.appel_a_description()
 
 ##
@@ -274,6 +274,7 @@ class ScreenResearch(QWidget):
         #Assemblage layout
         descriptionLayout = QHBoxLayout()
         self.screenLayout = QVBoxLayout()
+
         descriptionLayout.addLayout(self.listlayout,8)
         descriptionLayout.addLayout(self.column_of_filter,2)
         self.screenLayout.addLayout(self.optionsdefiltres)

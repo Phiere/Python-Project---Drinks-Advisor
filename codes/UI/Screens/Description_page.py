@@ -11,6 +11,9 @@ from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,
 from PyQt5.QtCore import QSize,Qt
 import Research_page_UI as RU
 import ast
+sys.path.append('codes/BackEnd/')
+import Db_gestions as Db
+import Research_page_back as RB 
 import pandas as pd
 
 class LabelPrincipal(QWidget):
@@ -27,15 +30,17 @@ class LabelPrincipal(QWidget):
         layout.addWidget(self.drink_name)
 
     def update(self):
-        boisson =  RU.boisson_choisie
+        db,index = RU.boisson_choisie
+        boisson = Db.dbsall[db][0].iloc[index]
+       
         if RU.choix_de_la_data_base == 0 or RU.choix_de_la_data_base == 2 : #index de la combo box (wines & beers)
             drink_name = boisson[4]
         else :
             drink_name = boisson[2]
         
         self.drink_name.setText(f'<font color="red"><b>Boisson : {drink_name}</b></font>')
-  
-    
+
+
 class InformationsDisplay(QHBoxLayout):
     def __init__(self):
         super().__init__()
@@ -52,7 +57,10 @@ class InformationsDisplay(QHBoxLayout):
         self.addWidget(image_label)
 
     def update(self):
-        boisson =  RU.boisson_choisie
+        db,index = RU.boisson_choisie
+
+        boisson = Db.dbsall[db][0].iloc[index]
+
         formatted_text = self.format_text(boisson)
         self.description_text.setText(formatted_text)
 
@@ -126,19 +134,30 @@ class FavoriteInteraction(QPushButton):
 
         self.setText('Ajouter en Favori')
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
-        self.clicked.connect(self.update)
-
-        self.update()
-
-    def update(self):
+        self.clicked.connect(self.update_status)
+        self.setIcon(self.star_icon_empty)
         
-        favory = RU.boisson_choisie[-1]
-        RU.boisson_choisie[-1] = not favory
+
+    def update_icon(self):
+        
+        db,index = RU.boisson_choisie
+        favory = Db.dbsall[db][0].iloc[index][-1]
 
         if favory:
             self.setIcon(self.star_icon_filled)
         else:
             self.setIcon(self.star_icon_empty)
+
+        
+
+       
+    def update_status(self):
+        db,index = RU.boisson_choisie
+        favory = not(Db.dbsall[db][0].iloc[index][-1])
+        Db.dbsall[db][0].iloc[index,-1] = favory
+        self.update_icon()
+
+
 
 ##BENE
 class CommentInteracton(QHBoxLayout):
@@ -158,7 +177,7 @@ class CommentInteracton(QHBoxLayout):
 
 
     def update(self):
-        commentaire = RU.boisson_choisie[-2]
+        commentaire = "OUIIIIII"
 
         if   pd.isna(commentaire):
             self.texte.setPlaceholderText('Laisser un commentaire sur votre boisson')
@@ -279,7 +298,7 @@ class NotationsInteractions(QVBoxLayout):
         self.addLayout(self.comment_interaction)
 
     def update(self):
-        self.favorite_interaction.update()
+        self.favorite_interaction.update_icon()
         self.rating_interaction.update()
         self.comment_interaction.update()
         

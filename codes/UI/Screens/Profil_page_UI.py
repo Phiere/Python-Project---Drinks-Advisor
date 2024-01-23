@@ -53,7 +53,7 @@ class FavorieDataDisplay(QListWidget):
                 ligne = favorie_df.iloc[i]
                 element_ligne = [str(e) for e in ligne]
                 element_ligne.append(categories[j])
-                print(element_ligne)
+
                 favorie_data_line = FavorieDataLine(element_ligne)
                 listItem.setSizeHint(favorie_data_line.sizeHint())
                 self.addItem(listItem)
@@ -73,7 +73,7 @@ class MeanByCategories(QWidget):
 
         # Générer des données pour l'exemple
         values = Pb.notes_mean()
-        print(values)
+
         # Tracer l'histogramme
         sns.barplot(x=categories, y=values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
         #self.ax.bar(categories, values, color='skyblue')

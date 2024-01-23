@@ -57,7 +57,7 @@ def creation_list_colonnes_doubles(data_base):
 
         data_base['PersonalRating'] = '-1'
         data_base['Commentary'] = ''
-        data_base['Favories'] = ''
+        data_base['Favories'] = '0'
         return data_base
     
     #Améliorer les compréhensions de listes
@@ -110,8 +110,6 @@ def suppression_unnamed(data_base):
      return data_base.drop(liste_columns_nuisibles,axis = 1)
   
      
-
-
 def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_element_data_frame_path):
         
         try:
