@@ -171,22 +171,26 @@ class CommentInteracton(QHBoxLayout):
         bouton = QPushButton('Commenter')
         bouton.setIcon(QIcon("codes/UI/Icones/comment.png"))
         bouton.setStyleSheet("background-color: #404040; color: #ffffff;")
-        bouton.clicked.connect(self.update)
+        bouton.clicked.connect(self.comment)
 
         self.texte = QLineEdit()
-        self.update()
         
         self.addWidget(bouton)
         self.addWidget(self.texte)
 
 
     def update(self):
-        commentaire = "OUIIIIII"
-
+        db,index = RU.boisson_choisie
+        commentaire = Db.dbsall[db][0].iloc[index][-2]
+        self.texte.setText('')
         if   pd.isna(commentaire):
             self.texte.setPlaceholderText('Laisser un commentaire sur votre boisson')
         else :
             self.texte.setPlaceholderText(commentaire)
+    
+    def comment(self):
+        db,index = RU.boisson_choisie
+        Db.dbsall[db][0].iloc[index,-2] = self.texte.text()
 
 
 class RatingInteraction(QPushButton):
@@ -198,12 +202,14 @@ class RatingInteraction(QPushButton):
         self.clicked.connect(self.open_rating_page)
 
     def open_rating_page(self):
-        rating_page = DrinkRatingPage("OK", QSize(500,1000))
-        rating_page.show()
+        self.rating_page = DrinkRatingPage("OK", QSize(500,1000))
+        self.rating_page.show()
     
     def update(self):
         pass
-
+    
+    def rate(self):
+        self.rating_page.write_to_database()
 
 class DrinkRatingPage(QWidget):
     def __init__(self, drink_name, parent_size):
@@ -281,6 +287,8 @@ class DrinkRatingPage(QWidget):
 
     def write_to_database(self):
         print(f"Note pour {self.drink_name}: {self.rating}/5")
+        db,index = RU.boisson_choisie
+        Db.dbsall[db][0].iloc[index,-3] = self.rating
         self.close()
 
 

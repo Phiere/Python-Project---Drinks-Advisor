@@ -23,9 +23,8 @@ import Description_page as Dp
 dbs = Db.dbs
 
 choix_de_la_data_base = 0
-
-db,index = 0,0
-boisson_choisie = (db,index)
+index = 0
+boisson_choisie = (choix_de_la_data_base,index)
 
 #Détecter le signal quand j'appuie sur entrée
 class KeyEventFilter(QObject):
@@ -56,22 +55,26 @@ class NumberOfElementChoice(QComboBox):
 
 ##Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
 class SortColumnChoice(QComboBox):
-    def __init__(self,columns_names_list,layout_interaction) -> None:
+    def __init__(self,upload_screen):
         super().__init__()
-
-        ##
-        self.addItem('Random')
-        for i in range(1,len(columns_names_list)):
-            self.addItem(columns_names_list[i])
-
-        self.activated[str].connect(layout_interaction)
+        self.activated[str].connect(upload_screen)
         self.setFixedSize(120,40)
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
 
-    def update_sort(self):
-        pass
-        #ew_sorted_choice = RB.chose_sorted_sens(self.optionsdefiltres.ascgo.text())
-        #self.optionsdefiltres.ascgo.setText(new_sorted_choice)
+        ##
+        self.update()
+       
+    def update(self):
+        global choix_de_la_data_base
+        names = Db.dbsall[choix_de_la_data_base][0].columns ##BOURDE
+
+        self.clear()
+        self.addItem('Random')
+        for name in names :
+            self.addItem(name)
+            
+        
+
 
 class OrderSensChoice(QPushButton):
     def __init__(self,update_screen) -> None:
@@ -109,7 +112,8 @@ class FilterOptionsBar(QHBoxLayout):
 
         self.choixbdd = BaseDeDonneChoice(db_choice,upload_screen)
         self.ascgo = OrderSensChoice(ecran.chargerNewDf)
-        self.sort_column_choice = SortColumnChoice(data_frame.columns,ecran.chargerNewDf)
+        self.sort_column_choice = SortColumnChoice(upload_screen)
+
         self.number_of_element_choice = NumberOfElementChoice(ecran.chargerNewDf)
         
         ##
@@ -118,6 +122,10 @@ class FilterOptionsBar(QHBoxLayout):
         self.addStretch()
         self.addWidget(self.number_of_element_choice)
         self.addWidget(self.ascgo)
+
+    def update(self):
+        self.sort_column_choice.update()
+
     
 
 ##
@@ -222,7 +230,7 @@ class ColumnOfFilter(QVBoxLayout):
     def upload_filters(self,data_frame,chargerNewDf):
         global choix_de_la_data_base
     
-        self.filters_list = RB.from_df_to_filters(data_frame,chargerNewDf)
+        self.filters_list = RB.from_df_to_filters(Db.choisir_db(choix_de_la_data_base,2),chargerNewDf)
         while self.count():
             item = self.takeAt(0)
             widget = item.widget()
@@ -285,10 +293,14 @@ class ScreenResearch(QWidget):
         self.changer_text(Db.choisir_db(choix_de_la_data_base,1)[Db.choisir_db(choix_de_la_data_base,3)])
         
     def upload_screen(self):
+        
         global choix_de_la_data_base
         self.data_frame = Db.choisir_db(choix_de_la_data_base,2)
         self.column_of_filter.upload_filters(self.data_frame,self.chargerNewDf)
         self.chargerNewDf()
+        print('rentré')
+        self.optionsdefiltres.update()
+        print('sorti')
         self.Line_Of_Categories_Names.upload_names()
 
     #Charher la df filtrée avec les filtres
@@ -325,8 +337,6 @@ class ScreenResearch(QWidget):
                 listItem = QListWidgetItem(self.listWidget)
                 texte = [str(newdf.iat[i,j]) for j in range(1,len(newdf.columns))]
                 global choix_de_la_data_base
-                #index_element = Db.choisir_db(choix_de_la_data_base,0)[0,i]
-                index = newdf.loc[i].index
                 customItemWidget = CustomListAffichageTri(Db.choisir_db(choix_de_la_data_base,0),int(newdf.iat[i,0]),texte,self.GoToDescription)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)

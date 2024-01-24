@@ -6,13 +6,13 @@ from PyQt5.QtWidgets import QWidget
 dbs = Db.initilisationSoft()[0]
 
 class Filtre(QWidget):
-    def __init__(self,name_column,data_base,displayed_text) -> None:
+    def __init__(self,name_column,data_base) -> None:
         super().__init__()
         self.nom_col = name_column
         data_base = data_base.astype(str)
         autocompleter = autoc.Autocompleter(data_base)
         self.name_edit = autocompleter.lineEdit
-        self.name_edit.setPlaceholderText(displayed_text)
+        self.name_edit.setPlaceholderText(self.nom_col)
 
 
 # Prend en entrée la df utilisée et construit une list de filtres qui seront utililisés à la
@@ -22,7 +22,7 @@ def from_df_to_filters(df_used,take_text):
     columns_names = df_used.columns 
     filters_list = []
     for i in range(1,len(columns_names)):
-        filtre = Filtre(columns_names[i],df_used.iloc[:,i],columns_names[i])
+        filtre = Filtre(columns_names[i],df_used.iloc[:,i])
         filters_list.append(filtre)
     for i in range(len(filters_list)):
             filters_list[i].name_edit.textEdited.connect(take_text)

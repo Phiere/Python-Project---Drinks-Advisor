@@ -19,7 +19,6 @@ class Autocompleter(QLineEdit):
 
 
         self.lineEdit = QLineEdit()
-        print('colonne',colonne)
         autocomplete_list = colonne.tolist()
 
         # Création d'un QCompleter avec la liste des suggestions
