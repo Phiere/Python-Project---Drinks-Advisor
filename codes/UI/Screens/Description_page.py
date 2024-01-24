@@ -47,7 +47,8 @@ class InformationsDisplay(QScrollArea):
 
         self.scroll_content = QWidget()
         layout = QVBoxLayout(self.scroll_content)
-        
+        layout.setAlignment(Qt.AlignTop)
+
         self.description_text = QLabel()
         self.description_text.setWordWrap(True)
         self.description_text.setTextInteractionFlags(Qt.TextSelectableByMouse)
@@ -130,7 +131,7 @@ class InformationsDisplay(QScrollArea):
                         formatted_lines.append(f"\n   - {element} : {int(boisson[column_index[column_names.index(element)]]):,}")
                     else :
                         formatted_lines.append(f"\n   - {element} : {boisson[column_index[column_names.index(element)]]:,}")
-            elif column_name not in ['Apparence', 'Palais', 'Goût', 'Nombre d''évaluations', 'Review globale'] and value_str != 'nan':
+            elif column_name not in ['Apparence', 'Palais', 'Goût', 'Nombre d''évaluations', 'Review globale'] and value_str != 'nan'and value_str != '' and value_str != ' ':
                 formatted_line = f"{column_name} : {value_str}"
                 formatted_lines.append(formatted_line)
                 formatted_lines.append('')
@@ -149,7 +150,8 @@ class FavoriteInteraction(QPushButton):
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.clicked.connect(self.update_status)
         self.setIcon(self.star_icon_empty)
-        
+        self.setFixedSize(1000,40)
+
     def update_icon(self):
         
         db =  RU.choix_de_la_data_base
@@ -178,8 +180,10 @@ class CommentInteracton(QHBoxLayout):
         bouton.setIcon(QIcon("codes/UI/Icones/comment.png"))
         bouton.setStyleSheet("background-color: #404040; color: #ffffff;")
         bouton.clicked.connect(self.comment)
+        bouton.setFixedSize(150,40)
 
         self.texte = QLineEdit()
+        self.texte.setFixedSize(850,40)
         
         self.addWidget(bouton)
         self.addWidget(self.texte)
