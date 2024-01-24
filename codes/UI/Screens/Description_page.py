@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+ # -*- coding: utf-8 -*-
 """
 Created on Sun Jan  7 14:00:56 2024
 
@@ -32,12 +32,12 @@ class LabelPrincipal(QWidget):
     def update(self):
         db,index = RU.boisson_choisie
         boisson = Db.dbsall[db][0].iloc[index]
-       
-        if RU.choix_de_la_data_base == 0 or RU.choix_de_la_data_base == 2 : #index de la combo box (wines & beers)
-            drink_name = boisson[4]
+        db_utilisee = Db.choisir_db(db,0)
+        index_name = db_utilisee.columns.get_loc('Name')
+        if str(boisson[index_name]) != 'nan' and str(boisson[index_name]) != '':
+            drink_name = boisson[index_name]
         else :
-            drink_name = boisson[2]
-        
+            drink_name = 'Nom non renseigné'
         self.drink_name.setText(f'<font color="red"><b>Boisson : {drink_name}</b></font>')
 
 
@@ -58,51 +58,60 @@ class InformationsDisplay(QHBoxLayout):
 
     def update(self):
         db,index = RU.boisson_choisie
+        db_utilisee = Db.dbsall[db][0]
+        boisson = db_utilisee.iloc[index]
 
-        boisson = Db.dbsall[db][0].iloc[index]
-
-        formatted_text = self.format_text(boisson)
+        formatted_text = self.format_text(boisson, db_utilisee)
         self.description_text.setText(formatted_text)
 
-    def format_text(self, boisson):
+    # Mettre dans le backend cette fonction
+    def format_text(self, boisson, db_utilisee):
         formatted_lines = []
+        column_index = []
+        
         # Wines
-        if RU.choix_de_la_data_base == 0: 
-            column_index = [2, 3, 6, 7, 8, 9, 11]
+        if RU.choix_de_la_data_base == 0:
+            real_names = ['country', 'description', 'price', 'province', 'variety', 'winery', 'region_']
             column_names = ['Provenance', 'Description', 'Prix', 'Province', 'Variété', 'Domaine', 'Région']
         # Cocktails
         elif RU.choix_de_la_data_base == 1: 
-            column_index = [5, 6, 7, 8, 9, 13, 14, 10, 11]
-            column_names = ['Type de boisson', 'Catégorie', 'Lien Image Verre', 'Type de verre', 'strIBA', 'Ingrédients', 'Quantités', 'Préparation', 'Vidéo']
+            real_names = ['strAlcoholic', 'strCategory', 'strDrinkThumb', 'strGlass', 'strIBA', 'strIngredient', 'strMeasure', 'strInstructions', 'strVideo']
+            column_names = ['Type (Alcoholic/Non Alcoholic)', 'Catégorie', 'Lien Image Verre', 'Type de verre', 'strIBA', 'Ingrédients', 'Quantités', 'Préparation', 'Vidéo']
         # Beers
         elif RU.choix_de_la_data_base == 2: 
-            column_index = [2, 3, 10, 11, 12, 13, 8, 9]
+            real_names = ['brewery_name', 'beer_style', 'review_aroma', 'review_appearance', 'review_palate', 'review_taste', 'review_time','review_overall']
             column_names = ['Brasseur', 'Style', 'Arômes', 'Apparence', 'Palais', 'Goût', 'Nombre d''évaluations', 'Review globale']
         # Coffee
         elif RU.choix_de_la_data_base == 3: 
-            column_index = [5, 3, 4, 6, 10, 11, 7]
+            real_names = ['loc_country', 'roaster', 'roast', '100g_USD', 'origin_', 'desc_', 'rating']
             column_names = ['Provenance', 'Torréfacteur', 'Torréfaction', 'Prix', 'Origine', 'Description', 'Note (/100)']
         # Mocktails
-        elif RU.choix_de_la_data_base == 4: 
-            column_index = [5, 6, 3]
+        elif RU.choix_de_la_data_base == 4:
+            real_names = ['Ingredient ', 'Flavor Profile ', 'User Rating']
             column_names = ['Ingrédients', 'Saveurs', 'Note (/5)']
 
+        #Création de la liste d'index pour récupérer les données
+        for name in real_names:
+                index = db_utilisee.columns.get_loc(name)
+                column_index.append(index)
+
+        #Récupération des données et mise en forme
         for i in range(len(column_index)):
             index = column_index[i]
             column_name = column_names[i]
             value = boisson[index]
-            
+
             # Convertir la valeur en chaîne de caractères
             if isinstance(value, list):
                 value_str = ', '.join(str(item) for item in value)
-            elif column_name == 'Prix':
-                if RU.choix_de_la_data_base == 0: 
+            elif column_name == 'Prix' and str(value) != 'nan':
+                if RU.choix_de_la_data_base == 0 : 
                     value_str = f"{value} €"
                 elif RU.choix_de_la_data_base == 3: 
                     value_str = f"{value} USD/100g"
             else:
                 value_str = str(value)
-        
+
             if value_str.startswith('[') and value_str.endswith(']'):
                 value_list = [item.strip("' ") for item in value_str[1:-1].split(',')]
                 seen_elements = set()
@@ -137,7 +146,6 @@ class FavoriteInteraction(QPushButton):
         self.clicked.connect(self.update_status)
         self.setIcon(self.star_icon_empty)
         
-
     def update_icon(self):
         
         db,index = RU.boisson_choisie
@@ -148,15 +156,11 @@ class FavoriteInteraction(QPushButton):
         else:
             self.setIcon(self.star_icon_empty)
 
-        
-
-       
     def update_status(self):
         db,index = RU.boisson_choisie
         favory = not(Db.dbsall[db][0].iloc[index][-1])
         Db.dbsall[db][0].iloc[index,-1] = favory
         self.update_icon()
-
 
 
 ##BENE

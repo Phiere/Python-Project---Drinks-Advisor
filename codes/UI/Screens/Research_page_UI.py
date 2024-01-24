@@ -174,7 +174,7 @@ class CustomListAffichageTri(QWidget):
     def mousePressEvent(self, a0: QMouseEvent) -> None:
         global boisson_choisie
 
-        boisson_choisie = (0,self.ind)
+        boisson_choisie = (choix_de_la_data_base,self.ind)
         self.appel_a_description()
 
 ##
