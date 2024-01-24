@@ -7,7 +7,7 @@ Created on Sun Jan  7 14:00:56 2024
 
 import sys
 from PyQt5.QtGui import QPixmap,QIcon
-from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,QTextEdit,QPushButton,QLineEdit
+from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,QScrollArea,QPushButton,QLineEdit
 from PyQt5.QtCore import QSize,Qt
 import Research_page_UI as RU
 import ast
@@ -41,20 +41,23 @@ class LabelPrincipal(QWidget):
         self.drink_name.setText(f'<font color="red"><b>Boisson : {drink_name}</b></font>')
 
 
-class InformationsDisplay(QHBoxLayout):
+class InformationsDisplay(QScrollArea):
     def __init__(self):
         super().__init__()
 
+        self.scroll_content = QWidget()
+        layout = QVBoxLayout(self.scroll_content)
+        
         self.description_text = QLabel()
-        self.description_text.setWordWrap(True)  # Pour que le texte s'ajuste automatiquement à la largeur du QLabel
-        self.description_text.setTextInteractionFlags(Qt.TextSelectableByMouse)  # Rend le texte sélectionnable par la souris
+        self.description_text.setWordWrap(True)
+        self.description_text.setTextInteractionFlags(Qt.TextSelectableByMouse)
 
-        image_label = QLabel()
-        image_label.setFixedSize(300,40)
-        # image_label.setPixmap(QPixmap("codes/UI/Icones/boisson.jpg"))
+        layout.addWidget(self.description_text)
 
-        self.addWidget(self.description_text)
-        self.addWidget(image_label)
+        self.setWidgetResizable(True)
+        self.setWidget(self.scroll_content)
+
+        self.setFixedSize(1000, 350)
 
     def update(self):
         db,index = RU.boisson_choisie
@@ -192,49 +195,16 @@ class CommentInteracton(QHBoxLayout):
         db,index = RU.boisson_choisie
         Db.dbsall[db][0].iloc[index,-2] = self.texte.text()
 
-
-class RatingInteraction(QPushButton):
+class RatingInteraction(QWidget):
     def __init__(self):
         super().__init__()
-        self.setText(' Noter')
-        self.setIcon(QIcon("codes/UI/Icones/rate.png"))
-        self.setStyleSheet("background-color: #404040; color: #ffffff;")
-        self.clicked.connect(self.open_rating_page)
+        rate_button = QPushButton(' Noter')
+        rate_button.setIcon(QIcon("codes/UI/Icones/rate.png"))
+        rate_button.setFixedSize(80,40)
+        rate_button.setStyleSheet("background-color: #404040; color: #ffffff;")
+        rate_button.clicked.connect(self.update_status)
 
-    def open_rating_page(self):
-        self.rating_page = DrinkRatingPage("OK", QSize(500,1000))
-        self.rating_page.show()
-    
-    def update(self):
-        pass
-    
-    def rate(self):
-        self.rating_page.write_to_database()
-
-class DrinkRatingPage(QWidget):
-    def __init__(self, drink_name, parent_size):
-        super().__init__()
-        self.drink_name = drink_name
-        self.setWindowTitle("Noter la boisson")
-
-        self.setWindowOpacity(0.95) # Rendre la fenêtre transparente
-        self.setGeometry(200, 200, parent_size.height(), parent_size.width())
-        self.setStyleSheet("background-color: rgba(51, 51, 51, 0.8);")
-
-        label1 = QLabel(self)
-        label1.setText("Vous avez goûté cette boisson ?")
-        label1.setStyleSheet("color: white; font-size: 12pt; background-color: rgba(41, 41, 41, 1);")
-        label1.setAlignment(Qt.AlignCenter)
-        label1.setGeometry(0, int(parent_size.height() * 0.2), self.width(), 30)
-
-        label2 = QLabel(self)
-        label2.setText("Sélectionnez la note que vous souhaitez lui donner avec les étoiles ci-dessous !")
-        label2.setStyleSheet("color: white; font-size: 12pt; background-color: rgba(41, 41, 41, 1);")
-        label2.setAlignment(Qt.AlignCenter)
-        label2.setGeometry(0, int(parent_size.height() * 0.3), self.width(), 30)
-        
-        stars_frame = QWidget(self)
-        stars_frame.setGeometry(int((self.width() - 200) / 2), int(parent_size.height() * 0.4), 200, 50)
+        stars_layout = QHBoxLayout()
 
         self.stars_images = []
         for i in range(1, 6):
@@ -246,30 +216,34 @@ class DrinkRatingPage(QWidget):
 
         self.star_buttons = []
         for i in range(5):
-            star_button = QPushButton(stars_frame)
+            star_button = QPushButton()
             star_button.setIcon(QIcon(self.stars_images[i][0]))
-            star_button.setGeometry(40 * i, 0, 40, 50)
+            star_button.setFixedSize(80, 40)
             star_button.clicked.connect(lambda _, idx=i + 1: self.on_star_click(idx))
             star_button.installEventFilter(self)
             self.star_buttons.append(star_button)
 
-        validate_button = QPushButton(self)
-        validate_button.setText("Valider")
-        validate_button.clicked.connect(self.write_to_database)
-        validate_button.setGeometry(int((self.width() - 100) / 2), int(parent_size.height() * 0.6), 100, 30)
+            # Ajoute chaque étoile au layout horizontal
+            stars_layout.addWidget(star_button)
+
+        # Ajoute le bouton "Noter" et le layout des étoiles à ce widget
+        main_layout = QHBoxLayout()
+        main_layout.addStretch()
+        main_layout.addWidget(rate_button)
+        main_layout.addLayout(stars_layout)
+        main_layout.addStretch()
+        self.setLayout(main_layout)
 
     def on_star_click(self, index):
         if index > self.rating:
-            # Si l'utilisateur clique sur une étoile inférieure à celle qui était précédemment sélectionnée
             for i in range(index):
                 self.star_buttons[i].setIcon(QIcon(self.stars_images[i][1]))
         else:
-            # Si l'utilisateur clique sur une étoile égale ou supérieure à celle qui était précédemment sélectionnée
             for i in range(index, 5):
                 self.star_buttons[i].setIcon(QIcon(self.stars_images[i][0]))
         
         self.rating = index
-
+    
     def eventFilter(self, obj, event):
         if obj in self.star_buttons:
             index = self.star_buttons.index(obj) + 1
@@ -284,13 +258,16 @@ class DrinkRatingPage(QWidget):
                     for i in range(self.rating, 5):
                         self.star_buttons[i].setIcon(QIcon(self.stars_images[i][0]))
         return super().eventFilter(obj, event)
+    
+    def update_icon(self):
+        db,index = RU.boisson_choisie
+        rating = Db.dbsall[db][0].iloc[index][-3]
+        self.on_star_click(int(rating))
 
-    def write_to_database(self):
-        print(f"Note pour {self.drink_name}: {self.rating}/5")
+    def update_status(self):
         db,index = RU.boisson_choisie
         Db.dbsall[db][0].iloc[index,-3] = self.rating
-        self.close()
-
+        self.update_icon()
 
 ##BENE
 class NotationsInteractions(QVBoxLayout):
@@ -300,18 +277,15 @@ class NotationsInteractions(QVBoxLayout):
         self.favorite_interaction = FavoriteInteraction()
         self.rating_interaction = RatingInteraction()
         self.comment_interaction = CommentInteracton()
-        int_layout = QHBoxLayout()
 
 
-        int_layout.addWidget(self.favorite_interaction)
-        int_layout.addWidget(self.rating_interaction)
-
-        self.addLayout(int_layout)
+        self.addWidget(self.favorite_interaction)
+        self.addWidget(self.rating_interaction)
         self.addLayout(self.comment_interaction)
 
     def update(self):
         self.favorite_interaction.update_icon()
-        self.rating_interaction.update()
+        self.rating_interaction.update_icon()
         self.comment_interaction.update()
         
 
@@ -330,7 +304,7 @@ class Description(QWidget):
         info_layout = QVBoxLayout()
   
         info_layout.addWidget(self.drink_name)
-        info_layout.addLayout(self.informations_display)
+        info_layout.addWidget(self.informations_display)
         info_layout.addStretch()
         info_layout.addLayout(self.notations_interactions)
 
