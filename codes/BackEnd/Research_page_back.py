@@ -21,7 +21,7 @@ class Filtre(QWidget):
 def from_df_to_filters(df_used,take_text):
     columns_names = df_used.columns 
     filters_list = []
-    for i in range(1,len(columns_names)):
+    for i in range(len(columns_names)):
         filtre = Filtre(columns_names[i],df_used.iloc[:,i])
         filters_list.append(filtre)
     for i in range(len(filters_list)):

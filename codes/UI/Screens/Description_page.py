@@ -10,10 +10,9 @@ from PyQt5.QtGui import QPixmap,QIcon
 from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,QScrollArea,QPushButton,QLineEdit
 from PyQt5.QtCore import QSize,Qt
 import Research_page_UI as RU
-import ast
+
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
-import Research_page_back as RB 
 import pandas as pd
 
 class LabelPrincipal(QWidget):
@@ -30,7 +29,8 @@ class LabelPrincipal(QWidget):
         layout.addWidget(self.drink_name)
 
     def update(self):
-        db,index = RU.boisson_choisie
+        db =  RU.choix_de_la_data_base
+        index = RU.index
         boisson = Db.dbsall[db][0].iloc[index]
         db_utilisee = Db.choisir_db(db,0)
         index_name = db_utilisee.columns.get_loc('Name')
@@ -60,7 +60,8 @@ class InformationsDisplay(QScrollArea):
         self.setFixedSize(1000, 350)
 
     def update(self):
-        db,index = RU.boisson_choisie
+        db =  RU.choix_de_la_data_base
+        index = RU.index
         db_utilisee = Db.dbsall[db][0]
         boisson = db_utilisee.iloc[index]
 
@@ -151,7 +152,8 @@ class FavoriteInteraction(QPushButton):
         
     def update_icon(self):
         
-        db,index = RU.boisson_choisie
+        db =  RU.choix_de_la_data_base
+        index = RU.index
         favory = Db.dbsall[db][0].iloc[index][-1]
 
         if favory:
@@ -160,7 +162,8 @@ class FavoriteInteraction(QPushButton):
             self.setIcon(self.star_icon_empty)
 
     def update_status(self):
-        db,index = RU.boisson_choisie
+        db =  RU.choix_de_la_data_base
+        index = RU.index
         favory = not(Db.dbsall[db][0].iloc[index][-1])
         Db.dbsall[db][0].iloc[index,-1] = favory
         self.update_icon()
@@ -183,7 +186,8 @@ class CommentInteracton(QHBoxLayout):
 
 
     def update(self):
-        db,index = RU.boisson_choisie
+        db =  RU.choix_de_la_data_base
+        index = RU.index
         commentaire = Db.dbsall[db][0].iloc[index][-2]
         self.texte.setText('')
         if   pd.isna(commentaire):
@@ -192,8 +196,10 @@ class CommentInteracton(QHBoxLayout):
             self.texte.setPlaceholderText(commentaire)
     
     def comment(self):
-        db,index = RU.boisson_choisie
+        db =  RU.choix_de_la_data_base
+        index = RU.index
         Db.dbsall[db][0].iloc[index,-2] = self.texte.text()
+
 
 class RatingInteraction(QWidget):
     def __init__(self):
@@ -260,12 +266,14 @@ class RatingInteraction(QWidget):
         return super().eventFilter(obj, event)
     
     def update_icon(self):
-        db,index = RU.boisson_choisie
+        db =  RU.choix_de_la_data_base
+        index = RU.index
         rating = Db.dbsall[db][0].iloc[index][-3]
         self.on_star_click(int(rating))
 
     def update_status(self):
-        db,index = RU.boisson_choisie
+        db =  RU.choix_de_la_data_base
+        index = RU.index
         Db.dbsall[db][0].iloc[index,-3] = self.rating
         self.update_icon()
 

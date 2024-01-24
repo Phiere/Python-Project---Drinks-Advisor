@@ -15,51 +15,77 @@ def initialisationWine():
 
     ## Appels des databases préalablement nettoyées
     wines_cleaned = pandas.read_csv('dataBases/Samples/wines_samples.csv')
-    wines_pertinents_elements = ['Unnamed: 0','winery','Name','price']
-    wines_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/wines_unique_elements.csv')
-    wines_filters = wines_cleaned[wines_uniques_elements.columns]
 
-    return [wines_cleaned,wines_filters,wines_uniques_elements,wines_pertinents_elements]
+
+    wines_titles = ['winery','Name','price']
+    wines_descriptions = ['Name','description','ponts','price','province','variety','winery','region_']
+    wines_filtrage = ['country','Name','points','variety','winery','price','province','region_']
+    wines_sort = ['Name','points','price','PersonalRating']
+
+    wines_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/wines_unique_elements.csv')
+    wines_filters = wines_uniques_elements[wines_filtrage]
+
+    return [wines_cleaned,wines_filters,wines_titles,wines_descriptions,wines_sort]
 
 def initilisationCoffee():
 
     ##
     coffee_cleaned = pandas.read_csv('dataBases/Samples/coffee_samples.csv')
-    coffee_elements_pertinents = ['Unnamed: 0','Name','loc_country','rating']
-    coffee_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv')
-    coffee_filters = coffee_cleaned[coffee_uniques_elements.columns]
 
-    return [coffee_cleaned,coffee_filters,coffee_uniques_elements,coffee_elements_pertinents]
+    coffees_titles = ['Name','rating','loc_country','100g_USD']
+    coffees_descriptions = ['Name','roaster','roast','loc_country','100g_USD','rating','origin_','desc_']
+    coffees_filtrage =  ['roaster','roast','loc_country','100g_USD','rating','origin_']
+    coffees_sort = ['Name','100g_USD','rating','PersonalRating']
+
+    coffee_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv')
+    coffee_filters = coffee_uniques_elements[coffees_filtrage]
+
+    return [coffee_cleaned,coffee_filters,coffees_titles,coffees_descriptions,coffees_sort]
 
 def initilisationCocktail():
 
     ##
     cocktail_cleaned = pandas.read_csv('dataBases/Samples/cocktails_samples.csv')
-    cocktail_element_pertinent = ['Unnamed: 0','Name','strCategory']
-    cocktail_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv')
-    cocktail_filters = cocktail_cleaned[cocktail_uniques_elements.columns]
+    
+    cocktails_titles = ['Name','strAlcoholic','strIBA']
+    cocktails_descriptions = ['Name','strAlcoholic','strCategory','strGlass','strIBA','strInstructions','strIngredient','strMeasure']
+    cocktails_filtrage = ['strAlcoholic','strCategory','strGlass','strIBA','strIngredient']
+    cocktails_sort = ['Name','PersonalRating']
 
-    return [cocktail_cleaned,cocktail_filters,cocktail_uniques_elements,cocktail_element_pertinent]
+    cocktail_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv')
+    cocktail_filters = cocktail_uniques_elements[cocktails_filtrage]
+
+    return [cocktail_cleaned,cocktail_filters,cocktails_titles,cocktails_descriptions,cocktails_sort]
 
 def initialisationBeer():
 
     ##
     beers_cleaned = pandas.read_csv('dataBases/Samples/beer_samples.csv')
-    beers_elements_pertinent = ['Unnamed: 0','Name','brewery_name','beer_style']
-    beers_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/beers_unique_elements.csv')
-    beers_filters = beers_cleaned[beers_uniques_elements.columns]
 
-    return [beers_cleaned,beers_filters,beers_uniques_elements,beers_elements_pertinent]
+    beers_titles = ['Name','beer_style','review_overall']
+    beers_descriptions = ['brewery_name','beer_style','Name','review_overall','review_aroma','review_appearance','review_palate','review_taste','beer_abv' ]
+    beers_filtrage = ['brewery_name','beer_style','review_overall','review_aroma','review_appearance','review_palate','review_taste','beer_abv' ]
+    beers_sort = ['PersonalRating']
+
+    beers_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/beers_unique_elements.csv')
+    beers_filters = beers_uniques_elements[beers_filtrage]
+
+    return [beers_cleaned,beers_filters,beers_titles,beers_descriptions,beers_sort]
 
 def initialisationMocktail():
 
     ##
     mocktail_cleaned = pandas.read_csv('dataBases/Samples/mocktail_samples.csv')
-    mocktail_elements_pertinents = ['Unnamed: 0','Name','User Rating']
+
+    mocktails_titles = ['Name','Flavor Profile ','User Rating']
+    mocktails_description = ['Name','User Rating','Ingredient ','Flavor Profile ']
+    mocktails_filtrage = ['User Rating','Ingredient ','Flavor Profile ']
+    mocktail_sort = ['User Rating','PersonalRating']
+
     mocktail_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv')
-    mocktail_filters = mocktail_cleaned[mocktail_uniques_elements.columns]
+    mocktail_filters = mocktail_uniques_elements[mocktails_filtrage]
     
-    return [mocktail_cleaned,mocktail_filters,mocktail_uniques_elements,mocktail_elements_pertinents]
+    return [mocktail_cleaned,mocktail_filters,mocktails_titles,mocktails_description,mocktail_sort]
 
 def initilisationSoft():
     db_wine = initialisationWine()

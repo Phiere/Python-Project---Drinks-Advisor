@@ -68,7 +68,7 @@ class SortColumnChoice(QComboBox):
        
     def update(self):
         global choix_de_la_data_base
-        names = Db.dbsall[choix_de_la_data_base][0].columns ##BOURDE (utilsier la liste prévue à cette effet)
+        names = Db.dbsall[choix_de_la_data_base][4] 
 
         self.clear()
         self.addItem('Random')
@@ -127,8 +127,6 @@ class FilterOptionsBar(QHBoxLayout):
         self.sort_column_choice.update()
 
     
-
-##
 ##BENE
 class BaseDeDonneChoice(QComboBox):
     def __init__(self,upload_screen):
@@ -155,32 +153,23 @@ class BaseDeDonneChoice(QComboBox):
 ##Creer l'affichage de tous les éléments trier comme des texte_edits. CLairement c'est le points à modifier les
 
 class CustomListAffichageTri(QWidget):
-    def __init__(self, data_base_utilisee, index_element, completion_text_to_display, GoToDescription):
+    def __init__(self, completion_text_to_display,indexx, GoToDescription):
         super().__init__()
-
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.appel_a_description = GoToDescription
-        self.db = data_base_utilisee
-        self.ind = index_element
-
+        self.indexx = indexx
         layout = QHBoxLayout(self)
 
-        for i in range(len(completion_text_to_display)):
-            label = QLabel(completion_text_to_display[i])
-            
- 
-            #label.setAlignment(Qt.AlignCenter)
-            
+        for text in completion_text_to_display:
+            label = QLabel(text)
+            label.setAlignment(Qt.AlignCenter)
             layout.addWidget(label)
 
         self.setLayout(layout)
 
-        # Définir le style CSS pour le fond et le texte
-        self.setStyleSheet("background-color: #404040; color: #ffffff;")
-
     def mousePressEvent(self, a0: QMouseEvent) -> None:
-        global boisson_choisie
-
-        boisson_choisie = (choix_de_la_data_base,self.ind)
+        global index
+        index = self.indexx
         self.appel_a_description()
 
 ##
@@ -206,7 +195,7 @@ class LineOfCategoriesNames(QHBoxLayout):
      def upload_names(self):
         
         global choix_de_la_data_base
-        pertinent_columns_names = Db.choisir_db(choix_de_la_data_base,3)
+        titles = Db.dbsall[choix_de_la_data_base][2]
 
         while self.count():
                 item = self.takeAt(0)
@@ -214,8 +203,8 @@ class LineOfCategoriesNames(QHBoxLayout):
                 if widget :
                     widget.deleteLater()
 
-        for i in range(1,len(pertinent_columns_names)):
-            Etiquette = ColumnCategoriesNames(pertinent_columns_names[i])
+        for title in titles:
+            Etiquette = ColumnCategoriesNames(title)
             self.addWidget(Etiquette)
 
 ##
@@ -228,7 +217,7 @@ class ColumnOfFilter(QVBoxLayout):
     def upload_filters(self,data_frame,chargerNewDf):
         global choix_de_la_data_base
     
-        self.filters_list = RB.from_df_to_filters(Db.choisir_db(choix_de_la_data_base,2),chargerNewDf)
+        self.filters_list = RB.from_df_to_filters(Db.choisir_db(choix_de_la_data_base,1),chargerNewDf)
         while self.count():
             item = self.takeAt(0)
             widget = item.widget()
@@ -251,7 +240,7 @@ class ScreenResearch(QWidget):
         self.GoToDescription = change_screen
 
         global choix_de_la_data_base
-        self.data_frame = Db.choisir_db(choix_de_la_data_base,1)
+        self.data_frame = Db.choisir_db(choix_de_la_data_base,0)
         #Créations des filtres dynamique
         self.column_of_filter = ColumnOfFilter(self.data_frame,self.chargerNewDf)
         #Création de la barre d'option pour manipuler les données
@@ -286,14 +275,15 @@ class ScreenResearch(QWidget):
         self.setLayout(self.screenLayout)
 
         #remplissage aléaotire pour un premier affichage
-        self.changer_text(Db.choisir_db(choix_de_la_data_base,1)[Db.choisir_db(choix_de_la_data_base,3)])
+        self.chargerNewDf()
+        #self.changer_text(Db.dbsall[choix_de_la_data_base][0])
         global init
         init = 1
 
     def upload_screen(self):
         
         global choix_de_la_data_base
-        self.data_frame = Db.choisir_db(choix_de_la_data_base,2)
+        self.data_frame = Db.choisir_db(choix_de_la_data_base,0)
         self.column_of_filter.upload_filters(self.data_frame,self.chargerNewDf)
         self.chargerNewDf()
         print('rentré')
@@ -304,8 +294,8 @@ class ScreenResearch(QWidget):
     #Charher la df filtrée avec les filtres
     def chargerNewDf(self):
         global choix_de_la_data_base
-        frame1 = Db.choisir_db(choix_de_la_data_base,1)
-        frame2 = Db.choisir_db(choix_de_la_data_base,3)
+        frame1 = Db.choisir_db(choix_de_la_data_base,0)
+        frame2 = Db.choisir_db(choix_de_la_data_base,2)
         colonne_choose_to_filter = self.optionsdefiltres.sort_column_choice.currentText()
         sens_choose_to_filter = self.optionsdefiltres.ascgo.getSatus()
         tempdf = RB.from_filters_to_newDF(frame1,frame2,self.column_of_filter.filters_list,colonne_choose_to_filter,sens_choose_to_filter)
@@ -333,9 +323,10 @@ class ScreenResearch(QWidget):
                 L = range(0,n)
             for i in L:
                 listItem = QListWidgetItem(self.listWidget)
-                texte = [str(newdf.iat[i,j]) for j in range(1,len(newdf.columns))]
+                texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]
                 global choix_de_la_data_base
-                customItemWidget = CustomListAffichageTri(Db.choisir_db(choix_de_la_data_base,0),int(newdf.iat[i,0]),texte,self.GoToDescription)
+                indexx = int(Db.dbsall[choix_de_la_data_base][0].iat[i,0])
+                customItemWidget = CustomListAffichageTri(texte,indexx,self.GoToDescription)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)
                 self.listWidget.setItemWidget(listItem, customItemWidget)
@@ -348,8 +339,10 @@ class ScreenResearch(QWidget):
 
             for i in range(len(newdf)):  
                 listItem = QListWidgetItem(self.listWidget)
-                texte = [str(newdf.iat[i,j]) for j in range(1,len(newdf.columns))]
-                customItemWidget = CustomListAffichageTri(Db.choisir_db(choix_de_la_data_base,0),int(newdf.iat[i,0]),texte,self.GoToDescription)
+                texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]
+   
+                index = int(Db.dbsall[choix_de_la_data_base][0].iat[i,0])
+                customItemWidget = CustomListAffichageTri(texte,self.GoToDescription)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)
                 self.listWidget.setItemWidget(listItem, customItemWidget)
