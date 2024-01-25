@@ -25,6 +25,7 @@ class DataBaseChoice(QComboBox):
     def __init__(self,change_completion_lines):
         super().__init__()
 
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.fonction = change_completion_lines
 
         self.addItem('Wines')
@@ -44,7 +45,7 @@ class DataBaseChoice(QComboBox):
 class ListeElementToComplete(QListWidget):
     def __init__(self)-> None:
         super().__init__()
-
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.update()
 
     def update(self):
@@ -75,6 +76,7 @@ class CreationButton(QPushButton):
     def __init__(self)-> None:
         super().__init__()
 
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.setText("Créer")
         self.clicked.connect(self.create_new_drink)
 
@@ -87,6 +89,8 @@ class CreationButton(QPushButton):
 class ScreenCreation(QWidget):
     def __init__(self) -> None:
         super().__init__()
+
+        self.setStyleSheet("background-color: #1f1f1f")
         self.setWindowTitle("Creation Window")
         self.resize(1000,500)
 
