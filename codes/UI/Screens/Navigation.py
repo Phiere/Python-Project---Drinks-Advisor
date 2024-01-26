@@ -1,6 +1,8 @@
 import sys
-from PyQt5.QtGui import QPixmap, QIcon
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QStackedWidget,QHBoxLayout
+from PyQt5.QtGui import  QIcon
+from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QPushButton, 
+                            QStackedWidget,QHBoxLayout)
+
 
 import Loading_page as LP
 import Research_page_UI as RU
@@ -9,33 +11,28 @@ import Creation_page_UI as CU
 import Description_page as DU
 
 
-class MenuLayout(QHBoxLayout): 
-    def __init__(self,fenetre_totale) -> None:
+class MenuButton(QPushButton):
+    def __init__(self,stack_control,stack_index,path_icone) :
         super().__init__()
+        self.setIcon(QIcon(path_icone))
+        self.setFixedSize(40,40)
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
+        self.pressed.connect(lambda : stack_control(stack_index))
+    
 
-        boutonRetour = QPushButton()
-        boutonRetour.setIcon(QIcon("codes/UI/Icones/back.png"))
-        boutonRetour.setFixedSize(40, 40)
-        boutonRetour.setStyleSheet("background-color: #404040; color: #ffffff;")
+class MenuLayout(QHBoxLayout): 
+    def __init__(self,stack_control) :
+        super().__init__()        
+  
+        buton_back = MenuButton(stack_control,0,"codes/UI/Icones/back.png")
+        buton_creation = MenuButton(stack_control,1,"codes/UI/Icones/plus.png")
+        buton_profile = MenuButton(stack_control,2,"codes/UI/Icones/profile.png")
 
-        boutonCreation = QPushButton()
-        boutonCreation.setIcon(QIcon("codes/UI/Icones/plus.png"))
-        boutonCreation.setFixedSize(40, 40)
-        boutonCreation.setStyleSheet("background-color: #404040; color: #ffffff;")
-
-        boutonSettings = QPushButton()
-        boutonSettings.setIcon(QIcon("codes/UI/Icones/profile.png"))
-        boutonSettings.setFixedSize(40, 40)
-        boutonSettings.setStyleSheet("background-color: #404040; color: #ffffff;")
-
-        self.addWidget(boutonRetour)
-        self.addWidget(boutonCreation)
+        self.addWidget(buton_back)
+        self.addWidget(buton_creation)
         self.addStretch()
-        self.addWidget(boutonSettings)
+        self.addWidget(buton_profile)
 
-        boutonRetour.pressed.connect(lambda : fenetre_totale.goToScreen(0))
-        boutonSettings.pressed.connect(lambda : fenetre_totale.goToScreen(1))
-        boutonCreation.pressed.connect(lambda : fenetre_totale.goToScreen(2))
 
 class ScreensToDisplay(QStackedWidget):
     def __init__(self,show_description):
@@ -51,27 +48,29 @@ class ScreensToDisplay(QStackedWidget):
         self.addWidget(creation_screen)
         self.addWidget(self.description_screen)
 
-class FenetrePrincipale(QWidget):
+
+class DisplayerScreen(QWidget):
     def __init__(self):
         super().__init__()
 
         self.setWindowTitle("DrinksAdvisor App")
         self.setStyleSheet("background-color: #1f1f1f;")
         
-        final_layout = QVBoxLayout()
-
-        Barre_menu = MenuLayout(self)
+        window_layout = QVBoxLayout()
+        menu_bar = MenuLayout(self.goToScreen)
         self.screens_to_display = ScreensToDisplay(show_description = lambda : self.goToScreen(3))
 
-        final_layout.addLayout(Barre_menu)
-        final_layout.addWidget(self.screens_to_display)
-        self.setLayout(final_layout)
+        window_layout.addLayout(menu_bar)
+        window_layout.addWidget(self.screens_to_display)
+        self.setLayout(window_layout)
 
 
     def goToScreen(self, index):
         if index == 3 :
             self.screens_to_display.description_screen.update()
         self.screens_to_display.setCurrentIndex(index)
+
+############
 
 def main():
     app = QApplication(sys.argv)
@@ -85,7 +84,7 @@ def main():
 
 def show_main_window():
     # Étape 2: Charger l'application principale une fois le chargement terminé
-    main_window = FenetrePrincipale()
+    main_window = DisplayerScreen()
     main_window.show()
 
 if __name__ == '__main__':

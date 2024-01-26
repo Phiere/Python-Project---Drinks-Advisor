@@ -7,19 +7,20 @@
 ############################################################
 
 import sys
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit,QComboBox,QListWidget,QListWidgetItem
+from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QLineEdit,
+                                    QComboBox,QListWidget,QListWidgetItem)
 from PyQt5.QtWidgets import QPushButton
 from PyQt5.QtCore import QSize 
 
-import Navigation as Nav
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Creation_page_back as Cb
+import Navigation as Nav
 
-global data_base_choose
-data_base_choose = 0
+global DATA_BASE_CHOOSE
+DATA_BASE_CHOOSE = 0
 
-#Boutton permettant le choix de la database à utiliser
+
 ##BENE
 class DataBaseChoice(QComboBox):
     def __init__(self,change_completion_lines):
@@ -36,8 +37,8 @@ class DataBaseChoice(QComboBox):
         self.currentIndexChanged.connect(self.update)
 
     def update(self,index):
-        global data_base_choose
-        data_base_choose = index
+        global DATA_BASE_CHOOSE
+        DATA_BASE_CHOOSE = index
         self.fonction()
 
 #Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
@@ -50,8 +51,8 @@ class ListeElementToComplete(QListWidget):
 
     def update(self):
         self.clear()
-        global data_base_choose
-        names_columns = Db.choisir_db(data_base_choose,0).columns
+        global DATA_BASE_CHOOSE
+        names_columns = Db.choisir_db(DATA_BASE_CHOOSE,0).columns
 
         for i in range(1,len(names_columns)):
                 
@@ -73,16 +74,17 @@ class ListeElementToComplete(QListWidget):
 
 ##BENE
 class CreationButton(QPushButton):
-    def __init__(self)-> None:
+    def __init__(self,get_text)-> None:
         super().__init__()
 
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.setText("Créer")
         self.clicked.connect(self.create_new_drink)
+        self.function = get_text
 
     def create_new_drink(self):
-        global data_base_choose
-        Cb.create_new_drink(Db.choisir_db(data_base_choose,0),self)
+        global DATA_BASE_CHOOSE
+        Cb.create_new_drink(DATA_BASE_CHOOSE,self.function)
 
 ##Creation de l'écran
 ##BENE
@@ -96,8 +98,9 @@ class ScreenCreation(QWidget):
 
         data_base_choice = DataBaseChoice(self.update)
         self.list_element_to_complete = ListeElementToComplete()
+        get_text = self.list_element_to_complete.get_texts
         screen_layout = QVBoxLayout()
-        creation_button = CreationButton()
+        creation_button = CreationButton(get_text)
 
         screen_layout.addWidget(data_base_choice)
         screen_layout.addWidget(self.list_element_to_complete)
