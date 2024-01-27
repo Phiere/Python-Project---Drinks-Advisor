@@ -17,8 +17,8 @@ import Db_gestions as Db
 import Creation_page_back as Cb
 import Navigation as Nav
 
-global DATA_BASE_CHOOSE
-DATA_BASE_CHOOSE = 0
+
+data_base_chose = 0
 
 
 ##BENE
@@ -37,8 +37,8 @@ class DataBaseChoice(QComboBox):
         self.currentIndexChanged.connect(self.update)
 
     def update(self,index):
-        global DATA_BASE_CHOOSE
-        DATA_BASE_CHOOSE = index
+        global data_base_chose
+        data_base_chose = index
         self.fonction()
 
 #Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
@@ -51,8 +51,7 @@ class ListeElementToComplete(QListWidget):
 
     def update(self):
         self.clear()
-        global DATA_BASE_CHOOSE
-        names_columns = Db.choisir_db(DATA_BASE_CHOOSE,0).columns
+        names_columns = Db.dbsall[data_base_chose][0].columns
 
         for i in range(1,len(names_columns)):
                 
@@ -83,8 +82,7 @@ class CreationButton(QPushButton):
         self.function = get_text
 
     def create_new_drink(self):
-        global DATA_BASE_CHOOSE
-        Cb.create_new_drink(DATA_BASE_CHOOSE,self.function)
+        Cb.create_new_drink(data_base_chose,self.function)
 
 ##Creation de l'écran
 ##BENE

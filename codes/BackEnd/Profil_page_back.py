@@ -1,10 +1,10 @@
 
 import numpy
 import pandas as pd
-import Db_gestions as DB
+import Db_gestions as Db
 
 categories = ['Vins', 'Cocktails', 'Cafés', 'Mocktails', 'Bières']
-dbs = DB.initilisationSoft()
+dbs = Db.dbsall
 
 ###1er élément (à droite): QVBox avec 2 graphiques
 ###1er graphique : Histogramme du nombre de boissons notées par catégorie
@@ -17,8 +17,8 @@ def nb_of_notes(df):
 
 def nb_notes_per_categories():
     nb_notes = []
-    for i in range(len(DB.dbsall)):
-        nb_notes.append(nb_of_notes(DB.dbsall[i][0]))
+    for i in range(len(Db.dbsall)):
+        nb_notes.append(nb_of_notes(Db.dbsall[i][0]))
     return nb_notes
 
 ###2ème graphique : Histogramme des moyennes des notes par catégorie
@@ -31,22 +31,42 @@ def mean_of_note(df):
 
 def mean_notes_per_categories():
     means_notes = []
-    for i in range(len(DB.dbsall)):
-        mean_note = mean_of_note(DB.dbsall[i][0])
+    for i in range(len(Db.dbsall)):
+        mean_note = mean_of_note(Db.dbsall[i][0])
         means_notes.append(float(mean_note))
     return means_notes
 
-dbs = DB.dbsall
+
+import pandas as pd
+
+# Définir les noms des colonnes
+noms_colonnes = ['Colonne1', 'Colonne2', 'Colonne3', 'Colonne4', 'Colonne5']
+
+# Créer un DataFrame vide avec ces colonnes
+df = pd.DataFrame(columns=noms_colonnes)
+
+print(df)
 
 ###2ème élément (à gauche): Liste des infos des boissons ajoutées aux Favoris
 def favorites_extraction():
-    extraction = []
-    for i in range(len(DB.dbsall)):
-        favorite = DB.dbsall[i][0]
-        favorite = favorite[favorite['Favories'] != 0]
-        if (len(favorite)>0):
-            favorite = favorite[['Name', 'PersonalRating', 'Commentary']]
-            extraction.append(favorite)
-        else:
-            extraction.append(pd.DataFrame())
-    return extraction
+    column_names = ['Nom_db','Name','PersonalRating','Commentary','db','index']
+    favories = pd.DataFrame(columns=column_names)
+
+    for i in range(len(Db.dbsall)):
+        data_frame = Db.dbsall[i][0]
+        data_frame = data_frame[data_frame['Favories'] == 1]
+
+        cut = data_frame[['Name', 'PersonalRating', 'Commentary']]
+        cut['Nom_db'] = categories[i]
+        print(categories[i])
+        cut['db'] = i
+        cut['index'] = 0
+
+        for j in range(len(cut)) :
+            cut.iloc[j]['index'] = cut.iloc[j][0]
+
+        favories = pd.concat([favories, cut], axis=0)
+ 
+
+    print(favories)
+    return favories

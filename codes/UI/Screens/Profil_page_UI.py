@@ -9,7 +9,7 @@
 import sys
 import seaborn as sns
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QFrame,QGridLayout,QHBoxLayout,QLabel,QListWidgetItem,QListWidget
-from PyQt5.QtGui import QPixmap
+from PyQt5.QtGui import QPixmap, QMouseEvent
 from PyQt5.QtCore import QSize, Qt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
@@ -20,97 +20,152 @@ import Profil_page_back as Pb
 categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
 
 ###1er élément (à gauche): Liste des infos des boissons ajoutées aux Favoris
-class FavorieDataItem(QFrame):
+class FavorieDataItem(QHBoxLayout):
     def __init__(self, data):
         super().__init__()
 
-        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
-        layout = QHBoxLayout(self)
-
         for text in data:
             label = QLabel(text)
-            layout.addWidget(label)
+            self.addWidget(label)
 
         vertical_bar = QFrame()
         vertical_bar.setFrameShape(QFrame.VLine)
         vertical_bar.setFrameShadow(QFrame.Sunken)
         vertical_bar.setLineWidth(2)
 
-        layout.addWidget(vertical_bar)
+        self.addWidget(vertical_bar)
 
-class FavoriesTitle(QWidget):
-    def __init__(self, nb_favories):
+#peut être faire plusieurs classe ? ça m'a l'air brouillon ou alors ça serait du forcing
+class FavoriesTitle(QHBoxLayout):
+    def __init__(self):
         super().__init__()
-
-        main_layout = QHBoxLayout()
-
-        #Image "Favoris"
-        image_label = QLabel(self)
-        pixmap = QPixmap("codes/UI/Icones/star_filled.png")  # Remplacez cela par le chemin de votre image
+        image_label = QLabel()
+        pixmap = QPixmap("codes/UI/Icones/star_filled.png")
         pixmap = pixmap.scaledToHeight(100) 
         image_label.setPixmap(pixmap)
         image_label.setStyleSheet("border: 2px solid white;")
 
         # Titre "Boissons Favories"
-        title_label = QLabel("Boissons Favories", self)
+        title_label = QLabel("Boissons Favories")
         title_label.setStyleSheet("color: white; font-size: 18px;")
 
         # Sous-titre "Nombre de boissons"
-        nb_favories_label = QLabel(f"{nb_favories} boissons", self)
-        nb_favories_label.setStyleSheet("color: white; font-size: 12px;")
+        self.nb_favories_label = QLabel(f"{0} boissons")
+        self.nb_favories_label.setStyleSheet("color: white; font-size: 12px;")
 
         # Layout vertical pour aligner les titres et sous-titres
         title_layout = QVBoxLayout()
         title_layout.addWidget(title_label)
-        title_layout.addWidget(nb_favories_label)
+        title_layout.addWidget(self.nb_favories_label)
         title_layout.setAlignment(Qt.AlignBottom | Qt.AlignLeft)
 
         # Construction du main_layout
-        main_layout.addWidget(image_label)
-        main_layout.addLayout(title_layout)
-        main_layout.addStretch()
+        self.addWidget(image_label)
+        self.addLayout(title_layout)
+        self.addStretch()
 
-        # Définir le layout principal pour ce widget
-        self.setLayout(main_layout)
+    def update(self,nb_favories):
+            self.nb_favories_label.setText(f"{nb_favories} boissons")
 
-class FavorieDataDisplay(QFrame):
+#################
+#tableau des favoris
+#################
+class FavorieDataDisplay(QVBoxLayout):
     def __init__(self):
         super().__init__()
 
-        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
-        layout = QVBoxLayout(self)
-
-        favories_dfs = Pb.favorites_extraction()
-        categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
-
-        # Ajouter le titre et la photo
-        nb_favories = sum(len(df) for df in favories_dfs)
-        title_widget = FavoriesTitle(nb_favories)
-        layout.addWidget(title_widget)
-        
-
+        self.init = 1
+        self.title_widget = FavoriesTitle()
+        self.listWidget = QListWidget()
+        self.categories_names = LineOfCategoriesNames()
+        self.addLayout(self.title_widget)
+        self.addLayout(self.categories_names)
+        self.addWidget(self.listWidget)
+    
+    def update(self) -> None:
         # Ajouter les éléments de la liste
-        if nb_favories > 0:
-            for j in range(len(favories_dfs)):
-                favorie_df = favories_dfs[j]
-                for i in range(len(favorie_df)):
-                    ligne = favorie_df.iloc[i]
-                    element_ligne = [str(e) for e in ligne]
-                    element_ligne.append(categories[j])
+        favories_dfs = Pb.favorites_extraction()
+        nb_favories = len(favories_dfs)
+        self.title_widget.update(nb_favories=nb_favories)
 
-                    favorie_data_item = FavorieDataItem(element_ligne)
-                    layout.addWidget(favorie_data_item)
-        else:
+        self.listWidget.clear()
+        if nb_favories > 0:
+    
+            for i in range(len(favories_dfs)) :
+                listItem = QListWidgetItem(self.listWidget)
+                texte = [str(favories_dfs.iat[i,j]) for j in range(len(['Nom_db','Names','personnal_rating','oui']))]                
+                indexx = 0
+                customItemWidget = CustomListAffichageTri(texte,indexx)#,self.GoToDescription)
+                listItem.setSizeHint(customItemWidget.sizeHint())
+                self.listWidget.addItem(listItem)
+                self.listWidget.setItemWidget(listItem, customItemWidget)
+
+
+        elif self.init  :
             no_favories_label = QLabel("Aucune boisson n'a été ajoutée aux Favoris")
             no_favories_label.setAlignment(Qt.AlignCenter)  # Centre le texte horizontalement
             no_favories_label.setStyleSheet("font-size: 12pt;")  # Définit la police à 12pt
-            layout.addWidget(no_favories_label)
-            layout.setStretchFactor(no_favories_label, 3) 
-    def update(self):
-        pass
+            self.addWidget(no_favories_label)
+            self.setStretchFactor(no_favories_label, 3) 
+            self.init = 0
 
-###2ème élément : Espace avec 2 graphiques
-###1er graphique : Histogramme du nombre de boissons notées par catégorie
+
+class CustomListAffichageTri(QWidget):
+    def __init__(self, completion_text_to_display,indexx):
+        super().__init__()
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
+        #self.appel_a_description = GoToDescription
+        self.indexx = indexx
+        layout = QHBoxLayout(self)
+
+        for text in completion_text_to_display:
+            label = QLabel(text)
+            label.setAlignment(Qt.AlignCenter)
+            layout.addWidget(label)
+
+        self.setLayout(layout)
+
+    def mousePressEvent(self, a0: QMouseEvent) -> None:
+        pass
+        #global index
+        #index = self.indexx
+        #self.appel_a_description()
+
+
+class ColumnCategoriesNames(QWidget):
+    def __init__(self,texte):
+        super().__init__()
+
+        # Create a QLabel
+        label = QLabel(texte, self)
+
+        label.setAlignment(Qt.AlignCenter) 
+        label.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
+
+        layout = QVBoxLayout(self)
+        layout.addWidget(label)
+
+
+class LineOfCategoriesNames(QHBoxLayout):
+     def __init__(self):
+        super().__init__()
+        self.upload_names()
+  
+     def upload_names(self):
+        titles = ['Db','Names','Personnal Rating','Commentary']
+        while self.count():
+                item = self.takeAt(0)
+                widget = item.widget()
+                if widget :
+                    widget.deleteLater()
+        for title in titles:
+            Etiquette = ColumnCategoriesNames(title)
+            self.addWidget(Etiquette)
+
+
+#################
+#1er graphique : Histogramme du nombre de boissons notées par catégorie
+#################
 class RatedByCategories(QWidget):
     def __init__(self):
         super().__init__()
@@ -149,8 +204,11 @@ class RatedByCategories(QWidget):
                 spine.set_edgecolor('white')
 
         self.canvas.draw()
-        
-###2ème graphique : Histogramme des moyennes des notes par catégorie
+
+
+#################
+#2ème graphique : Histogramme des moyennes des notes par catégorie
+#################     
 class MeanByCategories(QWidget):
     def __init__(self):     
         super().__init__()
@@ -164,7 +222,6 @@ class MeanByCategories(QWidget):
         layout.addWidget(self.canvas)
         
         self.update()
-        #self.values = [4.8, 2.6, 3.2, 2.0, 3.0] #pour l'exemple
 
     def update(self):
         self.ax.clear()
@@ -191,8 +248,11 @@ class MeanByCategories(QWidget):
 
         self.canvas.draw()
 
-##Création de l'écran
-##BENE
+
+#################
+#création de l'écran
+################# 
+
 class ScreenProfile(QWidget):
     def __init__(self) -> None:
         super().__init__()
@@ -200,10 +260,9 @@ class ScreenProfile(QWidget):
         self.setWindowTitle("Profil Window")
         self.resize(1000,500)
 
-        ##Partie droite avec les graphiques
         self.rated_by_categories = RatedByCategories()
         self.mean_by_categories_graph = MeanByCategories()
-        favorie_data_diplay = FavorieDataDisplay()
+        self.favorie_data_diplay = FavorieDataDisplay()
         graphiques_layout = QVBoxLayout()
         ecran_layout = QHBoxLayout()
         self.update()
@@ -211,14 +270,18 @@ class ScreenProfile(QWidget):
         graphiques_layout.addWidget(self.rated_by_categories)
         graphiques_layout.addWidget(self.mean_by_categories_graph)
         
-        ecran_layout.addWidget(favorie_data_diplay,5)
+
+        ecran_layout.addLayout(self.favorie_data_diplay,5)
         ecran_layout.addLayout(graphiques_layout,5)
 
         self.setLayout(ecran_layout)
         
     def update(self):
+        self.favorie_data_diplay.update()
         self.rated_by_categories.update()
         self.mean_by_categories_graph.update()
+
+        
         
 ############################################################
 ############################################################

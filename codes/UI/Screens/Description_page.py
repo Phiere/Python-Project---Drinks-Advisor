@@ -29,10 +29,10 @@ class LabelPrincipal(QWidget):
         layout.addWidget(self.drink_name)
 
     def update(self):
-        db =  RU.choix_de_la_data_base
-        index = RU.index
+        db =  Db.choix_de_la_data_base
+        index = Db.index_boisson
         boisson = Db.dbsall[db][0].iloc[index]
-        db_utilisee = Db.choisir_db(db,0)
+        db_utilisee = Db.dbsall[db][0]
         index_name = db_utilisee.columns.get_loc('Name')
         if str(boisson[index_name]) != 'nan' and str(boisson[index_name]) != '':
             drink_name = boisson[index_name]
@@ -61,8 +61,8 @@ class InformationsDisplay(QScrollArea):
         self.setFixedSize(1000, 350)
 
     def update(self):
-        db =  RU.choix_de_la_data_base
-        index = RU.index
+        db =    Db.choix_de_la_data_base
+        index = Db.index_boisson
         db_utilisee = Db.dbsall[db][0]
         boisson = db_utilisee.iloc[index]
 
@@ -75,23 +75,23 @@ class InformationsDisplay(QScrollArea):
         column_index = []
         
         # Wines
-        if RU.choix_de_la_data_base == 0:
+        if Db.choix_de_la_data_base == 0:
             real_names = ['country', 'description', 'price', 'province', 'variety', 'winery', 'region_']
             column_names = ['Provenance', 'Description', 'Prix', 'Province', 'Variété', 'Domaine', 'Région']
         # Cocktails
-        elif RU.choix_de_la_data_base == 1: 
+        elif Db.choix_de_la_data_base == 1: 
             real_names = ['strAlcoholic', 'strCategory', 'strDrinkThumb', 'strGlass', 'strIBA', 'strIngredient', 'strMeasure', 'strInstructions', 'strVideo']
             column_names = ['Type (Alcoholic/Non Alcoholic)', 'Catégorie', 'Lien Image Verre', 'Type de verre', 'strIBA', 'Ingrédients', 'Quantités', 'Préparation', 'Vidéo']
         # Beers
-        elif RU.choix_de_la_data_base == 2: 
+        elif Db.choix_de_la_data_base == 2: 
             real_names = ['brewery_name', 'beer_style', 'review_aroma', 'review_appearance', 'review_palate', 'review_taste', 'review_time','review_overall']
             column_names = ['Brasseur', 'Style', 'Arômes', 'Apparence', 'Palais', 'Goût', 'Nombre d''évaluations', 'Review globale']
         # Coffee
-        elif RU.choix_de_la_data_base == 3: 
+        elif Db.choix_de_la_data_base == 3: 
             real_names = ['loc_country', 'roaster', 'roast', '100g_USD', 'origin_', 'desc_', 'rating']
             column_names = ['Provenance', 'Torréfacteur', 'Torréfaction', 'Prix', 'Origine', 'Description', 'Note (/100)']
         # Mocktails
-        elif RU.choix_de_la_data_base == 4:
+        elif Db.choix_de_la_data_base == 4:
             real_names = ['Ingredient ', 'Flavor Profile ', 'User Rating']
             column_names = ['Ingrédients', 'Saveurs', 'Note (/5)']
 
@@ -110,9 +110,9 @@ class InformationsDisplay(QScrollArea):
             if isinstance(value, list):
                 value_str = ', '.join(str(item) for item in value)
             elif column_name == 'Prix' and str(value) != 'nan':
-                if RU.choix_de_la_data_base == 0 : 
+                if Db.choix_de_la_data_base == 0 : 
                     value_str = f"{value} €"
-                elif RU.choix_de_la_data_base == 3: 
+                elif Db.choix_de_la_data_base == 3: 
                     value_str = f"{value} USD/100g"
             else:
                 value_str = str(value)
@@ -123,7 +123,7 @@ class InformationsDisplay(QScrollArea):
                 value_list_filtered = [item for item in value_list if item != 'nan' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
                 value_str = ', '.join(value_list_filtered)
             
-            if RU.choix_de_la_data_base == 2 and column_name == 'Arômes':
+            if Db.choix_de_la_data_base == 2 and column_name == 'Arômes':
                 formatted_lines.append(f"Evaluations (/5) : ")
                 remaining_elements = [col for col in column_names[i+1:]]
                 for element in remaining_elements:
@@ -154,8 +154,8 @@ class FavoriteInteraction(QPushButton):
 
     def update_icon(self):
         
-        db =  RU.choix_de_la_data_base
-        index = RU.index
+        db =  Db.choix_de_la_data_base
+        index = Db.index_boisson
         favory = Db.dbsall[db][0].iloc[index][-1]
 
         if favory:
@@ -164,8 +164,8 @@ class FavoriteInteraction(QPushButton):
             self.setIcon(self.star_icon_empty)
 
     def update_status(self):
-        db =  RU.choix_de_la_data_base
-        index = RU.index
+        db =  Db.choix_de_la_data_base
+        index = Db.index_boisson
         favory = not(Db.dbsall[db][0].iloc[index][-1])
         Db.dbsall[db][0].iloc[index,-1] = favory
         self.update_icon()
@@ -190,8 +190,8 @@ class CommentInteracton(QHBoxLayout):
 
 
     def update(self):
-        db =  RU.choix_de_la_data_base
-        index = RU.index
+        db =  Db.choix_de_la_data_base
+        index = Db.index_boisson
         commentaire = Db.dbsall[db][0].iloc[index][-2]
         self.texte.setText('')
         if   pd.isna(commentaire):
@@ -200,8 +200,8 @@ class CommentInteracton(QHBoxLayout):
             self.texte.setPlaceholderText(commentaire)
     
     def comment(self):
-        db =  RU.choix_de_la_data_base
-        index = RU.index
+        db =  Db.choix_de_la_data_base
+        index = Db.index_boisson
         Db.dbsall[db][0].iloc[index,-2] = self.texte.text()
 
 
@@ -270,14 +270,14 @@ class RatingInteraction(QWidget):
         return super().eventFilter(obj, event)
     
     def update_icon(self):
-        db =  RU.choix_de_la_data_base
-        index = RU.index
+        db =  Db.choix_de_la_data_base
+        index = Db.index_boisson
         rating = Db.dbsall[db][0].iloc[index][-3]
         self.on_star_click(int(rating))
 
     def update_status(self):
-        db =  RU.choix_de_la_data_base
-        index = RU.index
+        db =  Db.choix_de_la_data_base
+        index = Db.index_boisson
         Db.dbsall[db][0].iloc[index,-3] = self.rating
         self.update_icon()
 

@@ -20,13 +20,6 @@ import Description_page as Dp
 
 ### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
 
-### On utlise des constante ou pas ? Moi je vais préfère utilsier global
-#global CHOIX_DE_LA_DATA_BASE 
-CHOIX_DE_LA_DATA_BASE = 0
-#global INDEX
-INDEX = 0
-
-choix_de_la_data_base = 0
 init = 0
 #Détecter le signal quand j'appuie sur entrée
 ##BENE
@@ -165,8 +158,8 @@ class CustomListAffichageTri(QWidget):
         self.setLayout(layout)
 
     def mousePressEvent(self, a0: QMouseEvent) -> None:
-        global index
-        index = self.indexx
+        
+        Db.index_boisson = self.indexx
         self.appel_a_description()
 
 ##
@@ -190,7 +183,7 @@ class LineOfCategoriesNames(QHBoxLayout):
         self.upload_names()
   
      def upload_names(self):
-        titles = Db.dbsall[choix_de_la_data_base][2]
+        titles = Db.dbsall[Db.choix_de_la_data_base][2]
         while self.count():
                 item = self.takeAt(0)
                 widget = item.widget()
