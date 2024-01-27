@@ -1,4 +1,7 @@
 import pandas
+import sys
+sys.path.append('codes/UI/Screens/')
+import Research_page_UI as Ru
 
 ####################################
 ####################################
@@ -102,3 +105,7 @@ dbs = dbsall[0]
 
 def choisir_db(index,index_col):
     return dbsall[index][index_col]
+
+
+choix_de_la_data_base = 0
+choix_boisson = 0

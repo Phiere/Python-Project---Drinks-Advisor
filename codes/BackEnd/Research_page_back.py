@@ -5,6 +5,7 @@ from PyQt5.QtWidgets import QWidget
 
 dbs = Db.initilisationSoft()[0]
 
+
 class Filtre(QWidget):
     def __init__(self,name_column,data_base) -> None:
         super().__init__()
@@ -17,12 +18,13 @@ class Filtre(QWidget):
 
 # Prend en entrée la df utilisée et construit une list de filtres qui seront utililisés à la
 # fois pour l'affichage et la gestion des données à afficher
-
-def from_df_to_filters(df_used,take_text):
-    columns_names = df_used.columns 
+# je change pas la db ici oups
+def from_df_to_filters(take_text):
+    db = Db.dbsall[0][1]
+    columns_names = db.columns
     filters_list = []
     for i in range(len(columns_names)):
-        filtre = Filtre(columns_names[i],df_used.iloc[:,i])
+        filtre = Filtre(columns_names[i],db.iloc[:,i])
         filters_list.append(filtre)
     for i in range(len(filters_list)):
             filters_list[i].name_edit.textEdited.connect(take_text)
@@ -31,14 +33,17 @@ def from_df_to_filters(df_used,take_text):
 
 # Lis tout les QLineEdit qui font office de filtres et retourne tout leurs textes.
 # Filtre la df en fonction des filtres utilisés et donne la df des éléments filtrés
-def from_filters_to_newDF(df_used,frame2,filters_list,colonne_to_sort,sorted_state):
+def from_filters_to_newDF(filters_list,colonne_to_sort,sorted_state):
+        df_used = Db.dbsall[Db.choix_de_la_data_base][0]
+        print(df_used.tail(5))
         df_temporary = df_used.copy()
-
+        frame2 = Db.dbsall[Db.choix_de_la_data_base][2]
         for i in range(len(filters_list)) :
                 text_from_filter = filters_list[i].name_edit.text()
                 if  text_from_filter != '':
-                    
+                    print(text_from_filter)
                     df_temporary = filtrer(text_from_filter,filters_list[i].nom_col,df_temporary)
+                    print(df_temporary)
         
 
         if colonne_to_sort != 'Random':

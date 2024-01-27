@@ -25,8 +25,8 @@ class MenuLayout(QHBoxLayout):
         super().__init__()        
   
         buton_back = MenuButton(stack_control,0,"codes/UI/Icones/back.png")
-        buton_creation = MenuButton(stack_control,1,"codes/UI/Icones/plus.png")
-        buton_profile = MenuButton(stack_control,2,"codes/UI/Icones/profile.png")
+        buton_creation = MenuButton(stack_control,2,"codes/UI/Icones/plus.png")
+        buton_profile = MenuButton(stack_control,1,"codes/UI/Icones/profile.png")
 
         self.addWidget(buton_back)
         self.addWidget(buton_creation)

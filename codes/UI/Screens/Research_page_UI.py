@@ -20,12 +20,14 @@ import Description_page as Dp
 
 ### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
 
+### On utlise des constante ou pas ? Moi je vais préfère utilsier global
+#global CHOIX_DE_LA_DATA_BASE 
+CHOIX_DE_LA_DATA_BASE = 0
+#global INDEX
+INDEX = 0
 
 choix_de_la_data_base = 0
-index = 0
-boisson_choisie = (choix_de_la_data_base,index)
 init = 0
-
 #Détecter le signal quand j'appuie sur entrée
 ##BENE
 class KeyEventFilter(QObject):
@@ -63,13 +65,10 @@ class SortColumnChoice(QComboBox):
         self.setFixedSize(120,40)
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
 
-        ##
         self.update()
        
     def update(self):
-        global choix_de_la_data_base
-        names = Db.dbsall[choix_de_la_data_base][4] 
-
+        names = Db.dbsall[Db.choix_de_la_data_base][4] 
         self.clear()
         self.addItem('Random')
         for name in names :
@@ -145,8 +144,7 @@ class BaseDeDonneChoice(QComboBox):
         # Connecter un signal pour détecter le changement de sélection
         
     def on_selection_changed(self,index):
-        global choix_de_la_data_base
-        choix_de_la_data_base = index
+        Db.choix_de_la_data_base = index
         if init : self.upload_screen()
 ############################################################
 ############################################################
@@ -193,31 +191,25 @@ class LineOfCategoriesNames(QHBoxLayout):
         self.upload_names()
   
      def upload_names(self):
-        
-        global choix_de_la_data_base
         titles = Db.dbsall[choix_de_la_data_base][2]
-
         while self.count():
                 item = self.takeAt(0)
                 widget = item.widget()
                 if widget :
                     widget.deleteLater()
-
         for title in titles:
             Etiquette = ColumnCategoriesNames(title)
             self.addWidget(Etiquette)
 
 ##
 class ColumnOfFilter(QVBoxLayout):
-    def __init__(self,data_frame,chargerNewDf):
+    def __init__(self,chargerNewDf):
         super().__init__()
-    
-        self.filters_list = RB.from_df_to_filters(data_frame,chargerNewDf)
+        self.chargerNewDf = chargerNewDf
+        self.upload_filters()
 
-    def upload_filters(self,data_frame,chargerNewDf):
-        global choix_de_la_data_base
-    
-        self.filters_list = RB.from_df_to_filters(Db.choisir_db(choix_de_la_data_base,1),chargerNewDf)
+    def upload_filters(self):
+        self.filters_list = RB.from_df_to_filters(self.chargerNewDf)
         while self.count():
             item = self.takeAt(0)
             widget = item.widget()
@@ -239,16 +231,10 @@ class ScreenResearch(QWidget):
         
         self.GoToDescription = change_screen
 
-        global choix_de_la_data_base
-        self.data_frame = Db.choisir_db(choix_de_la_data_base,0)
         #Créations des filtres dynamique
-        self.column_of_filter = ColumnOfFilter(self.data_frame,self.chargerNewDf)
+        self.column_of_filter = ColumnOfFilter(self.chargerNewDf)
         #Création de la barre d'option pour manipuler les données
         self.optionsdefiltres = FilterOptionsBar(self.upload_screen)
-        self.etat = True
-        #global choix_de_la_data_base
-        
-        self.column_of_filter.upload_filters(self.data_frame,self.chargerNewDf)
 
         #Déclenger une recherche avec le bouton entrée
         self.key_event_filter = KeyEventFilter()
@@ -275,30 +261,22 @@ class ScreenResearch(QWidget):
         self.setLayout(self.screenLayout)
 
         #remplissage aléaotire pour un premier affichage
-        self.chargerNewDf()
-        #self.changer_text(Db.dbsall[choix_de_la_data_base][0])
+        self.upload_screen()
         global init
         init = 1
 
     def upload_screen(self):
-        
-        global choix_de_la_data_base
-        self.data_frame = Db.choisir_db(choix_de_la_data_base,0)
-        self.column_of_filter.upload_filters(self.data_frame,self.chargerNewDf)
+        self.column_of_filter.upload_filters()
         self.chargerNewDf()
-        print('rentré')
         self.optionsdefiltres.update()
-        print('sorti')
         self.Line_Of_Categories_Names.upload_names()
 
     #Charher la df filtrée avec les filtres
     def chargerNewDf(self):
-        global choix_de_la_data_base
-        frame1 = Db.choisir_db(choix_de_la_data_base,0)
-        frame2 = Db.choisir_db(choix_de_la_data_base,2)
-        colonne_choose_to_filter = self.optionsdefiltres.sort_column_choice.currentText()
-        sens_choose_to_filter = self.optionsdefiltres.ascgo.getSatus()
-        tempdf = RB.from_filters_to_newDF(frame1,frame2,self.column_of_filter.filters_list,colonne_choose_to_filter,sens_choose_to_filter)
+        filters_column = self.column_of_filter.filters_list
+        sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
+        sorting_sens = self.optionsdefiltres.ascgo.getSatus()
+        tempdf = RB.from_filters_to_newDF(filters_column,sorting_column,sorting_sens)
         self.changer_text(tempdf)
 
     
@@ -311,41 +289,31 @@ class ScreenResearch(QWidget):
         if choix == 'All' :
             n = len(newdf)
         else :
-            n = int(self.optionsdefiltres.number_of_element_choice.currentText())
+            n = int(choix)
         
 
         if not(newdf.empty) and len(newdf) > n:
             self.listWidget.clear()
             random_or_not = self.optionsdefiltres.sort_column_choice.currentText()
             if random_or_not == 'Random':
-                L = random.sample(range(0, len(newdf)), n)
+                L = random.sample(range(len(newdf)), n)
             else :   
                 L = range(0,n)
-            for i in L:
-                listItem = QListWidgetItem(self.listWidget)
-                texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]
-                global choix_de_la_data_base
-                indexx = int(Db.dbsall[choix_de_la_data_base][0].iat[i,0])
-                customItemWidget = CustomListAffichageTri(texte,indexx,self.GoToDescription)
-                listItem.setSizeHint(customItemWidget.sizeHint())
-                self.listWidget.addItem(listItem)
-                self.listWidget.setItemWidget(listItem, customItemWidget)
+        else :
+            L = range(len(newdf))
+
+        for i in L:
+            listItem = QListWidgetItem(self.listWidget)
+            texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]                
+            indexx = Db.dbsall[Db.choix_de_la_data_base][0].iloc[i][0]
+            customItemWidget = CustomListAffichageTri(texte,indexx,self.GoToDescription)
+            listItem.setSizeHint(customItemWidget.sizeHint())
+            self.listWidget.addItem(listItem)
+            self.listWidget.setItemWidget(listItem, customItemWidget)
 
      
-        
-        elif not(newdf.empty) :
 
-            self.listWidget.clear()
-
-            for i in range(len(newdf)):  
-                listItem = QListWidgetItem(self.listWidget)
-                texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]
-   
-                index = int(Db.dbsall[choix_de_la_data_base][0].iat[i,0])
-                customItemWidget = CustomListAffichageTri(texte,self.GoToDescription)
-                listItem.setSizeHint(customItemWidget.sizeHint())
-                self.listWidget.addItem(listItem)
-                self.listWidget.setItemWidget(listItem, customItemWidget)
+    
         
 
 ############################################################
