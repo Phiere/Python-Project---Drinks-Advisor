@@ -9,7 +9,8 @@
 import sys
 import seaborn as sns
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QFrame,QGridLayout,QHBoxLayout,QLabel,QListWidgetItem,QListWidget
-from PyQt5.QtCore import QSize
+from PyQt5.QtGui import QPixmap
+from PyQt5.QtCore import QSize, Qt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
 
@@ -19,49 +20,94 @@ import Profil_page_back as Pb
 categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
 
 ###1er élément (à gauche): Liste des infos des boissons ajoutées aux Favoris
-class FavorieDataLine(QWidget):
-    def __init__(self,textes_a_afficher):
+class FavorieDataItem(QFrame):
+    def __init__(self, data):
         super().__init__()
-        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
-        self.hbox = QHBoxLayout(self)
 
-        label_list = []
-        for text in textes_a_afficher :
-            label_list.append(QLabel(text))
+        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
+        layout = QHBoxLayout(self)
+
+        for text in data:
+            label = QLabel(text)
+            layout.addWidget(label)
 
         vertical_bar = QFrame()
         vertical_bar.setFrameShape(QFrame.VLine)
         vertical_bar.setFrameShadow(QFrame.Sunken)
-        vertical_bar.setLineWidth(2)  # Ajustez la largeur de la barre ici
+        vertical_bar.setLineWidth(2)
 
-        for label in label_list :
-            self.hbox.addWidget(label)
-            self.hbox.addWidget(vertical_bar)
- 
-class FavorieDataDisplay(QListWidget):
+        layout.addWidget(vertical_bar)
+
+class FavoriesTitle(QWidget):
+    def __init__(self, nb_favories):
+        super().__init__()
+
+        main_layout = QHBoxLayout()
+
+        #Image "Favoris"
+        image_label = QLabel(self)
+        pixmap = QPixmap("codes/UI/Icones/star_filled.png")  # Remplacez cela par le chemin de votre image
+        pixmap = pixmap.scaledToHeight(100) 
+        image_label.setPixmap(pixmap)
+        image_label.setStyleSheet("border: 2px solid white;")
+
+        # Titre "Boissons Favories"
+        title_label = QLabel("Boissons Favories", self)
+        title_label.setStyleSheet("color: white; font-size: 18px;")
+
+        # Sous-titre "Nombre de boissons"
+        nb_favories_label = QLabel(f"{nb_favories} boissons", self)
+        nb_favories_label.setStyleSheet("color: white; font-size: 12px;")
+
+        # Layout vertical pour aligner les titres et sous-titres
+        title_layout = QVBoxLayout()
+        title_layout.addWidget(title_label)
+        title_layout.addWidget(nb_favories_label)
+        title_layout.setAlignment(Qt.AlignBottom | Qt.AlignLeft)
+
+        # Construction du main_layout
+        main_layout.addWidget(image_label)
+        main_layout.addLayout(title_layout)
+        main_layout.addStretch()
+
+        # Définir le layout principal pour ce widget
+        self.setLayout(main_layout)
+
+class FavorieDataDisplay(QFrame):
     def __init__(self):
         super().__init__()
+
+        self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
+        layout = QVBoxLayout(self)
 
         favories_dfs = Pb.favorites_extraction()
         categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
 
-        if not(all(value == 0 for value in favories_dfs)):
-            for j in range(len(favories_dfs)) :
+        # Ajouter le titre et la photo
+        nb_favories = sum(len(df) for df in favories_dfs)
+        title_widget = FavoriesTitle(nb_favories)
+        layout.addWidget(title_widget)
+        
+
+        # Ajouter les éléments de la liste
+        if nb_favories > 0:
+            for j in range(len(favories_dfs)):
                 favorie_df = favories_dfs[j]
                 for i in range(len(favorie_df)):
-
-                    listItem = QListWidgetItem(self)
                     ligne = favorie_df.iloc[i]
                     element_ligne = [str(e) for e in ligne]
                     element_ligne.append(categories[j])
 
-                    favorie_data_line = FavorieDataLine(element_ligne)
-                    listItem.setSizeHint(favorie_data_line.sizeHint())
-                    self.addItem(listItem)
-                    self.setItemWidget(listItem, favorie_data_line)
+                    favorie_data_item = FavorieDataItem(element_ligne)
+                    layout.addWidget(favorie_data_item)
         else:
-            listItem = "Aucune boisson n'a été ajoutée aux Favoris"
-            self.addItem(listItem)
+            no_favories_label = QLabel("Aucune boisson n'a été ajoutée aux Favoris")
+            no_favories_label.setAlignment(Qt.AlignCenter)  # Centre le texte horizontalement
+            no_favories_label.setStyleSheet("font-size: 12pt;")  # Définit la police à 12pt
+            layout.addWidget(no_favories_label)
+            layout.setStretchFactor(no_favories_label, 3) 
+    def update(self):
+        pass
 
 ###2ème élément : Espace avec 2 graphiques
 ###1er graphique : Histogramme du nombre de boissons notées par catégorie

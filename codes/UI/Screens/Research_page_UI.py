@@ -148,7 +148,6 @@ class BaseDeDonneChoice(QComboBox):
         if init : self.upload_screen()
 ############################################################
 ############################################################
-##Creer l'affichage de tous les éléments trier comme des texte_edits. CLairement c'est le points à modifier les
 
 class CustomListAffichageTri(QWidget):
     def __init__(self, completion_text_to_display,indexx, GoToDescription):
