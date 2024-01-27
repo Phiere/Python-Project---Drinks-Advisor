@@ -39,12 +39,12 @@ class ScreensToDisplay(QStackedWidget):
         super().__init__()
 
         research_screen = RU.ScreenResearch(show_description)
-        profil_screen = PU.ScreenProfile()
+        self.profil_screen = PU.ScreenProfile()
         creation_screen = CU.ScreenCreation()
         self.description_screen = DU.Description()
 
         self.addWidget(research_screen)
-        self.addWidget(profil_screen)
+        self.addWidget(self.profil_screen)
         self.addWidget(creation_screen)
         self.addWidget(self.description_screen)
 
@@ -66,7 +66,9 @@ class DisplayerScreen(QWidget):
 
 
     def goToScreen(self, index):
-        if index == 3 :
+        if index == 1 :
+            self.screens_to_display.profil_screen.update()
+        elif index == 3 :
             self.screens_to_display.description_screen.update()
         self.screens_to_display.setCurrentIndex(index)
 
