@@ -121,16 +121,21 @@ class RatingInteraction(QHBoxLayout):
             self.stars_images.append((empty_star, filled_star))
 
         self.star_buttons = []
+
+        self.addStretch(5)
         for i in range(5):
             star_button = QPushButton()
             star_button.setIcon(QIcon(self.stars_images[i][0]))
-            star_button.setFixedSize(80, 40)
+            #star_button.setFixedSize(80, 40)
+            star_button.setFixedHeight(40)
             star_button.clicked.connect(lambda _, idx=i + 1: self.update_status(idx))
             star_button.installEventFilter(self)
             self.star_buttons.append(star_button)
 
             # Ajoute chaque étoile au layout horizontal
             self.addWidget(star_button)
+            self.setStretchFactor(star_button,1)
+        self.addStretch(5)
 
     def on_star_click(self, index):
         if self.new_rating > self.prec_rating:
