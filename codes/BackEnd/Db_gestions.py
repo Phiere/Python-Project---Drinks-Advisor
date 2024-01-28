@@ -68,7 +68,7 @@ def initialisationBeer():
     beers_titles = ['Name','beer_style','review_overall']
     beers_descriptions = ['brewery_name','beer_style','Name','review_overall','review_aroma','review_appearance','review_palate','review_taste','beer_abv' ]
     beers_filtrage = ['brewery_name','beer_style','review_overall','review_aroma','review_appearance','review_palate','review_taste','beer_abv' ]
-    beers_sort = ['PersonalRating']
+    beers_sort = ['PersonalRating','review_overall','review_aroma','review_appearance','review_taste','review_palate','beer_abv']
 
     beers_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/beers_unique_elements.csv')
     beers_filters = beers_uniques_elements[beers_filtrage]

@@ -283,9 +283,8 @@ class ScreenResearch(QWidget):
         else :
             n = int(choix)
         
-
+        
         if not(newdf.empty) and len(newdf) > n:
-            self.listWidget.clear()
             random_or_not = self.optionsdefiltres.sort_column_choice.currentText()
             if random_or_not == 'Random':
                 L = random.sample(range(len(newdf)), n)
@@ -293,6 +292,8 @@ class ScreenResearch(QWidget):
                 L = range(0,n)
         else :
             L = range(len(newdf))
+        
+        if len(L) > 0 : self.listWidget.clear()
 
         for i in L:
             listItem = QListWidgetItem(self.listWidget)

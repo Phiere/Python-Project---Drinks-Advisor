@@ -20,7 +20,7 @@ class Filtre(QWidget):
 # fois pour l'affichage et la gestion des données à afficher
 # je change pas la db ici oups
 def from_df_to_filters(take_text):
-    db = Db.dbsall[0][1]
+    db = Db.dbsall[Db.choix_de_la_data_base][1]
     columns_names = db.columns
     filters_list = []
     for i in range(len(columns_names)):
