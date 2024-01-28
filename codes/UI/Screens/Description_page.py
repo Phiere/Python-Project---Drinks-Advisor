@@ -25,7 +25,7 @@ class LabelPrincipal(QWidget):
         self.drink_name = QLabel()
         self.drink_name.setWordWrap(True)  # Pour que le texte s'ajuste automatiquement à la largeur du QLabel
         self.drink_name.setTextInteractionFlags(Qt.TextSelectableByMouse)  # Rend le texte sélectionnable par la souris
-
+        self.drink_name.setFixedHeight(40)
         layout = QHBoxLayout(self)  # Ajouter un QHBoxLayout au widget
         layout.addWidget(self.drink_name)
 
@@ -37,7 +37,6 @@ class LabelPrincipal(QWidget):
 class InformationsDisplay(QScrollArea):
     def __init__(self):
         super().__init__()
-        self.setFixedSize(1000, 350)
 
         self.scroll_content = QWidget()
         layout = QVBoxLayout(self.scroll_content)
@@ -50,8 +49,6 @@ class InformationsDisplay(QScrollArea):
         layout.addWidget(self.description_text)
         self.setWidgetResizable(True)
         self.setWidget(self.scroll_content)
-
-        
 
     def update(self):
         texte =  Dp.get_description_from_drink()
@@ -69,9 +66,9 @@ class FavoriteInteraction(QPushButton):
 
         self.setText('Ajouter en Favori')
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
+        self.setFixedHeight(40)
         self.clicked.connect(self.update_status)
         self.setIcon(self.star_icon_empty)
-        self.setFixedSize(1000,40)
 
     def update_icon(self):
         if Dp.get_status_favori(): self.setIcon(self.star_icon_filled)
@@ -94,7 +91,8 @@ class CommentInteracton(QHBoxLayout):
         bouton.setFixedSize(150,40)
 
         self.texte = QLineEdit()
-        self.texte.setFixedSize(850,40)
+        self.texte.setFixedHeight(40)
+        self.setStretchFactor(self.texte, 6)
         
         self.addWidget(bouton)
         self.addWidget(self.texte)
@@ -204,7 +202,7 @@ class Description(QWidget):
   
         info_layout.addWidget(self.drink_name)
         info_layout.addWidget(self.informations_display)
-        info_layout.addStretch()
+        info_layout.setStretchFactor(self.informations_display,3)
         info_layout.addLayout(self.notations_interactions)
 
         self.setLayout(info_layout)
