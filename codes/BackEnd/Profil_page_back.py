@@ -58,12 +58,9 @@ def favorites_extraction():
 
         cut = data_frame[['Name', 'PersonalRating', 'Commentary']]
         cut['Nom_db'] = categories[i]
-        print(categories[i])
         cut['db'] = i
-        cut['index'] = 0
-
-        for j in range(len(cut)) :
-            cut.iloc[j]['index'] = cut.iloc[j][0]
+        print(data_frame.index)
+        cut['index'] = data_frame.index
 
         favories = pd.concat([favories, cut], axis=0)
  

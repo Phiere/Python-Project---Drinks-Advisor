@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 
 sys.path.append('codes/BackEnd/')
 import Profil_page_back as Pb
+import Db_gestions as Db
 
 categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
 
@@ -71,10 +72,11 @@ class FavoriesTitle(QHBoxLayout):
 #tableau des favoris
 #################
 class FavorieDataDisplay(QVBoxLayout):
-    def __init__(self):
+    def __init__(self,go_to_description):
         super().__init__()
 
         self.init = 1
+        self.go_to_description = go_to_description
         self.title_widget = FavoriesTitle()
         self.listWidget = QListWidget()
         self.categories_names = LineOfCategoriesNames()
@@ -88,33 +90,39 @@ class FavorieDataDisplay(QVBoxLayout):
         nb_favories = len(favories_dfs)
         self.title_widget.update(nb_favories=nb_favories)
 
-        self.listWidget.clear()
+        
         if nb_favories > 0:
-    
+            self.listWidget.clear()
             for i in range(len(favories_dfs)) :
                 listItem = QListWidgetItem(self.listWidget)
                 texte = [str(favories_dfs.iat[i,j]) for j in range(len(['Nom_db','Names','personnal_rating','oui']))]                
-                indexx = 0
-                customItemWidget = CustomListAffichageTri(texte,indexx)#,self.GoToDescription)
+                indexx = favories_dfs.iat[i,-1]
+                customItemWidget = CustomListAffichageTri(texte,indexx,self.go_to_description)
                 listItem.setSizeHint(customItemWidget.sizeHint())
                 self.listWidget.addItem(listItem)
                 self.listWidget.setItemWidget(listItem, customItemWidget)
 
 
         elif self.init  :
+            listItem = QListWidgetItem(self.listWidget)              
             no_favories_label = QLabel("Aucune boisson n'a été ajoutée aux Favoris")
+            #customItemWidget = CustomListAffichageTri(texte,indexx)#,self.GoToDescription)
+            listItem.setSizeHint(no_favories_label.sizeHint())
+            self.listWidget.addItem(listItem)
+            self.listWidget.setItemWidget(listItem, no_favories_label)
+            '''no_favories_label = QLabel("Aucune boisson n'a été ajoutée aux Favoris")
             no_favories_label.setAlignment(Qt.AlignCenter)  # Centre le texte horizontalement
             no_favories_label.setStyleSheet("font-size: 12pt;")  # Définit la police à 12pt
-            self.addWidget(no_favories_label)
-            self.setStretchFactor(no_favories_label, 3) 
+            self.listWidget.addItem(no_favories_label)
+            self.setStretchFactor(no_favories_label, 3) '''
             self.init = 0
 
 
 class CustomListAffichageTri(QWidget):
-    def __init__(self, completion_text_to_display,indexx):
+    def __init__(self, completion_text_to_display,indexx,go_to_description):
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
-        #self.appel_a_description = GoToDescription
+        self.appel_a_description = go_to_description
         self.indexx = indexx
         layout = QHBoxLayout(self)
 
@@ -126,10 +134,8 @@ class CustomListAffichageTri(QWidget):
         self.setLayout(layout)
 
     def mousePressEvent(self, a0: QMouseEvent) -> None:
-        pass
-        #global index
-        #index = self.indexx
-        #self.appel_a_description()
+        Db.index_boisson = self.indexx
+        self.appel_a_description()
 
 
 class ColumnCategoriesNames(QWidget):
@@ -254,7 +260,7 @@ class MeanByCategories(QWidget):
 ################# 
 
 class ScreenProfile(QWidget):
-    def __init__(self) -> None:
+    def __init__(self,go_to_description) -> None:
         super().__init__()
         self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
         self.setWindowTitle("Profil Window")
@@ -262,7 +268,7 @@ class ScreenProfile(QWidget):
 
         self.rated_by_categories = RatedByCategories()
         self.mean_by_categories_graph = MeanByCategories()
-        self.favorie_data_diplay = FavorieDataDisplay()
+        self.favorie_data_diplay = FavorieDataDisplay(go_to_description=go_to_description)
         graphiques_layout = QVBoxLayout()
         ecran_layout = QHBoxLayout()
         self.update()

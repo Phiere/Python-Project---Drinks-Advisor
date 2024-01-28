@@ -39,7 +39,7 @@ class ScreensToDisplay(QStackedWidget):
         super().__init__()
 
         research_screen = RU.ScreenResearch(show_description)
-        self.profil_screen = PU.ScreenProfile()
+        self.profil_screen = PU.ScreenProfile(show_description)
         creation_screen = CU.ScreenCreation()
         self.description_screen = DU.Description()
 
