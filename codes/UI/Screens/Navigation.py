@@ -10,6 +10,7 @@ import Profil_page_UI as PU
 import Creation_page_UI as CU
 import Description_page as DU
 
+##Enlever les Unnamed: 0
 
 class MenuButton(QPushButton):
     def __init__(self,stack_control,stack_index,path_icone) :
@@ -40,7 +41,7 @@ class ScreensToDisplay(QStackedWidget):
 
         research_screen = RU.ScreenResearch(show_description)
         self.profil_screen = PU.ScreenProfile(show_description)
-        creation_screen = CU.ScreenCreation()
+        creation_screen = CU.ScreenCreation(show_description)
         self.description_screen = DU.Description()
 
         self.addWidget(research_screen)

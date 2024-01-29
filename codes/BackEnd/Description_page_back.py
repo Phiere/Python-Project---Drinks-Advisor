@@ -1,6 +1,7 @@
 import Db_gestions as Db
 import pandas as pd
 
+
 def get_name_from_drink():
     db,index = Db.choix_de_la_data_base,Db.index_boisson
     boisson = Db.dbsall[db][0].iloc[index]

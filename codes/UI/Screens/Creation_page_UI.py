@@ -10,7 +10,7 @@ import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QLineEdit,
                                     QComboBox,QListWidget,QListWidgetItem)
 from PyQt5.QtWidgets import QPushButton
-from PyQt5.QtCore import QSize 
+from PyQt5.QtCore import QSize,QTimer
 
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
@@ -18,7 +18,6 @@ import Creation_page_back as Cb
 import Navigation as Nav
 
 
-data_base_chose = 0
 
 
 ##BENE
@@ -37,8 +36,7 @@ class DataBaseChoice(QComboBox):
         self.currentIndexChanged.connect(self.update)
 
     def update(self,index):
-        global data_base_chose
-        data_base_chose = index
+        Db.choix_de_la_data_base = index
         self.fonction()
 
 #Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
@@ -51,14 +49,14 @@ class ListeElementToComplete(QListWidget):
 
     def update(self):
         self.clear()
-        names_columns = Db.dbsall[data_base_chose][0].columns
+        names_columns = Db.dbsall[Db.choix_de_la_data_base ][0].columns
 
-        for i in range(1,len(names_columns)):
-                
+        for name in names_columns:
+            if name not in ['Unnamed 0:','PersonalRating','Favorie'] :
                 listItem = QListWidgetItem(self)
                 listItem.setSizeHint(QSize(20,50))
                 item = QLineEdit()
-                item.setPlaceholderText(names_columns[i])
+                item.setPlaceholderText(name)
                 self.setItemWidget(listItem,item)
 
     def get_texts(self):
@@ -69,25 +67,44 @@ class ListeElementToComplete(QListWidget):
             widget = self.itemWidget(item)
             if isinstance(widget, QLineEdit):
                 text_list.append(widget.text())
+            widget.setText("")
+
         return text_list
 
 ##BENE
 class CreationButton(QPushButton):
-    def __init__(self,get_text)-> None:
+    def __init__(self,get_text,go_to_description)-> None:
         super().__init__()
 
+        self.go_to_description = go_to_description
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.setText("Créer")
-        self.clicked.connect(self.create_new_drink)
         self.function = get_text
+        self.pressed.connect(self.on_pressed)
+        self.released.connect(self.on_released)
+
+        self.timer = QTimer(self)
+        self.timer.setInterval(1000)  
+        self.timer.setSingleShot(True)
+        self.timer.timeout.connect(self.create_new_drink)
 
     def create_new_drink(self):
-        Cb.create_new_drink(data_base_chose,self.function)
+        Cb.create_new_drink(Db.choix_de_la_data_base,self.function)
+        self.go_to_description()
+
+    def on_pressed(self):
+        self.timer.start()
+
+    def on_released(self):
+        if self.timer.isActive():
+            self.timer.stop()
+
+        
 
 ##Creation de l'écran
 ##BENE
 class ScreenCreation(QWidget):
-    def __init__(self) -> None:
+    def __init__(self,go_to_description) -> None:
         super().__init__()
 
         self.setStyleSheet("background-color: #1f1f1f")
@@ -98,7 +115,7 @@ class ScreenCreation(QWidget):
         self.list_element_to_complete = ListeElementToComplete()
         get_text = self.list_element_to_complete.get_texts
         screen_layout = QVBoxLayout()
-        creation_button = CreationButton(get_text)
+        creation_button = CreationButton(get_text,go_to_description=go_to_description)
 
         screen_layout.addWidget(data_base_choice)
         screen_layout.addWidget(self.list_element_to_complete)

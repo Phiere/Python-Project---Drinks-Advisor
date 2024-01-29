@@ -45,7 +45,7 @@ noms_colonnes = ['Colonne1', 'Colonne2', 'Colonne3', 'Colonne4', 'Colonne5']
 # Créer un DataFrame vide avec ces colonnes
 df = pd.DataFrame(columns=noms_colonnes)
 
-print(df)
+
 
 ###2ème élément (à gauche): Liste des infos des boissons ajoutées aux Favoris
 def favorites_extraction():
@@ -59,11 +59,9 @@ def favorites_extraction():
         cut = data_frame[['Name', 'PersonalRating', 'Commentary']]
         cut['Nom_db'] = categories[i]
         cut['db'] = i
-        print(data_frame.index)
         cut['index'] = data_frame.index
 
         favories = pd.concat([favories, cut], axis=0)
  
 
-    print(favories)
     return favories
