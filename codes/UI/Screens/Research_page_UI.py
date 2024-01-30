@@ -226,7 +226,7 @@ class ScreenResearch(QWidget):
         #Créations des filtres dynamique
         self.column_of_filter = ColumnOfFilter(self.chargerNewDf)
         #Création de la barre d'option pour manipuler les données
-        self.optionsdefiltres = FilterOptionsBar(self.upload_screen)
+        self.optionsdefiltres = FilterOptionsBar(self.chargerNewDf)
 
         #Déclenger une recherche avec le bouton entrée
         self.key_event_filter = KeyEventFilter()

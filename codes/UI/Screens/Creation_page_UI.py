@@ -69,7 +69,7 @@ class ListeElementToComplete(QListWidget):
             widget = self.itemWidget(item)
             if isinstance(widget, QLineEdit):
                 text_list.append(widget.text())
-            widget.setText("")
+    
 
         return text_list
 
@@ -140,14 +140,16 @@ class CreationButton(QPushButton):
         self.go_to_description()
 
     def on_pressed(self):
-        self.animation_widget.startAnimation()
+        if not(Cb.texte_vides(self.function)):
+            self.animation_widget.startAnimation()
 
     def on_released(self):
-        if self.animation_widget.timer.isActive():
-            self.animation_widget.timer.stop()
-        else:
-            self.create_new_drink()
-            self.animation_widget.pixmap_item.setPixmap(QPixmap())
+        if not(Cb.texte_vides(self.function)):
+            if self.animation_widget.timer.isActive():
+                self.animation_widget.timer.stop()
+            else:
+                self.create_new_drink()
+                self.animation_widget.pixmap_item.setPixmap(QPixmap())
 
 ##Creation de l'écran
 ##BENE

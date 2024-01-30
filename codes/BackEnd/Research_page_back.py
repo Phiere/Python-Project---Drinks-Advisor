@@ -65,7 +65,7 @@ def chose_sorted_sens(chosed_option):
 
 def filtrer(f,colonne,data_Frame):
     try:
-        int(f)
+        1==0#int(f)
         return data_Frame[data_Frame[colonne] == int(f)]
     except ValueError :    
         if "," not in f :
