@@ -10,7 +10,7 @@ class LoadingScreen(QGraphicsView):
     def __init__(self):
         super().__init__()
 
-        self.setWindowTitle("Chargement de l'application")
+        self.setWindowTitle("Loading...")
         self.setGeometry(200, 200, 1050, 720)
         self.setStyleSheet("background-color: #333333; color: white;")
 

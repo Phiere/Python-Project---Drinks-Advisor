@@ -47,11 +47,11 @@ class FavoriesTitle(QHBoxLayout):
         image_label.setStyleSheet("border: 2px solid white;")
 
         # Titre "Boissons Favories"
-        title_label = QLabel("Boissons Favories")
+        title_label = QLabel("Favorite Drinks")
         title_label.setStyleSheet("color: white; font-size: 18px;")
 
         # Sous-titre "Nombre de boissons"
-        self.nb_favories_label = QLabel(f"{0} boissons")
+        self.nb_favories_label = QLabel(f"{0} drink")
         self.nb_favories_label.setStyleSheet("color: white; font-size: 12px;")
 
         # Layout vertical pour aligner les titres et sous-titres
@@ -66,7 +66,7 @@ class FavoriesTitle(QHBoxLayout):
         self.addStretch()
 
     def update(self,nb_favories):
-            self.nb_favories_label.setText(f"{nb_favories} boissons")
+            self.nb_favories_label.setText(f"{nb_favories} drinks")
 
 #################
 #tableau des favoris
@@ -105,12 +105,14 @@ class FavorieDataDisplay(QVBoxLayout):
 
         elif self.init  :
             listItem = QListWidgetItem(self.listWidget)              
-            no_favories_label = QLabel("Aucune boisson n'a été ajoutée aux Favoris")
+            no_favories_label = QLabel("No drinks were added to Favorites")
+            no_favories_label.setAlignment(Qt.AlignCenter)  # Centre le texte horizontalement
+            no_favories_label.setStyleSheet("font-size: 10pt;")  # Définit la police à 10pt
             #customItemWidget = CustomListAffichageTri(texte,indexx)#,self.GoToDescription)
             listItem.setSizeHint(no_favories_label.sizeHint())
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, no_favories_label)
-            '''no_favories_label = QLabel("Aucune boisson n'a été ajoutée aux Favoris")
+            '''no_favories_label = QLabel("No drinks were added to Favorites")
             no_favories_label.setAlignment(Qt.AlignCenter)  # Centre le texte horizontalement
             no_favories_label.setStyleSheet("font-size: 12pt;")  # Définit la police à 12pt
             self.listWidget.addItem(no_favories_label)
@@ -193,12 +195,12 @@ class RatedByCategories(QWidget):
         self.values = Pb.nb_notes_per_categories()
 
         if all(value == 0 for value in self.values):
-            self.ax.text(0.5, 0.5, "Aucune boisson n'a été notée", ha='center', va='center', fontsize=12, color='white')
+            self.ax.text(0.5, 0.5, "No drinks were rated", ha='center', va='center', fontsize=12, color='white')
         else:
             sns.barplot(x=categories, y=self.values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
         
-        self.ax.set_title('Répartition du nombre de boissons notées par catégorie', color='white', fontsize=10)
-        self.ax.set_ylabel('Nombre de boisson')
+        self.ax.set_title('Distribution of the number of rated drinks per category', color='white', fontsize=10)
+        self.ax.set_ylabel('Number of drinks')
         self.ax.set_facecolor('#1f1f1f')
         
         # Définir la couleur du texte sur les axes
@@ -235,13 +237,13 @@ class MeanByCategories(QWidget):
         self.values = Pb.mean_notes_per_categories()
 
         if all(value == 0 for value in self.values):
-            self.ax.text(0.5, 0.5, "Aucune boisson n'a été notée", ha='center', va='center', fontsize=12, color='white')
+            self.ax.text(0.5, 0.5, "No drinks were rated", ha='center', va='center', fontsize=12, color='white')
         else:
             sns.barplot(x=categories, y=self.values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
             
 
-        self.ax.set_title('Notes moyennes des boissons par catégorie', color='white', fontsize=10)
-        self.ax.set_ylabel('Note moyenne')
+        self.ax.set_title('Average drink ratings per category', color='white', fontsize=10)
+        self.ax.set_ylabel('Average rating')
         self.ax.set_facecolor('#1f1f1f')
 
         # Définir la couleur du texte sur l'axe
@@ -263,7 +265,7 @@ class ScreenProfile(QWidget):
     def __init__(self,go_to_description) -> None:
         super().__init__()
         self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
-        self.setWindowTitle("Profil Window")
+        self.setWindowTitle("Profile Window")
         self.resize(1000,500)
 
         self.rated_by_categories = RatedByCategories()

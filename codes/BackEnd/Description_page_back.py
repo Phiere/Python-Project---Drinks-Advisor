@@ -33,7 +33,7 @@ def update_status_favori():
 def get_comment():
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     comment = Db.dbsall[db][0].iloc[index][-2]
-    if pd.isna(comment): return 'Laisser un commentaire sur votre boisson'
+    if pd.isna(comment): return 'Leave a comment on the drink...'
     return comment
 
 def update_comment(commentary):

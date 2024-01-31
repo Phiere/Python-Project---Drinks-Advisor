@@ -33,7 +33,7 @@ class DataBaseChoice(QComboBox):
         self.addItem('Wines')
         self.addItem('Cocktails')
         self.addItem('Beers')
-        self.addItem('Coffee')
+        self.addItem('Coffees')
         self.addItem('Mocktails')
         self.currentIndexChanged.connect(self.update)
 
@@ -130,7 +130,7 @@ class CreationButton(QPushButton):
 
         self.go_to_description = go_to_description
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
-        self.setText("Créer")
+        self.setText("Add")
         self.function = get_text
         self.pressed.connect(self.on_pressed)
         self.released.connect(self.on_released)

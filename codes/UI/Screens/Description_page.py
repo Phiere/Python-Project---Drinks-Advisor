@@ -31,7 +31,7 @@ class LabelPrincipal(QWidget):
 
     def update(self):
         drink_name = Dp.get_name_from_drink()
-        self.drink_name.setText(f'<font color="red"><b>Boisson : {drink_name}</b></font>')
+        self.drink_name.setText(f'<font color="red"><b>Drink : {drink_name}</b></font>')
 
 
 class InformationsDisplay(QScrollArea):
@@ -64,7 +64,7 @@ class FavoriteInteraction(QPushButton):
         self.star_icon_empty = QIcon("codes/UI/Icones/star_empty.png")
         self.star_icon_filled = QIcon("codes/UI/Icones/star_filled.png")
 
-        self.setText('Ajouter en Favori')
+        self.setText('Add to Favorites')
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.setFixedHeight(40)
         self.clicked.connect(self.update_status)
@@ -84,7 +84,7 @@ class CommentInteracton(QHBoxLayout):
     def __init__(self):
         super().__init__()
 
-        bouton = QPushButton('Commenter')
+        bouton = QPushButton('Comment')
         bouton.setIcon(QIcon("codes/UI/Icones/comment.png"))
         bouton.setStyleSheet("background-color: #404040; color: #ffffff;")
         bouton.clicked.connect(self.comment)
@@ -196,7 +196,7 @@ class Description(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
-        self.setWindowTitle('Description de la Boisson')
+        self.setWindowTitle('Drink Description')
         self.setGeometry(200,200,1000,500)
 
 

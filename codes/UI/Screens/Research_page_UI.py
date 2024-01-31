@@ -71,7 +71,7 @@ class SortColumnChoice(QComboBox):
 class OrderSensChoice(QPushButton):
     def __init__(self,update_screen) -> None:
         super().__init__()
-        self.setText("Croissant")
+        self.setText("Ascending")
         self.setFixedSize(120, 40)
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
 
@@ -82,17 +82,17 @@ class OrderSensChoice(QPushButton):
         self.clicked.connect(self.update)
 
     def getSatus(self):
-        if self.text() == "Croissant":
+        if self.text() == "Ascending":
             return 1
         return 0
     
     def update(self):
         if self.getSatus():
             self.setIcon(self.icondsc)
-            self.setText("Décroissant")
+            self.setText("Descending")
         else :
             self.setIcon(self.iconasc)
-            self.setText("Croissant")
+            self.setText("Ascending")
 
         if init : self.update_screen()
     
@@ -132,7 +132,7 @@ class BaseDeDonneChoice(QComboBox):
         self.addItem('Wines')
         self.addItem('Cocktails')
         self.addItem('Beers')
-        self.addItem('Coffee')
+        self.addItem('Coffees')
         self.addItem('Mocktails')
         # Connecter un signal pour détecter le changement de sélection
         
@@ -226,7 +226,7 @@ class ScreenResearch(QWidget):
         #Créations des filtres dynamique
         self.column_of_filter = ColumnOfFilter(self.chargerNewDf)
         #Création de la barre d'option pour manipuler les données
-        self.optionsdefiltres = FilterOptionsBar(self.chargerNewDf)
+        self.optionsdefiltres = FilterOptionsBar(self.upload_screen)
 
         #Déclenger une recherche avec le bouton entrée
         self.key_event_filter = KeyEventFilter()
