@@ -64,14 +64,16 @@ class ListeElementToComplete(QListWidget):
     def get_texts(self):
         # Récupérer le texte de chaque QLineEdit dans la QListWidget
         text_list = []
+        name_list = []
         for index in range(self.count()):
             item = self.item(index)
             widget = self.itemWidget(item)
             if isinstance(widget, QLineEdit):
                 text_list.append(widget.text())
+                name_list.append(widget.placeholderText())
     
 
-        return text_list
+        return text_list,name_list
 
 ##BENE
 class CircleAnimationWidget(QWidget):
