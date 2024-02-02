@@ -35,15 +35,14 @@ def from_df_to_filters(take_text):
 # Filtre la df en fonction des filtres utilisés et donne la df des éléments filtrés
 def from_filters_to_newDF(filters_list,colonne_to_sort,sorted_state):
         df_used = Db.dbsall[Db.choix_de_la_data_base][0]
-        print(df_used.tail(5))
         df_temporary = df_used.copy()
         frame2 = Db.dbsall[Db.choix_de_la_data_base][2]
         for i in range(len(filters_list)) :
                 text_from_filter = filters_list[i].name_edit.text()
                 if  text_from_filter != '':
-                    print(text_from_filter)
+          
                     df_temporary = filtrer(text_from_filter,filters_list[i].nom_col,df_temporary)
-                    print(df_temporary)
+
         
 
         if colonne_to_sort != 'Random':
@@ -64,7 +63,20 @@ def chose_sorted_sens(chosed_option):
     #Filtre les databases sur une colone donée avec un filtre précis
 
 def filtrer(f,colonne,data_Frame):
-    try:
+    
+    if "," not in f :
+        tempdf = data_Frame[data_Frame[colonne] == f]
+    else :
+        f = f.split(",")
+        tempdf = data_Frame.copy()
+        for i in f :
+            if i != "" :
+                tempdf = tempdf[tempdf[colonne].apply(lambda liste: i in liste)]
+   
+
+    return tempdf
+
+    """try:
         1==0#int(f)
         return data_Frame[data_Frame[colonne] == int(f)]
     except ValueError :    
@@ -76,8 +88,11 @@ def filtrer(f,colonne,data_Frame):
             for i in f :
                 if i != "" :
                     tempdf = tempdf[tempdf[colonne].apply(lambda liste: i in liste)]
-            
-        return tempdf
+        
+        tempdf = tempdf.reset_index().rename(columns={'index': 'Ancien_Index'})
+        print("pouqoi j'ai")
+        print(tempdf.head(5))
+        return tempdf"""
 
 #Retourne les noms des colonnes de la bdd chargée ainsi que les types des colonnes (utile pour les comparaisons)
 def colonnes(data_Frame):

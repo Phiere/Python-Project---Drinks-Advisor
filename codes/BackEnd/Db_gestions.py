@@ -28,6 +28,8 @@ def initialisationWine():
     wines_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/wines_unique_elements.csv')
     wines_filters = wines_uniques_elements[wines_filtrage]
 
+    wines_cleaned.fillna("Pas encore renseigné", inplace=True)
+
     return [wines_cleaned,wines_filters,wines_titles,wines_descriptions,wines_sort]
 
 def initilisationCoffee():
@@ -42,6 +44,8 @@ def initilisationCoffee():
 
     coffee_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv')
     coffee_filters = coffee_uniques_elements[coffees_filtrage]
+
+    coffee_cleaned.fillna("Pas encore renseigné", inplace=True)
 
     return [coffee_cleaned,coffee_filters,coffees_titles,coffees_descriptions,coffees_sort]
 
@@ -58,6 +62,8 @@ def initilisationCocktail():
     cocktail_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv')
     cocktail_filters = cocktail_uniques_elements[cocktails_filtrage]
 
+    cocktail_cleaned.fillna("Pas encore renseigné", inplace=True)
+
     return [cocktail_cleaned,cocktail_filters,cocktails_titles,cocktails_descriptions,cocktails_sort]
 
 def initialisationBeer():
@@ -73,6 +79,8 @@ def initialisationBeer():
     beers_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/beers_unique_elements.csv')
     beers_filters = beers_uniques_elements[beers_filtrage]
 
+    beers_cleaned.fillna("Pas encore renseigné", inplace=True)
+
     return [beers_cleaned,beers_filters,beers_titles,beers_descriptions,beers_sort]
 
 def initialisationMocktail():
@@ -87,6 +95,8 @@ def initialisationMocktail():
 
     mocktail_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv')
     mocktail_filters = mocktail_uniques_elements[mocktails_filtrage]
+
+    mocktail_cleaned.fillna("Pas encore renseigné", inplace=True)
     
     return [mocktail_cleaned,mocktail_filters,mocktails_titles,mocktails_description,mocktail_sort]
 

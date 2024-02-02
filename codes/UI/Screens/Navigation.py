@@ -11,6 +11,7 @@ import Creation_page_UI as CU
 import Description_page as DU
 
 ##Enlever les Unnamed: 0
+init = 0
 
 class MenuButton(QPushButton):
     def __init__(self,stack_control,stack_index,path_icone) :

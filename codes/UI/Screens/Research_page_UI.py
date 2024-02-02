@@ -21,6 +21,7 @@ import Description_page as Dp
 ### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
 
 init = 0
+init2 = 1
 #Détecter le signal quand j'appuie sur entrée
 ##BENE
 class KeyEventFilter(QObject):
@@ -100,13 +101,13 @@ class OrderSensChoice(QPushButton):
 ##Barre d'options pour gérer l'affichage de la liste filtrée
 ##BENE
 class FilterOptionsBar(QHBoxLayout):
-    def __init__(self,upload_screen) -> None:
+    def __init__(self,upload_screen,upload_text) -> None:
         super().__init__()
 
         self.choixbdd = BaseDeDonneChoice(upload_screen)
-        self.ascgo = OrderSensChoice(upload_screen)
-        self.sort_column_choice = SortColumnChoice(upload_screen)
-        self.number_of_element_choice = NumberOfElementChoice(upload_screen)
+        self.ascgo = OrderSensChoice(upload_text)
+        self.sort_column_choice = SortColumnChoice(upload_text)
+        self.number_of_element_choice = NumberOfElementChoice(upload_text)
         
         ##
         self.addWidget(self.choixbdd)
@@ -158,7 +159,7 @@ class CustomListAffichageTri(QWidget):
         self.setLayout(layout)
 
     def mousePressEvent(self, a0: QMouseEvent) -> None:
-        
+        print(self.indexx)
         Db.index_boisson = self.indexx
         self.appel_a_description()
 
@@ -226,7 +227,7 @@ class ScreenResearch(QWidget):
         #Créations des filtres dynamique
         self.column_of_filter = ColumnOfFilter(self.chargerNewDf)
         #Création de la barre d'option pour manipuler les données
-        self.optionsdefiltres = FilterOptionsBar(self.upload_screen)
+        self.optionsdefiltres = FilterOptionsBar(self.upload_screen,self.chargerNewDf)
 
         #Déclenger une recherche avec le bouton entrée
         self.key_event_filter = KeyEventFilter()
@@ -276,6 +277,7 @@ class ScreenResearch(QWidget):
     def changer_text(self,newdf):
         #choix du nombre d'éléments
 
+       
         choix = self.optionsdefiltres.number_of_element_choice.currentText()
         n=0
         if choix == 'All' :
@@ -297,8 +299,10 @@ class ScreenResearch(QWidget):
 
         for i in L:
             listItem = QListWidgetItem(self.listWidget)
-            texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]                
-            indexx = Db.dbsall[Db.choix_de_la_data_base][0].iloc[i][0]
+            texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]     
+        
+            indexx = Db.dbsall[Db.choix_de_la_data_base][0].iloc[i,0]
+         
             customItemWidget = CustomListAffichageTri(texte,indexx,self.GoToDescription)
             listItem.setSizeHint(customItemWidget.sizeHint())
             self.listWidget.addItem(listItem)
