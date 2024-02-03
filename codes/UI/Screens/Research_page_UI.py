@@ -159,7 +159,8 @@ class CustomListAffichageTri(QWidget):
         self.setLayout(layout)
 
     def mousePressEvent(self, a0: QMouseEvent) -> None:
-        print(self.indexx)
+        #print(self.indexx)
+        print('index choisi ', self.indexx)
         Db.index_boisson = self.indexx
         self.appel_a_description()
 
@@ -260,8 +261,9 @@ class ScreenResearch(QWidget):
 
     def upload_screen(self):
         self.column_of_filter.upload_filters()
-        self.chargerNewDf()
         self.optionsdefiltres.update()
+        self.chargerNewDf()
+
         self.Line_Of_Categories_Names.upload_names()
 
     #Charher la df filtrée avec les filtres
@@ -269,40 +271,25 @@ class ScreenResearch(QWidget):
         filters_column = self.column_of_filter.filters_list
         sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
         sorting_sens = self.optionsdefiltres.ascgo.getSatus()
-        tempdf = RB.from_filters_to_newDF(filters_column,sorting_column,sorting_sens)
-        self.changer_text(tempdf)
+        number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
+        tempdf,indexes,L = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
+        self.changer_text(tempdf,indexes,L)
 
     
     ##Gere l'affichage en fonction de tous les éléments choisis
-    def changer_text(self,newdf):
+    def changer_text(self,newdf,indexes,L):
         #choix du nombre d'éléments
 
-       
-        choix = self.optionsdefiltres.number_of_element_choice.currentText()
-        n=0
-        if choix == 'All' :
-            n = len(newdf)
-        else :
-            n = int(choix)
-        
-        
-        if not(newdf.empty) and len(newdf) > n:
-            random_or_not = self.optionsdefiltres.sort_column_choice.currentText()
-            if random_or_not == 'Random':
-                L = random.sample(range(len(newdf)), n)
-            else :   
-                L = range(0,n)
-        else :
-            L = range(len(newdf))
-        
         if len(L) > 0 : self.listWidget.clear()
 
-        for i in L:
+        for k,i in enumerate(L):
+            data_frame = Db.dbsall[Db.choix_de_la_data_base][0]
+            colonne_interessantes = Db.dbsall[Db.choix_de_la_data_base][2]
             listItem = QListWidgetItem(self.listWidget)
-            texte = [str(newdf.iat[i,j]) for j in range(len(newdf.columns))]     
-        
-            indexx = Db.dbsall[Db.choix_de_la_data_base][0].iloc[i,0]
-         
+            texte = [str(data_frame.at[i,j]) for j in colonne_interessantes]     
+            
+            indexx = indexes[k]
+    
             customItemWidget = CustomListAffichageTri(texte,indexx,self.GoToDescription)
             listItem.setSizeHint(customItemWidget.sizeHint())
             self.listWidget.addItem(listItem)

@@ -1,7 +1,7 @@
 import Db_gestions as Db
 import Autocompletion as autoc 
 from PyQt5.QtWidgets import QWidget
-
+import random
 
 dbs = Db.initilisationSoft()[0]
 
@@ -33,7 +33,7 @@ def from_df_to_filters(take_text):
 
 # Lis tout les QLineEdit qui font office de filtres et retourne tout leurs textes.
 # Filtre la df en fonction des filtres utilisés et donne la df des éléments filtrés
-def from_filters_to_newDF(filters_list,colonne_to_sort,sorted_state):
+def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_state):
         df_used = Db.dbsall[Db.choix_de_la_data_base][0]
         df_temporary = df_used.copy()
         frame2 = Db.dbsall[Db.choix_de_la_data_base][2]
@@ -42,13 +42,33 @@ def from_filters_to_newDF(filters_list,colonne_to_sort,sorted_state):
                 if  text_from_filter != '':
           
                     df_temporary = filtrer(text_from_filter,filters_list[i].nom_col,df_temporary)
-
         
 
         if colonne_to_sort != 'Random':
             df_temporary = df_temporary.sort_values(colonne_to_sort,ascending=sorted_state)
+
+        n=0
+        if number_of_element == 'All' :
+            n = len(df_temporary)
+        else :
+            n = int(number_of_element)
+        
+        if not(df_temporary.empty) and len(df_temporary) > n:
+            random_or_not = 'Random'
+            if random_or_not == 'Random':
+                L = random.sample(range(len(df_temporary)), n)
+            else :   
+                L = range(0,n)
+        else :
+            L = range(len(df_temporary))
+        
+        indexes = []
+        for i in L:
+             index = df_temporary.iloc[[i]].index[0]
+             indexes.append(index)
             
-        return df_temporary[frame2]
+        print("indexes", indexes)
+        return df_temporary[frame2],indexes,L
 
 
 #Permet juste de choisir dans quel sens on va trier 
@@ -66,6 +86,7 @@ def filtrer(f,colonne,data_Frame):
     
     if "," not in f :
         tempdf = data_Frame[data_Frame[colonne] == f]
+        print(tempdf)
     else :
         f = f.split(",")
         tempdf = data_Frame.copy()

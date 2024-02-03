@@ -17,7 +17,7 @@ sys.path.append('codes/UI/Screens/')
 def initialisationWine():
 
     ## Appels des databases préalablement nettoyées
-    wines_cleaned = pandas.read_csv('dataBases/Samples/wines_samples.csv')
+    wines_cleaned = pandas.read_csv('dataBases/Samples/wines_samples.csv', index_col=0)
 
 
     wines_titles = ['winery','Name','price']
@@ -35,7 +35,7 @@ def initialisationWine():
 def initilisationCoffee():
 
     ##
-    coffee_cleaned = pandas.read_csv('dataBases/Samples/coffee_samples.csv')
+    coffee_cleaned = pandas.read_csv('dataBases/Samples/coffee_samples.csv', index_col=0)
 
     coffees_titles = ['Name','rating','loc_country','100g_USD']
     coffees_descriptions = ['Name','roaster','roast','loc_country','100g_USD','rating','origin_','desc_']
@@ -52,7 +52,7 @@ def initilisationCoffee():
 def initilisationCocktail():
 
     ##
-    cocktail_cleaned = pandas.read_csv('dataBases/Samples/cocktails_samples.csv')
+    cocktail_cleaned = pandas.read_csv('dataBases/Samples/cocktails_samples.csv', index_col=0)
     
     cocktails_titles = ['Name','strAlcoholic','strIBA']
     cocktails_descriptions = ['Name','strAlcoholic','strCategory','strGlass','strIBA','strInstructions','strIngredient','strMeasure']
@@ -69,7 +69,7 @@ def initilisationCocktail():
 def initialisationBeer():
 
     ##
-    beers_cleaned = pandas.read_csv('dataBases/Samples/beer_samples.csv')
+    beers_cleaned = pandas.read_csv('dataBases/Samples/beer_samples.csv', index_col=0)
 
     beers_titles = ['Name','beer_style','review_overall']
     beers_descriptions = ['brewery_name','beer_style','Name','review_overall','review_aroma','review_appearance','review_palate','review_taste','beer_abv' ]
@@ -86,7 +86,7 @@ def initialisationBeer():
 def initialisationMocktail():
 
     ##
-    mocktail_cleaned = pandas.read_csv('dataBases/Samples/mocktail_samples.csv')
+    mocktail_cleaned = pandas.read_csv('dataBases/Samples/mocktail_samples.csv', index_col=0)
 
     mocktails_titles = ['Name','Flavor Profile ','User Rating']
     mocktails_description = ['Name','User Rating','Ingredient ','Flavor Profile ']
