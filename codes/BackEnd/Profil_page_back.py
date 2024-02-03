@@ -3,7 +3,7 @@ import numpy
 import pandas as pd
 import Db_gestions as Db
 
-categories = ['Vins', 'Cocktails', 'Cafés', 'Mocktails', 'Bières']
+categories = ['Wine', 'Cocktail', 'Beer', 'Coffee', 'Mocktail']
 dbs = Db.dbsall
 
 ###1er élément (à droite): QVBox avec 2 graphiques

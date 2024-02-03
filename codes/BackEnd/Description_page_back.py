@@ -13,12 +13,66 @@ def get_description_from_drink():
     boisson = Db.dbsall[db][0].iloc[index]
     colonnes = Db.dbsall[db][0].columns
     text = ""
-    for i in range(len(boisson)) :
-        colonne = colonnes[i]
-        if colonne not in ['Unnamed : 0','PersonalRating','Name','Favories']:
-            text += str(colonne) + ' : ' + str(boisson[i]) + '\n' + '\n'
-    return text
+    columnns_to_avoid = []
+    skip_next_iterations = False
 
+    # Wines
+    if Db.choix_de_la_data_base == 0:
+        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favories']
+    # Cocktails
+    elif Db.choix_de_la_data_base == 1: 
+        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favories', 'idDrink', 'dateModified','strIBA', 'strVideo']
+    # Beers
+    elif Db.choix_de_la_data_base == 2:
+        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favories', 'beer_beerid', 'brewery_id', 'beer_abv'] 
+    # Coffees
+    elif Db.choix_de_la_data_base == 3:
+        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favories'] 
+    # Mocktails
+    elif Db.choix_de_la_data_base == 4:
+        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favories']
+
+    for i in range(len(boisson)) :
+        if skip_next_iterations:
+            break 
+
+        colonne = colonnes[i]
+        value = boisson[i]
+
+        if colonne not in columns_to_avoid:
+            if isinstance(value, list):
+                value_str = ', '.join(str(item) for item in value)
+            elif colonne in ['price', '100g_USD'] and str(value) != 'Pas encore renseigné':
+                if Db.choix_de_la_data_base == 0 : 
+                    value_str = f"{value} $"
+                elif Db.choix_de_la_data_base == 3: 
+                    value_str = f"{value} $/100g"
+            elif value not in ['',' ', 'nan']:
+                value_str = str(value)
+    
+            if value_str.startswith('[') and value_str.endswith(']'):
+                value_list = [item.strip("' ") for item in value_str[1:-1].split(',')]
+                seen_elements = set()
+                value_list_filtered = [item for item in value_list if item != 'nan' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
+                value_str = ', '.join(value_list_filtered)
+            
+            text += str(colonne) + ' : ' + value_str + '\n' + '\n'
+
+            if Db.choix_de_la_data_base == 2 and colonne == 'beer_style':
+                text += "Rating (/5) : \n"
+                
+                for j in range(i+1, len(boisson)):
+                    colonne = colonnes[j]
+                    if colonne not in columns_to_avoid:
+                        if colonne == 'review_time':
+                            text += '\n' + f"   - {str(colonne)} : {int(boisson[j]):,}" + '\n'
+                        elif colonne != 'Commentary':
+                            text += '\n' + f"   - {str(colonne)} : {str(boisson[j])}" + '\n' 
+                        else:
+                            text += '\n' +  str(colonne) + ' : ' + str(boisson[j]) + '\n' + '\n'
+                skip_next_iterations = True            
+    return text
+        
 def get_status_favori():
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
     favory = Db.dbsall[db][0].iloc[index][-1]

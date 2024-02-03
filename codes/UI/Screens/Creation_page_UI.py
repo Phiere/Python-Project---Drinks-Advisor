@@ -52,9 +52,8 @@ class ListeElementToComplete(QListWidget):
     def update(self):
         self.clear()
         names_columns = Db.dbsall[Db.choix_de_la_data_base ][0].columns
-
         for name in names_columns:
-            if name not in ['Unnamed 0:','PersonalRating','Favorie'] :
+            if name not in ['Unnamed: 0','PersonalRating', 'Commentary', 'Favories'] :
                 listItem = QListWidgetItem(self)
                 listItem.setSizeHint(QSize(20,50))
                 item = QLineEdit()
@@ -72,8 +71,14 @@ class ListeElementToComplete(QListWidget):
                 text_list.append(widget.text())
                 name_list.append(widget.placeholderText())
     
-
         return text_list,name_list
+    
+    def reset_fields(self):
+        for index in range(self.count()):
+            item = self.item(index)
+            widget = self.itemWidget(item)
+            if isinstance(widget, QLineEdit):
+                widget.clear()
 
 ##BENE
 class CircleAnimationWidget(QWidget):
@@ -125,7 +130,7 @@ class CircleAnimationWidget(QWidget):
         self.timer.start(100)
 
 class CreationButton(QPushButton):
-    def __init__(self, get_text, go_to_description, animation_widget):
+    def __init__(self, get_text, go_to_description, list_element_to_complete, animation_widget):
         super().__init__()
 
         self.go_to_description = go_to_description
@@ -134,12 +139,13 @@ class CreationButton(QPushButton):
         self.function = get_text
         self.pressed.connect(self.on_pressed)
         self.released.connect(self.on_released)
-
+        self.list_element_to_complete = list_element_to_complete
         self.animation_widget = animation_widget
 
     def create_new_drink(self):
         Cb.create_new_drink(Db.choix_de_la_data_base, self.function)
         self.go_to_description()
+        self.list_element_to_complete.reset_fields()
 
     def on_pressed(self):
         if not(Cb.texte_vides(self.function)):
@@ -171,7 +177,7 @@ class ScreenCreation(QWidget):
         self.animation_widget = CircleAnimationWidget(self)
         self.animation_widget.setFixedHeight(100)
         get_text = self.list_element_to_complete.get_texts
-        creation_button = CreationButton(get_text, go_to_description=go_to_description, animation_widget=self.animation_widget)
+        creation_button = CreationButton(get_text, go_to_description=go_to_description, list_element_to_complete = self.list_element_to_complete, animation_widget=self.animation_widget)
         creation_button.setFixedHeight(40)
 
         # Création du QHBoxLayout du bouton et de l'animation
