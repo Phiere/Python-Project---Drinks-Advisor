@@ -36,7 +36,7 @@ def from_df_to_filters(take_text):
 def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_state):
         df_used = Db.dbsall[Db.choix_de_la_data_base][0]
         df_temporary = df_used.copy()
-        frame2 = Db.dbsall[Db.choix_de_la_data_base][2]
+
         for i in range(len(filters_list)) :
                 text_from_filter = filters_list[i].name_edit.text()
                 if  text_from_filter != '':
@@ -47,15 +47,10 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
         if colonne_to_sort != 'Random':
             df_temporary = df_temporary.sort_values(colonne_to_sort,ascending=sorted_state)
 
-        n=0
-        if number_of_element == 'All' :
-            n = len(df_temporary)
-        else :
-            n = int(number_of_element)
+        n = int(number_of_element)
         
         if not(df_temporary.empty) and len(df_temporary) > n:
-            random_or_not = 'Random'
-            if random_or_not == 'Random':
+            if colonne_to_sort == 'Random':
                 L = random.sample(range(len(df_temporary)), n)
             else :   
                 L = range(0,n)
@@ -66,9 +61,18 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
         for i in L:
              index = df_temporary.iloc[[i]].index[0]
              indexes.append(index)
+
+
+        data_frame = Db.dbsall[Db.choix_de_la_data_base][0]
+        colonne_interessantes = Db.dbsall[Db.choix_de_la_data_base][2]
+        textes = []
+
+        for k,i in enumerate(L):
+            texte = [str(data_frame.at[i,j]) for j in colonne_interessantes]
+            textes.append(texte) 
             
-        print("indexes", indexes)
-        return df_temporary[frame2],indexes,L
+
+        return indexes,L,textes
 
 
 #Permet juste de choisir dans quel sens on va trier 

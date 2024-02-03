@@ -47,7 +47,7 @@ class NumberOfElementChoice(QComboBox):
         self.addItem('10')
         self.addItem('20')
         self.addItem('50')
-        self.addItem('All')
+        self.addItem('100')
         self.activated[str].connect(upload_screen)
 
 ##Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
@@ -272,33 +272,25 @@ class ScreenResearch(QWidget):
         sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
         sorting_sens = self.optionsdefiltres.ascgo.getSatus()
         number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
-        tempdf,indexes,L = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
-        self.changer_text(tempdf,indexes,L)
+        indexes,L,textes = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
+        self.changer_text(indexes,L,textes)
 
     
     ##Gere l'affichage en fonction de tous les éléments choisis
-    def changer_text(self,newdf,indexes,L):
+    def changer_text(self,indexes,L,textes):
         #choix du nombre d'éléments
 
         if len(L) > 0 : self.listWidget.clear()
 
-        for k,i in enumerate(L):
-            data_frame = Db.dbsall[Db.choix_de_la_data_base][0]
-            colonne_interessantes = Db.dbsall[Db.choix_de_la_data_base][2]
+        for k in range(len(L)):
             listItem = QListWidgetItem(self.listWidget)
-            texte = [str(data_frame.at[i,j]) for j in colonne_interessantes]     
-            
             indexx = indexes[k]
-    
-            customItemWidget = CustomListAffichageTri(texte,indexx,self.GoToDescription)
+            customItemWidget = CustomListAffichageTri(textes[k],indexx,self.GoToDescription)
             listItem.setSizeHint(customItemWidget.sizeHint())
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, customItemWidget)
 
-     
-
     
-        
 
 ############################################################
 ############################################################
