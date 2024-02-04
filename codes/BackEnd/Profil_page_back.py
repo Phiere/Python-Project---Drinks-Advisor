@@ -49,14 +49,14 @@ df = pd.DataFrame(columns=noms_colonnes)
 
 ###2ème élément (à gauche): Liste des infos des boissons ajoutées aux Favoris
 def favorites_extraction():
-    column_names = ['Nom_db','Name','PersonalRating','Commentary','db','index']
+    column_names = ['Nom_db','Name','PersonalRating','Comment','db','index']
     favories = pd.DataFrame(columns=column_names)
 
     for i in range(len(Db.dbsall)):
         data_frame = Db.dbsall[i][0]
-        data_frame = data_frame[data_frame['Favories'] == 1]
+        data_frame = data_frame[data_frame['Favorite'] == 1]
 
-        cut = data_frame[['Name', 'PersonalRating', 'Commentary']]
+        cut = data_frame[['Name', 'PersonalRating', 'Comment']]
         cut['Nom_db'] = categories[i]
         cut['db'] = i
         cut['index'] = data_frame.index

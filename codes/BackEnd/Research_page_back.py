@@ -79,10 +79,10 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
 #Permet juste de choisir dans quel sens on va trier 
 def chose_sorted_sens(chosed_option):
 
-        if chosed_option == "Croissant" :
-            return 'Décroissant'
+        if chosed_option == "Ascending" :
+            return 'Descending'
         else :
-            return 'Croissant'
+            return 'Ascending'
 
     
     #Filtre les databases sur une colone donée avec un filtre précis

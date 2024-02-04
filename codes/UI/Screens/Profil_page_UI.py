@@ -160,7 +160,7 @@ class LineOfCategoriesNames(QHBoxLayout):
         self.upload_names()
   
      def upload_names(self):
-        titles = ['Db','Names','Personnal Rating','Commentary']
+        titles = ['Type','Name','Personnal Rating','Comment']
         while self.count():
                 item = self.takeAt(0)
                 widget = item.widget()

@@ -53,7 +53,7 @@ class ListeElementToComplete(QListWidget):
         self.clear()
         names_columns = Db.dbsall[Db.choix_de_la_data_base ][0].columns
         for name in names_columns:
-            if name not in ['Unnamed: 0','PersonalRating', 'Commentary', 'Favories'] :
+            if name not in ['Unnamed: 0','PersonalRating', 'Comment', 'Favorite'] :
                 listItem = QListWidgetItem(self)
                 listItem.setSizeHint(QSize(20,50))
                 item = QLineEdit()
