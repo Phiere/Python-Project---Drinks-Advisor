@@ -58,16 +58,17 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
             L = range(len(df_temporary))
         
         indexes = []
+        
         for i in L:
              index = df_temporary.iloc[[i]].index[0]
              indexes.append(index)
-
+        print(indexes)
 
         data_frame = Db.dbsall[Db.choix_de_la_data_base][0]
         colonne_interessantes = Db.dbsall[Db.choix_de_la_data_base][2]
         textes = []
 
-        for k,i in enumerate(L):
+        for i in (indexes):
             texte = [str(data_frame.at[i,j]) for j in colonne_interessantes]
             textes.append(texte) 
             
@@ -90,7 +91,7 @@ def filtrer(f,colonne,data_Frame):
     
     if "," not in f :
         tempdf = data_Frame[data_Frame[colonne] == f]
-        print(tempdf)
+   
     else :
         f = f.split(",")
         tempdf = data_Frame.copy()
