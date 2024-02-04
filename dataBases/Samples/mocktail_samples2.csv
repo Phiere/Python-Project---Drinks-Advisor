@@ -1,4 +1,4 @@
-,Name,UserRating,Ingredient ,FlavorProfile,PersonalRating,Comment,Favorite
+,Name,UserRating,Ingredients,FlavorProfile,PersonalRating,Comment,Favorite
 0,Apple Cider Spritz,4.1,"['Apple Cider', 'Club Soda', 'Cinnamon Stick']","['Sweet', 'Refreshing']",-1,,0
 1,Banana Mango Smoothie,4.2,"['Banana', 'Mango', 'Yogurt']","['Sweet', 'Creamy']",-1,,0
 2,Beetroot Tonic,4.2,"['Beetroot Juice', 'Tonic Water', 'Lemon Juice']","['Bitter', 'Refreshing']",-1,,0

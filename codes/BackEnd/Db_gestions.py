@@ -30,10 +30,10 @@ def initialisationWine():
     wines_cleaned2.to_csv(nom_fichier_csv, index=True)
 
     # Filtrage
-    wines_titles = ['Winery','Name','Price']
-    wines_descriptions = ['Name','Description','Points','Price','Province','Variety','Winery','Region']
-    wines_filtrage = ['Country','Name','Points','Variety','Winery','Price','Province','Region']
-    wines_sort = ['Name','Points','Price','PersonalRating']
+    wines_titles = ['Name', 'Country', 'Winery', 'Price']
+    wines_descriptions = ['Name','Country','Winery','Province','Region','Variety','Points','Price','Description']
+    wines_filtrage = ['Name', 'Country', 'Winery', 'Variety', 'Province', 'Region', 'Points','Price',]
+    wines_sort = ['Name', 'Country', 'Variety', 'Points','Price','PersonalRating']
 
     wines_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/wines_unique_elements.csv')
     #Changements des noms de colonnes
@@ -64,10 +64,10 @@ def initilisationCoffee():
     coffee_cleaned2.to_csv(nom_fichier_csv, index=True)
 
     #Filtrage
-    coffees_titles = ['Name','UserRating','Country','Price']
-    coffees_descriptions = ['Name','Roaster','Roast','Country','Price','UserRating','Origin','Description']
-    coffees_filtrage =  ['Roaster','Roast','Country','Price','UserRating','Origin']
-    coffees_sort = ['Name','Price','UserRating','PersonalRating']
+    coffees_titles = ['Name', 'Country', 'Roaster','Price']
+    coffees_descriptions = ['Name','Country','Roaster','Roast','Origin','Price','Description','UserRating']
+    coffees_filtrage =  ['Name','Country','Roaster','Roast','Origin','Price','UserRating']
+    coffees_sort = ['Name','Country','Roaster','Roast','Price','UserRating','PersonalRating']
 
     coffee_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv')
     #Changements des noms de colonnes
@@ -98,10 +98,10 @@ def initilisationCocktail():
     cocktail_cleaned2.to_csv(nom_fichier_csv, index=True)
 
     #Filtrage
-    cocktails_titles = ['Name','DrinkType','IBA']
-    cocktails_descriptions = ['Name','DrinkType','Category','Glass','IBA','Recipe','Ingredients','Measure']
-    cocktails_filtrage = ['DrinkType','Category','Glass','IBA','Ingredients']
-    cocktails_sort = ['Name','PersonalRating']
+    cocktails_titles = ['Name','DrinkType','Category']
+    cocktails_descriptions = ['Name','DrinkType','Category','Glass','GlassImageLink','IBA','Ingredients','Recipe','Measure']
+    cocktails_filtrage = ['Name','DrinkType','Category','Glass','Ingredients']
+    cocktails_sort = ['Name','DrinkType','Category','PersonalRating']
 
     cocktail_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv')
     #Changements des noms de colonnes
@@ -133,10 +133,10 @@ def initialisationBeer():
     beers_cleaned2.to_csv(nom_fichier_csv, index=True)
 
     #Filtrage
-    beers_titles = ['Name','Style','OverallReview']
-    beers_descriptions = ['Brewery','Style','Name','OverallReview','Aroma','Appearance','Palate','Taste','BeerABV' ]
-    beers_filtrage = ['Brewery','Style','OverallReview','Aroma','Appearance','Palate','Taste','BeerABV' ]
-    beers_sort = ['PersonalRating','OverallReview','Aroma','Appearance','Taste','Palate','BeerABV']
+    beers_titles = ['Name','Style','Brewery','OverallReview']
+    beers_descriptions = ['Brewery','Style','Name','OverallReview','Aroma','Appearance','Palate','Taste']
+    beers_filtrage = ['Name','Style','Brewery','OverallReview','Aroma','Appearance','Palate','Taste','ReviewsNumber']
+    beers_sort = ['Name','Style','Brewery','OverallReview','Aroma','Appearance','Palate','Taste','PersonalRating']
 
     beers_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/beers_unique_elements.csv')
     #Changements des noms de colonnes
@@ -159,7 +159,7 @@ def initialisationMocktail():
     mocktail_cleaned = pandas.read_csv('dataBases/Samples/mocktail_samples.csv', index_col=0)
     #Changements des noms de colonnes
     mocktail_cleaned2 = mocktail_cleaned.copy()
-    new_column_names = {'User Rating' : 'UserRating', 'Ingredient' : 'Ingredients', 'Flavor Profile ' : 'FlavorProfile', 
+    new_column_names = {'User Rating' : 'UserRating', 'Ingredient ' : 'Ingredients', 'Flavor Profile ' : 'FlavorProfile', 
                         'Commentary' : 'Comment', 'Favories' : 'Favorite'}
     mocktail_cleaned2 = mocktail_cleaned2.rename(columns=new_column_names)
     #Enregistrement du fichier
@@ -168,9 +168,9 @@ def initialisationMocktail():
 
     #Filtrage
     mocktails_titles = ['Name','FlavorProfile','UserRating']
-    mocktails_description = ['Name','UserRating','Ingredient','FlavorProfile']
-    mocktails_filtrage = ['UserRating','Ingredient ','FlavorProfile']
-    mocktail_sort = ['UserRating','PersonalRating']
+    mocktails_description = ['Name','Ingredients','FlavorProfile','UserRating']
+    mocktails_filtrage = ['Name','FlavorProfile','Ingredients','UserRating']
+    mocktail_sort = ['Name','UserRating','PersonalRating']
 
     mocktail_uniques_elements = pandas.read_csv('dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv')
     #Changements des noms de colonnes

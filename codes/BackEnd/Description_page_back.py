@@ -53,7 +53,7 @@ def get_description_from_drink():
             if value_str.startswith('[') and value_str.endswith(']'):
                 value_list = [item.strip("' ") for item in value_str[1:-1].split(',')]
                 seen_elements = set()
-                value_list_filtered = [item for item in value_list if item != 'Unfilled' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
+                value_list_filtered = [item for item in value_list if item != 'nan' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
                 value_str = ', '.join(value_list_filtered)
             
             text += str(colonne) + ' : ' + value_str + '\n' + '\n'

@@ -2,6 +2,7 @@ import Db_gestions as Db
 import Autocompletion as autoc 
 from PyQt5.QtWidgets import QWidget
 import random
+import pandas as pd
 
 dbs = Db.initilisationSoft()[0]
 
@@ -70,7 +71,7 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
 
         for i in (indexes):
             texte = [str(data_frame.at[i,j]) for j in colonne_interessantes]
-            textes.append(texte) 
+            textes.append(texte)
             
 
         return indexes,L,textes
@@ -85,20 +86,32 @@ def chose_sorted_sens(chosed_option):
             return 'Ascending'
 
     
-    #Filtre les databases sur une colone donée avec un filtre précis
+#Filtre les databases sur une colonne donnée avec un (ou des) filtre(s) précis
+def filtrer(f, colonne, data_Frame):
+    def extract_elements_from_list(value_str):
+        value_str = str(value_str)  # Convertir en chaîne de caractères
+        if value_str.startswith('[') and value_str.endswith(']'):
+            value_list = [item.strip("' ") for item in value_str[1:-1].split(',')]
+            seen_elements = set()
+            value_list_filtered = [item for item in value_list if item != 'Unfilled' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
+            return value_list_filtered
+        else:
+            return [value_str]
 
-def filtrer(f,colonne,data_Frame):
-    
-    if "," not in f :
-        tempdf = data_Frame[data_Frame[colonne] == f]
-   
-    else :
+    def convert_to_numeric(value):
+        try:
+            return float(value)
+        except ValueError:
+            return value
+
+    if "," not in f:
+        tempdf = data_Frame[data_Frame[colonne].apply(lambda x: convert_to_numeric(f) in map(convert_to_numeric, extract_elements_from_list(x)))]
+    else:
         f = f.split(",")
         tempdf = data_Frame.copy()
-        for i in f :
-            if i != "" :
-                tempdf = tempdf[tempdf[colonne].apply(lambda liste: i in liste)]
-   
+        for i in f:
+            if i != "":
+                tempdf = tempdf[tempdf[colonne].apply(lambda liste: convert_to_numeric(i) in map(convert_to_numeric, extract_elements_from_list(liste)))]
 
     return tempdf
 
