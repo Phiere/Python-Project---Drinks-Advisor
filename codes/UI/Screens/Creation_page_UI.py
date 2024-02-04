@@ -9,7 +9,7 @@
 import sys
 import time
 from PyQt5.QtWidgets import (QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLineEdit,
-                                    QComboBox,QListWidget,QListWidgetItem, QPushButton,
+                                    QComboBox,QListWidget,QListWidgetItem, QPushButton,QMessageBox,
                                     QGraphicsScene, QGraphicsView, QGraphicsPixmapItem, QGraphicsEllipseItem)
 from PyQt5.QtCore import QSize,QTimer, Qt
 from PyQt5.QtGui import QPixmap
@@ -150,11 +150,23 @@ class CreationButton(QPushButton):
     def on_pressed(self):
         if not(Cb.texte_vides(self.function)):
             self.animation_widget.startAnimation()
+        else:
+            msg_box = QMessageBox()
+            msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
+            msg_box.setWindowTitle("Warning")
+            msg_box.setText("Please fill in at least one field to create a new drink")
+            msg_box.exec_()
 
     def on_released(self):
         if not(Cb.texte_vides(self.function)):
             if self.animation_widget.timer.isActive():
                 self.animation_widget.timer.stop()
+                self.animation_widget.circle_item.setRect(0, 0, 0, 0)
+                msg_box = QMessageBox()
+                msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
+                msg_box.setWindowTitle("Warning")
+                msg_box.setText("Please keep the button pressed for at least 2 seconds to create a new drink")
+                msg_box.exec_()
             else:
                 self.create_new_drink()
                 self.animation_widget.pixmap_item.setPixmap(QPixmap())

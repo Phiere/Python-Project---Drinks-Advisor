@@ -1,6 +1,6 @@
 import Db_gestions as Db
 import Autocompletion as autoc 
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QWidget, QMessageBox
 import random
 import pandas as pd
 
