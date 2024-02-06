@@ -64,13 +64,27 @@ class ListeElementToComplete(QListWidget):
         # Récupérer le texte de chaque QLineEdit dans la QListWidget
         text_list = []
         name_list = []
+        number_elements = ['Price', 'Points', 'OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste', 'UserRating']
+
         for index in range(self.count()):
             item = self.item(index)
             widget = self.itemWidget(item)
+            
             if isinstance(widget, QLineEdit):
-                text_list.append(widget.text())
-                name_list.append(widget.placeholderText())
-    
+                texte = widget.text()
+                name = widget.placeholderText()
+
+                if texte:
+                    if name in number_elements:
+                        if not texte.isdigit():
+                            texte = 'numberFalse'
+                    else:
+                        if texte.isdigit():
+                            texte = 'strFalse'
+
+                text_list.append(texte)
+                name_list.append(name)
+
         return text_list,name_list
     
     def reset_fields(self):
@@ -148,8 +162,39 @@ class CreationButton(QPushButton):
         self.list_element_to_complete.reset_fields()
 
     def on_pressed(self):
-        if not(Cb.texte_vides(self.function)):
+        is_error,invalid_indices = Cb.texte_vides(self.function)
+        if not(is_error):
             self.animation_widget.startAnimation()
+            for index in range(self.list_element_to_complete.count()):
+                item = self.list_element_to_complete.item(index)
+                if item:
+                    widget = self.list_element_to_complete.itemWidget(item)
+                    if isinstance(widget, QLineEdit):
+                        widget.setStyleSheet("background-color: #404040;")
+        elif is_error == 'strFalse':
+            for index in invalid_indices:
+                item = self.list_element_to_complete.item(index)
+                if item:
+                    widget = self.list_element_to_complete.itemWidget(item)
+                    if isinstance(widget, QLineEdit):
+                        widget.setStyleSheet("background-color: orange;")
+            msg_box = QMessageBox()
+            msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
+            msg_box.setWindowTitle("Warning")
+            msg_box.setText("Please fill in the orange fields with words")
+            msg_box.exec_()
+        elif is_error == 'numberFalse':
+            for index in invalid_indices:
+                item = self.list_element_to_complete.item(index)
+                if item:
+                    widget = self.list_element_to_complete.itemWidget(item)
+                    if isinstance(widget, QLineEdit):
+                        widget.setStyleSheet("background-color: red;")
+            msg_box = QMessageBox()
+            msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
+            msg_box.setWindowTitle("Warning")
+            msg_box.setText("Please fill in the red fields with numbers")
+            msg_box.exec_()
         else:
             msg_box = QMessageBox()
             msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
@@ -158,7 +203,8 @@ class CreationButton(QPushButton):
             msg_box.exec_()
 
     def on_released(self):
-        if not(Cb.texte_vides(self.function)):
+        is_error,invalid_indices = Cb.texte_vides(self.function)
+        if not(is_error):
             if self.animation_widget.timer.isActive():
                 self.animation_widget.timer.stop()
                 self.animation_widget.circle_item.setRect(0, 0, 0, 0)

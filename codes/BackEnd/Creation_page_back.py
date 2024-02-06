@@ -1,14 +1,28 @@
 import pandas as pd
 import Db_gestions as Db
+from PyQt5.QtWidgets import QMessageBox
 
 def texte_vides(get_text):
     textes_recuperees,names = get_text()
-    return all(s == "" for s in textes_recuperees)
+    strInvalid = []
+    numberInvalid = []
+    for i,texte in enumerate(textes_recuperees) :
+        if texte == 'numberFalse':
+            numberInvalid.append(i)
+        elif texte == 'strFalse':
+            strInvalid.append(i)
+    
+    if numberInvalid:
+        return 'numberFalse',numberInvalid 
+    elif strInvalid:
+        return 'strFalse',strInvalid
+    else:
+        return all(s == "" for s in textes_recuperees),None
 
 def create_new_drink(get_text):
     data_base_index = Db.choix_de_la_data_base
     textes_recuperees,names = get_text()
-   
+    
     new_row = pd.Series() 
     Db.dbsall[data_base_index][0] = Db.dbsall[data_base_index][0]._append(new_row, ignore_index=True)
 
@@ -17,11 +31,11 @@ def create_new_drink(get_text):
 
     for i in range(len(textes_recuperees)):
         texte = textes_recuperees[i]
-        if texte == '' : texte = "Not renseigned yet"
+        if texte == '' : texte = "Unfilled"
         colonne = names[i]
         Db.dbsall[data_base_index][0].at[new_index,colonne] = texte
 
-    Db.dbsall[data_base_index][0].at[new_index,'PersonalRating'] = 0
+    Db.dbsall[data_base_index][0].at[new_index,'PersonalRating'] = -1
     Db.dbsall[data_base_index][0].at[new_index,'Favorite'] = 0
     add_uniques_element(get_text=get_text)
 
