@@ -11,66 +11,42 @@ def get_name_from_drink():
 def get_description_from_drink():
     db,index = Db.choix_de_la_data_base,Db.index_boisson
     boisson = Db.dbsall[db][0].iloc[index]
-    colonnes = Db.dbsall[db][0].columns
+    columns_to_read = Db.dbsall[db][3]
     text = ""
-    columnns_to_avoid = []
     skip_next_iterations = False
 
-    # Wines
-    if Db.choix_de_la_data_base == 0:
-        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favorite']
-    # Cocktails
-    elif Db.choix_de_la_data_base == 1: 
-        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favorite', 'DrinkID', 'ModificationDate','IBA', 'Video']
-    # Beers
-    elif Db.choix_de_la_data_base == 2:
-        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favorite', 'BeerID', 'BreweryID', 'BeerABV'] 
-    # Coffees
-    elif Db.choix_de_la_data_base == 3:
-        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favorite'] 
-    # Mocktails
-    elif Db.choix_de_la_data_base == 4:
-        columns_to_avoid = ['Unnamed: 0','Name', 'PersonalRating', 'Favorite']
-
-    for i in range(len(boisson)) :
+    for colonne in columns_to_read :
         if skip_next_iterations:
             break 
 
-        colonne = colonnes[i]
-        value = boisson[i]
+        value = boisson[colonne]
 
-        if colonne not in columns_to_avoid:
-            if isinstance(value, list):
-                value_str = ', '.join(str(item) for item in value)
-            elif colonne == 'Price' and str(value) != 'Unfilled':
-                if Db.choix_de_la_data_base == 0 : 
-                    value_str = f"{value} $"
-                elif Db.choix_de_la_data_base == 3: 
-                    value_str = f"{value} $/100g"
-            elif value not in ['',' ', 'nan']:
-                value_str = str(value)
-    
-            if value_str.startswith('[') and value_str.endswith(']'):
-                value_list = [item.strip("' ") for item in value_str[1:-1].split(',')]
-                seen_elements = set()
-                value_list_filtered = [item for item in value_list if item != 'nan' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
-                value_str = ', '.join(value_list_filtered)
-            
-            text += str(colonne) + ' : ' + value_str + '\n' + '\n'
+        if isinstance(value, list):
+            value_str = ', '.join(str(item) for item in value)
+        elif colonne == 'Price' and str(value) != 'Unfilled':
+            if Db.choix_de_la_data_base == 0 : 
+                value_str = f"{value} $"
+            elif Db.choix_de_la_data_base == 3: 
+                value_str = f"{value} $/100g"
+        elif colonne == 'ReviewsNumber':
+            value_str = f"{int(boisson[colonne]):,}"
+        elif value not in ['',' ', 'nan']:
+            value_str = str(value)
 
-            if Db.choix_de_la_data_base == 2 and colonne == 'Style':
-                text += "Rating (/5) : \n"
-                
-                for j in range(i+1, len(boisson)):
-                    colonne = colonnes[j]
-                    if colonne not in columns_to_avoid:
-                        if colonne == 'ReviewsNumber':
-                            text += '\n' + f"   - {str(colonne)} : {int(boisson[j]):,}" + '\n'
-                        elif colonne != 'Comment':
-                            text += '\n' + f"   - {str(colonne)} : {str(boisson[j])}" + '\n' 
-                        else:
-                            text += '\n' +  str(colonne) + ' : ' + str(boisson[j]) + '\n' + '\n'
-                skip_next_iterations = True            
+        if value_str.startswith('[') and value_str.endswith(']'):
+            value_list = [item.strip("' ") for item in value_str[1:-1].split(',')]
+            seen_elements = set()
+            value_list_filtered = [item for item in value_list if item != 'nan' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
+            value_str = ', '.join(value_list_filtered)
+        
+        text += str(colonne) + ' : ' + value_str + '\n' + '\n'
+
+        if Db.choix_de_la_data_base == 2 and colonne == 'ReviewsNumber':
+            text += "Rating (/5) : \n"
+            index_OverallReview = columns_to_read.index('ReviewsNumber')
+            for colonne in columns_to_read[index_OverallReview+1:]:
+                text += '\n' + f"   - {str(colonne)} : {int(boisson[colonne]):,}" + '\n'
+            skip_next_iterations = True            
     return text
         
 def get_status_favori():

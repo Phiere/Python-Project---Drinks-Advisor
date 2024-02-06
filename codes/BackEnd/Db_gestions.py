@@ -31,7 +31,7 @@ def initialisationWine():
 
     # Filtrage
     wines_titles = ['Name', 'Country', 'Winery', 'Price']
-    wines_descriptions = ['Name','Country','Winery','Province','Region','Variety','Points','Price','Description']
+    wines_descriptions = ['Country','Winery','Province','Region','Variety','Points','Price','Description']
     wines_filtrage = ['Name', 'Country', 'Winery', 'Variety', 'Province', 'Region', 'Points','Price',]
     wines_sort = ['Name', 'Country', 'Variety', 'Points','Price','PersonalRating']
 
@@ -65,7 +65,7 @@ def initilisationCoffee():
 
     #Filtrage
     coffees_titles = ['Name', 'Country', 'Roaster','Price']
-    coffees_descriptions = ['Name','Country','Roaster','Roast','Origin','Price','Description','UserRating']
+    coffees_descriptions = ['Country','Roaster','Roast','Origin','Price','Description','UserRating']
     coffees_filtrage =  ['Name','Country','Roaster','Roast','Origin','Price','UserRating']
     coffees_sort = ['Name','Country','Roaster','Roast','Price','UserRating','PersonalRating']
 
@@ -99,7 +99,7 @@ def initilisationCocktail():
 
     #Filtrage
     cocktails_titles = ['Name','DrinkType','Category']
-    cocktails_descriptions = ['Name','DrinkType','Category','Glass','GlassImageLink','IBA','Ingredients','Recipe','Measure']
+    cocktails_descriptions = ['DrinkType','Category','Glass','GlassImageLink','Ingredients','Measure','Recipe']
     cocktails_filtrage = ['Name','DrinkType','Category','Glass','Ingredients']
     cocktails_sort = ['Name','DrinkType','Category','PersonalRating']
 
@@ -134,7 +134,7 @@ def initialisationBeer():
 
     #Filtrage
     beers_titles = ['Name','Style','Brewery','OverallReview']
-    beers_descriptions = ['Brewery','Style','Name','OverallReview','Aroma','Appearance','Palate','Taste']
+    beers_descriptions = ['Brewery','Style','OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste']
     beers_filtrage = ['Name','Style','Brewery','OverallReview','Aroma','Appearance','Palate','Taste','ReviewsNumber']
     beers_sort = ['Name','Style','Brewery','OverallReview','Aroma','Appearance','Palate','Taste','PersonalRating']
 
@@ -168,7 +168,7 @@ def initialisationMocktail():
 
     #Filtrage
     mocktails_titles = ['Name','FlavorProfile','UserRating']
-    mocktails_description = ['Name','Ingredients','FlavorProfile','UserRating']
+    mocktails_description = ['Ingredients','FlavorProfile','UserRating']
     mocktails_filtrage = ['Name','FlavorProfile','Ingredients','UserRating']
     mocktail_sort = ['Name','UserRating','PersonalRating']
 
