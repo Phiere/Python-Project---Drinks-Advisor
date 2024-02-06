@@ -1,4 +1,4 @@
-,country,description,Name,points,price,province,variety,winery,region_
+,Country,Description,Name,Points,Price,Province,Variety,Winery,Region
 0,US,"This tremendous 100% varietal wine hails from Oakville and was aged over three years in oak. Juicy red-cherry fruit and a compelling hint of caramel greet the palate, framed by elegant, fine tannins and a subtle minty tone in the background. Balanced and rewarding from start to finish, it has years ahead of it to develop further nuance. Enjoy 2022–2030.",Martha's Vineyard,96.0,235.0,California,Cabernet Sauvignon,Heitz,Napa Valley
 1,Spain,"Ripe aromas of fig, blackberry and cassis are softened and sweetened by a slathering of oaky chocolate and vanilla. This is full, layered, intense and cushioned on the palate, with rich flavors of chocolaty black fruits and baking spices. A toasty, everlasting finish is heady but ideally balanced. Drink through 2023.",Carodorum Selección Especial Reserva,,110.0,Northern Spain,Tinta de Toro,Bodega Carmen Rodríguez,Toro
 2,,"Mac Watson honors the memory of a wine once made by his mother in this tremendously delicious, balanced and complex botrytised white. Dark gold in color, it layers toasted hazelnut, pear compote and orange peel flavors, reveling in the succulence of its 122 g/L of residual sugar.",Special Selected Late Harvest,,90.0,,Sauvignon Blanc,Macauley,Knights Valley
@@ -24,18 +24,18 @@
 22,,"Tarry blackberry and cheesy oak aromas are appropriate for a wine of this size and magnitude. In the mouth, this Tinta de Toro is expansive and grabby, with bullish tannins. Slightly salty earthy accents come with core blackberry flavors and notes of baking spices and chocolate, while on the finish this is long, chocolaty, delicious and not too hard or tannic. Drink through 2023.",Termanthia,,220.0,,,,
 23,,"The apogee of this ambitious winery's white wine efforts, this bottling of just two barrels of Clone 5 shows focused marzipan, marcona almond and white peach notes on the nose. The palate sizzles with saltiness and a lemony acidity that cuts through its brown butter richness with finesse. The finish is luxurious and long.",Giallo Solare,,,,,Center of Effort,Edna Valley
 24,,"San Jose-based producer Adam Comartin heads 1,100 feet up into the mountains to source fruit for this tremendous wine, which offers wild cherry, sage, and eucalyptus scents on the nose. Ripe black plum and strawberry fruit lead the palate, followed by acid-driven waves of juniper, pine and bay leaf, finishing with a menthol-like sensation.",R-Bar-R Ranch,,45.0,,,Comartin,Santa Cruz Mountains
-25,New Zealand,"Yields were down in 2015, but intensity is up, giving this medium-bodied, silky wine the potential to drink well through at least 2025. Hickory smoke outlines white peach before ending in a long flurry of lime zest.",Maté's Vineyard,94.0,57.0,Kumeu,,Kumeu River,
+25,New Zealand,"Yields were down in 2015, but intensity is up, giving this medium-bodied, silky wine the potential to drink well through at least 2025. Hickory smoke outlines white peach before ending in a long flurry of lime zest.",Maté's Vineyard,94.0,57.0,Kumeu,,Kumeu River,Unfiled
 26,,"Bergström has made a Shea designate since 2003, intent on showcasing a “pretty” style of the vineyard. Here are lovely aromatics, with grape jelly, rose petals and plum in the nose, and a complex run of red fruits in the mouth. Streaks of cola, brown sugar and more come up in a generous finish.",Shea Vineyard,,62.0,,,,
 27,,"Focused and dense, this intense wine captures the essence of ripe raspberries. Aged in 50% new French oak, it's got a strong vein of coffee and mocha. The flavors broaden out and penetrate, finishing with highlights of cedar, cinnamon and dark chocolate. Drink now through the 2020s, but decant if you want the full expression.",Abetina,,105.0,,,,
 28,,"Cranberry, baked rhubarb, anise and crushed slate aromas show on the nose of this always-excellent bottling from the Franscioni family. The palate abounds with energy, driving black raspberry fruit accented with earthy loam, fennel, oregano and juniper through a compellingly round midpalate.",Garys' Vineyard,,,,,Roar,Santa Lucia Highlands
 29,,"This standout Rocks District wine brings earth shaking aromas of black-olive brine, tapenade, green olive, stargazer lilies, orange peel and crushed gravel. The smoked meat, charcuterie and blue-fruit flavors don't hold back, bringing a lovely sense of texture and detail. It's an intense wine that completely demands your attention.",The Funk Estate,,,Washington,Syrah,Saviah,Walla Walla Valley (WA)
 30,Bulgaria,"This Bulgarian Mavrud presents the nose with suggestions of dried cherry, black plum, freshly ground black pepper and a whiff of eucalyptus. In the mouth it is balanced with soft tannins mingling with dried cherry, cassis and black plum.",Bergulé,90.0,15.0,Bulgaria,Mavrud,Villa Melnik,
 31,,"Steely and perfumed, this wine sees only 20% new French oak, remaining vibrantly fresh. Baked apple and lemon pith veer into grapefruit on the palate, with spiciness to the finish that's both brash and loud.",Babushka,,37.0,,,Zepaltas,Russian River Valley
-32,,"Underbrush, scorched earth, menthol and plum steeped in spirits are some of the aromas that unfold on the glass. The big, chewy palate doles out ripe wild cherry, raspberry jam, ground pepper and licorice alongside firm, velvety tannins. You'll also detect the warmth of alcohol on the finish.",Vigna Piaggia,,,Tuscany,Sangiovese,Abbadia Ardenga,Brunello di Montalcino
+32,,"Underbrush, scorched earth, menthol and plum steeped in spirits are some of the aromas that unfold on the glass. The big, chewy palate doles out ripe wild cherry, raspberry jam, ground pepper and licorice alongside firm, velvety tannins. You'll also detect the warmth of alcohol on the finish.",Vigna Piaggia,,-1.0,Tuscany,Sangiovese,Abbadia Ardenga,Brunello di Montalcino
 33,,"Pale in color, this is nutty in character, with a warm and rounded hint of red fruits. The wine has a soft, while still fresh, aftertaste. It is aged in cellars in Saumur on the Loire river.",Nonpareil Trésor Rosé Brut,,22.0,France Other,Sparkling Blend,Bouvet-Ladubay,Vin Mousseux
 34,,"The aromas entice with notes of wet stone, honeysuckle, chamomile and stone fruit. The palate is generous in flavor and feel, showing a fine sense of balance.",Conner Lee Vineyard,,42.0,,,Buty,Columbia Valley (WA)
 35,,"Forest floor, tilled soil, mature berry and a whiff of new leather combine on this. The ripe palate offers fleshy black cherry, dried aromatic herb and tobacco, while fine-grained tannins give the finish some grip. Drink 2018–2023.",Riserva,,135.0,,,Carillon,
-36,,"Gingery spice notes accent fresh pear and melon fruit in this medium- to full-bodied wine. It's round on the palate but not flabby, with a warm, spicy finish. Drink now.",,,,Rhône Valley,Rhône-style White Blend,Clos de L'Oratoire des Papes,Châteauneuf-du-Pape
+36,,"Gingery spice notes accent fresh pear and melon fruit in this medium- to full-bodied wine. It's round on the palate but not flabby, with a warm, spicy finish. Drink now.",Unfiled,,,Rhône Valley,Rhône-style White Blend,Clos de L'Oratoire des Papes,Châteauneuf-du-Pape
 37,,"Aromas of forest floor, violet, red berry and a whiff of dark baking spice unfold in the glass while wild cherry, black raspberry, ground pepper and star anise drive the palate. Framed in firm, fine-grained tannins, this is a classic Tuscan red. Drink through 2020.",,,29.0,,,Avignonesi,Vino Nobile di Montepulciano
 38,,"This has a charming nose that boasts rose, violet and red berry while the juicy, easy-drinking palate offers ripe wild cherry, chopped mint, white pepper and a hint of star anise. There isn't much complexity but it is savory and balanced, with fresh acidity and supple tannins.",,,23.0,,,Casina di Cornia,Chianti Classico
 39,,"This bright, savory wine delivers aromas and flavors of juicy wild cherry, black raspberry, violet, white pepper and mocha. Polished tannins provide the framework. Enjoy through 2020.",,,,,Red Blend,Castello di Monterinaldi,
@@ -106,59 +106,59 @@
 190,,,,,,,,,California Other
 193,,,,,,,,,Mendocino/Lake Counties
 200,,,,,,,,,"['Napa Valley', 'Napa']"
-201,,,,,,,,,"['Toro', nan]"
+201,,,,,,,,,"['Toro', 'Unfiled']"
 202,,,,,,,,,"['Knights Valley', 'Sonoma']"
 203,,,,,,,,,"['Willamette Valley', 'Willamette Valley']"
-204,,,,,,,,,"['Bandol', nan]"
+204,,,,,,,,,"['Bandol', 'Unfiled']"
 208,,,,,,,,,"['Chehalem Mountains', 'Willamette Valley']"
 209,,,,,,,,,"['Sonoma Coast', 'Sonoma']"
-210,,,,,,,,,"['Collio', nan]"
+210,,,,,,,,,"['Collio', 'Unfiled']"
 211,,,,,,,,,"['Ribbon Ridge', 'Willamette Valley']"
 212,,,,,,,,,"['Dundee Hills', 'Willamette Valley']"
-213,,,,,,,,,"['Madiran', nan]"
+213,,,,,,,,,"['Madiran', 'Unfiled']"
 216,,,,,,,,,"['Diamond Mountain District', 'Napa']"
-217,,,,,,,,,"['Ribera del Duero', nan]"
-218,,,,,,,,,"['Cahors', nan]"
-221,,,,,,,,,"['Rioja', nan]"
+217,,,,,,,,,"['Ribera del Duero', 'Unfiled']"
+218,,,,,,,,,"['Cahors', 'Unfiled']"
+221,,,,,,,,,"['Rioja', 'Unfiled']"
 223,,,,,,,,,"['Edna Valley', 'Central Coast']"
 224,,,,,,,,,"['Santa Cruz Mountains', 'Central Coast']"
-225,,,,,,,,,"[nan, nan]"
-226,,,,,,,,,"['Willamette Valley', nan]"
+225,,,,,,,,,"['Unfiled', 'Unfiled']"
+226,,,,,,,,,"['Willamette Valley', 'Unfiled']"
 228,,,,,,,,,"['Santa Lucia Highlands', 'Central Coast']"
 229,,,,,,,,,"['Walla Walla Valley (WA)', 'Columbia Valley']"
 231,,,,,,,,,"['Russian River Valley', 'Sonoma']"
-232,,,,,,,,,"['Brunello di Montalcino', nan]"
-233,,,,,,,,,"['Vin Mousseux', nan]"
+232,,,,,,,,,"['Brunello di Montalcino', 'Unfiled']"
+233,,,,,,,,,"['Vin Mousseux', 'Unfiled']"
 234,,,,,,,,,"['Columbia Valley (WA)', 'Columbia Valley']"
-236,,,,,,,,,"['Châteauneuf-du-Pape', nan]"
-237,,,,,,,,,"['Vino Nobile di Montepulciano', nan]"
-238,,,,,,,,,"['Chianti Classico', nan]"
-240,,,,,,,,,"['Ribeira Sacra', nan]"
-241,,,,,,,,,"['Jerez', nan]"
-244,,,,,,,,,"['Cornas', nan]"
+236,,,,,,,,,"['Châteauneuf-du-Pape', 'Unfiled']"
+237,,,,,,,,,"['Vino Nobile di Montepulciano', 'Unfiled']"
+238,,,,,,,,,"['Chianti Classico', 'Unfiled']"
+240,,,,,,,,,"['Ribeira Sacra', 'Unfiled']"
+241,,,,,,,,,"['Jerez', 'Unfiled']"
+244,,,,,,,,,"['Cornas', 'Unfiled']"
 247,,,,,,,,,"['Mount Veeder', 'Napa']"
 249,,,,,,,,,"['Red Mountain', 'Columbia Valley']"
-251,,,,,,,,,"['Chassagne-Montrachet', nan]"
-252,,,,,,,,,"['Sancerre', nan]"
-253,,,,,,,,,"['Coteaux du Giennois', nan]"
+251,,,,,,,,,"['Chassagne-Montrachet', 'Unfiled']"
+252,,,,,,,,,"['Sancerre', 'Unfiled']"
+253,,,,,,,,,"['Coteaux du Giennois', 'Unfiled']"
 257,,,,,,,,,"['Finger Lakes', 'Finger Lakes']"
-259,,,,,,,,,"['Maremma Toscana', nan]"
-260,,,,,,,,,"['Mendoza', nan]"
-261,,,,,,,,,"['Mornington Peninsula', nan]"
-263,,,,,,,,,"['Chablis', nan]"
+259,,,,,,,,,"['Maremma Toscana', 'Unfiled']"
+260,,,,,,,,,"['Mendoza', 'Unfiled']"
+261,,,,,,,,,"['Mornington Peninsula', 'Unfiled']"
+263,,,,,,,,,"['Chablis', 'Unfiled']"
 265,,,,,,,,,"['Santa Clara Valley', 'Central Coast']"
 268,,,,,,,,,"['Eola-Amity Hills', 'Willamette Valley']"
 269,,,,,,,,,"['Rutherford', 'Napa']"
 270,,,,,,,,,"['St. Helena', 'Napa']"
-272,,,,,,,,,"['Barolo', nan]"
-276,,,,,,,,,"['Champagne', nan]"
-282,,,,,,,,,"['Roero', nan]"
+272,,,,,,,,,"['Barolo', 'Unfiled']"
+276,,,,,,,,,"['Champagne', 'Unfiled']"
+282,,,,,,,,,"['Roero', 'Unfiled']"
 290,,,,,,,,,"['California', 'California Other']"
-292,,,,,,,,,"['Prosecco', nan]"
+292,,,,,,,,,"['Prosecco', 'Unfiled']"
 293,,,,,,,,,"['Mendocino County', 'Mendocino/Lake Counties']"
 297,,,,,,,,,"['Sonoma Valley', 'Sonoma']"
-298,,,,,,,,,"['Buzet', nan]"
-299,,,,,,,,,"['Côtes de Gascogne', nan]"
+298,,,,,,,,,"['Buzet', 'Unfiled']"
+299,,,,,,,,,"['Côtes de Gascogne', 'Unfiled']"
 300,,,,,,,,,
 301,,,,,,,,,
 302,,,,,,,,,

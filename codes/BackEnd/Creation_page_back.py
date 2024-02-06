@@ -3,7 +3,7 @@ import Db_gestions as Db
 from PyQt5.QtWidgets import QMessageBox
 
 def texte_vides(get_text):
-    textes_recuperees,names = get_text()
+    textes_recuperees,_ = get_text()
     strInvalid = []
     numberInvalid = []
     for i,texte in enumerate(textes_recuperees) :
@@ -33,12 +33,20 @@ def create_new_drink(get_text):
         texte = textes_recuperees[i]
         if texte == '' : texte = "Unfilled"
         colonne = names[i]
+        colonne_type = Db.dbsall[data_base_index][0].dtypes[colonne]
+
+        try :
+            texte = float(texte)
+        except :
+            pass
+        
         Db.dbsall[data_base_index][0].at[new_index,colonne] = texte
+        print(texte,type(texte))
+
 
     Db.dbsall[data_base_index][0].at[new_index,'PersonalRating'] = -1
     Db.dbsall[data_base_index][0].at[new_index,'Favorite'] = 0
     add_uniques_element(get_text=get_text)
-
 
 def add_uniques_element(get_text):
     textes_recuperees,names = get_text()

@@ -65,3 +65,11 @@ def favorites_extraction():
  
 
     return favories
+
+##attention aux noms de colonnes à la volo comme ça
+def get_favorites_informations(favories_dfs,index):
+    """Retourne les informations d'affichage sur la boisson mise en favoris."""
+    texte = [str(favories_dfs.iat[index,j]) for j in range(len(['Nom_db','Names','personnal_rating','oui']))]                
+    index_db = favories_dfs.iat[index,-2]
+    index_boisson = favories_dfs.iat[index,-1]
+    return texte,index_db,index_boisson

@@ -1,3 +1,12 @@
+############################################################
+############################################################
+############################################################
+#Script naviguation : instancie toutes les écrans créés dans les autres dossier du projet. 
+#C'est ce script qui assemble tous les écrans pour les insérer dans la feêntre principale.
+############################################################
+############################################################
+############################################################
+
 import sys
 from PyQt5.QtGui import  QIcon
 from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout, QPushButton, 
@@ -10,19 +19,19 @@ import Profil_page_UI as PU
 import Creation_page_UI as CU
 import Description_page as DU
 
-##Enlever les Unnamed: 0
-init = 0
 
 class MenuButton(QPushButton):
+    """Bouton dirigeant vers la page mise en argument"""
     def __init__(self,stack_control,stack_index,path_icone) :
         super().__init__()
         self.setIcon(QIcon(path_icone))
         self.setFixedSize(40,40)
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.pressed.connect(lambda : stack_control(stack_index))
-    
+
 
 class MenuLayout(QHBoxLayout): 
+    """Construit une ligne de  3 boutons pour naviguer entre les écrans du logiciel"""
     def __init__(self,stack_control) :
         super().__init__()        
   
@@ -37,6 +46,7 @@ class MenuLayout(QHBoxLayout):
 
 
 class ScreensToDisplay(QStackedWidget):
+    """Concaténion des différents écrans de l'application"""
     def __init__(self,show_description):
         super().__init__()
 
@@ -52,6 +62,9 @@ class ScreensToDisplay(QStackedWidget):
 
 
 class DisplayerScreen(QWidget):
+    """Fenêtre principale contenant le stack des écrans et les méthodes de naviguation
+    
+    - go_to_screen : permet de navuguer d'un écran à l'autre en restant sur la fenêtre principale"""
     def __init__(self):
         super().__init__()
 
@@ -59,15 +72,15 @@ class DisplayerScreen(QWidget):
         self.setStyleSheet("background-color: #1f1f1f;")
         
         window_layout = QVBoxLayout()
-        menu_bar = MenuLayout(self.goToScreen)
-        self.screens_to_display = ScreensToDisplay(show_description = lambda : self.goToScreen(3))
+        menu_bar = MenuLayout(self.go_to_screen)
+        self.screens_to_display = ScreensToDisplay(show_description = lambda : self.go_to_screen(3))
 
         window_layout.addLayout(menu_bar)
         window_layout.addWidget(self.screens_to_display)
         self.setLayout(window_layout)
 
 
-    def goToScreen(self, index):
+    def go_to_screen(self, index):
         if index == 1 :
             self.screens_to_display.profil_screen.update()
         elif index == 3 :

@@ -1,7 +1,9 @@
 ############################################################
 ############################################################
 ############################################################
-#Construction de la page correspondant au profil de l'utilisateur. 
+#Construction de la page correspondant au profil de l'utilisateur. Elle permet à l'utilisateur
+#de visualiser ses préférances avec deux graphiques profilant ses notes et une liste de ses boissons 
+#favorites.
 ############################################################
 ############################################################
 ############################################################
@@ -10,7 +12,7 @@ import sys
 import seaborn as sns
 from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QFrame,QGridLayout,QHBoxLayout,QLabel,QListWidgetItem,QListWidget
 from PyQt5.QtGui import QPixmap, QMouseEvent
-from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtCore import Qt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 import matplotlib.pyplot as plt
 
@@ -18,26 +20,14 @@ sys.path.append('codes/BackEnd/')
 import Profil_page_back as Pb
 import Db_gestions as Db
 
-categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
-
-###1er élément (à gauche): Liste des infos des boissons ajoutées aux Favoris
-class FavorieDataItem(QHBoxLayout):
-    def __init__(self, data):
-        super().__init__()
-
-        for text in data:
-            label = QLabel(text)
-            self.addWidget(label)
-
-        vertical_bar = QFrame()
-        vertical_bar.setFrameShape(QFrame.VLine)
-        vertical_bar.setFrameShadow(QFrame.Sunken)
-        vertical_bar.setLineWidth(2)
-
-        self.addWidget(vertical_bar)
-
-#peut être faire plusieurs classe ? ça m'a l'air brouillon ou alors ça serait du forcing
+#################
+#tableau des favoris
+#################
+#v0.1
 class FavoriesTitle(QHBoxLayout):
+    """Construit l'affichage stylisé au dessus du tableau des favoris.
+    
+    - update : met à jour le compte du nombre de boissons en favories"""
     def __init__(self):
         super().__init__()
         image_label = QLabel()
@@ -68,14 +58,15 @@ class FavoriesTitle(QHBoxLayout):
     def update(self,nb_favories):
             self.nb_favories_label.setText(f"{nb_favories} drinks")
 
-#################
-#tableau des favoris
-#################
+#v0,1
 class FavorieDataDisplay(QVBoxLayout):
+    """Construit la liste des éléments favories
+    
+    - go_to_description : fonction de naviguation entre les écrans
+    
+    - update : met à jour l'afficage avec les éléments mis en favoris"""
     def __init__(self,go_to_description):
         super().__init__()
-
-        self.init = 1
         self.go_to_description = go_to_description
         self.title_widget = FavoriesTitle()
         self.listWidget = QListWidget()
@@ -89,43 +80,34 @@ class FavorieDataDisplay(QVBoxLayout):
         favories_dfs = Pb.favorites_extraction()
         nb_favories = len(favories_dfs)
         self.title_widget.update(nb_favories=nb_favories)
-
+        self.listWidget.clear()
+        listItem = QListWidgetItem(self.listWidget)
         
-        if nb_favories > 0:
-            self.listWidget.clear()
-            for i in range(len(favories_dfs)) :
-                listItem = QListWidgetItem(self.listWidget)
-                texte = [str(favories_dfs.iat[i,j]) for j in range(len(['Nom_db','Names','personnal_rating','oui']))]                
-                indexx = favories_dfs.iat[i,-1]
-                customItemWidget = CustomListAffichageTri(texte,indexx,self.go_to_description)
-                listItem.setSizeHint(customItemWidget.sizeHint())
-                self.listWidget.addItem(listItem)
-                self.listWidget.setItemWidget(listItem, customItemWidget)
 
-
-        elif self.init  :
-            listItem = QListWidgetItem(self.listWidget)              
+        if nb_favories  == 0 :
             no_favories_label = QLabel("No drinks were added to Favorites")
             no_favories_label.setAlignment(Qt.AlignCenter)  # Centre le texte horizontalement
             no_favories_label.setStyleSheet("font-size: 10pt;")  # Définit la police à 10pt
-            #customItemWidget = CustomListAffichageTri(texte,indexx)#,self.GoToDescription)
             listItem.setSizeHint(no_favories_label.sizeHint())
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, no_favories_label)
-            '''no_favories_label = QLabel("No drinks were added to Favorites")
-            no_favories_label.setAlignment(Qt.AlignCenter)  # Centre le texte horizontalement
-            no_favories_label.setStyleSheet("font-size: 12pt;")  # Définit la police à 12pt
-            self.listWidget.addItem(no_favories_label)
-            self.setStretchFactor(no_favories_label, 3) '''
-            self.init = 0
+
+        for i in range(len(favories_dfs)) :  
+            texte,index_db,index_boisson = Pb.get_favorites_informations(favories_dfs,i)
+            customItemWidget = CustomListAffichageTri(texte,index_db,index_boisson,self.go_to_description)
+            listItem.setSizeHint(customItemWidget.sizeHint())
+            self.listWidget.addItem(listItem)
+            self.listWidget.setItemWidget(listItem, customItemWidget)
 
 
 class CustomListAffichageTri(QWidget):
-    def __init__(self, completion_text_to_display,indexx,go_to_description):
+
+    def __init__(self, completion_text_to_display,index_db,index_boisson,go_to_description):
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.appel_a_description = go_to_description
-        self.indexx = indexx
+        self.index_db = index_db
+        self.index_boisson = index_boisson
         layout = QHBoxLayout(self)
 
         for text in completion_text_to_display:
@@ -136,30 +118,28 @@ class CustomListAffichageTri(QWidget):
         self.setLayout(layout)
 
     def mousePressEvent(self, a0: QMouseEvent) -> None:
-        Db.index_boisson = self.indexx
+        Db.choix_de_la_data_base = self.index_db 
+        Db.index_boisson = self.index_boisson
         self.appel_a_description()
 
 
 class ColumnCategoriesNames(QWidget):
     def __init__(self,texte):
         super().__init__()
-
-        # Create a QLabel
         label = QLabel(texte, self)
-
         label.setAlignment(Qt.AlignCenter) 
         label.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
-
         layout = QVBoxLayout(self)
         layout.addWidget(label)
 
-
+"!"
 class LineOfCategoriesNames(QHBoxLayout):
      def __init__(self):
         super().__init__()
         self.upload_names()
   
      def upload_names(self):
+        ##attention aux noms de colonnes à la volo comme ça 
         titles = ['Type','Name','Personnal Rating','Comment']
         while self.count():
                 item = self.takeAt(0)
@@ -185,19 +165,18 @@ class RatedByCategories(QWidget):
         self.canvas = FigureCanvas(self.figure)
         layout = QGridLayout(self)
         layout.addWidget(self.canvas)
-
         self.update()
-        #self.values = [12, 50, 32, 2, 3] #pour l'exemple
 
     def update(self):
         self.ax.clear()
 
         self.values = Pb.nb_notes_per_categories()
 
+        ##peut être mettre ça dans le back non ?
         if all(value == 0 for value in self.values):
             self.ax.text(0.5, 0.5, "No drinks were rated", ha='center', va='center', fontsize=12, color='white')
         else:
-            sns.barplot(x=categories, y=self.values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
+            sns.barplot(x=Db.categories, y=self.values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
         
         self.ax.set_title('Distribution of the number of rated drinks per category', color='white', fontsize=10)
         self.ax.set_ylabel('Number of drinks')
@@ -239,7 +218,7 @@ class MeanByCategories(QWidget):
         if all(value == 0 for value in self.values):
             self.ax.text(0.5, 0.5, "No drinks were rated", ha='center', va='center', fontsize=12, color='white')
         else:
-            sns.barplot(x=categories, y=self.values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
+            sns.barplot(x=Db.categories, y=self.values, palette="viridis", ax=self.ax, edgecolor='white', linewidth=1.5, dodge=False)
             
 
         self.ax.set_title('Average drink ratings per category', color='white', fontsize=10)

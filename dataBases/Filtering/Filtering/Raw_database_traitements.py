@@ -12,7 +12,7 @@ import re
 # - Traitement 1 : remplace les colonnes doubles : (ingrédient1, ingrédient2,...) par uen colonne contenant la liste des éléments ([ingrédient1, ingrédient2])
 # - Traitement 2 : normalise les éléments dans une même colonne : (Vodka , vodka --> vodka).
 # - Traitement 3 : rajouter à chaque data_base les colonnes notes_personnelle, commentary, favories
-# - Traitement 4 : (à revoir ?) Enlever les colonnes unnamed 
+# - Traitement 4 : changer les nan
 # - Attention : lors de rajout d'une nouvelle data_frame, il est préférable de modifier à la main le nom des colonnes afin d'un affichage plus agréable.
 ################################################################
 ################################################################
@@ -56,7 +56,7 @@ def creation_list_colonnes_doubles(data_base):
         data_base = data_base.drop(data_base.columns[liste_colonnes_doubles_flated],axis=1)
 
         data_base['PersonalRating'] = '-1'
-        data_base['Commentary'] = ''
+        data_base['Commentary'] = 'Unfilled'
         data_base['Favories'] = '0'
         return data_base
     
@@ -109,8 +109,18 @@ def suppression_unnamed(data_base):
      liste_columns_nuisibles = [element for element in data_base.columns if "Unnamed" in element]
      return data_base.drop(liste_columns_nuisibles,axis = 1)
   
-     
-def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_element_data_frame_path):
+def changer_nan(db):
+    tipes = db.dtypes
+    colonnes = db.columns
+    for i in range(len(db.dtypes)) :
+        tipe = tipes[i]
+        if tipe == float or tipe == int :
+            db[colonnes[i]] = db[colonnes[i]].fillna(-1)
+        else :
+            db[colonnes[i]] = db[colonnes[i]].fillna("Unfiled")
+    return db
+
+def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_element_data_frame_path,new_column_names):
         
         try:
             raw_data_frame = pandas.read_csv(raw_data_frame_path)
@@ -118,14 +128,18 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
         except FileNotFoundError:
             print("Fichier pas présent sur l'ordinateur. Présent seulement en local sur l'odinateur de Pierre")
 
-        else :
-            #Applique l'ensemble des traitements nécessaire à l'utilisation des data_bases
+        else :       
+            raw_data_frame = changer_nan(raw_data_frame)
+
             listed_doubles_columns = creation_list_colonnes_doubles(raw_data_frame)
             listed_doubles_columns = suppression_unnamed(listed_doubles_columns)
+            listed_doubles_columns = listed_doubles_columns.rename(columns=new_column_names)
             listed_doubles_columns.to_csv(listed_data_frame_path)
+        
 
             uniques_elements_data_frame = creation_unique_elements_data_frame(raw_data_frame)
             uniques_elements_data_frame = suppression_unnamed(uniques_elements_data_frame)
+            uniques_elements_data_frame = uniques_elements_data_frame.rename(columns=new_column_names)
             uniques_elements_data_frame.to_csv(uniques_element_data_frame_path)
 
     #Attention à modifier les noms des colonnes de la database listed
@@ -145,27 +159,44 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
 wines_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/winemag-data_first150k.csv"
 wines_listed_data_frame_path = "dataBases/Samples/wines_samples.csv"
 wines_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/wines_unique_elements.csv"
+wines_new_column_names = {'country' : 'Country', 'description' : 'Description', 'points' : 'Points', 
+                        'price' : 'Price', 'province' : 'Province', 'variety' : 'Variety', 'winery' : 'Winery', 
+                        'region_' : 'Region', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
+
 
 coffees_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/coffee_analysis.csv"
 coffees_listed_data_frame_path = "dataBases/Samples/coffee_samples.csv"
 coffees_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv"
+coffee_new_column_names = {'roaster' : 'Roaster', 'roast' : 'Roast', 'loc_country' : 'Country', 
+                        '100g_USD' : 'Price', 'rating' : 'UserRating', 'review_date' : 'ReviewDate', 'origin_' : 'Origin', 
+                        'desc_' : 'Description', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
+
 
 cocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/all_drinks.csv"
 cocktails_listed_data_frame_path = "dataBases/Samples/cocktails_samples.csv"
 cocktails_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv"
+cocktails_new_column_names = {'dateModified' : 'ModificationDate', 'idDrink' : 'DrinkID', 'strAlcoholic' : 'DrinkType', 
+                        'strCategory' : 'Category', 'strDrinkThumb' : 'GlassImageLink', 'strGlass' : 'Glass', 'strIBA' : 'IBA', 'strInstructions' : 'Recipe', 
+                        'strVideo' : 'Video', 'strIngredient' : 'Ingredients', 'strMeasure' : 'Measure', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 mocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/Mocktail_dataset.csv"
 mocktails_listed_data_frame_path = "dataBases/Samples/mocktail_samples.csv"
 mocktails_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv"
+mocktails_new_column_names = {'User Rating' : 'UserRating', 'Ingredient ' : 'Ingredients', 'Flavor Profile ' : 'FlavorProfile', 
+                        'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 beers_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/beer_reviews.csv"
 beers_listed_data_frame_path = "dataBases/Samples/beer_samples.csv"
 beers_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/beers_unique_elements.csv"
+beers_new_column_names = {'brewery_name' : 'Brewery', 'beer_style' : 'Style', 'beer_beerid' : 'BeerID', 
+                        'brewery_id' : 'BreweryID', 'review_time' : 'ReviewsNumber', 'review_overall' : 'OverallReview',
+                        'review_aroma' : 'Aroma', 'review_appearance' : 'Appearance', 'review_palate' : 'Palate', 'review_taste' : 'Taste', 
+                        'beer_abv' : 'BeerABV','Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 if __name__ == '__main__':
 
-    raw_data_traitement(wines_raw_data_frame_path,wines_listed_data_frame_path,wines_uniques_element_data_frame_path)
-    raw_data_traitement(coffees_raw_data_frame_path,coffees_listed_data_frame_path,coffees_uniques_element_data_frame_path)
-    raw_data_traitement(cocktails_raw_data_frame_path,cocktails_listed_data_frame_path,cocktails_uniques_element_data_frame_path)
-    raw_data_traitement(mocktails_raw_data_frame_path,mocktails_listed_data_frame_path,mocktails_uniques_element_data_frame_path)
-    raw_data_traitement(beers_raw_data_frame_path,beers_listed_data_frame_path,beers_uniques_element_data_frame_path)
+    raw_data_traitement(wines_raw_data_frame_path,wines_listed_data_frame_path,wines_uniques_element_data_frame_path,wines_new_column_names)
+    raw_data_traitement(coffees_raw_data_frame_path,coffees_listed_data_frame_path,coffees_uniques_element_data_frame_path,coffee_new_column_names)
+    raw_data_traitement(cocktails_raw_data_frame_path,cocktails_listed_data_frame_path,cocktails_uniques_element_data_frame_path,cocktails_new_column_names)
+    raw_data_traitement(mocktails_raw_data_frame_path,mocktails_listed_data_frame_path,mocktails_uniques_element_data_frame_path,mocktails_new_column_names)
+    raw_data_traitement(beers_raw_data_frame_path,beers_listed_data_frame_path,beers_uniques_element_data_frame_path,beers_new_column_names)

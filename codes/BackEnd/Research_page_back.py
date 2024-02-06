@@ -46,8 +46,6 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
         
 
         if colonne_to_sort != 'Random':
-            if Db.choix_de_la_data_base == 0 and colonne_to_sort == 'Price':
-                df_temporary[colonne_to_sort] = pd.to_numeric(df_temporary[colonne_to_sort], errors='coerce')
             df_temporary = df_temporary.sort_values(colonne_to_sort,ascending=sorted_state)
 
         n = int(number_of_element)

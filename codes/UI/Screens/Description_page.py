@@ -55,8 +55,6 @@ class InformationsDisplay(QScrollArea):
         self.description_text.setText(texte)
 
         
-
-
 class FavoriteInteraction(QPushButton):
     def __init__(self):
         super().__init__()
@@ -78,7 +76,6 @@ class FavoriteInteraction(QPushButton):
         Dp.update_status_favori()
         self.update_icon()
         
-
 
 class CommentInteracton(QHBoxLayout):
     def __init__(self):
@@ -105,7 +102,6 @@ class CommentInteracton(QHBoxLayout):
     
     def comment(self):
         Dp.update_comment(self.texte.text())
-
 
 
 class RatingInteraction(QHBoxLayout):

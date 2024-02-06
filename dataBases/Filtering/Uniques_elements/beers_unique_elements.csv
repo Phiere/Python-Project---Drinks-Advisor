@@ -1,5 +1,5 @@
-,brewery_name,beer_style,Name,beer_beerid,brewery_id,review_time,review_overall,review_aroma,review_appearance,review_palate,review_taste,beer_abv
-0,Yellow Rose Brewing Company,American IPA,Cactus Queen IPA,3,2.0,1019075828.0,4.0,4.0,3.5,4.5,4.0,
+,Brewery,Style,Name,BeerID,BreweryID,ReviewsNumber,OverallReview,Aroma,Appearance,Palate,Taste,BeerABV
+0,Yellow Rose Brewing Company,American IPA,Cactus Queen IPA,3,2.0,1019075828.0,4.0,4.0,3.5,4.5,4.0,-1.0
 1,,American Stout,Wildcatter's Crude Stout,4,,1066876922.0,4.5,,4.0,4.0,,
 2,Abita Brewing Co.,Vienna Lager,Amber,5,3.0,1270055168.0,3.0,3.0,3.0,,3.0,4.5
 3,,English Brown Ale,Turbodog,6,,1234038897.0,,3.5,,3.5,,5.6
@@ -52,7 +52,7 @@
 50,,,Melbourn Bros. Strawberry,56,,1168045063.0,,,,,,
 51,,Quadrupel (Quad),Allagash Grand Cru,58,,1129694252.0,,,,,,
 52,,,Allagash White,59,,1242786209.0,,,,,,
-53,,,Hard Hat American Beer,60,27.0,1020244856.0,,,,,,3.8
+53,Unfiled,,Hard Hat American Beer,60,27.0,1020244856.0,,,,,,3.8
 54,Anchor Brewing Company,,Anchor Porter,61,28.0,1162794629.0,,,,,,
 55,,,Our Special Ale 1998 (Anchor Christmas Ale),62,,1134484393.0,,,,,,
 56,,California Common / Steam Beer,Anchor Steam Beer,63,,1279571643.0,,,,,,
