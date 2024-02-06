@@ -7,16 +7,21 @@ def texte_vides(get_text):
 
 def create_new_drink(data_base_index,get_text):
     textes_recuperees,names = get_text()
-    
-    new_row = pd.Series(textes_recuperees, index=names) #Attention c'est le Unamed 0 qui casse les couilles
-
+   
+    new_row = pd.Series() 
     Db.dbsall[data_base_index][0] = Db.dbsall[data_base_index][0]._append(new_row, ignore_index=True)
+
     new_index = len(Db.dbsall[data_base_index][0]) - 1
     Db.index_boisson = new_index
 
-    Db.dbsall[data_base_index][0].iloc[new_index,0] = Db.index_boisson
-    Db.dbsall[data_base_index][0].iloc[new_index,-1] = 0
-    Db.dbsall[data_base_index][0].iloc[new_index,-3] = 0
+    for i in range(len(textes_recuperees)):
+        texte = textes_recuperees[i]
+        if texte == '' : texte = "Not renseigned yet"
+        colonne = names[i]
+        Db.dbsall[data_base_index][0].at[new_index,colonne] = texte
+
+    Db.dbsall[data_base_index][0].at[new_index,'PersonalRating'] = 0
+    Db.dbsall[data_base_index][0].at[new_index,'Favorite'] = 0
 
 
 

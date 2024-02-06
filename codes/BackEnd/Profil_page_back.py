@@ -10,7 +10,7 @@ dbs = Db.dbsall
 ###1er graphique : Histogramme du nombre de boissons notées par catégorie
 def nb_of_notes(df):
     if 'PersonalRating' in df.columns and not (len(df[df['PersonalRating'] != -1]) == 0):
-        tempdf = df[df['PersonalRating'] != -1]
+        tempdf = df[df['PersonalRating'] > 0]
         return len(tempdf)
     else:
         return 0
@@ -24,7 +24,7 @@ def nb_notes_per_categories():
 ###2ème graphique : Histogramme des moyennes des notes par catégorie
 def mean_of_note(df):
     if 'PersonalRating' in df.columns and not (len(df[df['PersonalRating'] != -1]) == 0):
-        tempdf = df[df['PersonalRating'] != -1]
+        tempdf = df[df['PersonalRating'] > 0]
         return tempdf['PersonalRating'].mean()
     else:
         return 0  # Retourner une valeur spéciale pour indiquer l'absence de données
