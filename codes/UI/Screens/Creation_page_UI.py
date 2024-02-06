@@ -143,7 +143,7 @@ class CreationButton(QPushButton):
         self.animation_widget = animation_widget
 
     def create_new_drink(self):
-        Cb.create_new_drink(Db.choix_de_la_data_base, self.function)
+        Cb.create_new_drink(self.function)
         self.go_to_description()
         self.list_element_to_complete.reset_fields()
 
