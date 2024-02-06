@@ -81,10 +81,9 @@ class FavorieDataDisplay(QVBoxLayout):
         nb_favories = len(favories_dfs)
         self.title_widget.update(nb_favories=nb_favories)
         self.listWidget.clear()
-        listItem = QListWidgetItem(self.listWidget)
         
-
         if nb_favories  == 0 :
+            listItem = QListWidgetItem(self.listWidget)
             no_favories_label = QLabel("No drinks were added to Favorites")
             no_favories_label.setAlignment(Qt.AlignCenter)  # Centre le texte horizontalement
             no_favories_label.setStyleSheet("font-size: 10pt;")  # Définit la police à 10pt
@@ -92,12 +91,15 @@ class FavorieDataDisplay(QVBoxLayout):
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, no_favories_label)
 
-        for i in range(len(favories_dfs)) :  
+        for i in range(nb_favories) :  
+            listItem = QListWidgetItem(self.listWidget)
             texte,index_db,index_boisson = Pb.get_favorites_informations(favories_dfs,i)
             customItemWidget = CustomListAffichageTri(texte,index_db,index_boisson,self.go_to_description)
             listItem.setSizeHint(customItemWidget.sizeHint())
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, customItemWidget)
+        
+       
 
 
 class CustomListAffichageTri(QWidget):

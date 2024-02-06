@@ -62,6 +62,7 @@ def favorites_extraction():
         cut['index'] = data_frame.index
 
         favories = pd.concat([favories, cut], axis=0)
+
  
 
     return favories
