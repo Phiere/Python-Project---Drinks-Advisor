@@ -159,8 +159,7 @@ class CustomListAffichageTri(QWidget):
         self.setLayout(layout)
 
     def mousePressEvent(self, a0: QMouseEvent) -> None:
-        #print(self.indexx)
-        print('index choisi ', self.indexx)
+
         Db.index_boisson = self.indexx
         self.appel_a_description()
 

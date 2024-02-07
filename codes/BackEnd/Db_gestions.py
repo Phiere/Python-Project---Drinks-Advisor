@@ -59,7 +59,7 @@ def initilisationCocktail():
 
     #Filtrage
     cocktails_titles = ['Name','DrinkType','Category']
-    cocktails_descriptions = ['DrinkType','Category','Glass','GlassImageLink','Ingredients','Measure','Recipe']
+    cocktails_descriptions = ['DrinkType','Category','Glass','Ingredients','Measure','Recipe']
     cocktails_filtrage = ['Name','DrinkType','Category','Glass','Ingredients']
     cocktails_sort = ['Name','DrinkType','Category','PersonalRating']
 

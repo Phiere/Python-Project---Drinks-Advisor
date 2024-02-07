@@ -78,10 +78,10 @@ def add_uniques_element(get_text):
         colonne = names[index]
         
         for texte in texte_list :
-            print("element ajoute ", texte)
+
             Db.dbsall[Db.choix_de_la_data_base][1].at[new_index+number_element,colonne] = texte
             number_element +=1
-    print(Db.dbsall[Db.choix_de_la_data_base][1].tail())
+
 
     uniques_elements_columns_list = []
 

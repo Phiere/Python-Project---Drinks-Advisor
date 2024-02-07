@@ -100,6 +100,7 @@ class FavorieDataDisplay(QVBoxLayout):
             self.listWidget.setItemWidget(listItem, customItemWidget)
         
        
+    
 
 
 class CustomListAffichageTri(QWidget):

@@ -1,40 +1,65 @@
 import Db_gestions as Db
-import Autocompletion as autoc 
-from PyQt5.QtWidgets import QWidget, QMessageBox
+from PyQt5.QtWidgets import QWidget,QLineEdit,QCompleter
+from PyQt5.QtCore import Qt
 import random
 import pandas as pd
 
 dbs = Db.initilisationSoft()[0]
 
+#V0.1
+class Autocompleter(QLineEdit):
+    """Créer un widget d'automplétion pour les filtres dynamiques de l'écran de recherche
+    
+    - colonne : colonen de dataframe dont les éléments seront affichés en autocomplétion.
+    """
+    def __init__(self,colonne):
+        super().__init__()
+        self.lineEdit = QLineEdit()
+        autocomplete_list = colonne.tolist()
+        completer = QCompleter(autocomplete_list, self.lineEdit)
+        completer.setCaseSensitivity(Qt.CaseInsensitive)
+        self.lineEdit.setCompleter(completer)
 
+#V0.1
 class Filtre(QWidget):
+    """Créer un LineEDit qui sera assemblé avec d'autres pour créer une liste de filtres dynamiques
+    
+    - name_column : colonne du data_frame auquel se refaire le filtre
+    - data_base : data_base des éléments uniques choisie pour les filtres
+    """
     def __init__(self,name_column,data_base) -> None:
         super().__init__()
         self.nom_col = name_column
         data_base = data_base.astype(str)
-        autocompleter = autoc.Autocompleter(data_base)
+        autocompleter = Autocompleter(data_base)
         self.name_edit = autocompleter.lineEdit
         self.name_edit.setPlaceholderText(self.nom_col)
 
-
-# Prend en entrée la df utilisée et construit une list de filtres qui seront utililisés à la
-# fois pour l'affichage et la gestion des données à afficher
-# je change pas la db ici oups
+#v0.1
 def from_df_to_filters(take_text):
-    db = Db.dbsall[Db.choix_de_la_data_base][1]
-    columns_names = db.columns
+    """Construit la colonne des filtres dynamiques associée à la base de données choisie
+    
+    - take_text : fonction récupérant les textes de tous les différents filtre
+    - filters_list : liste des filtres à afficher sur l'écran recherche"""
+    data_fram_unique_element = Db.dbsall[Db.choix_de_la_data_base][1]
+    columns_names = data_fram_unique_element.columns
     filters_list = []
     for i in range(len(columns_names)):
-        filtre = Filtre(columns_names[i],db.iloc[:,i])
+        filtre = Filtre(columns_names[i],data_fram_unique_element.iloc[:,i])
         filters_list.append(filtre)
     for i in range(len(filters_list)):
             filters_list[i].name_edit.textEdited.connect(take_text)
     return filters_list
 
-
-# Lis tout les QLineEdit qui font office de filtres et retourne tout leurs textes.
-# Filtre la df en fonction des filtres utilisés et donne la df des éléments filtrés
+#v0.05
 def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_state):
+        """Lis tout les QLineEdit qui font office de filtres et retourne tout leurs textes. Filtre la df en fonction des filtres utilisés et donne la df des éléments filtrés
+
+        - filters_list : fourni la liste des filtres présent sur l'écran de rercherche
+        - number_of_element : nombre d'éléments du data_frame à afficher sur l'écran
+        - colonne_to_sort : colonne sur laquelle le tri sera fait
+        - sorted_state : choisit le sens de tri selon lequel les données seront affichées 
+        """
         df_used = Db.dbsall[Db.choix_de_la_data_base][0]
         df_temporary = df_used.copy()
 
@@ -63,7 +88,7 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
         for i in L:
              index = df_temporary.iloc[[i]].index[0]
              indexes.append(index)
-        print(indexes)
+   
 
         data_frame = Db.dbsall[Db.choix_de_la_data_base][0]
         colonne_interessantes = Db.dbsall[Db.choix_de_la_data_base][2]
@@ -76,17 +101,15 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
 
         return indexes,L,textes
 
-
-#Permet juste de choisir dans quel sens on va trier 
+#v0.1
 def chose_sorted_sens(chosed_option):
-
-        if chosed_option == "Ascending" :
-            return 'Descending'
-        else :
-            return 'Ascending'
-
+    """Change le sens de tri"""
+    if chosed_option == "Ascending" :
+        return 'Descending'
+    else :
+        return 'Ascending'
     
-#Filtre les databases sur une colonne donnée avec un (ou des) filtre(s) précis
+#v0.0
 def filtrer(f, colonne, data_Frame):
     def extract_elements_from_list(value_str):
         value_str = str(value_str)  # Convertir en chaîne de caractères
@@ -115,29 +138,34 @@ def filtrer(f, colonne, data_Frame):
 
     return tempdf
 
-    """try:
-        1==0#int(f)
-        return data_Frame[data_Frame[colonne] == int(f)]
-    except ValueError :    
-        if "," not in f :
-            return data_Frame[data_Frame[colonne] == f]
-        else :
-            f = f.split(",")
-            tempdf = data_Frame.copy()
-            for i in f :
-                if i != "" :
-                    tempdf = tempdf[tempdf[colonne].apply(lambda liste: i in liste)]
-        
-        tempdf = tempdf.reset_index().rename(columns={'index': 'Ancien_Index'})
-        print("pouqoi j'ai")
-        print(tempdf.head(5))
-        return tempdf"""
+############################################################
+############################################################
+############################################################
+# Test 
+############################################################
+############################################################
+############################################################
 
-#Retourne les noms des colonnes de la bdd chargée ainsi que les types des colonnes (utile pour les comparaisons)
-def colonnes(data_Frame):
-    columns = data_Frame.columns
-    types = data_Frame.dtypes
-    L = []
-    for i in range(len(colonnes)):
-        L.append([columns[i],types[i]])
-    return L
+"""
+cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
+colonne_autocompleteur = cocktail['strGlass']
+colonne_autocompleteur = colonne_autocompleteur.drop_duplicates()
+colonne_autocompleteur = colonne_autocompleteur.dropna()
+colonne_autocompleteur = colonne_autocompleteur.astype(str)
+
+class MainWindow(QWidget):
+    def __init__(self):
+        super().__init__()
+    
+        layout = QVBoxLayout()    
+        Autocompletion_line = Autocompleter(colonne_autocompleteur)
+
+        layout.addWidget(Autocompletion_line.lineEdit)
+        self.setLayout(layout)
+
+if __name__ == '__main__':
+    app = QApplication([])
+    window = MainWindow()
+    window.show()
+    app.exec_()
+"""
