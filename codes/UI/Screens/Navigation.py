@@ -19,7 +19,7 @@ import Profil_page_UI as PU
 import Creation_page_UI as CU
 import Description_page as DU
 
-
+#V0.1
 class MenuButton(QPushButton):
     """Bouton dirigeant vers la page mise en argument"""
     def __init__(self,stack_control,stack_index,path_icone) :
@@ -29,7 +29,7 @@ class MenuButton(QPushButton):
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.pressed.connect(lambda : stack_control(stack_index))
 
-
+#V0.1
 class MenuLayout(QHBoxLayout): 
     """Construit une ligne de  3 boutons pour naviguer entre les écrans du logiciel"""
     def __init__(self,stack_control) :
@@ -44,7 +44,7 @@ class MenuLayout(QHBoxLayout):
         self.addStretch()
         self.addWidget(buton_profile)
 
-
+#V0.1
 class ScreensToDisplay(QStackedWidget):
     """Concaténion des différents écrans de l'application"""
     def __init__(self,show_description):
@@ -60,14 +60,13 @@ class ScreensToDisplay(QStackedWidget):
         self.addWidget(creation_screen)
         self.addWidget(self.description_screen)
 
-
+#V0.1
 class DisplayerScreen(QWidget):
     """Fenêtre principale contenant le stack des écrans et les méthodes de naviguation
     
     - go_to_screen : permet de navuguer d'un écran à l'autre en restant sur la fenêtre principale"""
     def __init__(self):
         super().__init__()
-
         self.setWindowTitle("DrinksAdvisor App")
         self.setStyleSheet("background-color: #1f1f1f;")
         

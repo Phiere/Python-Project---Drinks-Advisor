@@ -10,7 +10,8 @@
 
 import sys
 import seaborn as sns
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QFrame,QGridLayout,QHBoxLayout,QLabel,QListWidgetItem,QListWidget
+from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout
+                            ,QGridLayout,QHBoxLayout,QLabel,QListWidgetItem,QListWidget)
 from PyQt5.QtGui import QPixmap, QMouseEvent
 from PyQt5.QtCore import Qt
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
@@ -58,7 +59,7 @@ class FavoriesTitle(QHBoxLayout):
     def update(self,nb_favories):
             self.nb_favories_label.setText(f"{nb_favories} drinks")
 
-#v0,1
+#v0.1
 class FavorieDataDisplay(QVBoxLayout):
     """Construit la liste des éléments favories
     
@@ -99,12 +100,11 @@ class FavorieDataDisplay(QVBoxLayout):
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, customItemWidget)
         
-       
-    
-
-
+#v0.1 
 class CustomListAffichageTri(QWidget):
-
+    """Liste de ligne regroupant les boissons mises en favoris.
+    
+    - mousePressEvent : appelle la fenêtre de description associée à la boisson cliquée"""
     def __init__(self, completion_text_to_display,index_db,index_boisson,go_to_description):
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
@@ -125,8 +125,9 @@ class CustomListAffichageTri(QWidget):
         Db.index_boisson = self.index_boisson
         self.appel_a_description()
 
-
+#v0.1
 class ColumnCategoriesNames(QWidget):
+    """Case d'affichage pour les titres de colonnes des favoris"""
     def __init__(self,texte):
         super().__init__()
         label = QLabel(texte, self)
@@ -135,15 +136,15 @@ class ColumnCategoriesNames(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(label)
 
-"!"
+#V0.1
 class LineOfCategoriesNames(QHBoxLayout):
+     """Ligne des titres des colonnes utilisées pour l'affichage des favoris"""
      def __init__(self):
         super().__init__()
         self.upload_names()
   
      def upload_names(self):
-        ##attention aux noms de colonnes à la volo comme ça 
-        titles = ['Type','Name','Personnal Rating','Comment']
+        titles = Db.favories_titles
         while self.count():
                 item = self.takeAt(0)
                 widget = item.widget()
@@ -153,15 +154,16 @@ class LineOfCategoriesNames(QHBoxLayout):
             Etiquette = ColumnCategoriesNames(title)
             self.addWidget(Etiquette)
 
-
 #################
 #1er graphique : Histogramme du nombre de boissons notées par catégorie
 #################
+#V0.1
 class RatedByCategories(QWidget):
+    """Graphique montrant le nombre de boissons notées par data base
+    
+    - update : met à jours les données du graphiques à chaque entrée sur la page profil"""
     def __init__(self):
         super().__init__()
-
-        # Créer un canevas pour le graphique
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.figure, self.ax = plt.subplots()
         self.figure.set_facecolor('#1f1f1f')  
@@ -195,11 +197,14 @@ class RatedByCategories(QWidget):
 
         self.canvas.draw()
 
-
 #################
 #2ème graphique : Histogramme des moyennes des notes par catégorie
-#################     
+################# 
+#V0.1
 class MeanByCategories(QWidget):
+    """Graphique montrant les moyennes des notes des boissons notées par data base
+    
+    - update : met à jours les données du graphiques à chaque entrée sur la page profil"""
     def __init__(self):     
         super().__init__()
         
@@ -238,12 +243,13 @@ class MeanByCategories(QWidget):
 
         self.canvas.draw()
 
-
 #################
 #création de l'écran
 ################# 
-
+#V0.1
 class ScreenProfile(QWidget):
+    """Ecran principal regroupant la liste des favories ainsi que deux graphiques sur le nombre de boisson notées et les moyennes
+    des notes par data base."""
     def __init__(self,go_to_description) -> None:
         super().__init__()
         self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
@@ -271,8 +277,6 @@ class ScreenProfile(QWidget):
         self.rated_by_categories.update()
         self.mean_by_categories_graph.update()
 
-        
-        
 ############################################################
 ############################################################
 ############################################################
