@@ -13,6 +13,7 @@ import re
 # - Traitement 2 : normalise les éléments dans une même colonne : (Vodka , vodka --> vodka).
 # - Traitement 3 : rajouter à chaque data_base les colonnes notes_personnelle, commentary, favories
 # - Traitement 4 : changer les nan
+# - Traitemetn 5 : enelver les colonnes intutiles (dépalcer en 1)
 # - Attention : lors de rajout d'une nouvelle data_frame, il est préférable de modifier à la main le nom des colonnes afin d'un affichage plus agréable.
 ################################################################
 ################################################################
@@ -117,10 +118,15 @@ def changer_nan(db):
         if tipe == float or tipe == int :
             db[colonnes[i]] = db[colonnes[i]].fillna(-1)
         else :
-            db[colonnes[i]] = db[colonnes[i]].fillna("Unfiled")
+            db[colonnes[i]] = db[colonnes[i]].fillna("Unfilled")
     return db
 
-def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_element_data_frame_path,new_column_names):
+def delete_unnecessary_column(data_frame,unnecessary_column):
+     for column in unnecessary_column :
+          data_frame.drop(column, axis=1, inplace=True)
+     
+
+def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_element_data_frame_path,unnecessary_column,new_column_names):
         
         try:
             raw_data_frame = pandas.read_csv(raw_data_frame_path)
@@ -128,7 +134,10 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
         except FileNotFoundError:
             print("Fichier pas présent sur l'ordinateur. Présent seulement en local sur l'odinateur de Pierre")
 
-        else :       
+        else :
+
+            delete_unnecessary_column(raw_data_frame,unnecessary_column)  
+
             raw_data_frame = changer_nan(raw_data_frame)
 
             listed_doubles_columns = creation_list_colonnes_doubles(raw_data_frame)
@@ -159,6 +168,7 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
 wines_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/winemag-data_first150k.csv"
 wines_listed_data_frame_path = "dataBases/Samples/wines_samples.csv"
 wines_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/wines_unique_elements.csv"
+wines_unnecessary_columns = []
 wines_new_column_names = {'country' : 'Country', 'description' : 'Description', 'points' : 'Points', 
                         'price' : 'Price', 'province' : 'Province', 'variety' : 'Variety', 'winery' : 'Winery', 
                         'region_' : 'Region', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
@@ -167,36 +177,40 @@ wines_new_column_names = {'country' : 'Country', 'description' : 'Description', 
 coffees_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/coffee_analysis.csv"
 coffees_listed_data_frame_path = "dataBases/Samples/coffee_samples.csv"
 coffees_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv"
+coffees_unnecessary_columns = ['review_date']
 coffee_new_column_names = {'roaster' : 'Roaster', 'roast' : 'Roast', 'loc_country' : 'Country', 
-                        '100g_USD' : 'Price', 'rating' : 'UserRating', 'review_date' : 'ReviewDate', 'origin_' : 'Origin', 
+                        '100g_USD' : 'Price', 'rating' : 'UserRating', 'origin_' : 'Origin', 
                         'desc_' : 'Description', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 
 cocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/all_drinks.csv"
 cocktails_listed_data_frame_path = "dataBases/Samples/cocktails_samples.csv"
 cocktails_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv"
-cocktails_new_column_names = {'dateModified' : 'ModificationDate', 'idDrink' : 'DrinkID', 'strAlcoholic' : 'DrinkType', 
-                        'strCategory' : 'Category', 'strDrinkThumb' : 'GlassImageLink', 'strGlass' : 'Glass', 'strIBA' : 'IBA', 'strInstructions' : 'Recipe', 
-                        'strVideo' : 'Video', 'strIngredient' : 'Ingredients', 'strMeasure' : 'Measure', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
+cocktails_unnecessary_columns = ['dateModified','idDrink','strDrinkThumb','strVideo']
+cocktails_new_column_names = {'strAlcoholic' : 'DrinkType', 
+                        'strCategory' : 'Category', 'strGlass' : 'Glass', 'strIBA' : 'IBA', 'strInstructions' : 'Recipe', 
+                        'strIngredient' : 'Ingredients', 'strMeasure' : 'Measure', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 mocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/Mocktail_dataset.csv"
 mocktails_listed_data_frame_path = "dataBases/Samples/mocktail_samples.csv"
 mocktails_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv"
+mocktails_unnecessary_columns = []
 mocktails_new_column_names = {'User Rating' : 'UserRating', 'Ingredient ' : 'Ingredients', 'Flavor Profile ' : 'FlavorProfile', 
                         'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 beers_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/beer_reviews.csv"
 beers_listed_data_frame_path = "dataBases/Samples/beer_samples.csv"
 beers_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/beers_unique_elements.csv"
-beers_new_column_names = {'brewery_name' : 'Brewery', 'beer_style' : 'Style', 'beer_beerid' : 'BeerID', 
-                        'brewery_id' : 'BreweryID', 'review_time' : 'ReviewsNumber', 'review_overall' : 'OverallReview',
+beers_unnecessary_columns = ['beer_beerid','brewery_id']
+beers_new_column_names = {'brewery_name' : 'Brewery', 'beer_style' : 'Style', 
+                        'review_time' : 'ReviewsNumber', 'review_overall' : 'OverallReview',
                         'review_aroma' : 'Aroma', 'review_appearance' : 'Appearance', 'review_palate' : 'Palate', 'review_taste' : 'Taste', 
                         'beer_abv' : 'BeerABV','Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 if __name__ == '__main__':
 
-    raw_data_traitement(wines_raw_data_frame_path,wines_listed_data_frame_path,wines_uniques_element_data_frame_path,wines_new_column_names)
-    raw_data_traitement(coffees_raw_data_frame_path,coffees_listed_data_frame_path,coffees_uniques_element_data_frame_path,coffee_new_column_names)
-    raw_data_traitement(cocktails_raw_data_frame_path,cocktails_listed_data_frame_path,cocktails_uniques_element_data_frame_path,cocktails_new_column_names)
-    raw_data_traitement(mocktails_raw_data_frame_path,mocktails_listed_data_frame_path,mocktails_uniques_element_data_frame_path,mocktails_new_column_names)
-    raw_data_traitement(beers_raw_data_frame_path,beers_listed_data_frame_path,beers_uniques_element_data_frame_path,beers_new_column_names)
+    raw_data_traitement(wines_raw_data_frame_path,wines_listed_data_frame_path,wines_uniques_element_data_frame_path,wines_unnecessary_columns,wines_new_column_names)
+    raw_data_traitement(coffees_raw_data_frame_path,coffees_listed_data_frame_path,coffees_uniques_element_data_frame_path,coffees_unnecessary_columns,coffee_new_column_names)
+    raw_data_traitement(cocktails_raw_data_frame_path,cocktails_listed_data_frame_path,cocktails_uniques_element_data_frame_path,cocktails_unnecessary_columns,cocktails_new_column_names)
+    raw_data_traitement(mocktails_raw_data_frame_path,mocktails_listed_data_frame_path,mocktails_uniques_element_data_frame_path,mocktails_unnecessary_columns,mocktails_new_column_names)
+    raw_data_traitement(beers_raw_data_frame_path,beers_listed_data_frame_path,beers_uniques_element_data_frame_path,beers_unnecessary_columns,beers_new_column_names)

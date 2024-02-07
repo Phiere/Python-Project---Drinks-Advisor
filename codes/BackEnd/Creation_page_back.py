@@ -33,15 +33,16 @@ def create_new_drink(get_text):
         texte = textes_recuperees[i]
         if texte == '' : texte = "Unfilled"
         colonne = names[i]
-        colonne_type = Db.dbsall[data_base_index][0].dtypes[colonne]
 
         try :
             texte = float(texte)
         except :
-            pass
+            if "," in texte :
+                texte  = texte.split(",")
+
         
         Db.dbsall[data_base_index][0].at[new_index,colonne] = texte
-        print(texte,type(texte))
+   
 
 
     Db.dbsall[data_base_index][0].at[new_index,'PersonalRating'] = -1
@@ -56,20 +57,42 @@ def add_uniques_element(get_text):
     new_row = pd.Series() 
     Db.dbsall[data_base_index][1] = Db.dbsall[data_base_index][1]._append(new_row, ignore_index=True)
     new_index = len(Db.dbsall[data_base_index][1]) - 1      
+    colomn_with_list_index = []
 
     for i in range(len(textes_recuperees)) :
         texte = textes_recuperees[i]
-        colonne = names[i]
-        Db.dbsall[Db.choix_de_la_data_base][1].at[new_index,colonne] = texte
+        if ',' in texte :
+            colomn_with_list_index.append(i)
+        else :
+            colonne = names[i]
+            Db.dbsall[Db.choix_de_la_data_base][1].at[new_index,colonne] = texte
     
+    
+    
+
+
+    for index in colomn_with_list_index :
+        texte_list = textes_recuperees[index]
+        texte_list = texte_list.split(",")
+        number_element = 1
+        colonne = names[index]
+        
+        for texte in texte_list :
+            print("element ajoute ", texte)
+            Db.dbsall[Db.choix_de_la_data_base][1].at[new_index+number_element,colonne] = texte
+            number_element +=1
+    print(Db.dbsall[Db.choix_de_la_data_base][1].tail())
+
     uniques_elements_columns_list = []
 
     for name in Db.dbsall[Db.choix_de_la_data_base][1].columns :
         uniques_elements_column = Db.dbsall[Db.choix_de_la_data_base][1][name].drop_duplicates()
         uniques_elements_columns_list.append(uniques_elements_column)
 
-
     new_unique_element = pd.DataFrame(dict(zip(Db.dbsall[Db.choix_de_la_data_base][1].columns,uniques_elements_columns_list)))
+
+
+
     Db.dbsall[Db.choix_de_la_data_base][1] = new_unique_element
 
 
