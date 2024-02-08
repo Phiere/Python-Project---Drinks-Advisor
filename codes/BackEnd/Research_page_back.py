@@ -145,27 +145,3 @@ def filtrer(f, colonne, data_Frame):
 ############################################################
 ############################################################
 ############################################################
-
-"""
-cocktail = pandas.read_csv("/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv")
-colonne_autocompleteur = cocktail['strGlass']
-colonne_autocompleteur = colonne_autocompleteur.drop_duplicates()
-colonne_autocompleteur = colonne_autocompleteur.dropna()
-colonne_autocompleteur = colonne_autocompleteur.astype(str)
-
-class MainWindow(QWidget):
-    def __init__(self):
-        super().__init__()
-    
-        layout = QVBoxLayout()    
-        Autocompletion_line = Autocompleter(colonne_autocompleteur)
-
-        layout.addWidget(Autocompletion_line.lineEdit)
-        self.setLayout(layout)
-
-if __name__ == '__main__':
-    app = QApplication([])
-    window = MainWindow()
-    window.show()
-    app.exec_()
-"""

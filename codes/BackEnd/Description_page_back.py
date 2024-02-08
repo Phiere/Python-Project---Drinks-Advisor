@@ -1,14 +1,17 @@
 import Db_gestions as Db
 import pandas as pd
 
-
+#V0.1
 def get_name_from_drink():
+    """Récupère le nom principal de la boisson"""
     db,index = Db.choix_de_la_data_base,Db.index_boisson
     boisson = Db.dbsall[db][0].iloc[index]
     name = boisson['Name']
     return name 
 
+#V0.0
 def get_description_from_drink():
+    """Récupère les éléments de description de la boisson"""
     db,index = Db.choix_de_la_data_base,Db.index_boisson
     boisson = Db.dbsall[db][0].iloc[index]
     columns_to_read = Db.dbsall[db][3]
@@ -48,33 +51,54 @@ def get_description_from_drink():
                 text += '\n' + f"   - {str(colonne)} : {int(boisson[colonne]):,}" + '\n'
             skip_next_iterations = True            
     return text
-        
+
+#V0.1      
 def get_status_favori():
+    """Récupère le statut de favori de la boisson"""
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
     favory = Db.dbsall[db][0].at[index,'Favorite']
     return favory
 
+#V0.1
 def update_status_favori():
+    """Met à jour le status de favori la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     favory = not(Db.dbsall[db][0].iloc[index][-1])
     Db.dbsall[db][0].at[index,'Favorite'] = favory
     return favory
 
+#V0.1
 def get_comment():
+    """Récupère le commentaire associée à la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     comment = Db.dbsall[db][0].at[index,'Comment']
     if pd.isna(comment): return 'Leave a comment on the drink...'
     return comment
 
+#V0.1
 def update_comment(commentary):
+    """Met à jour le commentaire de la boisson choisie
+    
+    - commentary : texte à mettre en commentaire"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     Db.dbsall[db][0].at[index,'Comment'] = commentary
 
+#V0.1
 def get_rating():
+    """Récupère la note de la boisson choisie
+    
+    - rating : note de la boisson choisie (int)"""
     db,index = Db.choix_de_la_data_base,  Db.index_boisson
     rating = Db.dbsall[db][0].at[index,'PersonalRating']
     return rating
 
+#V0.1
 def update_rating(rating):
+    """Met à jour la note de la boisson choisie
+    
+    - rating : nouvelle note de la boison (int)"""
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
     Db.dbsall[db][0].at[index,'PersonalRating'] = rating
+
+
+##Tests

@@ -1,7 +1,7 @@
 import pandas as pd
 import Db_gestions as Db
-from PyQt5.QtWidgets import QMessageBox
 
+#V0.0
 def texte_vides(get_text):
     textes_recuperees,_ = get_text()
     strInvalid = []
@@ -19,7 +19,11 @@ def texte_vides(get_text):
     else:
         return all(s == "" for s in textes_recuperees),None
 
+#V0.1
 def create_new_drink(get_text):
+    """Créer un nouvelle ligne dans la data base choisie avec les informations complétées.
+    
+    - get_text : fonction de récupération des textes mis dans l'écran création"""
     data_base_index = Db.choix_de_la_data_base
     textes_recuperees,names = get_text()
     
@@ -43,13 +47,13 @@ def create_new_drink(get_text):
         
         Db.dbsall[data_base_index][0].at[new_index,colonne] = texte
    
-
-
     Db.dbsall[data_base_index][0].at[new_index,'PersonalRating'] = -1
     Db.dbsall[data_base_index][0].at[new_index,'Favorite'] = 0
     add_uniques_element(get_text=get_text)
 
+#V0.1
 def add_uniques_element(get_text):
+    """Ajoute si nécessaire les éléments ajoutés dans le data_frame des éléments uniques"""
     textes_recuperees,names = get_text()
     data_base_index = Db.choix_de_la_data_base
 
@@ -66,10 +70,6 @@ def add_uniques_element(get_text):
         else :
             colonne = names[i]
             Db.dbsall[Db.choix_de_la_data_base][1].at[new_index,colonne] = texte
-    
-    
-    
-
 
     for index in colomn_with_list_index :
         texte_list = textes_recuperees[index]

@@ -181,8 +181,11 @@ class CustomListAffichageTri(QWidget):
         Db.index_boisson = self.indexx
         self.appel_a_description()
 
-##
+#V0.1
 class ColumnCategoriesNames(QWidget):
+    """Label indiquant à quoi correspondent les données de la colonne associée
+    
+    - texte : titre de la colonne"""
     def __init__(self,texte):
         super().__init__()
 
@@ -195,8 +198,9 @@ class ColumnCategoriesNames(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(label)
 
-##       
+#V0.1      
 class LineOfCategoriesNames(QHBoxLayout):
+     """Layout des noms des colonnes mis en lignes"""
      def __init__(self):
         super().__init__()
         self.upload_names()
@@ -212,15 +216,18 @@ class LineOfCategoriesNames(QHBoxLayout):
             Etiquette = ColumnCategoriesNames(title)
             self.addWidget(Etiquette)
 
-##
+#V0.1
 class ColumnOfFilter(QVBoxLayout):
-    def __init__(self,chargerNewDf):
+    """Assemblage des filtres sur un layout vertical
+    
+    - charger_new_df : fonction d'appel pour l'affichage des résultats."""
+    def __init__(self,charger_new_df):
         super().__init__()
-        self.chargerNewDf = chargerNewDf
+        self.charger_new_df = charger_new_df
         self.upload_filters()
 
     def upload_filters(self):
-        self.filters_list = RB.from_df_to_filters(self.chargerNewDf)
+        self.filters_list = RB.from_df_to_filters(self.charger_new_df)
         while self.count():
             item = self.takeAt(0)
             widget = item.widget()
@@ -232,8 +239,11 @@ class ColumnOfFilter(QVBoxLayout):
 
 ############################################################
 ############################################################
-##Creation de l'écran
+#V0.1
 class ScreenResearch(QWidget):
+    """Assemblage des différents blocs de recherche : filtres, affichage des éléments et options de recherche.
+    
+    - changer_screen : fonction de rafraichissement de la page"""
     def __init__(self,change_screen) -> None:
         super().__init__()
         self.setWindowTitle("Description Window")
@@ -308,7 +318,6 @@ class ScreenResearch(QWidget):
             self.listWidget.setItemWidget(listItem, customItemWidget)
 
     
-
 ############################################################
 ############################################################
 ############################################################

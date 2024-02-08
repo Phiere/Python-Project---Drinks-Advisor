@@ -65,7 +65,7 @@ class ListeElementToComplete(QListWidget):
         for index in range(self.count()):
             item = self.item(index)
             widget = self.itemWidget(item)
-            
+
             if isinstance(widget, ModificationLayout): 
                 texte = widget.contenu.toPlainText()  
                 text_list.append(texte)
@@ -85,12 +85,12 @@ class EditButton(QPushButton):
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.setText("Edit")
         self.function = get_text
-        self.clicked.connect(self.create_new_drink)
+        self.clicked.connect(self.edit_drink)
 
 
 
-    def create_new_drink(self):
-        Eb.create_new_drink(self.function)
+    def edit_drink(self):
+        Eb.edit_drink(self.function)
         self.go_to_description()
 
 #V0.1

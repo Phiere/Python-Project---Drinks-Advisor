@@ -1,9 +1,10 @@
- # -*- coding: utf-8 -*-
-"""
-Created on Sun Jan  7 14:00:56 2024
-
-@author: mariu
-"""
+############################################################
+############################################################
+############################################################
+#    
+############################################################
+############################################################
+############################################################
 
 import sys
 from PyQt5.QtGui import QPixmap,QIcon
@@ -12,11 +13,13 @@ from PyQt5.QtCore import QSize,Qt
 import Research_page_UI as RU
 
 sys.path.append('codes/BackEnd/')
-import Db_gestions as Db
-import pandas as pd
 import Description_page_back as Dp
 
+#V0.1
 class LabelPrincipal(QWidget):
+    """Label mettant en valeur le nom principal de la boisson
+    
+    - update : met à jour le nom en fonction de la boisson choisie"""
     def __init__(self):
         super().__init__()
 
@@ -33,8 +36,11 @@ class LabelPrincipal(QWidget):
         drink_name = Dp.get_name_from_drink()
         self.drink_name.setText(f'<font color="red"><b>Drink : {drink_name}</b></font>')
 
-
+#V0.1
 class InformationsDisplay(QScrollArea):
+    """Affichage des informations de la boisson choisie
+    
+    - update : met à jours les informations affichées en fonction de la boisson choisie"""
     def __init__(self):
         super().__init__()
 
@@ -54,8 +60,12 @@ class InformationsDisplay(QScrollArea):
         texte =  Dp.get_description_from_drink()
         self.description_text.setText(texte)
 
-        
+ #V0.1       
 class FavoriteInteraction(QPushButton):
+    """Bouton de sélection des favories. 
+    
+    - update-icon : met à jour l'icône du bouton en fonction du statut de favori
+    - update_status : chanhe le statut de l'état favorie vers sont opposé"""
     def __init__(self):
         super().__init__()
 
@@ -76,8 +86,12 @@ class FavoriteInteraction(QPushButton):
         Dp.update_status_favori()
         self.update_icon()
         
-
+#V0.1
 class CommentInteracton(QHBoxLayout):
+    """Affiche une interface pour commenter la boisson choisie
+    
+    - update : met à jour le texte du commentaire avec le commentaire de la boison choisie
+    - comment : met à jour le commentaire avec le texte rentré"""
     def __init__(self):
         super().__init__()
 
@@ -103,7 +117,7 @@ class CommentInteracton(QHBoxLayout):
     def comment(self):
         Dp.update_comment(self.texte.text())
 
-
+#V0.0
 class RatingInteraction(QHBoxLayout):
     def __init__(self):
         super().__init__()
@@ -167,9 +181,10 @@ class RatingInteraction(QHBoxLayout):
         Dp.update_rating(self.new_rating)
         self.update_icon()
     
-    
+#V0.1
 class NotationsInteractions(QVBoxLayout):
-    def __init__(self, ):
+    """Assemblage vertical des différents éléments de notation"""
+    def __init__(self):
         super().__init__()
 
         self.favorite_interaction = FavoriteInteraction()
@@ -185,15 +200,22 @@ class NotationsInteractions(QVBoxLayout):
         self.favorite_interaction.update_icon()
         self.rating_interaction.update_icon()
         self.comment_interaction.update()
-        
+
+#V0.1 
 class GoEditButton(QPushButton):
+    """Bouton déclancheur de l'édition de la boisson choisie
+    
+    - go_to_edit : fonction d'appel de l'écran d'édition"""
     def __init__(self,go_to_edit):
         super().__init__()
         self.setText("Go to edit")
         self.clicked.connect(go_to_edit)
 
-##BENE
+#V0.1
 class Description(QWidget):
+    """Ecran d'assemblage des différents élément de description : appel à l'édition, nom princpal, éléments de description, éléments de notation
+    
+    - show_edit : fonction d'appel à l'écran d'édition"""
     def __init__(self,show_edit):
         super().__init__()
         self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")

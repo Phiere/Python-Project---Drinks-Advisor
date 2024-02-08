@@ -46,8 +46,7 @@ coffees_df = data_frames_reding(path_db_clean='dataBases/Samples/coffee_samples.
                                 descriptions=['Country','Roaster','Roast','Origin','Price','Description','UserRating'],
                                 sort=['Name','Country','Roaster','Roast','Price','UserRating','PersonalRating']
                                 )
-                                
-
+                             
 cocktails_df = data_frames_reding(path_db_clean='dataBases/Samples/cocktails_samples.csv',
                                   path_unique_elements='dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv',
                                   filtrage=['Name','DrinkType','Category','Glass','Ingredients'],
@@ -72,11 +71,10 @@ mocktails_df = data_frames_reding(path_db_clean='dataBases/Samples/mocktail_samp
                                   sort=['Name','UserRating','PersonalRating']
                                   )
 
-
 #Données globales pour l'application
 dbsall = [wines_df,cocktails_df,beers_df,coffees_df,mocktails_df]
 categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
-favories_titles = ['Type','Name','Personnal Rating','Comment']
+favories_titles = ['Type','Name','Personnal Rating']
 number_elements = ['Price', 'Points', 'OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste', 'UserRating']
 dbs = dbsall[0]
 choix_de_la_data_base = 0
