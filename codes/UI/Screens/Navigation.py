@@ -58,7 +58,7 @@ class ScreensToDisplay(QStackedWidget):
         self.profil_screen = PU.ScreenProfile(show_description)
         creation_screen = CU.ScreenCreation(show_description)
         self.description_screen = DU.Description(show_edit)
-        self.edit_screen = EU.ScreenCreation(show_description)
+        self.edit_screen = EU.ScreenEdition(show_description)
 
         self.addWidget(research_screen)
         self.addWidget(self.profil_screen)
