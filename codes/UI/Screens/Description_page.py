@@ -117,8 +117,14 @@ class CommentInteracton(QHBoxLayout):
     def comment(self):
         Dp.update_comment(self.texte.text())
 
-#V0.0
+#V0.1
 class RatingInteraction(QHBoxLayout):
+    """Affiche une interface pour noter la boisson choisie
+    
+    - on_star_click : enregistre la note attribuée à la boisson lors du clic sur une des étoiles
+    - eventFilter : met à jour la couleur des étoiles lors du passage du curseur dessus
+    - update_icon : met à jour l'icone (=la couleur) des étoiles de notation en fonction de la notation attribuée
+    - update_status : met à jour la note attribuée à la boisson dans la database correspondante"""
     def __init__(self):
         super().__init__()
 

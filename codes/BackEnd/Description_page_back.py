@@ -11,7 +11,7 @@ def get_name_from_drink():
 
 #V0.0
 def get_description_from_drink():
-    """Récupère les éléments de description de la boisson"""
+    """Récupère les éléments de description de la boisson en les mettant en forme correctement"""
     db,index = Db.choix_de_la_data_base,Db.index_boisson
     boisson = Db.dbsall[db][0].iloc[index]
     columns_to_read = Db.dbsall[db][3]

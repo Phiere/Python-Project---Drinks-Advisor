@@ -135,7 +135,7 @@ class FilterOptionsBar(QHBoxLayout):
     
 #V0.1
 class BaseDeDonneChoice(QComboBox):
-    """Combo box permettant de choisir la data_base à associer à la rehcehr
+    """Combo box permettant de choisir la data_base à associer à la recherche
     
     - upload_screen : fonction de refraichissement de l'affichage en fonction des options choisies
     - on_selection_changed : met à jours les options de l'écran en fonction de la database choisie """
@@ -160,8 +160,11 @@ class BaseDeDonneChoice(QComboBox):
 ############################################################
 ############################################################
 
-#V0.0
+#V0.1
 class CustomListAffichageTri(QWidget):
+    """Classe permettant l'affichage des lignes de la database choisie
+    
+    - mousePressEvent : détecter le clic de souris sur une des lignes de la database et redirige vers la page de description associée"""
     def __init__(self, completion_text_to_display,indexx, GoToDescription):
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
