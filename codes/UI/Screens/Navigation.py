@@ -18,6 +18,7 @@ import Research_page_UI as RU
 import Profil_page_UI as PU
 import Creation_page_UI as CU
 import Description_page as DU
+import Edit_page_UI as EU
 
 #V0.1
 class MenuButton(QPushButton):
@@ -47,18 +48,23 @@ class MenuLayout(QHBoxLayout):
 #V0.1
 class ScreensToDisplay(QStackedWidget):
     """Concaténion des différents écrans de l'application"""
-    def __init__(self,show_description):
+    def __init__(self,go_to_screen):
         super().__init__()
+
+        show_description = lambda : go_to_screen(3)
+        show_edit = lambda : go_to_screen(4)
 
         research_screen = RU.ScreenResearch(show_description)
         self.profil_screen = PU.ScreenProfile(show_description)
         creation_screen = CU.ScreenCreation(show_description)
-        self.description_screen = DU.Description()
+        self.description_screen = DU.Description(show_edit)
+        self.edit_screen = EU.ScreenCreation(show_description)
 
         self.addWidget(research_screen)
         self.addWidget(self.profil_screen)
         self.addWidget(creation_screen)
         self.addWidget(self.description_screen)
+        self.addWidget(self.edit_screen)
 
 #V0.1
 class DisplayerScreen(QWidget):
@@ -72,7 +78,7 @@ class DisplayerScreen(QWidget):
         
         window_layout = QVBoxLayout()
         menu_bar = MenuLayout(self.go_to_screen)
-        self.screens_to_display = ScreensToDisplay(show_description = lambda : self.go_to_screen(3))
+        self.screens_to_display = ScreensToDisplay(self.go_to_screen)
 
         window_layout.addLayout(menu_bar)
         window_layout.addWidget(self.screens_to_display)
@@ -84,6 +90,8 @@ class DisplayerScreen(QWidget):
             self.screens_to_display.profil_screen.update()
         elif index == 3 :
             self.screens_to_display.description_screen.update()
+        elif index == 4 : 
+            self.screens_to_display.edit_screen.update()
         self.screens_to_display.setCurrentIndex(index)
 
 ############

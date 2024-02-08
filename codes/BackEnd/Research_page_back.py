@@ -4,7 +4,7 @@ from PyQt5.QtCore import Qt
 import random
 import pandas as pd
 
-dbs = Db.initilisationSoft()[0]
+#dbs = Db.dbsall[]
 
 #V0.1
 class Autocompleter(QLineEdit):

@@ -7,24 +7,21 @@
 ############################################################
 
 import sys
-from PyQt5.QtGui import QPixmap, QIcon, QMouseEvent, QStandardItemModel, QStandardItem, QPalette, QColor
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout, QLineEdit,QHBoxLayout,QPushButton,QComboBox,QLabel,QListWidget,QListWidgetItem
+from PyQt5.QtGui import QIcon, QMouseEvent
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QHBoxLayout,QPushButton,QComboBox,QLabel,QListWidget,QListWidgetItem
 from PyQt5.QtCore import Qt, QObject, pyqtSignal,QEvent
-import random
-import Navigation as Nav
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Research_page_back as RB 
-import Description_page as Dp
 
 
 ### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
 
 init = 0
-init2 = 1
-#Détecter le signal quand j'appuie sur entrée
-##BENE
+
+#V0.1
 class KeyEventFilter(QObject):
+    """Déclanche une action lorsqu'on appuie sur entrée"""
     enterPressed = pyqtSignal()
 
     def eventFilter(self, obj, event):
@@ -35,9 +32,12 @@ class KeyEventFilter(QObject):
 
 ############################################################
 ############################################################
-##Creer une combobox sur le nombre d'éléments à afficher dans la la liste filtrée
-##BENE
+#V0.1
 class NumberOfElementChoice(QComboBox):
+    """Combo box permettant de choisir le nombre d'éléments à afficher.
+    
+    - upload_screen : fonction de refraichissement de l'affichage en fonction du nombre d'éléments choisi
+    """
     def __init__(self,upload_screen):
         super().__init__()
         self.setFixedSize(120, 40)
@@ -50,9 +50,12 @@ class NumberOfElementChoice(QComboBox):
         self.addItem('100')
         self.activated[str].connect(upload_screen)
 
-##Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
-##BENE
+#V0.1
 class SortColumnChoice(QComboBox):
+    """Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
+    
+    - upload_screen : fonction de refraichissement de l'affichage en fonction de la colonne de tri choisi
+    - update : met à jour les possibilités de tri en fonction de la database choisie"""
     def __init__(self,upload_screen):
         super().__init__()
         self.activated[str].connect(upload_screen)
@@ -68,8 +71,13 @@ class SortColumnChoice(QComboBox):
         for name in names :
             self.addItem(name)
             
-##BENE   
+#V0.1
 class OrderSensChoice(QPushButton):
+    """Créer un bouton pour choisir le sens de tri : croissant ou décroissant.
+    
+    - update_screen : fonction de refraichissement de l'affichage en du sens de tri choisi
+    - get_status : retourne l'état actuel du sens de tri 
+    - update : met à jour l'affichage du bouton en fonction du sens de tri choisi"""
     def __init__(self,update_screen) -> None:
         super().__init__()
         self.setText("Ascending")
@@ -82,13 +90,13 @@ class OrderSensChoice(QPushButton):
         self.setIcon(self.iconasc)
         self.clicked.connect(self.update)
 
-    def getSatus(self):
+    def get_satus(self):
         if self.text() == "Ascending":
             return 1
         return 0
     
     def update(self):
-        if self.getSatus():
+        if self.get_satus():
             self.setIcon(self.icondsc)
             self.setText("Descending")
         else :
@@ -99,9 +107,14 @@ class OrderSensChoice(QPushButton):
     
     
 ##Barre d'options pour gérer l'affichage de la liste filtrée
-##BENE
+#V0.1
 class FilterOptionsBar(QHBoxLayout):
-    def __init__(self,upload_screen,upload_text) -> None:
+    """Barre d'options pour gérer l'affichage de la liste filtrée. Regroupant le choix de la data_base, le nombre d'élement, la colonne et le sens de tri
+    
+    - upload_screen : fonction de refraichissement de l'affichage en fonction des options choisies
+    - upload_text : fonction de rafraichissement du texte recherché affiché uniquement
+    - update : met à jour le noms des colonnes de tri possibles"""
+    def __init__(self,upload_screen,upload_text):
         super().__init__()
 
         self.choixbdd = BaseDeDonneChoice(upload_screen)
@@ -120,8 +133,12 @@ class FilterOptionsBar(QHBoxLayout):
         self.sort_column_choice.update()
 
     
-##BENE
+#V0.1
 class BaseDeDonneChoice(QComboBox):
+    """Combo box permettant de choisir la data_base à associer à la rehcehr
+    
+    - upload_screen : fonction de refraichissement de l'affichage en fonction des options choisies
+    - on_selection_changed : met à jours les options de l'écran en fonction de la database choisie """
     def __init__(self,upload_screen):
         super().__init__()
         self.setFixedSize(120,40)
@@ -135,7 +152,7 @@ class BaseDeDonneChoice(QComboBox):
         self.addItem('Beers')
         self.addItem('Coffees')
         self.addItem('Mocktails')
-        # Connecter un signal pour détecter le changement de sélection
+
         
     def on_selection_changed(self,index):
         Db.choix_de_la_data_base = index
@@ -143,6 +160,7 @@ class BaseDeDonneChoice(QComboBox):
 ############################################################
 ############################################################
 
+#V0.0
 class CustomListAffichageTri(QWidget):
     def __init__(self, completion_text_to_display,indexx, GoToDescription):
         super().__init__()
@@ -269,7 +287,7 @@ class ScreenResearch(QWidget):
     def chargerNewDf(self):
         filters_column = self.column_of_filter.filters_list
         sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
-        sorting_sens = self.optionsdefiltres.ascgo.getSatus()
+        sorting_sens = self.optionsdefiltres.ascgo.get_satus()
         number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
         indexes,L,textes = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
         self.changer_text(indexes,L,textes)

@@ -51,30 +51,30 @@ def get_description_from_drink():
         
 def get_status_favori():
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
-    favory = Db.dbsall[db][0].iloc[index][-1]
+    favory = Db.dbsall[db][0].at[index,'Favorite']
     return favory
 
 def update_status_favori():
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     favory = not(Db.dbsall[db][0].iloc[index][-1])
-    Db.dbsall[db][0].iloc[index,-1] = favory
+    Db.dbsall[db][0].at[index,'Favorite'] = favory
     return favory
 
 def get_comment():
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
-    comment = Db.dbsall[db][0].iloc[index][-2]
+    comment = Db.dbsall[db][0].at[index,'Comment']
     if pd.isna(comment): return 'Leave a comment on the drink...'
     return comment
 
 def update_comment(commentary):
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
-    Db.dbsall[db][0].iloc[index,-2] = commentary
+    Db.dbsall[db][0].at[index,'Comment'] = commentary
 
 def get_rating():
     db,index = Db.choix_de_la_data_base,  Db.index_boisson
-    rating = Db.dbsall[db][0].iloc[index][-3]
+    rating = Db.dbsall[db][0].at[index,'PersonalRating']
     return rating
 
 def update_rating(rating):
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
-    Db.dbsall[db][0].iloc[index,-3] = rating
+    Db.dbsall[db][0].at[index,'PersonalRating'] = rating

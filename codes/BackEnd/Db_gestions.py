@@ -27,7 +27,7 @@ def data_frames_reding(path_db_clean,path_unique_elements,filtrage,titles,descri
     df_cleaned = pandas.read_csv(path_db_clean,index_col=0)
     df_uniques_element = pandas.read_csv(path_unique_elements,index_col=0)
     df_filters = df_uniques_element[filtrage]
-    return df_cleaned,df_filters,titles,descriptions,sort
+    return [df_cleaned,df_filters,titles,descriptions,sort]
 
 
 ##Wines
@@ -77,6 +77,7 @@ mocktails_df = data_frames_reding(path_db_clean='dataBases/Samples/mocktail_samp
 dbsall = [wines_df,cocktails_df,beers_df,coffees_df,mocktails_df]
 categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
 favories_titles = ['Type','Name','Personnal Rating','Comment']
+number_elements = ['Price', 'Points', 'OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste', 'UserRating']
 dbs = dbsall[0]
 choix_de_la_data_base = 0
 index_boisson = 0

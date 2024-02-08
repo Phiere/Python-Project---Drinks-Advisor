@@ -186,10 +186,15 @@ class NotationsInteractions(QVBoxLayout):
         self.rating_interaction.update_icon()
         self.comment_interaction.update()
         
+class GoEditButton(QPushButton):
+    def __init__(self,go_to_edit):
+        super().__init__()
+        self.setText("Go to edit")
+        self.clicked.connect(go_to_edit)
 
 ##BENE
 class Description(QWidget):
-    def __init__(self):
+    def __init__(self,show_edit):
         super().__init__()
         self.setStyleSheet("background-color: #1f1f1f; color: #ffffff;")
         self.setWindowTitle('Drink Description')
@@ -197,11 +202,13 @@ class Description(QWidget):
 
 
         self.drink_name = LabelPrincipal()
+        self.edit_button = GoEditButton(show_edit)
         self.informations_display = InformationsDisplay()
         self.notations_interactions = NotationsInteractions()
         info_layout = QVBoxLayout()
   
         info_layout.addWidget(self.drink_name)
+        info_layout.addWidget(self.edit_button)
         info_layout.addWidget(self.informations_display)
         info_layout.setStretchFactor(self.informations_display,3)
         info_layout.addLayout(self.notations_interactions)

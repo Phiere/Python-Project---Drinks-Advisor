@@ -1,13 +1,13 @@
 ############################################################
 ############################################################
 ############################################################
-# Description          
+#Script Partie Graphique Page Création. Permet de créer l'écran création qui permet
+#d'ajouter de nouvelles boissons aux data_frames deja existantes.       
 ############################################################
 ############################################################
 ############################################################
 
 import sys
-import time
 from PyQt5.QtWidgets import (QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLineEdit,
                                     QComboBox,QListWidget,QListWidgetItem, QPushButton,QMessageBox,
                                     QGraphicsScene, QGraphicsView, QGraphicsPixmapItem, QGraphicsEllipseItem)
@@ -20,11 +20,14 @@ import Creation_page_back as Cb
 import Navigation as Nav
 
 
-##BENE
+#V0.1
 class DataBaseChoice(QComboBox):
+    """Combo box permettant de choisir la base de donnée sur laquelle se fera la création.
+    
+    - change_completion_lines : fonction appelant au rafraichissement de l'écran pour adapter les QLineEdit à la database
+    - update : change la database et l'écran en fonction de l'item choisi"""
     def __init__(self,change_completion_lines):
         super().__init__()
-
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.setFixedHeight(40)
 
@@ -42,8 +45,9 @@ class DataBaseChoice(QComboBox):
         self.fonction()
 
 #Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
-##BENE
+#V0.0
 class ListeElementToComplete(QListWidget):
+    
     def __init__(self)-> None:
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
@@ -53,7 +57,7 @@ class ListeElementToComplete(QListWidget):
         self.clear()
         names_columns = Db.dbsall[Db.choix_de_la_data_base ][0].columns
         for name in names_columns:
-            if name not in ['Unnamed: 0','PersonalRating', 'Comment', 'Favorite'] :
+            if name not in ['PersonalRating', 'Comment', 'Favorite'] :
                 listItem = QListWidgetItem(self)
                 listItem.setSizeHint(QSize(20,50))
                 item = QLineEdit()
@@ -64,7 +68,7 @@ class ListeElementToComplete(QListWidget):
         # Récupérer le texte de chaque QLineEdit dans la QListWidget
         text_list = []
         name_list = []
-        number_elements = ['Price', 'Points', 'OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste', 'UserRating']
+        number_elements = Db.number_elements
 
         for index in range(self.count()):
             item = self.item(index)
@@ -94,12 +98,10 @@ class ListeElementToComplete(QListWidget):
             if isinstance(widget, QLineEdit):
                 widget.clear()
 
-##BENE
+#V0.0
 class CircleAnimationWidget(QWidget):
     def __init__(self, parent):
         super().__init__(parent)
-
-        self.parent = parent  # Référence à l'objet parent = ScreenCreation
         self.setStyleSheet("background-color: transparent; border: none;")
 
         self.circle_item = QGraphicsEllipseItem(0, 0, 0, 0)
@@ -143,6 +145,7 @@ class CircleAnimationWidget(QWidget):
         self.animation_steps = int(self.animation_duration / 100)
         self.timer.start(100)
 
+#V0.0
 class CreationButton(QPushButton):
     def __init__(self, get_text, go_to_description, list_element_to_complete, animation_widget):
         super().__init__()
@@ -217,9 +220,12 @@ class CreationButton(QPushButton):
                 self.create_new_drink()
                 self.animation_widget.pixmap_item.setPixmap(QPixmap())
 
-##Creation de l'écran
-##BENE
+#V0.1
 class ScreenCreation(QWidget):
+    """Création de l'écran regroupant le choix de la database, les éléments à compléter et ceux de notations
+    
+    - go_to_description : fonction permettant de renvoyer à l'écran de description pour la boisson choisie
+    - update : met à jour les champs de création en fonction de la data base choisie"""
     def __init__(self, go_to_description) -> None:
         super().__init__()
 
@@ -250,8 +256,6 @@ class ScreenCreation(QWidget):
         screen_layout.addWidget(data_base_choice)
         screen_layout.addWidget(self.list_element_to_complete)
         screen_layout.addLayout(animation_layout)
-        #screen_layout.addWidget(creation_button)
-        #screen_layout.addWidget(self.animation_widget)  # Ajouter le widget d'animation à la disposition
 
         self.update()
         self.setLayout(screen_layout)
@@ -260,7 +264,6 @@ class ScreenCreation(QWidget):
         self.list_element_to_complete.update()
     
 
-    
 ############################################################
 ############################################################
 ############################################################
