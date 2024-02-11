@@ -19,8 +19,11 @@ import Profil_page_UI as PU
 import Creation_page_UI as CU
 import Description_page as DU
 import Edit_page_UI as EU
+sys.path.append('codes/BackEnd/')
+import Db_gestions as Db
 
-#V0.1
+
+#V0.2
 class MenuButton(QPushButton):
     """Bouton dirigeant vers la page mise en argument"""
     def __init__(self,stack_control,stack_index,path_icone) :
@@ -30,7 +33,7 @@ class MenuButton(QPushButton):
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.pressed.connect(lambda : stack_control(stack_index))
 
-#V0.1
+#V0.2
 class MenuLayout(QHBoxLayout): 
     """Construit une ligne de  3 boutons pour naviguer entre les écrans du logiciel"""
     def __init__(self,stack_control) :
@@ -45,7 +48,7 @@ class MenuLayout(QHBoxLayout):
         self.addStretch()
         self.addWidget(buton_profile)
 
-#V0.1
+#V0.2
 class ScreensToDisplay(QStackedWidget):
     """Concaténion des différents écrans de l'application"""
     def __init__(self,go_to_screen):
@@ -66,7 +69,7 @@ class ScreensToDisplay(QStackedWidget):
         self.addWidget(self.description_screen)
         self.addWidget(self.edit_screen)
 
-#V0.1
+#V0.2
 class DisplayerScreen(QWidget):
     """Fenêtre principale contenant le stack des écrans et les méthodes de naviguation
     
@@ -94,11 +97,32 @@ class DisplayerScreen(QWidget):
             self.screens_to_display.edit_screen.update()
         self.screens_to_display.setCurrentIndex(index)
 
-############
+    def closeEvent(self, event):
+        #Db.changes_save()
+        print("projet fini")
+        
+
+############################################################
+############################################################
+############################################################
+# Test : Les tests pour l'interface utilisateur se feront en constatant
+        #visuellement si les actions sont effectuées. Les tests suivants doivent 
+        #être réalisés.
+# - 1 : La navigation doit pourvoir se faire entre chaque page suivant les combinaisons suivante :
+    # a : profil(toutes les pages) mène à l'écran profil
+    # b : recherche(toutes les pages) mène à l'écran de recherche
+    # c : création (toutes les pages) mène à l'écran de création
+    # d : page recherche : page description est accessible en clqiuant sur une boisson
+    # e : page édition : accessible en cliquant sur edit depuis description
+# - 2 : quitter la fenetre principale enregistre les changement effectués
+############################################################
+############################################################
+############################################################
+
+
 
 def main():
     app = QApplication(sys.argv)
-
     # Étape 1: Afficher l'écran de chargement
     loading_screen = LP.LoadingScreen()
     # Connecter la fonction show_main_window à l'événement de chargement terminé
@@ -114,4 +138,3 @@ def show_main_window():
 if __name__ == '__main__':
     main()
 
-###Test

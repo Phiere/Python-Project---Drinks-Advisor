@@ -1,5 +1,4 @@
 import pandas
-import csv
 import re
 ################################################################
 ################################################################
@@ -13,15 +12,11 @@ import re
 # - Traitement 2 : normalise les éléments dans une même colonne : (Vodka , vodka --> vodka).
 # - Traitement 3 : rajouter à chaque data_base les colonnes notes_personnelle, commentary, favories
 # - Traitement 4 : changer les nan
-# - Traitemetn 5 : enelver les colonnes intutiles (dépalcer en 1)
+# - Traitemetn 5 : enlever les colonnes intutiles (dépalcer en 1)
 # - Attention : lors de rajout d'une nouvelle data_frame, il est préférable de modifier à la main le nom des colonnes afin d'un affichage plus agréable.
 ################################################################
 ################################################################
 ################################################################
-
-raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/PROTO PYTHON/Raw_databases/winemag-data_first150k.csv"
-listed_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/tests.csv"
-uniques_element_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/Code/Python-Project---Drinks-Advisor/dataBases/Filtering/Uniques_elements/tests.csv"
 
 def trouver_indices(df_columns_names):
         # Sort les indices des colonnes en doubles, i.e des colonnes avec le même noms (une fois leur caractères non str enlevés)
@@ -84,7 +79,10 @@ def creation_unique_elements_data_frame(data_base):
         uniques_elements_columns_list = []
 
         for name_column_wo_twin in columns_names_without_twin :
-            uniques_elements_column = data_base[name_column_wo_twin].drop_duplicates()
+            
+            uniques_elements_column = data_base[name_column_wo_twin]
+            uniques_elements_column = uniques_elements_column.apply(lambda x: ' '.join(word.capitalize() for word in x.split()) if (isinstance(x, str)) else x)
+            uniques_elements_column = uniques_elements_column.drop_duplicates()
             uniques_elements_columns_list.append(uniques_elements_column)
 
 
@@ -101,6 +99,7 @@ def creation_unique_elements_data_frame(data_base):
             uniques_elements_column = pandas.concat(twin_columns)
 
             uniques_elements_column = uniques_elements_column.reset_index(drop=True)
+            
             uniques_elements_column = uniques_elements_column.drop_duplicates()
             uniques_elements_columns_list.append(uniques_elements_column)
 
@@ -109,7 +108,13 @@ def creation_unique_elements_data_frame(data_base):
 def suppression_unnamed(data_base):
      liste_columns_nuisibles = [element for element in data_base.columns if "Unnamed" in element]
      return data_base.drop(liste_columns_nuisibles,axis = 1)
-  
+
+def normalise_str(data_base):
+    columns = data_base.columns
+    for column in columns :
+        data_base[column] = data_base[column].apply(lambda x: ' '.join(word.capitalize() for word in x.split()) if (isinstance(x, str)) else x) 
+    return data_base
+
 def changer_nan(db):
     tipes = db.dtypes
     colonnes = db.columns
@@ -125,7 +130,6 @@ def delete_unnecessary_column(data_frame,unnecessary_column):
      for column in unnecessary_column :
           data_frame.drop(column, axis=1, inplace=True)
      
-
 def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_element_data_frame_path,unnecessary_column,new_column_names):
         
         try:
@@ -139,7 +143,7 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
             delete_unnecessary_column(raw_data_frame,unnecessary_column)  
 
             raw_data_frame = changer_nan(raw_data_frame)
-
+            raw_data_frame = normalise_str(raw_data_frame)
             listed_doubles_columns = creation_list_colonnes_doubles(raw_data_frame)
             listed_doubles_columns = suppression_unnamed(listed_doubles_columns)
             listed_doubles_columns = listed_doubles_columns.rename(columns=new_column_names)
@@ -162,10 +166,8 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
 ################################################################
 ################################################################
 
-#Attention à ne pas décommenter ces test, ils doivent seulement être fait une fois.
 
-
-wines_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/winemag-data_first150k.csv"
+wines_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/SignalImage/ProjetPython/datasets/winemag-data_first150k.csv"
 wines_listed_data_frame_path = "dataBases/Samples/wines_samples.csv"
 wines_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/wines_unique_elements.csv"
 wines_unnecessary_columns = []
@@ -174,7 +176,7 @@ wines_new_column_names = {'country' : 'Country', 'description' : 'Description', 
                         'region_' : 'Region', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 
-coffees_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/coffee_analysis.csv"
+coffees_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/SignalImage/ProjetPython/datasets/coffee_analysis.csv"
 coffees_listed_data_frame_path = "dataBases/Samples/coffee_samples.csv"
 coffees_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv"
 coffees_unnecessary_columns = ['review_date']
@@ -183,7 +185,7 @@ coffee_new_column_names = {'roaster' : 'Roaster', 'roast' : 'Roast', 'loc_countr
                         'desc_' : 'Description', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 
-cocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/all_drinks.csv"
+cocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/SignalImage/ProjetPython/datasets/all_drinks.csv"
 cocktails_listed_data_frame_path = "dataBases/Samples/cocktails_samples.csv"
 cocktails_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv"
 cocktails_unnecessary_columns = ['dateModified','idDrink','strDrinkThumb','strVideo']
@@ -191,14 +193,14 @@ cocktails_new_column_names = {'strAlcoholic' : 'DrinkType',
                         'strCategory' : 'Category', 'strGlass' : 'Glass', 'strIBA' : 'IBA', 'strInstructions' : 'Recipe', 
                         'strIngredient' : 'Ingredients', 'strMeasure' : 'Measure', 'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
-mocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/Mocktail_dataset.csv"
+mocktails_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/SignalImage/ProjetPython/datasets/Mocktail_dataset.csv"
 mocktails_listed_data_frame_path = "dataBases/Samples/mocktail_samples.csv"
 mocktails_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv"
 mocktails_unnecessary_columns = []
 mocktails_new_column_names = {'User Rating' : 'UserRating', 'Ingredient ' : 'Ingredients', 'Flavor Profile ' : 'FlavorProfile', 
                         'Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
-beers_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/datasets/beer_reviews.csv"
+beers_raw_data_frame_path = "/Users/pierrehelas/Documents/IOGS/3A/SignalImage/ProjetPython/datasets/beer_reviews.csv"
 beers_listed_data_frame_path = "dataBases/Samples/beer_samples.csv"
 beers_uniques_element_data_frame_path = "dataBases/Filtering/Uniques_elements/beers_unique_elements.csv"
 beers_unnecessary_columns = ['beer_beerid','brewery_id']
@@ -208,7 +210,7 @@ beers_new_column_names = {'brewery_name' : 'Brewery', 'beer_style' : 'Style',
                         'beer_abv' : 'BeerABV','Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 if __name__ == '__main__':
-
+    input = "Relancer ce script réinitialise les data_base, continuer ? (0/1) : "
     raw_data_traitement(wines_raw_data_frame_path,wines_listed_data_frame_path,wines_uniques_element_data_frame_path,wines_unnecessary_columns,wines_new_column_names)
     raw_data_traitement(coffees_raw_data_frame_path,coffees_listed_data_frame_path,coffees_uniques_element_data_frame_path,coffees_unnecessary_columns,coffee_new_column_names)
     raw_data_traitement(cocktails_raw_data_frame_path,cocktails_listed_data_frame_path,cocktails_uniques_element_data_frame_path,cocktails_unnecessary_columns,cocktails_new_column_names)

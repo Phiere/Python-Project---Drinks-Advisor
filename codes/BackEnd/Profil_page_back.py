@@ -73,3 +73,132 @@ def get_favorites_informations(favories_dfs,index):
     return texte,index_db,index_boisson
 
 ##Tests
+
+def test_nb_notes():
+    """Fonction de test pour la fonction nb_notes"""
+    print("test_nb_notes")
+    #Test0
+    Db.choix_de_la_data_base = 0
+    nb_votes_df0 = 0
+    print("Test 0 : ", nb_votes_df0 == nb_of_notes())
+
+    #Test1
+    Db.choix_de_la_data_base = 0
+    nb_votes_df1 = 0
+    print("Test 1 : ", nb_votes_df1 == nb_of_notes())
+
+    #Test2
+    Db.choix_de_la_data_base = 0
+    nb_votes_df2 = 0
+    print("Test 2 : ", nb_votes_df2 == nb_of_notes())
+
+    #Test3
+    Db.choix_de_la_data_base = 0
+    nb_votes_df3 = 0
+    print("Test 3 : ", nb_votes_df3 == nb_of_notes())
+
+    #Test4
+    Db.choix_de_la_data_base = 0
+    nb_votes_df4 = 0
+    print("Test 4 : ", nb_votes_df4 == nb_of_notes())
+
+    #Test5
+    Db.choix_de_la_data_base = 0
+    nb_votes_df5 = 0
+    print("Test 5 : ", nb_votes_df5 == nb_of_notes())
+
+def test_nb_notes_per_categories():
+    """Fonction de test pour la fonction nb_notes_per_categories"""
+    print("test_nb_notes_per_categories")
+    #Test0
+    nb_votes_percategorie_df0 = [0,0,0,0,0]
+    print("Test 0 : ", nb_votes_percategorie_df0 == nb_notes_per_categories())
+
+    #Test1
+    nb_votes_percategorie_df1 = [0,0,0,0,0]
+    print("Test 1 : ", nb_votes_percategorie_df1 == nb_notes_per_categories())
+
+    #Test2
+    nb_votes_percategorie_df2 = [0,0,0,0,0]
+    print("Test 2 : ", nb_votes_percategorie_df2 == nb_notes_per_categories())
+
+    #Test3
+    nb_votes_percategorie_df3 = [0,0,0,0,0]
+    print("Test 3 : ", nb_votes_percategorie_df3 == nb_notes_per_categories())
+
+    #Test4
+    nb_votes_percategorie_df4 = [0,0,0,0,0]
+    print("Test 4 : ", nb_votes_percategorie_df4 == nb_notes_per_categories())
+
+def test_mean_of_note():
+    """Fonction de test pour la fonction mean_of_note"""
+    print("test_nb_notes")
+    #Test0
+    Db.choix_de_la_data_base = 0
+    mean_of_note0 = 0
+    print("Test 0 : ", mean_of_note0 == mean_of_note())
+
+    #Test1
+    Db.choix_de_la_data_base = 0
+    mean_of_note0 = 0
+    print("Test 1 : ", mean_of_note0 == mean_of_note())
+
+    #Test2
+    Db.choix_de_la_data_base = 0
+    mean_of_note2 = 0
+    print("Test 2 : ", mean_of_note2 == mean_of_note())
+
+    #Test3
+    Db.choix_de_la_data_base = 0
+    mean_of_note3 = 0
+    print("Test 3 : ", mean_of_note3 == mean_of_note())
+
+    #Test4
+    Db.choix_de_la_data_base = 0
+    mean_of_note4 = 0
+    print("Test 4 : ", mean_of_note4 == mean_of_note())
+
+    #Test5
+    Db.choix_de_la_data_base = 0
+    mean_of_note5 = 0
+    print("Test 5 : ", mean_of_note5 == mean_of_note())
+
+def test_mean_notes_per_categories():
+    """Fonction de test pour la fonction nb_notes"""
+    print("test_mean_notes_per_categories")
+    #Test0
+    mean_notes_per_categories0 = [0,0,0,0,0]
+    print("Test 0 : ", mean_notes_per_categories0 == mean_notes_per_categories())
+
+    #Test1
+    mean_notes_per_categories1 = [0,0,0,0,0]
+    print("Test 1 : ", mean_notes_per_categories1 == mean_notes_per_categories())
+
+    #Test2
+    mean_notes_per_categories2 = [0,0,0,0,0]
+    print("Test 2 : ", mean_notes_per_categories2 == mean_notes_per_categories())
+
+    #Test3
+    mean_notes_per_categories3 = [0,0,0,0,0]
+    print("Test 3 : ", mean_notes_per_categories3 == mean_notes_per_categories())
+
+    #Test4
+    mean_notes_per_categories4 = [0,0,0,0,0]
+    print("Test 4 : ", mean_notes_per_categories4 == mean_notes_per_categories())
+
+def test_favorite_exctaction():
+    pass
+
+def test_get_favorites_informations():
+    pass
+
+if __name__ == '__main__':
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : 
+        test_nb_notes()
+        test_nb_notes_per_categories()
+        test_mean_of_note()
+        test_mean_notes_per_categories()
+        test_favorite_exctaction()
+        test_favorite_exctaction()
+        test_get_favorites_informations()

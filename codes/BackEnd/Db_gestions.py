@@ -30,6 +30,7 @@ def data_frames_reding(path_db_clean,path_unique_elements,filtrage,titles,descri
     return [df_cleaned,df_filters,titles,descriptions,sort]
 
 
+    
 ##Wines
 wines_df = data_frames_reding(path_db_clean='dataBases/Samples/wines_samples.csv',
                               path_unique_elements='dataBases/Filtering/Uniques_elements/wines_unique_elements.csv',
@@ -76,8 +77,33 @@ dbsall = [wines_df,cocktails_df,beers_df,coffees_df,mocktails_df]
 categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
 favories_titles = ['Type','Name','Personnal Rating']
 number_elements = ['Price', 'Points', 'OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste', 'UserRating']
+list_elements = ['Region','Ingredients']
 dbs = dbsall[0]
 choix_de_la_data_base = 0
 index_boisson = 0
+
+def changes_save():
+    """Sauvegarde tous les changements effectués dans les data_base pour la prochaine fois"""
+
+    save_path_samples = ['dataBases/Samples/wines_samples.csv',
+                         'dataBases/Samples/coffee_samples.csv'
+                         'dataBases/Samples/cocktails_samples.csv'
+                         'dataBases/Samples/beer_samples.csv'
+                         'dataBases/Samples/mocktail_samples.csv'
+                 ]
+    save_path_uniques = ['dataBases/Filtering/Uniques_elements/wines_unique_elements.csv',
+                         'dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv',
+                         'dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv',
+                         'dataBases/Filtering/Uniques_elements/beers_unique_elements.csv',
+                         'dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv',
+                  ]
+    print("Enregistrement en cours")
+    for i in range(len(save_path_samples)):
+        db_sample = dbsall[i][0]
+        db_elements = dbsall[i][1]
+
+        db_sample.to_csv(save_path_samples[i])
+        db_elements.to_csv(save_path_uniques[i])
+        print("Enregistrement effectué : ",i," /",len(save_path_samples))
 
 

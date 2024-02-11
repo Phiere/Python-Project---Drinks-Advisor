@@ -2,7 +2,7 @@ import Db_gestions as Db
 from PyQt5.QtWidgets import QWidget,QLineEdit,QCompleter
 from PyQt5.QtCore import Qt
 import random
-import pandas as pd
+import math 
 
 #dbs = Db.dbsall[]
 
@@ -16,6 +16,9 @@ class Autocompleter(QLineEdit):
         super().__init__()
         self.lineEdit = QLineEdit()
         autocomplete_list = colonne.tolist()
+
+        #autocomplete_list = autocomplete_list.remove('nan')
+
         completer = QCompleter(autocomplete_list, self.lineEdit)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.lineEdit.setCompleter(completer)
@@ -33,7 +36,10 @@ class Filtre(QWidget):
         data_base = data_base.astype(str)
         autocompleter = Autocompleter(data_base)
         self.name_edit = autocompleter.lineEdit
-        self.name_edit.setPlaceholderText(self.nom_col)
+        if self.nom_col in Db.list_elements :
+            self.name_edit.setPlaceholderText(self.nom_col + " (if more than 1 split with ',')")
+        else :
+            self.name_edit.setPlaceholderText(self.nom_col)
 
 #v0.1
 def from_df_to_filters(take_text):

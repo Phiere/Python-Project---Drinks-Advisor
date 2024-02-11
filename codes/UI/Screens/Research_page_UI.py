@@ -175,9 +175,11 @@ class CustomListAffichageTri(QWidget):
         for text in completion_text_to_display:
             label = QLabel(text)
             label.setAlignment(Qt.AlignCenter)
+            label.setWordWrap(True)
             layout.addWidget(label)
 
         self.setLayout(layout)
+        
 
     def mousePressEvent(self, a0: QMouseEvent) -> None:
 
@@ -278,8 +280,8 @@ class ScreenResearch(QWidget):
         descriptionLayout = QHBoxLayout()
         self.screenLayout = QVBoxLayout()
 
-        descriptionLayout.addLayout(self.listlayout,8)
-        descriptionLayout.addLayout(self.column_of_filter,2)
+        descriptionLayout.addLayout(self.listlayout,7)
+        descriptionLayout.addLayout(self.column_of_filter,3)
         self.screenLayout.addLayout(self.optionsdefiltres)
         self.screenLayout.addLayout(descriptionLayout)
         self.setLayout(self.screenLayout)
@@ -303,7 +305,6 @@ class ScreenResearch(QWidget):
         sorting_sens = self.optionsdefiltres.ascgo.get_satus()
         number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
         indexes,L,textes = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
-        print("idnexes choisi", indexes)
         self.changer_text(indexes,L,textes)
 
     
@@ -320,6 +321,11 @@ class ScreenResearch(QWidget):
             listItem.setSizeHint(customItemWidget.sizeHint())
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, customItemWidget)
+            self.listWidget.setStyleSheet("""
+            QListWidget::item {
+                border: 3px outset #D3D3D3; /* Bordure noire d'1px */
+                border-radius: 3px; /* Coins arrondis pour la bordure */
+            }""")
 
     def update_choice(self):
         filters_column = self.column_of_filter.filters_list
@@ -351,7 +357,6 @@ class ScreenResearch(QWidget):
 ############################################################
 ############################################################
                   
-
 def display_test():
     
     app = QApplication(sys.argv)

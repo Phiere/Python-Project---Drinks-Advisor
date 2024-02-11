@@ -61,7 +61,10 @@ class ListeElementToComplete(QListWidget):
                 listItem = QListWidgetItem(self)
                 listItem.setSizeHint(QSize(20,50))
                 item = QLineEdit()
-                item.setPlaceholderText(name)
+                if name in Db.list_elements :
+                    item.setPlaceholderText(name+" if more than 1 split with ',' ")
+                else :
+                    item.setPlaceholderText(name)
                 self.setItemWidget(listItem,item)
 
     def get_texts(self):
