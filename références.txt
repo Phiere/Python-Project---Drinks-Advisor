@@ -1,0 +1,13 @@
+Notre projet utilsie des éléments graphiques (icones) dont voici les références :
+
+- asc : <a href="https://www.flaticon.com/fr/icones-gratuites/trier-par-ordre-croissant" title="trier par ordre croissant icônes">Trier par ordre croissant icônes créées par vectaicon - Flaticon</a>
+- dsc : <a href="https://www.flaticon.com/fr/icones-gratuites/trier-par-ordre-decroissant" title="trier par ordre décroissant icônes">Trier par ordre décroissant icônes créées par vectaicon - Flaticon</a>
+- back : <a href="https://www.flaticon.com/fr/icones-gratuites/fleche-gauche" title="flèche gauche icônes">Flèche gauche icônes créées par Freepik - Flaticon</a>
+- comment :  <a href="https://www.flaticon.com/fr/icones-gratuites/dialogue" title="dialogue icônes">Dialogue icônes créées par Saepul Nahwan - Flaticon</a>
+- plus : <a href="https://www.flaticon.com/fr/icones-gratuites/plus" title="plus icônes">Plus icônes créées par HAJICON - Flaticon</a>
+- profile : <a href="https://www.flaticon.com/fr/icones-gratuites/profil" title="profil icônes">Profil icônes créées par Kushal Jain - Flaticon</a>
+- random_empty : <a href="https://www.flaticon.com/fr/icones-gratuites/aleatoire" title="aléatoire icônes">Aléatoire icônes créées par vectaicon - Flaticon</a>
+- random_filled : <a href="https://www.flaticon.com/fr/icones-gratuites/ui" title="ui icônes">Ui icônes créées par vectaicon - Flaticon</a>
+- rate : <a href="https://www.flaticon.com/fr/icones-gratuites/retour-dinformation" title="retour d'information icônes">Retour d'information icônes créées par Arslan Haider - Flaticon</a>
+- star_empty : <a href="https://www.flaticon.com/fr/icones-gratuites/etoile" title="étoile icônes">Étoile icônes créées par Ayub Irawan - Flaticon</a>
+- star_filled : <a href="https://www.flaticon.com/fr/icones-gratuites/etoile" title="étoile icônes">Étoile icônes créées par Pixel perfect - Flaticon</a>

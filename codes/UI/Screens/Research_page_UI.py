@@ -8,7 +8,7 @@
 
 import sys
 from PyQt5.QtGui import QIcon, QMouseEvent
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QHBoxLayout,QPushButton,QComboBox,QLabel,QListWidget,QListWidgetItem
+from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QHBoxLayout,QPushButton,QComboBox,QLabel,QListWidget,QListWidgetItem,QMessageBox
 from PyQt5.QtCore import Qt, QObject, pyqtSignal,QEvent
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
@@ -256,14 +256,14 @@ class ScreenResearch(QWidget):
         self.GoToDescription = change_screen
 
         #Créations des filtres dynamique
-        self.column_of_filter = ColumnOfFilter(self.chargerNewDf)
+        self.column_of_filter = ColumnOfFilter(self.charger_new_df)
         #Création de la barre d'option pour manipuler les données
-        self.optionsdefiltres = FilterOptionsBar(self.upload_screen,self.chargerNewDf)
+        self.optionsdefiltres = FilterOptionsBar(self.upload_screen,self.charger_new_df)
 
         #Déclenger une recherche avec le bouton entrée
         self.key_event_filter = KeyEventFilter()
         QApplication.instance().installEventFilter(self.key_event_filter)
-        self.key_event_filter.enterPressed.connect(self.chargerNewDf)
+        self.key_event_filter.enterPressed.connect(self.update_choice)
         
         #Créations des titres des colonnes des données affichées
         self.Line_Of_Categories_Names = LineOfCategoriesNames()
@@ -292,17 +292,18 @@ class ScreenResearch(QWidget):
     def upload_screen(self):
         self.column_of_filter.upload_filters()
         self.optionsdefiltres.update()
-        self.chargerNewDf()
+        self.charger_new_df()
 
         self.Line_Of_Categories_Names.upload_names()
 
     #Charher la df filtrée avec les filtres
-    def chargerNewDf(self):
+    def charger_new_df(self):
         filters_column = self.column_of_filter.filters_list
         sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
         sorting_sens = self.optionsdefiltres.ascgo.get_satus()
         number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
         indexes,L,textes = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
+        print("idnexes choisi", indexes)
         self.changer_text(indexes,L,textes)
 
     
@@ -320,6 +321,19 @@ class ScreenResearch(QWidget):
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, customItemWidget)
 
+    def update_choice(self):
+        filters_column = self.column_of_filter.filters_list
+        sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
+        sorting_sens = self.optionsdefiltres.ascgo.get_satus()
+        number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
+        indexes,_,_ = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
+        if indexes == [] :
+            msg_box = QMessageBox()
+            msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
+            msg_box.setWindowTitle("Warning")
+            msg_box.setText("No drinks for these filters")
+            msg_box.exec_()     
+        else : self.charger_new_df
     
 ############################################################
 ############################################################

@@ -1,7 +1,8 @@
 ############################################################
 ############################################################
 ############################################################
-#    
+# Création de la page de description rassemblant les éléments de description de la boisson choisie ainsi que les 
+# élements de notations
 ############################################################
 ############################################################
 ############################################################
@@ -9,13 +10,12 @@
 import sys
 from PyQt5.QtGui import QPixmap,QIcon
 from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,QScrollArea,QPushButton,QLineEdit
-from PyQt5.QtCore import QSize,Qt
-import Research_page_UI as RU
+from PyQt5.QtCore import Qt
 
 sys.path.append('codes/BackEnd/')
 import Description_page_back as Dp
 
-#V0.1
+#V0.2
 class LabelPrincipal(QWidget):
     """Label mettant en valeur le nom principal de la boisson
     
@@ -31,12 +31,13 @@ class LabelPrincipal(QWidget):
         self.drink_name.setFixedHeight(40)
         layout = QHBoxLayout(self)  # Ajouter un QHBoxLayout au widget
         layout.addWidget(self.drink_name)
+        self.update()
 
     def update(self):
         drink_name = Dp.get_name_from_drink()
         self.drink_name.setText(f'<font color="red"><b>Drink : {drink_name}</b></font>')
 
-#V0.1
+#V0.2
 class InformationsDisplay(QScrollArea):
     """Affichage des informations de la boisson choisie
     
@@ -55,12 +56,13 @@ class InformationsDisplay(QScrollArea):
         layout.addWidget(self.description_text)
         self.setWidgetResizable(True)
         self.setWidget(self.scroll_content)
+        self.update()
 
     def update(self):
         texte =  Dp.get_description_from_drink()
         self.description_text.setText(texte)
 
- #V0.1       
+#V0.2 
 class FavoriteInteraction(QPushButton):
     """Bouton de sélection des favories. 
     
@@ -86,7 +88,7 @@ class FavoriteInteraction(QPushButton):
         Dp.update_status_favori()
         self.update_icon()
         
-#V0.1
+#V0.2
 class CommentInteracton(QHBoxLayout):
     """Affiche une interface pour commenter la boisson choisie
     
@@ -107,17 +109,20 @@ class CommentInteracton(QHBoxLayout):
         
         self.addWidget(bouton)
         self.addWidget(self.texte)
+        self.update()
 
 
     def update(self):
         self.texte.setText('')
         commentaire =  Dp.get_comment()
-        self.texte.setPlaceholderText(commentaire)
+        if commentaire == "Unfilled" :
+            self.texte.setPlaceholderText("Don't hesitate to comment !")
+        else : self.texte.setText(commentaire)
     
     def comment(self):
         Dp.update_comment(self.texte.text())
 
-#V0.1
+#V0.2
 class RatingInteraction(QHBoxLayout):
     """Affiche une interface pour noter la boisson choisie
     
@@ -187,7 +192,7 @@ class RatingInteraction(QHBoxLayout):
         Dp.update_rating(self.new_rating)
         self.update_icon()
     
-#V0.1
+#V0.2
 class NotationsInteractions(QVBoxLayout):
     """Assemblage vertical des différents éléments de notation"""
     def __init__(self):
@@ -207,17 +212,17 @@ class NotationsInteractions(QVBoxLayout):
         self.rating_interaction.update_icon()
         self.comment_interaction.update()
 
-#V0.1 
+#V0.2
 class GoEditButton(QPushButton):
     """Bouton déclancheur de l'édition de la boisson choisie
     
     - go_to_edit : fonction d'appel de l'écran d'édition"""
     def __init__(self,go_to_edit):
         super().__init__()
-        self.setText("Go to edit")
+        self.setText("Edit")
         self.clicked.connect(go_to_edit)
 
-#V0.1
+#V0.2
 class Description(QWidget):
     """Ecran d'assemblage des différents élément de description : appel à l'édition, nom princpal, éléments de description, éléments de notation
     
@@ -251,20 +256,27 @@ class Description(QWidget):
 ############################################################
 ############################################################
 ############################################################
-# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
-# - 1 :
-# - 2 :                 
+# Test : Les test pour l'interface utilisateur se feront en constatant
+        #visuellement si les actions sont effectuées. Les test suivants doivent 
+        #être réalisés.
+# - 1 : La feneêtre respecte l'affichage du cahier des charges
+# - 2 : La fenêtre affiche les éléments de la boisson choisie ainsi que le nom des colonnes correspondante      
+# - 3 : Les éléments de description sont scrollable
+# - 4 : les boutons de notation et de mise en favori change d'état lorsqu'ils sont cliqués. 
+# - 5 : La ligne de commentaire affiche le commentaire actuel ou "don't hesitate to comment !" si ce dernier est vide           
 ############################################################
 ############################################################
 ############################################################
                   
 
-def main():
+def display_test():
+    
     app = QApplication(sys.argv)
-    fenetre = Description()
+    fenetre = Description(lambda : 1)
     fenetre.show()
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
-    main()
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : display_test()
     

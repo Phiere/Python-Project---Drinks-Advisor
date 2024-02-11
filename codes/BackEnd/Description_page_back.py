@@ -1,7 +1,7 @@
 import Db_gestions as Db
 import pandas as pd
 
-#V0.1
+#V0.2
 def get_name_from_drink():
     """Récupère le nom principal de la boisson"""
     db,index = Db.choix_de_la_data_base,Db.index_boisson
@@ -52,14 +52,14 @@ def get_description_from_drink():
             skip_next_iterations = True            
     return text
 
-#V0.1      
+#V0.2  
 def get_status_favori():
     """Récupère le statut de favori de la boisson"""
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
     favory = Db.dbsall[db][0].at[index,'Favorite']
     return favory
 
-#V0.1
+#V0.2
 def update_status_favori():
     """Met à jour le status de favori la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
@@ -67,7 +67,7 @@ def update_status_favori():
     Db.dbsall[db][0].at[index,'Favorite'] = favory
     return favory
 
-#V0.1
+#V0.2
 def get_comment():
     """Récupère le commentaire associée à la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
@@ -75,7 +75,7 @@ def get_comment():
     if pd.isna(comment): return 'Leave a comment on the drink...'
     return comment
 
-#V0.1
+#V0.2
 def update_comment(commentary):
     """Met à jour le commentaire de la boisson choisie
     
@@ -83,7 +83,7 @@ def update_comment(commentary):
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     Db.dbsall[db][0].at[index,'Comment'] = commentary
 
-#V0.1
+#V0.2
 def get_rating():
     """Récupère la note de la boisson choisie
     
@@ -92,7 +92,7 @@ def get_rating():
     rating = Db.dbsall[db][0].at[index,'PersonalRating']
     return rating
 
-#V0.1
+#V0.2
 def update_rating(rating):
     """Met à jour la note de la boisson choisie
     
@@ -100,5 +100,301 @@ def update_rating(rating):
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
     Db.dbsall[db][0].at[index,'PersonalRating'] = rating
 
+##Tests   
+    
+def test_get_name_from_drink():
+    """Fonction de test sur get_name_from_drink"""
+    print("test_get_name_from_drink")
+    #Test 0
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name0 = 0
+    print('Test 0 : ',get_name_from_drink() ==name0)
 
-##Tests
+    #Test 1
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name1 = 0
+    print('Test 1 : ',get_name_from_drink() ==name1)
+
+    #Test 2
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name2 = 0
+    print('Test 2 : ',get_name_from_drink() ==name2)
+
+    #Test 3
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name3 = 0
+    print('Test 3 : ',get_name_from_drink() ==name3)
+
+    #Test 4
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name4 = 0
+    print('Test 4 : ',get_name_from_drink() ==name4)
+
+    #Test 5
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name5 = 0
+    print('Test 5 : ',get_name_from_drink() ==name5)
+
+def test_get_description_from_drink():
+    """Fonction de test sur get_description_from_drink"""
+    print("test_get_description_from_drink")
+    #Test 0
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name0 = 0
+    print('Test 0 : ',get_description_from_drink() ==name0)
+
+    #Test 1
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name1 = 0
+    print('Test 1 : ',get_description_from_drink() ==name1)
+
+    #Test 2
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name2 = 0
+    print('Test 2 : ',get_description_from_drink() ==name2)
+
+    #Test 3
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name3 = 0
+    print('Test 3 : ',get_description_from_drink() ==name3)
+
+    #Test 4
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name4 = 0
+    print('Test 4 : ',get_description_from_drink() ==name4)
+
+    #Test 5
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name5 = 0
+    print('Test 5 : ',get_description_from_drink() ==name5)
+
+def test_get_status_favory():
+    """Fonction de test sur get_status_favori"""
+    print("test_get_status_favory")
+    #Test 0
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name0 = 0
+    print('Test 0 : ',get_status_favori() ==name0)
+
+    #Test 1
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name1 = 0
+    print('Test 1 : ',get_status_favori() ==name1)
+
+    #Test 2
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name2 = 0
+    print('Test 2 : ',get_status_favori() ==name2)
+
+    #Test 3
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name3 = 0
+    print('Test 3 : ',get_status_favori() ==name3)
+
+    #Test 4
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name4 = 0
+    print('Test 4 : ',get_status_favori() ==name4)
+
+    #Test 5
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name5 = 0
+    print('Test 5 : ',get_status_favori() ==name5)
+
+def test_update_status_favori():
+    """Fonction de test sur update_status_favori"""
+    
+    print("test_update_status_favori")
+    #Test 0
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name0 = 0
+    update_status_favori(name0)
+    print('Test 0 : ',get_status_favori() ==name0)
+
+    #Test 1
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name1 = 0
+    update_status_favori(name1)
+    print('Test 1 : ',get_status_favori() ==name1)
+
+    #Test 2
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name2 = 0
+    update_status_favori(name2)
+    print('Test 2 : ',get_status_favori() ==name2)
+
+    #Test 3
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name3 = 0
+    update_status_favori(name3)
+    print('Test 3 : ',get_status_favori() ==name3)
+
+    #Test 4
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name4 = 0
+    update_status_favori(name4)
+    print('Test 4 : ',get_status_favori() ==name4)
+
+    #Test 5
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name5 = 0
+    update_status_favori(name5)
+    print('Test 5 : ',get_status_favori() ==name5)
+
+def test_get_comment():
+    """Fonction de test sur get_comment"""
+    print('test_get_comment')
+    #Test 0
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name0 = 0
+    print('Test 0 : ',get_comment() ==name0)
+
+    #Test 1
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name1 = 0
+    print('Test 1 : ',get_comment() ==name1)
+
+    #Test 2
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name2 = 0
+    print('Test 2 : ',get_comment() ==name2)
+
+    #Test 3
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name3 = 0
+    print('Test 3 : ',get_comment() ==name3)
+
+    #Test 4
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name4 = 0
+    print('Test 4 : ',get_comment() ==name4)
+
+    #Test 5
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name5 = 0
+    print('Test 5 : ',get_comment() ==name5)
+
+def test_update_comment():
+    """Fonction de test sur get_rating"""
+    print("test_update_comment")
+    #Test 0
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name0 = 0
+    update_comment(name0)
+    print('Test 0 : ',get_comment() ==name0)
+
+    #Test 1
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name1 = 0
+    update_comment(name1)
+    print('Test 1 : ',get_comment() ==name1)
+
+    #Test 2
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name2 = 0
+    update_comment(name2)
+    print('Test 2 : ',get_comment() ==name2)
+
+    #Test 3
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name3 = 0
+    update_comment(name3)
+    print('Test 3 : ',get_comment() ==name3)
+
+    #Test 4
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name4 = 0
+    update_comment(name4)
+    print('Test 4 : ',get_comment() ==name4)
+
+    #Test 5
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name5 = 0
+    update_comment(name5)
+    print('Test 5 : ',get_comment() ==name5)
+
+def test_get_rating():
+    """Fonction de test sur get_rating"""
+    print("test_get_rating")
+    #Test 0
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name0 = 0
+    print('Test 0 : ',get_rating() ==name0)
+
+    #Test 1
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name1 = 0
+    print('Test 1 : ',get_rating() ==name1)
+
+    #Test 2
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name2 = 0
+    print('Test 2 : ',get_rating() ==name2)
+
+    #Test 3
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name3 = 0
+    print('Test 3 : ',get_rating() ==name3)
+
+    #Test 4
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name4 = 0
+    print('Test 4 : ',get_rating() ==name4)
+
+    #Test 5
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name5 = 0
+    print('Test 5 : ',get_rating() ==name5)
+
+def test_update_rating():
+    """Fonction de test sur update_rating"""
+    
+    print("test_update_rating")
+    #Test 0
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name0 = 0
+    update_rating(name0)
+    print('Test 0 : ',get_rating() ==name0)
+
+    #Test 1
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name1 = 0
+    update_rating(name1)
+    print('Test 1 : ',get_rating() ==name1)
+
+    #Test 2
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name2 = 0
+    update_rating(name2)
+    print('Test 2 : ',get_rating() ==name2)
+
+    #Test 3
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name3 = 0
+    update_rating(name3)
+    print('Test 3 : ',get_rating() ==name3)
+
+    #Test 4
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name4 = 0
+    update_rating(name4)
+    print('Test 4 : ',get_rating() ==name4)
+
+    #Test 5
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    name5 = 0
+    update_rating(name5)
+    print('Test 5 : ',get_rating() ==name5)
+
+if __name__ == '__main__':
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : 
+        test_get_description_from_drink()
+        test_get_description_from_drink()
+        test_get_status_favory()
+        test_update_status_favori()
+        test_get_comment()
+        test_update_comment()
+        test_get_rating()
+        test_update_rating()
+    
