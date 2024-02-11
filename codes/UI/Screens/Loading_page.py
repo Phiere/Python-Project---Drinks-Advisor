@@ -76,9 +76,25 @@ class LoadingScreen(QGraphicsView):
             self.close()  # Fermer la fenêtre de chargement
             self.loading_completed.emit()
 
-if __name__ == "__main__":
+############################################################
+############################################################
+############################################################
+# Test : Les test pour l'interface utilisateur se feront en constatant
+        #visuellement si les actions sont effectuées. Les test suivants doivent 
+        #être réalisés.
+# - 1 : La fenêtre affiche correctement l'animation (points qui tournent au centre de la page)      
+############################################################
+############################################################
+############################################################
+                  
+
+def display_test():
+    
     app = QApplication(sys.argv)
-
-    loading_screen = LoadingScreen()
-
+    fenetre = LoadingScreen()
+    fenetre.show()
     sys.exit(app.exec_())
+
+if __name__ == '__main__':
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : display_test()

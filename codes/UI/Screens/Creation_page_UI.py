@@ -286,13 +286,28 @@ class ScreenCreation(QWidget):
 ############################################################
                 
             
-def main():
+############################################################
+############################################################
+############################################################
+# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
+# - 1 : L'affichage globale respecte le design du cahier des charges  
+# - 2 : Vérifier le changement des champs à remplir en fonction du choix de la database
+# - 3 : Vérifier l'affichage des messages de warning en cas de non remplissage/ mauvais remplissage des champs
+# - 4 : Vérifier l'affichage du message de warning en cas d'appui court sur le bouton "Add"      
+# - 5 : Vérifier le lancement de l'animation lors de l'appui long sur le bouton "Add"                          
+############################################################
+############################################################
+############################################################
+
+def display_test():
+    
     app = QApplication(sys.argv)
     fenetre = ScreenCreation(lambda : 1)
     fenetre.show()
     sys.exit(app.exec_())
 
-
 if __name__ == '__main__':
-    main()
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : display_test()
+    
     

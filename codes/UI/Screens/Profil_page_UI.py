@@ -281,18 +281,22 @@ class ScreenProfile(QWidget):
 ############################################################
 ############################################################
 # Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
-# - 1 :
-# - 2 :                 
+# - 1 : La liste des boissons favorites s'affiche correctement avec le nom des en-tête de colonne
+# - 2 : Les graphiques sont correctement disposés lors de l'affichage de la page 
+# - 3 : L'affichage globale respecte le design du cahier des charges                        
 ############################################################
 ############################################################
 ############################################################
-            
-def main():
+
+def display_test():
+    
     app = QApplication(sys.argv)
-    fenetre = ScreenProfile()
+    fenetre = ScreenProfile(lambda : 1)
     fenetre.show()
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
-    main()
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : display_test()
+    
     

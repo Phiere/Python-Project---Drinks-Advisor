@@ -331,27 +331,35 @@ class ScreenResearch(QWidget):
             msg_box = QMessageBox()
             msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
             msg_box.setWindowTitle("Warning")
-            msg_box.setText("No drinks for these filters")
+            msg_box.setText("No drinks match these filters")
             msg_box.exec_()     
         else : self.charger_new_df
     
 ############################################################
 ############################################################
 ############################################################
-# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
-# - 1 :
-# - 2 :                 
+# Test : Les test pour l'interface utilisateur se feront en constatant
+        #visuellement si les actions sont effectuées. Les test suivants doivent 
+        #être réalisés.
+# - 1 : La fenêtre respecte l'affichage du cahier des charges
+# - 2 : Les éléments affichés s'actualisent correctement en fonction de la database choisie     
+# - 3 : Les éléments affichés s'actualisent correctement en fonction de la colonne de tri et du mode de tri choisi 
+# - 4 : Les éléments affichés s'actualisent correctement en fonction des filtres dynamiques utilisés
+# - 5 : Les éléments affichés s'actualisent correctement en fonction du nombre d'éléments à afficher choisi
+# - 6 : Le message d'erreur "No drinks match these filters" s'affiche correctement si la recherche par filtre dynamique n'a rien donné             
 ############################################################
 ############################################################
 ############################################################
-                
-            
-def main():
+                  
+
+def display_test():
+    
     app = QApplication(sys.argv)
     fenetre = ScreenResearch(lambda : 1)
     fenetre.show()
     sys.exit(app.exec_())
 
 if __name__ == '__main__':
-    main()
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : display_test()
     
