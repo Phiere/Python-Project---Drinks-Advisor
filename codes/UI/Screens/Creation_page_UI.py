@@ -1,7 +1,7 @@
 ############################################################
 ############################################################
 ############################################################
-#Script Partie Graphique Page Création. Permet de créer l'écran création qui permet
+#Script Partie Graphique Page Création. Créer l'écran création qui permet
 #d'ajouter de nouvelles boissons aux data_frames deja existantes.       
 ############################################################
 ############################################################
@@ -20,7 +20,7 @@ import Creation_page_back as Cb
 import Navigation as Nav
 
 
-#V0.1
+#V0.2
 class DataBaseChoice(QComboBox):
     """Combo box permettant de choisir la base de donnée sur laquelle se fera la création.
     
@@ -160,12 +160,14 @@ class CreationButton(QPushButton):
         self.animation_widget = animation_widget
 
     def create_new_drink(self):
-        Cb.create_new_drink(self.function)
+        recovered_text,recovered_names = self.function()
+        Cb.create_new_drink(recovered_text,recovered_names)
         self.go_to_description()
         self.list_element_to_complete.reset_fields()
 
     def on_pressed(self):
-        is_error,invalid_indices = Cb.texte_vides(self.function)
+        recovered_text,recovered_names = self.function()
+        is_error,invalid_indices = Cb.texte_vides(recovered_text)
         if not(is_error):
             self.animation_widget.startAnimation()
             for index in range(self.list_element_to_complete.count()):
@@ -206,7 +208,8 @@ class CreationButton(QPushButton):
             msg_box.exec_()
 
     def on_released(self):
-        is_error,invalid_indices = Cb.texte_vides(self.function)
+        recovered_text,_ = self.function()
+        is_error,invalid_indices = Cb.texte_vides(recovered_text)
         if not(is_error):
             if self.animation_widget.timer.isActive():
                 self.animation_widget.timer.stop()
@@ -220,7 +223,7 @@ class CreationButton(QPushButton):
                 self.create_new_drink()
                 self.animation_widget.pixmap_item.setPixmap(QPixmap())
 
-#V0.1
+#V0.2
 class ScreenCreation(QWidget):
     """Création de l'écran regroupant le choix de la database, les éléments à compléter et ceux de notations
     
@@ -267,9 +270,17 @@ class ScreenCreation(QWidget):
 ############################################################
 ############################################################
 ############################################################
-# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
-# - 1 :
-# - 2 :                 
+# Test : Les test pour l'interface utilisateur se feront en constatant
+        #visuellement si les actions sont effectuées. Les test suivants doivent 
+        #être réalisés.
+# - 1 : La comboBox permet de choisir la data_base à remplir
+# - 2 : Les lignes de remplissage correspondent aux colonnes de la database choisie
+# - 3 : Il est possible de remplir les lignes de création
+# - 4 : Le bouton add lance effectue les actions suivantes :
+        # 4.1 : si rien n'est rempli, la fenêtre affiche un warning
+        # 4.2 : si un champs est mal rempli, la fenetre affiche un warning et rouge la case correspondate
+        # 4.3 : si pas de problème; le bouton demande un appui prolongé pour la création d'une boisson  
+        # 4.4 : lors d'un appui prolongé, une animation de validation se créer       
 ############################################################
 ############################################################
 ############################################################
@@ -277,7 +288,7 @@ class ScreenCreation(QWidget):
             
 def main():
     app = QApplication(sys.argv)
-    fenetre = ScreenCreation()
+    fenetre = ScreenCreation(lambda : 1)
     fenetre.show()
     sys.exit(app.exec_())
 
