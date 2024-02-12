@@ -67,6 +67,8 @@ class SortColumnChoice(QComboBox):
         self.addItem('Random')
         for name in names :
             self.addItem(name)
+    
+
             
 
 class OrderSensChoice(QPushButton):
@@ -102,6 +104,11 @@ class OrderSensChoice(QPushButton):
 
         if init : self.update_screen()
     
+    def set_asc(self):
+        self.setIcon(self.iconasc)
+        self.setText("Ascending")
+
+    
     
 class FilterOptionsBar(QHBoxLayout):
     """Barre d'options pour gérer l'affichage de la liste filtrée. Regroupant le choix de la data_base, le nombre d'élement, la colonne et le sens de tri
@@ -126,6 +133,7 @@ class FilterOptionsBar(QHBoxLayout):
 
     def update(self):
         self.sort_column_choice.update()
+     
 
     
 class BaseDeDonneChoice(QComboBox):
@@ -294,9 +302,10 @@ class ScreenResearch(QWidget):
 
     #Charher la df filtrée avec les filtres
     def charger_new_df(self):
+        sorting_sens = self.optionsdefiltres.ascgo.get_satus()
         filters_column = self.column_of_filter.filters_list
         sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
-        sorting_sens = self.optionsdefiltres.ascgo.get_satus()
+        
         number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
         indexes,L,textes = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
         self.changer_text(indexes,L,textes)
@@ -317,7 +326,7 @@ class ScreenResearch(QWidget):
             self.listWidget.setItemWidget(listItem, customItemWidget)
             self.listWidget.setStyleSheet("""
             QListWidget::item {
-                border: 3px outset #D3D3D3; /* Bordure noire d'1px */
+                border: 2px outset #000010; /* Bordure noire d'1px */
                 border-radius: 3px; /* Coins arrondis pour la bordure */
             }""")
 

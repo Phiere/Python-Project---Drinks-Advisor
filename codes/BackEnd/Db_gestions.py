@@ -37,7 +37,7 @@ wines_df = data_frames_reding(path_db_clean='dataBases/Samples/wines_samples.csv
                               filtrage=['Name', 'Country', 'Winery', 'Variety', 'Province', 'Region', 'Points','Price'],
                               titles=['Name', 'Country', 'Winery', 'Price'],
                               descriptions=['Country','Winery','Province','Region','Variety','Points','Price','Description'],
-                              sort=['Name', 'Country', 'Variety', 'Points','Price','PersonalRating']
+                              sort=['Name', 'Country', 'Variety','Winery','Points','Price','PersonalRating']
                               )
 
 coffees_df = data_frames_reding(path_db_clean='dataBases/Samples/coffee_samples.csv',
