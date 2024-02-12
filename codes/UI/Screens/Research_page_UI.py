@@ -14,12 +14,9 @@ sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Research_page_back as RB 
 
-
-### peut être ajouter un bouton "rechercher" pour forcer la recherche et du coup montrer que ya pas
-
 init = 0
 
-#V0.1
+
 class KeyEventFilter(QObject):
     """Déclanche une action lorsqu'on appuie sur entrée"""
     enterPressed = pyqtSignal()
@@ -31,8 +28,8 @@ class KeyEventFilter(QObject):
     
 
 ############################################################
+#Création des options de tri
 ############################################################
-#V0.1
 class NumberOfElementChoice(QComboBox):
     """Combo box permettant de choisir le nombre d'éléments à afficher.
     
@@ -50,7 +47,7 @@ class NumberOfElementChoice(QComboBox):
         self.addItem('100')
         self.activated[str].connect(upload_screen)
 
-#V0.1
+
 class SortColumnChoice(QComboBox):
     """Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
     
@@ -71,7 +68,7 @@ class SortColumnChoice(QComboBox):
         for name in names :
             self.addItem(name)
             
-#V0.1
+
 class OrderSensChoice(QPushButton):
     """Créer un bouton pour choisir le sens de tri : croissant ou décroissant.
     
@@ -106,8 +103,6 @@ class OrderSensChoice(QPushButton):
         if init : self.update_screen()
     
     
-##Barre d'options pour gérer l'affichage de la liste filtrée
-#V0.1
 class FilterOptionsBar(QHBoxLayout):
     """Barre d'options pour gérer l'affichage de la liste filtrée. Regroupant le choix de la data_base, le nombre d'élement, la colonne et le sens de tri
     
@@ -133,7 +128,6 @@ class FilterOptionsBar(QHBoxLayout):
         self.sort_column_choice.update()
 
     
-#V0.1
 class BaseDeDonneChoice(QComboBox):
     """Combo box permettant de choisir la data_base à associer à la recherche
     
@@ -158,9 +152,8 @@ class BaseDeDonneChoice(QComboBox):
         Db.choix_de_la_data_base = index
         if init : self.upload_screen()
 ############################################################
+#Création du tableau d'affichage
 ############################################################
-
-#V0.1
 class CustomListAffichageTri(QWidget):
     """Classe permettant l'affichage des lignes de la database choisie
     
@@ -186,7 +179,7 @@ class CustomListAffichageTri(QWidget):
         Db.index_boisson = self.indexx
         self.appel_a_description()
 
-#V0.1
+
 class ColumnCategoriesNames(QWidget):
     """Label indiquant à quoi correspondent les données de la colonne associée
     
@@ -203,7 +196,7 @@ class ColumnCategoriesNames(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(label)
 
-#V0.1      
+   
 class LineOfCategoriesNames(QHBoxLayout):
      """Layout des noms des colonnes mis en lignes"""
      def __init__(self):
@@ -221,7 +214,7 @@ class LineOfCategoriesNames(QHBoxLayout):
             Etiquette = ColumnCategoriesNames(title)
             self.addWidget(Etiquette)
 
-#V0.1
+
 class ColumnOfFilter(QVBoxLayout):
     """Assemblage des filtres sur un layout vertical
     
@@ -243,8 +236,9 @@ class ColumnOfFilter(QVBoxLayout):
             self.addWidget(filter.name_edit)
 
 ############################################################
+#Ecran principal
 ############################################################
-#V0.1
+
 class ScreenResearch(QWidget):
     """Assemblage des différents blocs de recherche : filtres, affichage des éléments et options de recherche.
     

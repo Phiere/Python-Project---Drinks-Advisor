@@ -17,10 +17,9 @@ from PyQt5.QtGui import QPixmap
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Creation_page_back as Cb
-import Navigation as Nav
 
 
-#V0.2
+
 class DataBaseChoice(QComboBox):
     """Combo box permettant de choisir la base de donnée sur laquelle se fera la création.
     
@@ -44,10 +43,13 @@ class DataBaseChoice(QComboBox):
         Db.choix_de_la_data_base = index
         self.fonction()
 
-#Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
-#V0.0
+
 class ListeElementToComplete(QListWidget):
+    """Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
     
+    - update : met à jours la liste des LineEdit en fonction de la base de données choisie
+    - get_texts : récupère la liste des textes rentrés dans les LinesEdit et vérifie que leur format correspond à la colonne choisie
+    """
     def __init__(self)-> None:
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
@@ -94,15 +96,12 @@ class ListeElementToComplete(QListWidget):
 
         return text_list,name_list
     
-    def reset_fields(self):
-        for index in range(self.count()):
-            item = self.item(index)
-            widget = self.itemWidget(item)
-            if isinstance(widget, QLineEdit):
-                widget.clear()
-
-#V0.0
+#?
 class CircleAnimationWidget(QWidget):
+    """Animation de chargement pour le bouton création
+    
+    - updateAnimation : met à jour l'animation
+    - start animation : démare l'animation"""
     def __init__(self, parent):
         super().__init__(parent)
         self.setStyleSheet("background-color: transparent; border: none;")
@@ -148,7 +147,7 @@ class CircleAnimationWidget(QWidget):
         self.animation_steps = int(self.animation_duration / 100)
         self.timer.start(100)
 
-#V0.0
+#?
 class CreationButton(QPushButton):
     def __init__(self, get_text, go_to_description, list_element_to_complete, animation_widget):
         super().__init__()
@@ -226,7 +225,7 @@ class CreationButton(QPushButton):
                 self.create_new_drink()
                 self.animation_widget.pixmap_item.setPixmap(QPixmap())
 
-#V0.2
+
 class ScreenCreation(QWidget):
     """Création de l'écran regroupant le choix de la database, les éléments à compléter et ceux de notations
     
@@ -288,22 +287,8 @@ class ScreenCreation(QWidget):
 ############################################################
 ############################################################
                 
-            
-############################################################
-############################################################
-############################################################
-# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
-# - 1 : L'affichage globale respecte le design du cahier des charges  
-# - 2 : Vérifier le changement des champs à remplir en fonction du choix de la database
-# - 3 : Vérifier l'affichage des messages de warning en cas de non remplissage/ mauvais remplissage des champs
-# - 4 : Vérifier l'affichage du message de warning en cas d'appui court sur le bouton "Add"      
-# - 5 : Vérifier le lancement de l'animation lors de l'appui long sur le bouton "Add"                          
-############################################################
-############################################################
-############################################################
-
 def display_test():
-    
+    """fonction de test d'affichage de l'écran création"""
     app = QApplication(sys.argv)
     fenetre = ScreenCreation(lambda : 1)
     fenetre.show()

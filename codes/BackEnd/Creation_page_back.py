@@ -94,8 +94,6 @@ def add_uniques_element(recovered_text,recovered_names):
     Db.dbsall[Db.choix_de_la_data_base][1] = new_unique_element
 
 
-
-
 ####TEST
     
 def test_text_vides():
@@ -105,10 +103,10 @@ def test_create_new_drink():
     """Test la fonction create_new_drink en comparant l'entrée de la fonction et la dernière ligne des data_base modifiée"""
     #Test vin
     Db.choix_de_la_data_base = 0
-    texte0,names0 = [],[]
-    test_texte0 = texte0,names0
-    create_new_drink()
-    print("Test 0 : ",Db.dbsall[Db.choix_de_la_data_base][0].tail(1) == test_texte0)
+    texte0 = ["Us","Lovely","",54,54,"Supop","Supop","Supop","Supop",0,"",0]
+    names0 = texte0,Db.dbsall[0][0].columns
+    create_new_drink(texte0,names0)
+    print("Test 0 : ",Db.dbsall[Db.choix_de_la_data_base][0].tail(1).list == texte0)
 
     #Test cocktails
     Db.choix_de_la_data_base = 1
@@ -145,6 +143,6 @@ def test_add_uniques_element():
 if __name__ == '__main__':
     test = input("Tester les fonctions du script ? (0/1) : ")
     if test :
-        texte_vides()
+        test_text_vides()
         test_create_new_drink()
         test_add_uniques_element()

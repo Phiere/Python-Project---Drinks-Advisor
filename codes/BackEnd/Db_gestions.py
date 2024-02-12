@@ -33,7 +33,7 @@ def data_frames_reding(path_db_clean,path_unique_elements,filtrage,titles,descri
     
 ##Wines
 wines_df = data_frames_reding(path_db_clean='dataBases/Samples/wines_samples.csv',
-                              path_unique_elements='dataBases/Filtering/Uniques_elements/wines_unique_elements.csv',
+                              path_unique_elements='dataBases/Uniques_elements/wines_unique_elements.csv',
                               filtrage=['Name', 'Country', 'Winery', 'Variety', 'Province', 'Region', 'Points','Price'],
                               titles=['Name', 'Country', 'Winery', 'Price'],
                               descriptions=['Country','Winery','Province','Region','Variety','Points','Price','Description'],
@@ -41,7 +41,7 @@ wines_df = data_frames_reding(path_db_clean='dataBases/Samples/wines_samples.csv
                               )
 
 coffees_df = data_frames_reding(path_db_clean='dataBases/Samples/coffee_samples.csv',
-                                path_unique_elements='dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv',
+                                path_unique_elements='dataBases/Uniques_elements/coffee_unique_elements.csv',
                                 filtrage=['Name','Country','Roaster','Roast','Origin','Price','UserRating'],
                                 titles=['Name', 'Country', 'Roaster','Price'],
                                 descriptions=['Country','Roaster','Roast','Origin','Price','Description','UserRating'],
@@ -49,7 +49,7 @@ coffees_df = data_frames_reding(path_db_clean='dataBases/Samples/coffee_samples.
                                 )
                              
 cocktails_df = data_frames_reding(path_db_clean='dataBases/Samples/cocktails_samples.csv',
-                                  path_unique_elements='dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv',
+                                  path_unique_elements='dataBases/Uniques_elements/cocktail_unique_elements.csv',
                                   filtrage=['Name','DrinkType','Category','Glass','Ingredients'],
                                   titles=['Name','DrinkType','Category'],
                                   descriptions=['DrinkType','Category','Glass','Ingredients','Measure','Recipe'],
@@ -57,7 +57,7 @@ cocktails_df = data_frames_reding(path_db_clean='dataBases/Samples/cocktails_sam
                                 )
 
 beers_df = data_frames_reding(path_db_clean='dataBases/Samples/beer_samples.csv',
-                              path_unique_elements='dataBases/Filtering/Uniques_elements/beers_unique_elements.csv',
+                              path_unique_elements='dataBases/Uniques_elements/beers_unique_elements.csv',
                               filtrage=['Name','Style','Brewery','OverallReview','Aroma','Appearance','Palate','Taste','ReviewsNumber'],
                               titles=['Name','Style','Brewery','OverallReview'],
                               descriptions=['Brewery','Style','OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste'],
@@ -65,7 +65,7 @@ beers_df = data_frames_reding(path_db_clean='dataBases/Samples/beer_samples.csv'
                               )
 
 mocktails_df = data_frames_reding(path_db_clean='dataBases/Samples/mocktail_samples.csv',
-                                  path_unique_elements='dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv',
+                                  path_unique_elements='dataBases/Uniques_elements/mocktail_unique_elements.csv',
                                   filtrage=['Name','FlavorProfile','Ingredients','UserRating'],
                                   titles=['Name','FlavorProfile','UserRating'],
                                   descriptions=['Ingredients','FlavorProfile','UserRating'],
