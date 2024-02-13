@@ -18,7 +18,7 @@ import Edit_page_back as Eb
 
 
 
-#V0.1
+#V0.2
 class  ModificationLayout(QWidget):
     """Layout contenant la ligne à modifiée ainsi que son titre afin de se reprérer.
     
@@ -35,7 +35,7 @@ class  ModificationLayout(QWidget):
         box_layout.addWidget(self.contenu)
         self.setLayout(box_layout)
 
-#V0.0
+#V0.2
 class ListeElementToComplete(QListWidget):
     """Assemblage des lignes de modification"""
     def __init__(self)-> None:
@@ -72,7 +72,7 @@ class ListeElementToComplete(QListWidget):
   
         return text_list, self.names
     
-#V0.1
+#V0.2
 class EditButton(QPushButton):
     """Effectue la modification de la data base et retourne à descritpion
     
@@ -87,13 +87,11 @@ class EditButton(QPushButton):
         self.function = get_text
         self.clicked.connect(self.edit_drink)
 
-
-
     def edit_drink(self):
         Eb.edit_drink(self.function)
         self.go_to_description()
 
-#V0.1
+#V0.2
 class ScreenEdition(QWidget):
     """Création de l'écran regroupant les éléments à compléter pour modifier la databse
     
@@ -136,21 +134,24 @@ class ScreenEdition(QWidget):
 ############################################################
 ############################################################
 ############################################################
-# Test : fenêtre sans navigation vers les autres écrans. Les conditions suivantes sont remplies :
-# - 1 :
-# - 2 :                 
+# Test : Les test pour l'interface utilisateur se feront en constatant
+        #visuellement si les actions sont effectuées. Les test suivants doivent 
+        #être réalisés.
+# - 1 : Le design de la fenêtre respecte le cahier des charges
+# - 2 : Les lignes de modifications correspondent aux colonnes de la database correspondante à la boisson choisie
+# - 3 : Il est possible de modifier le texte des lignes de modification
+# - 4 : Le bouton Edit enregistre les informations modifiées et renvoient vers la page de description de la boisson modifiée :      
 ############################################################
 ############################################################
 ############################################################
                 
-            
-def main():
+def display_test():
+    """Fonction de test d'affichage de l'écran création"""
     app = QApplication(sys.argv)
-    fenetre = ScreenEdition()
+    fenetre = ScreenEdition(lambda : 1)
     fenetre.show()
     sys.exit(app.exec_())
 
-
 if __name__ == '__main__':
-    main()
-    
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : display_test()

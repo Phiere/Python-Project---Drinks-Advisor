@@ -23,7 +23,7 @@ sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 
 
-
+#V0.2
 class MenuButton(QPushButton):
     """Bouton dirigeant vers la page mise en argument"""
     def __init__(self,stack_control,stack_index,path_icone) :
@@ -33,7 +33,7 @@ class MenuButton(QPushButton):
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.pressed.connect(lambda : stack_control(stack_index))
 
-
+#V0.2
 class MenuLayout(QHBoxLayout): 
     """Construit une ligne de 3 boutons pour naviguer entre les écrans du logiciel"""
     def __init__(self,stack_control) :
@@ -48,7 +48,7 @@ class MenuLayout(QHBoxLayout):
         self.addStretch()
         self.addWidget(buton_profile)
 
-
+#V0.2
 class ScreensToDisplay(QStackedWidget):
     """Concaténion des différents écrans de l'application"""
     def __init__(self,go_to_screen):
@@ -69,7 +69,7 @@ class ScreensToDisplay(QStackedWidget):
         self.addWidget(self.description_screen)
         self.addWidget(self.edit_screen)
 
-
+#V0.2
 class DisplayerScreen(QWidget):
     """Fenêtre principale contenant le stack des écrans et les méthodes de navigation
     

@@ -9,7 +9,7 @@ def get_name_from_drink():
     name = boisson['Name']
     return name 
 
-#V0.0
+#V0.1
 def get_description_from_drink():
     """Récupère les éléments de description de la boisson en les mettant en forme correctement"""
     db,index = Db.choix_de_la_data_base,Db.index_boisson

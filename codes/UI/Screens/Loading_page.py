@@ -3,6 +3,7 @@ from PyQt5.QtCore import QTimer, QPointF, pyqtSignal
 from PyQt5.QtGui import QColor, QTransform
 import sys
 
+#V0.2
 class LoadingScreen(QGraphicsView):
     """ Création d'un écran de chargement avec des points qui tournent au milieu de l'écran
     

@@ -30,7 +30,7 @@
 28,Fruit Punch,4.2,"['Orange Juice', 'Pineapple Juice', 'Cranberry Juice']","['Sweet', 'Fruity']",-1,Unfilled,0
 29,Ginger Ale Spritzer,4.1,"['Ginger Ale', 'Lime Juice', 'Mint Leaves']","['Sweet', 'Refreshing']",-1,Unfilled,0
 30,Ginger Lime Fizz,4.2,"['Ginger Syrup', 'Lime Juice', 'Soda Water']","['Spicy', 'Refreshing']",-1,Unfilled,0
-31,Ginger Lime Rickey,4.2,"['Lime Juice', 'Ginger Syrup', 'Club Soda']","['Sour', 'Spicy']",-1,Unfilled,0
+31,Ginger Lime Rickey,4.2,"['Lime Juice', 'Ginger Syrup', 'Club Soda']","['Sour', 'Spicy']",-1,Unfilled,True
 32,Ginger Peach Iced Tea,4.3,"['Peach Tea', 'Ginger Ale', 'Peach Slice']","['Sweet', 'Refreshing']",-1,Unfilled,0
 33,Grapefruit Jalapeno Cooler,4.2,"['Grapefruit Juice', 'Jalapeno Slices', 'Agave Syrup']","['Sour', 'Spicy']",-1,Unfilled,0
 34,Grapefruit Mint,4.2,"['Grapefruit Juice', 'Mint Leaves', 'Club Soda']","['Bitter', 'Refreshing']",-1,Unfilled,0

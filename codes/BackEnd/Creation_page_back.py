@@ -1,7 +1,7 @@
 import pandas as pd
 import Db_gestions as Db
 
-#V0.1
+#V0.2
 def texte_vides(recovered_text):
     """Fonction permettant de vérifier si les entrées des nouvelles boissons sont vides et au bon format."""
     strInvalid = []
@@ -52,7 +52,7 @@ def create_new_drink(recovered_text,recovered_names):
     Db.dbsall[data_base_index][0].at[new_index,'Favorite'] = 0
     add_uniques_element(recovered_text,recovered_names)
 
-#V0.1
+#V0.2
 def add_uniques_element(recovered_text,recovered_names):
     """Ajoute si nécessaire les éléments ajoutés dans le data_frame des éléments uniques"""
     data_base_index = Db.choix_de_la_data_base

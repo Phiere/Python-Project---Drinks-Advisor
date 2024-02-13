@@ -1,7 +1,7 @@
 import pandas as pd
 import Db_gestions as Db
 
-
+#V0.2
 def nb_of_notes(df):
     """Donne le nombre de boissons notées dans un data_frame
     
@@ -13,7 +13,7 @@ def nb_of_notes(df):
     else:
         return 0
 
-
+#V0.2
 def nb_notes_per_categories():
     """Donne le nombre de boissons notées par data_base"""
     nb_notes = []
@@ -21,7 +21,7 @@ def nb_notes_per_categories():
         nb_notes.append(nb_of_notes(Db.dbsall[i][0]))
     return nb_notes
 
-
+#V0.2
 def mean_of_note(df):
     """Donne la moyenne des notes des boissons notées dans un data_frame
     
@@ -33,7 +33,7 @@ def mean_of_note(df):
     else:
         return 0  # Retourner une valeur spéciale pour indiquer l'absence de données
 
-
+#V0.2
 def mean_notes_per_categories():
     """Donne la moyenne des notes par data_base"""
     means_notes = []
@@ -42,7 +42,7 @@ def mean_notes_per_categories():
         means_notes.append(float(mean_note))
     return means_notes
 
-#??
+#V0.1
 def favorites_extraction():
     """Donne la liste des éléments mis en favori dans chaque data_base
     
@@ -63,7 +63,7 @@ def favorites_extraction():
 
     return favories
 
-#??
+#V0.1
 def get_favorites_informations(favories_dfs,index):
     """Retourne les informations d'affichage sur la boisson mise en favori."""
     texte = [str(favories_dfs.iat[index,j]) for j in range(3)]                
