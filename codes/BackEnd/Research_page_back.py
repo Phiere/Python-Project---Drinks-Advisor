@@ -19,8 +19,6 @@ class Autocompleter(QLineEdit):
         self.lineEdit = QLineEdit()
         autocomplete_list = colonne.tolist()
 
-        #autocomplete_list = autocomplete_list.remove('nan')
-
         completer = QCompleter(autocomplete_list, self.lineEdit)
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.lineEdit.setCompleter(completer)
@@ -119,15 +117,6 @@ def chose_sorted_sens(chosed_option):
     
 #v0.0
 def filtrer(f, colonne, data_Frame):
-    def extract_elements_from_list(value_str):
-        value_str = str(value_str)  # Convertir en chaîne de caractères
-        if value_str.startswith('[') and value_str.endswith(']'):
-            value_list = [item.strip("' ") for item in value_str[1:-1].split(',')]
-            seen_elements = set()
-            value_list_filtered = [item for item in value_list if item != 'Unfilled' and item != '' and item != ' ' and (item not in seen_elements and seen_elements.add(item) is None)]
-            return value_list_filtered
-        else:
-            return [value_str]
 
     def convert_to_numeric(value):
         try:
@@ -136,14 +125,15 @@ def filtrer(f, colonne, data_Frame):
             return value
 
     if "," not in f:
-        tempdf = data_Frame[data_Frame[colonne].apply(lambda x: convert_to_numeric(f) in map(convert_to_numeric, extract_elements_from_list(x)))]
+        f = convert_to_numeric(f)
+        tempdf = data_Frame[data_Frame[colonne] == f]
     else:
         f = f.split(",")
         tempdf = data_Frame.copy()
         for i in f:
             if i != "":
-                tempdf = tempdf[tempdf[colonne].apply(lambda liste: convert_to_numeric(i) in map(convert_to_numeric, extract_elements_from_list(liste)))]
-
+                i = convert_to_numeric(i)
+                tempdf = data_Frame[data_Frame[colonne] == i]
     return tempdf
 
 ############################################################

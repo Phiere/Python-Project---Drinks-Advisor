@@ -28,6 +28,7 @@ class  ModificationLayout(QWidget):
         super().__init__()
         box_layout = QHBoxLayout()
         self.contenu = QTextEdit()
+        self.contenu.setFixedHeight(60)
         self.contenu.setText(str(name))
         colonne_name = QLabel(colonne)
 

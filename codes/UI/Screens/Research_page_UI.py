@@ -13,19 +13,9 @@ from PyQt5.QtCore import Qt, QObject, pyqtSignal,QEvent
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Research_page_back as RB 
+import time
 
 init = 0
-
-#V0.2
-class KeyEventFilter(QObject):
-    """Déclenche une action lorsqu'on appuie sur entrée"""
-    enterPressed = pyqtSignal()
-
-    def eventFilter(self, obj, event):
-        if event.type() == QEvent.KeyPress and event.key() == Qt.Key_Return:
-            self.enterPressed.emit()
-        return super().eventFilter(obj, event)
-    
 
 ############################################################
 #Création des options de tri
@@ -266,12 +256,7 @@ class ScreenResearch(QWidget):
         self.column_of_filter = ColumnOfFilter(self.charger_new_df)
         #Création de la barre d'option pour manipuler les données
         self.optionsdefiltres = FilterOptionsBar(self.upload_screen,self.charger_new_df)
-
-        #Déclencher une recherche avec le bouton entrée
-        self.key_event_filter = KeyEventFilter()
-        QApplication.instance().installEventFilter(self.key_event_filter)
-        self.key_event_filter.enterPressed.connect(self.charger_new_df)
-        
+      
         #Création des titres des colonnes des données affichées
         self.Line_Of_Categories_Names = LineOfCategoriesNames()
 
@@ -333,19 +318,22 @@ class ScreenResearch(QWidget):
                 border-radius: 3px; /* Coins arrondis pour la bordure */
             }""")
 
-    def update_choice(self):
-        filters_column = self.column_of_filter.filters_list
-        sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
-        sorting_sens = self.optionsdefiltres.ascgo.get_satus()
-        number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
-        indexes,_,_ = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
-        if indexes == [] :
-            msg_box = QMessageBox()
-            msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
-            msg_box.setWindowTitle("Warning")
-            msg_box.setText("No drinks match these filters")
-            msg_box.exec_()     
-        else : self.charger_new_df
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Return or event.key() == Qt.Key_Enter:
+            filters_column = self.column_of_filter.filters_list
+            sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
+            sorting_sens = self.optionsdefiltres.ascgo.get_satus()
+            number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
+            indexes,_,_ = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
+            if indexes == [] :
+                msg_box = QMessageBox()
+                msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
+                msg_box.setWindowTitle("Warning")
+                msg_box.setText("No drinks match these filters")
+                msg_box.exec_()     
+            else : self.charger_new_df()
+        else:
+            super().keyPressEvent(event)
     
 ############################################################
 ############################################################
