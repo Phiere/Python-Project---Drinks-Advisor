@@ -2,7 +2,7 @@
 ############################################################
 ############################################################
 #Script Partie Graphique Page Création. Créer l'écran création qui permet
-#d'ajouter de nouvelles boissons aux data_frames deja existantes.       
+#d'ajouter de nouvelles boissons aux data_frames existants.       
 ############################################################
 ############################################################
 ############################################################
@@ -21,7 +21,7 @@ import Creation_page_back as Cb
 
 
 class DataBaseChoice(QComboBox):
-    """Combo box permettant de choisir la base de donnée sur laquelle se fera la création.
+    """Combo box permettant de choisir la base de données sur laquelle se fera la création.
     
     - change_completion_lines : fonction appelant au rafraichissement de l'écran pour adapter les QLineEdit à la database
     - update : change la database et l'écran en fonction de l'item choisi"""
@@ -47,7 +47,7 @@ class DataBaseChoice(QComboBox):
 class ListeElementToComplete(QListWidget):
     """Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
     
-    - update : met à jours la liste des LineEdit en fonction de la base de données choisie
+    - update : met à jour la liste des LineEdit en fonction de la base de données choisie
     - get_texts : récupère la liste des textes rentrés dans les LinesEdit et vérifie que leur format correspond à la colonne choisie
     """
     def __init__(self)-> None:
@@ -101,7 +101,7 @@ class CircleAnimationWidget(QWidget):
     """Animation de chargement pour le bouton création
     
     - updateAnimation : met à jour l'animation
-    - start animation : démare l'animation"""
+    - start animation : démarre l'animation"""
     def __init__(self, parent):
         super().__init__(parent)
         self.setStyleSheet("background-color: transparent; border: none;")
@@ -147,8 +147,13 @@ class CircleAnimationWidget(QWidget):
         self.animation_steps = int(self.animation_duration / 100)
         self.timer.start(100)
 
-#?
+#V0.1
 class CreationButton(QPushButton):
+    """Ajout du bouton Création ("Add") permettant l'ajout d'une boisson dans un dataframe existant
+    
+    - create_new_drink : fonction permettant d'écrire les éléments récupérés dans chacun des champs de la page création dans le dataframe choisi
+    - on_pressed : vérifie le format de remplissage des champs et lance l'animation de validation si pas d'erreur
+    - on_released : arrête l'animation si le bouton n'a pas été appuyé assez longtemps et crée la nouvelle boisson sinon"""
     def __init__(self, get_text, go_to_description, list_element_to_complete, animation_widget):
         super().__init__()
 
@@ -227,7 +232,7 @@ class CreationButton(QPushButton):
 
 
 class ScreenCreation(QWidget):
-    """Création de l'écran regroupant le choix de la database, les éléments à compléter et ceux de notations
+    """Création de l'écran regroupant le choix de la database, les éléments à compléter et ceux de notation
     
     - go_to_description : fonction permettant de renvoyer à l'écran de description pour la boisson choisie
     - update : met à jour les champs de création en fonction de la data base choisie"""
@@ -280,15 +285,15 @@ class ScreenCreation(QWidget):
 # - 3 : Il est possible de remplir les lignes de création
 # - 4 : Le bouton add lance effectue les actions suivantes :
         # 4.1 : si rien n'est rempli, la fenêtre affiche un warning
-        # 4.2 : si un champs est mal rempli, la fenetre affiche un warning et rouge la case correspondate
+        # 4.2 : si un champs est mal rempli, la fenetre affiche un warning et colorie la case correspondate
         # 4.3 : si pas de problème; le bouton demande un appui prolongé pour la création d'une boisson  
-        # 4.4 : lors d'un appui prolongé, une animation de validation se créer       
+        # 4.4 : lors d'un appui prolongé, une animation de validation se lance       
 ############################################################
 ############################################################
 ############################################################
                 
 def display_test():
-    """fonction de test d'affichage de l'écran création"""
+    """Fonction de test d'affichage de l'écran création"""
     app = QApplication(sys.argv)
     fenetre = ScreenCreation(lambda : 1)
     fenetre.show()

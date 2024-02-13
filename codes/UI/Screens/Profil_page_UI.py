@@ -2,7 +2,7 @@
 ############################################################
 ############################################################
 #Construction de la page correspondant au profil de l'utilisateur. Elle permet à l'utilisateur
-#de visualiser ses préférances avec deux graphiques profilant ses notes et une liste de ses boissons 
+#de visualiser ses préférances avec deux graphiques illustrant ses notes et une liste de ses boissons 
 #favorites.
 ############################################################
 ############################################################
@@ -22,7 +22,7 @@ import Profil_page_back as Pb
 import Db_gestions as Db
 
 #################
-#tableau des favoris
+#Tableau des favoris
 #################
 class FavoriesTitle(QHBoxLayout):
     """Construit l'affichage stylisé au dessus du tableau des favoris.
@@ -60,7 +60,7 @@ class FavoriesTitle(QHBoxLayout):
 
 
 class FavorieDataDisplay(QVBoxLayout):
-    """Construit la liste des éléments favories
+    """Construit la liste des éléments favoris
     
     - go_to_description : fonction de naviguation entre les écrans
     
@@ -101,7 +101,7 @@ class FavorieDataDisplay(QVBoxLayout):
 
 
 class CustomListAffichageTri(QWidget):
-    """Liste de ligne regroupant les boissons mises en favoris.
+    """Liste de lignes regroupant les boissons mises en favori.
     
     - mousePressEvent : appelle la fenêtre de description associée à la boisson cliquée"""
     def __init__(self, completion_text_to_display,index_db,index_boisson,go_to_description):
@@ -126,7 +126,7 @@ class CustomListAffichageTri(QWidget):
 
 
 class ColumnCategoriesNames(QWidget):
-    """Case d'affichage pour les titres de colonnes des favoris"""
+    """Case d'affichage pour les titres de colonne des favoris"""
     def __init__(self,texte):
         super().__init__()
         label = QLabel(texte, self)
@@ -159,7 +159,7 @@ class LineOfCategoriesNames(QHBoxLayout):
 class RatedByCategories(QWidget):
     """Graphique montrant le nombre de boissons notées par data base
     
-    - update : met à jours les données du graphiques à chaque entrée sur la page profil"""
+    - update : met à jour les données du graphique à chaque entrée sur la page profil"""
     def __init__(self):
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
@@ -200,9 +200,9 @@ class RatedByCategories(QWidget):
 #2ème graphique : Histogramme des moyennes des notes par catégorie
 ################# 
 class MeanByCategories(QWidget):
-    """Graphique montrant les moyennes des notes des boissons notées par data base
+    """Graphique illustrant les moyennes des notes des boissons notées par data base
     
-    - update : met à jours les données du graphiques à chaque entrée sur la page profil"""
+    - update : met à jour les données du graphique à chaque entrée sur la page profil"""
     def __init__(self):     
         super().__init__()
         
@@ -246,7 +246,7 @@ class MeanByCategories(QWidget):
 #création de l'écran
 ################# 
 class ScreenProfile(QWidget):
-    """Ecran principal regroupant la liste des favories ainsi que deux graphiques sur le nombre de boisson notées et les moyennes
+    """Ecran principal regroupant la liste des favoris ainsi que deux graphiques sur le nombre de boissons notées et les moyennes
     des notes par data base."""
     def __init__(self,go_to_description) -> None:
         super().__init__()

@@ -61,7 +61,7 @@ def get_status_favori():
 
 #V0.2
 def update_status_favori():
-    """Met à jour le status de favori la boisson"""
+    """Met à jour le statut de favori la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     favory = not(Db.dbsall[db][0].iloc[index][-1])
     Db.dbsall[db][0].at[index,'Favorite'] = favory

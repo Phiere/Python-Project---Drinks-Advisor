@@ -1,8 +1,8 @@
 ############################################################
 ############################################################
 ############################################################
-#Script naviguation : instancie toutes les écrans créés dans les autres dossier du projet. 
-#C'est ce script qui assemble tous les écrans pour les insérer dans la feêntre principale.
+#Script naviguation : instancie tous les écrans créés dans les autres dossier du projet. 
+#C'est ce script qui assemble tous les écrans pour les insérer dans la fenêtre principale.
 ############################################################
 ############################################################
 ############################################################
@@ -35,7 +35,7 @@ class MenuButton(QPushButton):
 
 
 class MenuLayout(QHBoxLayout): 
-    """Construit une ligne de  3 boutons pour naviguer entre les écrans du logiciel"""
+    """Construit une ligne de 3 boutons pour naviguer entre les écrans du logiciel"""
     def __init__(self,stack_control) :
         super().__init__()        
   
@@ -71,9 +71,9 @@ class ScreensToDisplay(QStackedWidget):
 
 
 class DisplayerScreen(QWidget):
-    """Fenêtre principale contenant le stack des écrans et les méthodes de naviguation
+    """Fenêtre principale contenant le stack des écrans et les méthodes de navigation
     
-    - go_to_screen : permet de navuguer d'un écran à l'autre en restant sur la fenêtre principale"""
+    - go_to_screen : permet de naviguer d'un écran à l'autre en restant sur la fenêtre principale"""
     def __init__(self):
         super().__init__()
         self.setWindowTitle("DrinksAdvisor App")
@@ -99,7 +99,7 @@ class DisplayerScreen(QWidget):
 
     def closeEvent(self, event):
         Db.changes_save()
-        print("projet fini")
+        print("Projet fini")
         
 
 ############################################################
@@ -112,9 +112,9 @@ class DisplayerScreen(QWidget):
     # a : profil(toutes les pages) mène à l'écran profil
     # b : recherche(toutes les pages) mène à l'écran de recherche
     # c : création (toutes les pages) mène à l'écran de création
-    # d : page recherche : page description est accessible en clqiuant sur une boisson
+    # d : page recherche : page description est accessible en cliquant sur une boisson
     # e : page édition : accessible en cliquant sur edit depuis description
-# - 2 : quitter la fenetre principale enregistre les changement effectués
+# - 2 : quitter la fenêtre principale enregistre les changements effectués
 ############################################################
 ############################################################
 ############################################################
@@ -125,7 +125,7 @@ def main():
     app = QApplication(sys.argv)
     # Étape 1: Afficher l'écran de chargement
     loading_screen = LP.LoadingScreen()
-    # Connecter la fonction show_main_window à l'événement de chargement terminé
+    # Connecter la fonction show_main_window à l'évènement de chargement terminé
     loading_screen.loading_completed.connect(show_main_window)
     loading_screen.show()
     sys.exit(app.exec_())

@@ -1,12 +1,12 @@
 ####################################
 ####################################
 #Ouverture des BDD et créations des données filtrées pour l'autocomplétion etc
-#Strcuture des fonctions :
+#Structure des fonctions :
 #  ..._cleaned : Databases nettoyées et sous forme de liste pour les colonnes doubles. Contiennent toutes les données
 #  ..._pertinents_elements : Liste des colonnes qui serviront de filtres pour la recherche
 #  ..._unique_elements : Database des éléments uniques de toutes les colonnes
-#  ..._filters : Datase des éléments uniques pour les filtres de l'autocomplétion
-#  ..._sort : liste des colonnes sur lesquelle on va potentiellement vouloir trier
+#  ..._filters : Database des éléments uniques pour les filtres de l'autocomplétion
+#  ..._sort : liste des colonnes sur lesquelles il est possible/intéressant de trier
 ####################################
 ####################################
 
@@ -16,7 +16,7 @@ sys.path.append('codes/UI/Screens/')
 
 #V0.1
 def data_frames_reding(path_db_clean,path_unique_elements,filtrage,titles,descriptions,sort):
-    """Prend tous les paramètres d'un data_frame décidé au prélable et donne une liste de dataframe utilisable par l'application
+    """Prend tous les paramètres d'un data_frame décidé au préalable et donne une liste de dataframe utilisable par l'application
     
     - path_db_clean : chemin vers la database de base
     - path_unique_elements : chemin vers la database des éléments uniques construite au préalable

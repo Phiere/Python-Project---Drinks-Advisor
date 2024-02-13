@@ -18,7 +18,7 @@ init = 0
 
 
 class KeyEventFilter(QObject):
-    """Déclanche une action lorsqu'on appuie sur entrée"""
+    """Déclenche une action lorsqu'on appuie sur entrée"""
     enterPressed = pyqtSignal()
 
     def eventFilter(self, obj, event):
@@ -33,7 +33,7 @@ class KeyEventFilter(QObject):
 class NumberOfElementChoice(QComboBox):
     """Combo box permettant de choisir le nombre d'éléments à afficher.
     
-    - upload_screen : fonction de refraichissement de l'affichage en fonction du nombre d'éléments choisi
+    - upload_screen : fonction de refraîchissement de l'affichage en fonction du nombre d'éléments choisis
     """
     def __init__(self,upload_screen):
         super().__init__()
@@ -49,9 +49,9 @@ class NumberOfElementChoice(QComboBox):
 
 
 class SortColumnChoice(QComboBox):
-    """Creer une combobox sur le noms de la colonne sur laquelle le tri d'affichage sera fait 
+    """Crée une combobox sur le nom de la colonne sur laquelle le tri d'affichage sera fait 
     
-    - upload_screen : fonction de refraichissement de l'affichage en fonction de la colonne de tri choisi
+    - upload_screen : fonction de refraîchissement de l'affichage en fonction de la colonne de tri choisi
     - update : met à jour les possibilités de tri en fonction de la database choisie"""
     def __init__(self,upload_screen):
         super().__init__()
@@ -72,9 +72,9 @@ class SortColumnChoice(QComboBox):
             
 
 class OrderSensChoice(QPushButton):
-    """Créer un bouton pour choisir le sens de tri : croissant ou décroissant.
+    """Crée un bouton pour choisir le sens de tri : croissant ou décroissant.
     
-    - update_screen : fonction de refraichissement de l'affichage en du sens de tri choisi
+    - update_screen : fonction de refraîchissement de l'affichage en du sens de tri choisi
     - get_status : retourne l'état actuel du sens de tri 
     - update : met à jour l'affichage du bouton en fonction du sens de tri choisi"""
     def __init__(self,update_screen) -> None:
@@ -111,11 +111,11 @@ class OrderSensChoice(QPushButton):
     
     
 class FilterOptionsBar(QHBoxLayout):
-    """Barre d'options pour gérer l'affichage de la liste filtrée. Regroupant le choix de la data_base, le nombre d'élement, la colonne et le sens de tri
+    """Barre d'options pour gérer l'affichage de la liste filtrée. Regroupant le choix de la data_base, le nombre d'élément, la colonne et le sens de tri
     
-    - upload_screen : fonction de refraichissement de l'affichage en fonction des options choisies
-    - upload_text : fonction de rafraichissement du texte recherché affiché uniquement
-    - update : met à jour le noms des colonnes de tri possibles"""
+    - upload_screen : fonction de refraîchissement de l'affichage en fonction des options choisies
+    - upload_text : fonction de rafraîchissement du texte recherché affiché uniquement
+    - update : met à jour le nom des colonnes de tri possibles"""
     def __init__(self,upload_screen,upload_text):
         super().__init__()
 
@@ -139,8 +139,8 @@ class FilterOptionsBar(QHBoxLayout):
 class BaseDeDonneChoice(QComboBox):
     """Combo box permettant de choisir la data_base à associer à la recherche
     
-    - upload_screen : fonction de refraichissement de l'affichage en fonction des options choisies
-    - on_selection_changed : met à jours les options de l'écran en fonction de la database choisie """
+    - upload_screen : fonction de refraîchissement de l'affichage en fonction des options choisies
+    - on_selection_changed : met à jour les options de l'écran en fonction de la database choisie """
     def __init__(self,upload_screen):
         super().__init__()
         self.setFixedSize(120,40)
@@ -165,7 +165,7 @@ class BaseDeDonneChoice(QComboBox):
 class CustomListAffichageTri(QWidget):
     """Classe permettant l'affichage des lignes de la database choisie
     
-    - mousePressEvent : détecter le clic de souris sur une des lignes de la database et redirige vers la page de description associée"""
+    - mousePressEvent : détecte le clic de souris sur une des lignes de la database et redirige vers la page de description associée"""
     def __init__(self, completion_text_to_display,indexx, GoToDescription):
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
@@ -207,7 +207,7 @@ class ColumnCategoriesNames(QWidget):
 
    
 class LineOfCategoriesNames(QHBoxLayout):
-     """Layout des noms des colonnes mis en lignes"""
+     """Layout des noms des colonnes mis en ligne"""
      def __init__(self):
         super().__init__()
         self.upload_names()
@@ -251,7 +251,7 @@ class ColumnOfFilter(QVBoxLayout):
 class ScreenResearch(QWidget):
     """Assemblage des différents blocs de recherche : filtres, affichage des éléments et options de recherche.
     
-    - changer_screen : fonction de rafraichissement de la page"""
+    - changer_screen : fonction de rafraîchissement de la page"""
     def __init__(self,change_screen) -> None:
         super().__init__()
         self.setWindowTitle("Description Window")
@@ -260,17 +260,17 @@ class ScreenResearch(QWidget):
         
         self.GoToDescription = change_screen
 
-        #Créations des filtres dynamique
+        #Créations des filtres dynamiques
         self.column_of_filter = ColumnOfFilter(self.charger_new_df)
         #Création de la barre d'option pour manipuler les données
         self.optionsdefiltres = FilterOptionsBar(self.upload_screen,self.charger_new_df)
 
-        #Déclenger une recherche avec le bouton entrée
+        #Déclencher une recherche avec le bouton entrée
         self.key_event_filter = KeyEventFilter()
         QApplication.instance().installEventFilter(self.key_event_filter)
         self.key_event_filter.enterPressed.connect(self.charger_new_df)
         
-        #Créations des titres des colonnes des données affichées
+        #Création des titres des colonnes des données affichées
         self.Line_Of_Categories_Names = LineOfCategoriesNames()
 
         #Complétion des layout
@@ -289,7 +289,7 @@ class ScreenResearch(QWidget):
         self.screenLayout.addLayout(descriptionLayout)
         self.setLayout(self.screenLayout)
 
-        #remplissage aléaotire pour un premier affichage
+        #Remplissage aléaotire pour un premier affichage
         self.upload_screen()
         global init
         init = 1
@@ -301,7 +301,7 @@ class ScreenResearch(QWidget):
 
         self.Line_Of_Categories_Names.upload_names()
 
-    #Charher la df filtrée avec les filtres
+    #Charger la df filtrée avec les filtres
     def charger_new_df(self):
         sorting_sens = self.optionsdefiltres.ascgo.get_satus()
         filters_column = self.column_of_filter.filters_list
@@ -312,7 +312,7 @@ class ScreenResearch(QWidget):
         self.changer_text(indexes,L,textes)
 
     
-    ##Gere l'affichage en fonction de tous les éléments choisis
+    ##Gère l'affichage en fonction de tous les éléments choisis
     def changer_text(self,indexes,L,textes):
         #choix du nombre d'éléments
 

@@ -12,7 +12,7 @@ import random
 class Autocompleter(QLineEdit):
     """Créer un widget d'automplétion pour les filtres dynamiques de l'écran de recherche
     
-    - colonne : colonen de dataframe dont les éléments seront affichés en autocomplétion.
+    - colonne : colonne de dataframe dont les éléments seront affichés en autocomplétion.
     """
     def __init__(self,colonne):
         super().__init__()
@@ -29,8 +29,8 @@ class Autocompleter(QLineEdit):
 class Filtre(QWidget):
     """Créer un LineEDit qui sera assemblé avec d'autres pour créer une liste de filtres dynamiques
     
-    - name_column : colonne du data_frame auquel se refaire le filtre
-    - data_base : data_base des éléments uniques choisie pour les filtres
+    - name_column : colonne du data_frame auquel se réfère le filtre
+    - data_base : data_base des éléments uniques choisis pour les filtres
     """
     def __init__(self,name_column,data_base) -> None:
         super().__init__()
@@ -47,7 +47,7 @@ class Filtre(QWidget):
 def from_df_to_filters(take_text):
     """Construit la colonne des filtres dynamiques associée à la base de données choisie
     
-    - take_text : fonction récupérant les textes de tous les différents filtre
+    - take_text : fonction récupérant les textes de tous les différents filtres
     - filters_list : liste des filtres à afficher sur l'écran recherche"""
     data_fram_unique_element = Db.dbsall[Db.choix_de_la_data_base][1]
     columns_names = data_fram_unique_element.columns

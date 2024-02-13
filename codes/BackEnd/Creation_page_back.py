@@ -3,7 +3,7 @@ import Db_gestions as Db
 
 #V0.1
 def texte_vides(recovered_text):
-    """Fonction permettant de vérifier si les entrées des nouvelles boisson sont vides et au bon format."""
+    """Fonction permettant de vérifier si les entrées des nouvelles boissons sont vides et au bon format."""
     strInvalid = []
     numberInvalid = []
     for i,texte in enumerate(recovered_text) :
@@ -21,10 +21,10 @@ def texte_vides(recovered_text):
 
 #V0.2
 def create_new_drink(recovered_text,recovered_names):
-    """Créer un nouvelle ligne dans la data base choisie avec les informations complétées.
+    """Créer une nouvelle ligne dans la data base choisie avec les informations complétées.
     
     - recovered_text : textes rentrés dans l'écran création
-    - recovered_names : colonnes  correspondant aux textes rentrés 
+    - recovered_names : colonnes correspondantes aux textes rentrés 
     """
     data_base_index = Db.choix_de_la_data_base
 

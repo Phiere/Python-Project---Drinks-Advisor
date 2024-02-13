@@ -4,6 +4,10 @@ from PyQt5.QtGui import QColor, QTransform
 import sys
 
 class LoadingScreen(QGraphicsView):
+    """ Création d'un écran de chargement avec des points qui tournent au milieu de l'écran
+    
+    - create_loading_points : crée plusieurs points qui vont se positionner au centre de l'écran en forme de cercle
+    - update_animation : met à jour la position des points afin de créer l'animation de chargement (= les points tournent)"""
     loading_completed = pyqtSignal()
 
     def __init__(self):

@@ -3,10 +3,10 @@ import Db_gestions as Db
 
 
 def nb_of_notes(df):
-    """Donne le nombre de boisson notée dans un data_frame
+    """Donne le nombre de boissons notées dans un data_frame
     
-    - Data_frame dont on veut le nombre de boisson notées (data_frame)
-    - return : int(nombre de boisson notées)"""
+    - df : Data_frame dont on veut le nombre de boisson notées (data_frame)
+    - return : int(nombre de boissons notées)"""
     if 'PersonalRating' in df.columns and not (len(df[df['PersonalRating'] != -1]) == 0):
         tempdf = df[df['PersonalRating'] > 0]
         return len(tempdf)
@@ -25,8 +25,8 @@ def nb_notes_per_categories():
 def mean_of_note(df):
     """Donne la moyenne des notes des boissons notées dans un data_frame
     
-    - Data_frame dont on veut la moyenne des notes des boissons notées (data_frame)
-    - return : int(moyenne des boissons notéess)"""
+    - df : Data_frame dont on veut la moyenne des notes des boissons notées (data_frame)
+    - return : int(moyenne des boissons notées)"""
     if 'PersonalRating' in df.columns and not (len(df[df['PersonalRating'] != -1]) == 0):
         tempdf = df[df['PersonalRating'] > 0]
         return tempdf['PersonalRating'].mean()
@@ -44,9 +44,9 @@ def mean_notes_per_categories():
 
 #??
 def favorites_extraction():
-    """Donne la liste des éléments mis en favories dans chaque data_base
+    """Donne la liste des éléments mis en favori dans chaque data_base
     
-    -return : data_frame des boissons mis en favori"""
+    -return : data_frame des boissons mises en favori"""
     column_names = ['Nom_db','Name','PersonalRating','Comment','db','index']
     favories = pd.DataFrame(columns=column_names)
 
@@ -65,7 +65,7 @@ def favorites_extraction():
 
 #??
 def get_favorites_informations(favories_dfs,index):
-    """Retourne les informations d'affichage sur la boisson mise en favoris."""
+    """Retourne les informations d'affichage sur la boisson mise en favori."""
     texte = [str(favories_dfs.iat[index,j]) for j in range(3)]                
     index_db = favories_dfs.iat[index,-2]
     index_boisson = favories_dfs.iat[index,-1]

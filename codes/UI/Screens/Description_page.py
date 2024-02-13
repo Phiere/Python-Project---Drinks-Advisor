@@ -1,7 +1,8 @@
 ############################################################
 ############################################################
 ############################################################
-# Création de la page de description rassemblant les éléments de description de la boisson choisie ainsi que les 
+# Création de la page de description rassemblant les éléments 
+# de description de la boisson choisie ainsi que les 
 # élements de notations
 ############################################################
 ############################################################
@@ -64,10 +65,10 @@ class InformationsDisplay(QScrollArea):
 
 
 class FavoriteInteraction(QPushButton):
-    """Bouton de sélection des favories. 
+    """Bouton de sélection des favoris. 
     
     - update-icon : met à jour l'icône du bouton en fonction du statut de favori
-    - update_status : chanhe le statut de l'état favorie vers sont opposé"""
+    - update_status : change le statut de l'état favori vers son contraire"""
     def __init__(self):
         super().__init__()
 
@@ -214,9 +215,9 @@ class NotationsInteractions(QVBoxLayout):
 
 
 class GoEditButton(QPushButton):
-    """Bouton déclancheur de l'édition de la boisson choisie
+    """Bouton déclencheur de l'édition de la boisson choisie
     
-    - go_to_edit : fonction d'appel de l'écran d'édition"""
+    - go_to_edit : fonction d'appel à l'écran d'édition"""
     def __init__(self,go_to_edit):
         super().__init__()
         self.setStyleSheet("background-color: #404040; color: #ffffff;")
@@ -225,7 +226,7 @@ class GoEditButton(QPushButton):
 
 
 class Description(QWidget):
-    """Ecran d'assemblage des différents élément de description : appel à l'édition, nom princpal, éléments de description, éléments de notation
+    """Ecran d'assemblage des différents éléments de description : appel à l'édition, nom princpal, éléments de description, éléments de notation
     
     - show_edit : fonction d'appel à l'écran d'édition"""
     def __init__(self,show_edit):
@@ -260,9 +261,9 @@ class Description(QWidget):
 # Test : Les test pour l'interface utilisateur se feront en constatant
         #visuellement si les actions sont effectuées. Les test suivants doivent 
         #être réalisés.
-# - 1 : La feneêtre respecte l'affichage du cahier des charges
+# - 1 : La fenêtre respecte l'affichage du cahier des charges
 # - 2 : La fenêtre affiche les éléments de la boisson choisie ainsi que le nom des colonnes correspondante      
-# - 3 : Les éléments de description sont scrollable
+# - 3 : Les éléments de description sont scrollables
 # - 4 : les boutons de notation et de mise en favori change d'état lorsqu'ils sont cliqués. 
 # - 5 : La ligne de commentaire affiche le commentaire actuel ou "don't hesitate to comment !" si ce dernier est vide           
 ############################################################
