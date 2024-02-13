@@ -135,7 +135,7 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
         - new_column_names : dictionnaire des nouveaux nom des colonnes choisis """
         try:
             raw_data_frame = pandas.read_csv(raw_data_frame_path)
-            raw_data_frame = raw_data_frame.head(100) #A enlever pour la version finale
+            raw_data_frame = raw_data_frame.head(1000) #A enlever pour la version finale
         except FileNotFoundError:
             print("Fichier pas présent sur l'ordinateur. Présent seulement en local sur l'odinateur de Pierre")
 
@@ -210,13 +210,19 @@ beers_new_column_names = {'brewery_name' : 'Brewery', 'beer_style' : 'Style',
                         'beer_abv' : 'BeerABV','Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
 if __name__ == '__main__':
-    input = "Relancer ce script réinitialise les data_base, continuer ? (0/1) : "
-    raw_data_traitement(wines_raw_data_frame_path,wines_listed_data_frame_path,wines_uniques_element_data_frame_path,wines_unnecessary_columns,wines_new_column_names)
-    raw_data_traitement(coffees_raw_data_frame_path,coffees_listed_data_frame_path,coffees_uniques_element_data_frame_path,coffees_unnecessary_columns,coffee_new_column_names)
-    raw_data_traitement(cocktails_raw_data_frame_path,cocktails_listed_data_frame_path,cocktails_uniques_element_data_frame_path,cocktails_unnecessary_columns,cocktails_new_column_names)
-    raw_data_traitement(mocktails_raw_data_frame_path,mocktails_listed_data_frame_path,mocktails_uniques_element_data_frame_path,mocktails_unnecessary_columns,mocktails_new_column_names)
-    raw_data_traitement(beers_raw_data_frame_path,beers_listed_data_frame_path,beers_uniques_element_data_frame_path,beers_unnecessary_columns,beers_new_column_names)
-
+    test = input("Relancer ce script réinitialise les data_base, continuer ? (0/1) : ")
+    if test :
+        print("0/5")
+        raw_data_traitement(wines_raw_data_frame_path,wines_listed_data_frame_path,wines_uniques_element_data_frame_path,wines_unnecessary_columns,wines_new_column_names)
+        print("1/5")
+        raw_data_traitement(coffees_raw_data_frame_path,coffees_listed_data_frame_path,coffees_uniques_element_data_frame_path,coffees_unnecessary_columns,coffee_new_column_names)
+        print("2/5")
+        raw_data_traitement(cocktails_raw_data_frame_path,cocktails_listed_data_frame_path,cocktails_uniques_element_data_frame_path,cocktails_unnecessary_columns,cocktails_new_column_names)
+        print("3/5")
+        raw_data_traitement(mocktails_raw_data_frame_path,mocktails_listed_data_frame_path,mocktails_uniques_element_data_frame_path,mocktails_unnecessary_columns,mocktails_new_column_names)
+        print("4/5")
+        raw_data_traitement(beers_raw_data_frame_path,beers_listed_data_frame_path,beers_uniques_element_data_frame_path,beers_unnecessary_columns,beers_new_column_names)
+        print("5/5")
 ############################################################
 ############################################################
 ############################################################

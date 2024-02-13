@@ -86,16 +86,16 @@ def changes_save():
     """Sauvegarde tous les changements effectués dans les data_base pour la prochaine fois"""
 
     save_path_samples = ['dataBases/Samples/wines_samples.csv',
-                         'dataBases/Samples/coffee_samples.csv'
-                         'dataBases/Samples/cocktails_samples.csv'
-                         'dataBases/Samples/beer_samples.csv'
-                         'dataBases/Samples/mocktail_samples.csv'
+                         'dataBases/Samples/cocktails_samples.csv',
+                         'dataBases/Samples/beer_samples.csv',
+                         'dataBases/Samples/coffee_samples.csv',
+                         'dataBases/Samples/mocktail_samples.csv',
                  ]
-    save_path_uniques = ['dataBases/Filtering/Uniques_elements/wines_unique_elements.csv',
-                         'dataBases/Filtering/Uniques_elements/coffee_unique_elements.csv',
-                         'dataBases/Filtering/Uniques_elements/cocktail_unique_elements.csv',
-                         'dataBases/Filtering/Uniques_elements/beers_unique_elements.csv',
-                         'dataBases/Filtering/Uniques_elements/mocktail_unique_elements.csv',
+    save_path_uniques = ['dataBases/Uniques_elements/wines_unique_elements.csv',
+                         'dataBases/Uniques_elements/cocktail_unique_elements.csv',
+                         'dataBases/Uniques_elements/beers_unique_elements.csv',
+                         'dataBases/Uniques_elements/coffee_unique_elements.csv',
+                         'dataBases/Uniques_elements/mocktail_unique_elements.csv',
                   ]
     print("Enregistrement en cours")
     for i in range(len(save_path_samples)):

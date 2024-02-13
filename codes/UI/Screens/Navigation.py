@@ -98,7 +98,7 @@ class DisplayerScreen(QWidget):
         self.screens_to_display.setCurrentIndex(index)
 
     def closeEvent(self, event):
-        #Db.changes_save()
+        Db.changes_save()
         print("projet fini")
         
 

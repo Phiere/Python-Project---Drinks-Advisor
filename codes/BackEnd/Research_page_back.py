@@ -1,10 +1,12 @@
+##############################
+#Ce script contient les fonctions de back_end pour la création de l'écran Research. Toutes
+#les fonctions crées ici seront utilisées dans le script : Research_page_UI.
+##############################
+
 import Db_gestions as Db
 from PyQt5.QtWidgets import QWidget,QLineEdit,QCompleter
 from PyQt5.QtCore import Qt
 import random
-import math 
-
-#dbs = Db.dbsall[]
 
 #V0.1
 class Autocompleter(QLineEdit):

@@ -174,6 +174,7 @@ class CustomListAffichageTri(QWidget):
         layout = QHBoxLayout(self)
 
         for text in completion_text_to_display:
+            text = text.replace('[','').replace(']','').replace("'",'')
             label = QLabel(text)
             label.setAlignment(Qt.AlignCenter)
             label.setWordWrap(True)
@@ -267,7 +268,7 @@ class ScreenResearch(QWidget):
         #Déclenger une recherche avec le bouton entrée
         self.key_event_filter = KeyEventFilter()
         QApplication.instance().installEventFilter(self.key_event_filter)
-        self.key_event_filter.enterPressed.connect(self.update_choice)
+        self.key_event_filter.enterPressed.connect(self.charger_new_df)
         
         #Créations des titres des colonnes des données affichées
         self.Line_Of_Categories_Names = LineOfCategoriesNames()

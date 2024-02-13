@@ -219,6 +219,7 @@ class GoEditButton(QPushButton):
     - go_to_edit : fonction d'appel de l'écran d'édition"""
     def __init__(self,go_to_edit):
         super().__init__()
+        self.setStyleSheet("background-color: #404040; color: #ffffff;")
         self.setText("Edit")
         self.clicked.connect(go_to_edit)
 

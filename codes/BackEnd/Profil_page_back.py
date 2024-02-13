@@ -1,7 +1,7 @@
 import pandas as pd
 import Db_gestions as Db
 
-#V0.1
+
 def nb_of_notes(df):
     """Donne le nombre de boisson notée dans un data_frame
     
@@ -13,7 +13,7 @@ def nb_of_notes(df):
     else:
         return 0
 
-#V0.1
+
 def nb_notes_per_categories():
     """Donne le nombre de boissons notées par data_base"""
     nb_notes = []
@@ -21,7 +21,7 @@ def nb_notes_per_categories():
         nb_notes.append(nb_of_notes(Db.dbsall[i][0]))
     return nb_notes
 
-#V0.1
+
 def mean_of_note(df):
     """Donne la moyenne des notes des boissons notées dans un data_frame
     
@@ -33,7 +33,7 @@ def mean_of_note(df):
     else:
         return 0  # Retourner une valeur spéciale pour indiquer l'absence de données
 
-#V0.1
+
 def mean_notes_per_categories():
     """Donne la moyenne des notes par data_base"""
     means_notes = []
@@ -42,7 +42,7 @@ def mean_notes_per_categories():
         means_notes.append(float(mean_note))
     return means_notes
 
-#V0.1
+#??
 def favorites_extraction():
     """Donne la liste des éléments mis en favories dans chaque data_base
     
@@ -63,128 +63,87 @@ def favorites_extraction():
 
     return favories
 
-#V0.1
-#Pas fan d'appeler les indices au lieu des noms mais sinon ça fonctionne pas :()
+#??
 def get_favorites_informations(favories_dfs,index):
     """Retourne les informations d'affichage sur la boisson mise en favoris."""
-    texte = [str(favories_dfs.iat[index,j]) for j in range(len(['Nom_db','Name','PersonalRating']))]                
+    texte = [str(favories_dfs.iat[index,j]) for j in range(3)]                
     index_db = favories_dfs.iat[index,-2]
     index_boisson = favories_dfs.iat[index,-1]
     return texte,index_db,index_boisson
 
+########
 ##Tests
+########
 
 def test_nb_notes():
     """Fonction de test pour la fonction nb_notes"""
     print("test_nb_notes")
     #Test0
-    Db.choix_de_la_data_base = 0
-    nb_votes_df0 = 0
-    print("Test 0 : ", nb_votes_df0 == nb_of_notes())
+    db = Db.dbsall[0][0]
+    nb_votes_df0 = 5
+    print("Test 0 : ", nb_votes_df0 == nb_of_notes(db))
 
     #Test1
-    Db.choix_de_la_data_base = 0
-    nb_votes_df1 = 0
-    print("Test 1 : ", nb_votes_df1 == nb_of_notes())
+    db = Db.dbsall[1][0]
+    nb_votes_df1 = 4
+    print("Test 1 : ", nb_votes_df1 == nb_of_notes(db))
 
     #Test2
-    Db.choix_de_la_data_base = 0
+    db = Db.dbsall[2][0]
     nb_votes_df2 = 0
-    print("Test 2 : ", nb_votes_df2 == nb_of_notes())
+    print("Test 2 : ", nb_votes_df2 == nb_of_notes(db))
 
     #Test3
-    Db.choix_de_la_data_base = 0
-    nb_votes_df3 = 0
-    print("Test 3 : ", nb_votes_df3 == nb_of_notes())
+    db = Db.dbsall[3][0]
+    nb_votes_df3 = 1
+    print("Test 3 : ", nb_votes_df3 == nb_of_notes(db))
 
     #Test4
-    Db.choix_de_la_data_base = 0
-    nb_votes_df4 = 0
-    print("Test 4 : ", nb_votes_df4 == nb_of_notes())
-
-    #Test5
-    Db.choix_de_la_data_base = 0
-    nb_votes_df5 = 0
-    print("Test 5 : ", nb_votes_df5 == nb_of_notes())
+    db = Db.dbsall[4][0]
+    nb_votes_df4 = 10
+    print("Test 4 : ", nb_votes_df4 == nb_of_notes(db))
 
 def test_nb_notes_per_categories():
     """Fonction de test pour la fonction nb_notes_per_categories"""
     print("test_nb_notes_per_categories")
     #Test0
-    nb_votes_percategorie_df0 = [0,0,0,0,0]
+    nb_votes_percategorie_df0 = [5,4,0,1,10]
     print("Test 0 : ", nb_votes_percategorie_df0 == nb_notes_per_categories())
-
-    #Test1
-    nb_votes_percategorie_df1 = [0,0,0,0,0]
-    print("Test 1 : ", nb_votes_percategorie_df1 == nb_notes_per_categories())
-
-    #Test2
-    nb_votes_percategorie_df2 = [0,0,0,0,0]
-    print("Test 2 : ", nb_votes_percategorie_df2 == nb_notes_per_categories())
-
-    #Test3
-    nb_votes_percategorie_df3 = [0,0,0,0,0]
-    print("Test 3 : ", nb_votes_percategorie_df3 == nb_notes_per_categories())
-
-    #Test4
-    nb_votes_percategorie_df4 = [0,0,0,0,0]
-    print("Test 4 : ", nb_votes_percategorie_df4 == nb_notes_per_categories())
 
 def test_mean_of_note():
     """Fonction de test pour la fonction mean_of_note"""
     print("test_nb_notes")
     #Test0
-    Db.choix_de_la_data_base = 0
-    mean_of_note0 = 0
-    print("Test 0 : ", mean_of_note0 == mean_of_note())
+    db = Db.dbsall[0][0]
+    mean_of_note0 = 3.0
+    print("Test 0 : ", mean_of_note0 == mean_of_note(db))
 
     #Test1
-    Db.choix_de_la_data_base = 0
-    mean_of_note0 = 0
-    print("Test 1 : ", mean_of_note0 == mean_of_note())
+    db = Db.dbsall[1][0]
+    mean_of_note0 = 3.5
+    print("Test 1 : ", mean_of_note0 == mean_of_note(db))
 
     #Test2
-    Db.choix_de_la_data_base = 0
-    mean_of_note2 = 0
-    print("Test 2 : ", mean_of_note2 == mean_of_note())
+    db = Db.dbsall[2][0]
+    mean_of_note2 = 0.0
+    print("Test 2 : ", mean_of_note2 == mean_of_note(db))
 
     #Test3
-    Db.choix_de_la_data_base = 0
-    mean_of_note3 = 0
-    print("Test 3 : ", mean_of_note3 == mean_of_note())
+    db = Db.dbsall[3][0]
+    mean_of_note3 = 5.0
+    print("Test 3 : ", mean_of_note3 == mean_of_note(db))
 
     #Test4
-    Db.choix_de_la_data_base = 0
-    mean_of_note4 = 0
-    print("Test 4 : ", mean_of_note4 == mean_of_note())
-
-    #Test5
-    Db.choix_de_la_data_base = 0
-    mean_of_note5 = 0
-    print("Test 5 : ", mean_of_note5 == mean_of_note())
+    db = Db.dbsall[4][0]
+    mean_of_note4 = 2.7
+    print("Test 4 : ", mean_of_note4 == mean_of_note(db))
 
 def test_mean_notes_per_categories():
     """Fonction de test pour la fonction nb_notes"""
     print("test_mean_notes_per_categories")
     #Test0
-    mean_notes_per_categories0 = [0,0,0,0,0]
+    mean_notes_per_categories0 = [3.0,3.5,0.0,5.0,2.7]
     print("Test 0 : ", mean_notes_per_categories0 == mean_notes_per_categories())
-
-    #Test1
-    mean_notes_per_categories1 = [0,0,0,0,0]
-    print("Test 1 : ", mean_notes_per_categories1 == mean_notes_per_categories())
-
-    #Test2
-    mean_notes_per_categories2 = [0,0,0,0,0]
-    print("Test 2 : ", mean_notes_per_categories2 == mean_notes_per_categories())
-
-    #Test3
-    mean_notes_per_categories3 = [0,0,0,0,0]
-    print("Test 3 : ", mean_notes_per_categories3 == mean_notes_per_categories())
-
-    #Test4
-    mean_notes_per_categories4 = [0,0,0,0,0]
-    print("Test 4 : ", mean_notes_per_categories4 == mean_notes_per_categories())
 
 def test_favorite_exctaction():
     pass
