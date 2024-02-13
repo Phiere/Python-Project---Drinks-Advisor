@@ -57,17 +57,20 @@ def get_status_favori():
     """Récupère le statut de favori de la boisson"""
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
     favory = Db.dbsall[db][0].at[index,'Favorite']
+    print('favory',favory)
     if  isinstance(favory,str):
         return favory == "1" or favory == "1.0"
+    if isinstance(favory,bool) :
+        return favory == True
     else :
-        return favory == 1 or favory == 1.0
+        return favory == 1.0 or favory == 1
 
 #V0.2
 def update_status_favori():
     """Met à jour le statut de favori la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
-    favory = not(Db.dbsall[db][0].iloc[index][-1])
-    Db.dbsall[db][0].at[index,'Favorite'] = favory
+    favory = (Db.dbsall[db][0].iloc[index][-1])
+    Db.dbsall[db][0].at[index,'Favorite'] = not(favory)
     return favory
 
 #V0.2

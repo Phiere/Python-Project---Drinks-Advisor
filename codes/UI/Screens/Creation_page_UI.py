@@ -82,7 +82,7 @@ class ListeElementToComplete(QListWidget):
             if isinstance(widget, QLineEdit):
                 texte = widget.text()
                 name = widget.placeholderText()
-
+                name.replace(" if more than 1 split with ',' ",'')
                 if texte:
                     if name in number_elements:
                         if not texte.isdigit():
@@ -93,8 +93,18 @@ class ListeElementToComplete(QListWidget):
 
                 text_list.append(texte)
                 name_list.append(name)
-
+        print(name_list)
+        for i in range(len(name_list)):
+            name_list[i] = name_list[i].replace(" if more than 1 split with ',' ",'')
+        print(name_list)
         return text_list,name_list
+    
+    def reset_fields(self):
+        for index in range(self.count()):
+            item = self.item(index)
+            widget = self.itemWidget(item)
+            if isinstance(widget, QLineEdit):
+                widget.clear()
     
 #V0.2
 class CircleAnimationWidget(QWidget):
@@ -170,7 +180,7 @@ class CreationButton(QPushButton):
         recovered_text,recovered_names = self.function()
         Cb.create_new_drink(recovered_text,recovered_names)
         self.go_to_description()
-        #self.list_element_to_complete.reset_fields()
+        self.list_element_to_complete.reset_fields()
 
     def on_pressed(self):
         recovered_text,recovered_names = self.function()

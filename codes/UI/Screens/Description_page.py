@@ -88,13 +88,8 @@ class FavoriteInteraction(QPushButton):
     def update_status(self):
         Dp.update_status_favori()
         self.update_icon()
-        
-    def reset_fields(self):
-        for index in range(self.count()):
-            item = self.item(index)
-            widget = self.itemWidget(item)
-            if isinstance(widget, QLineEdit):
-                widget.clear()
+
+    
         
 #V0.2
 class CommentInteracton(QHBoxLayout):

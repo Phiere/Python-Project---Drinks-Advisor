@@ -50,7 +50,7 @@ def creation_list_colonnes_doubles(data_base):
 
         data_base['PersonalRating'] = '-1'
         data_base['Commentary'] = 'Unfilled'
-        data_base['Favories'] = '0'
+        data_base['Favories'] = False
         return data_base
     
 def creation_unique_elements_data_frame(data_base):
