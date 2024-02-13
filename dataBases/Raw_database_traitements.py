@@ -157,7 +157,6 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
             uniques_elements_data_frame.to_csv(uniques_element_data_frame_path)
 
 
-
 ################################################################
 ################################################################
 ################################################################

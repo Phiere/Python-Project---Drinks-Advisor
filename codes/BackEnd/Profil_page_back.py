@@ -60,7 +60,7 @@ def favorites_extraction():
         cut['index'] = data_frame.index
 
         favories = pd.concat([favories, cut], axis=0)
-
+    favories = favories.sort_values(by = 'PersonalRating',ascending=False)
     return favories
 
 #V0.1
