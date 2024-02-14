@@ -5,10 +5,10 @@ Pour lancer le projet, il est nécessaire de télécharger les bases de données
 pourrez les télécharger aux adresses suivantes :
 
 - Vin : https://www.kaggle.com/datasets/zynicide/wine-reviews?select=winemag-data_first150k.csv
-- Bières :
-- Cafés : 
-- Cocktails :
-- Mocktails : 
+- Bières : https://www.kaggle.com/datasets/rdoume/beerreviews
+- Cafés : https://www.kaggle.com/datasets/schmoyote/coffee-reviews-dataset
+- Cocktails : https://www.kaggle.com/datasets/ai-first/cocktail-ingredients
+- Mocktails : https://www.kaggle.com/datasets/thegreatcoder/mocktail-dataset
 
 Une fois téléchargées il faut rappeler leurs différents chemins à la fin du script raw_database_traitement (attention à bien télécharger les 5). Une fois fait lancer le script.
 

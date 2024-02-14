@@ -8,7 +8,6 @@ from PyQt5.QtWidgets import QWidget,QLineEdit,QCompleter
 from PyQt5.QtCore import Qt
 import random
 
-#V0.1
 class Autocompleter(QLineEdit):
     """Créer un widget d'automplétion pour les filtres dynamiques de l'écran de recherche
     
@@ -23,7 +22,7 @@ class Autocompleter(QLineEdit):
         completer.setCaseSensitivity(Qt.CaseInsensitive)
         self.lineEdit.setCompleter(completer)
 
-#V0.1
+
 class Filtre(QWidget):
     """Créer un LineEDit qui sera assemblé avec d'autres pour créer une liste de filtres dynamiques
     
@@ -41,7 +40,7 @@ class Filtre(QWidget):
         else :
             self.name_edit.setPlaceholderText(self.nom_col)
 
-#v0.1
+
 def from_df_to_filters(take_text):
     """Construit la colonne des filtres dynamiques associée à la base de données choisie
     
@@ -57,7 +56,7 @@ def from_df_to_filters(take_text):
             filters_list[i].name_edit.textEdited.connect(take_text)
     return filters_list
 
-#v0.05
+
 def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_state):
         """Lis tout les QLineEdit qui font office de filtres et retourne tout leurs textes. Filtre la df en fonction des filtres utilisés et donne la df des éléments filtrés
 
@@ -107,7 +106,7 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
 
         return indexes,L,textes
 
-#v0.1
+
 def chose_sorted_sens(chosed_option):
     """Change le sens de tri"""
     if chosed_option == "Ascending" :
@@ -115,7 +114,7 @@ def chose_sorted_sens(chosed_option):
     else :
         return 'Ascending'
     
-#v0.0
+
 def filtrer(f, colonne, data_Frame):
 
     def convert_to_numeric(value):
@@ -136,10 +135,69 @@ def filtrer(f, colonne, data_Frame):
                 tempdf = data_Frame[data_Frame[colonne] == i]
     return tempdf
 
+
 ############################################################
+# Test test concernant Autocompleter et Filtre sont visuels car ils dependant 
+# de l'interface graphique, nous devons donc vérifier que :
+# 1 - Lorsqu'on écrit dans un filtre des options déroulantes s'affiche en accord avec ce qui est écrit
+# 2 - Lorsqu'on appuie sur entré en ayant navigué dans options avec les flèches cela complète le texte
+# 3 - Les filtres correspondent aux colonnes de filtre des base de données et peuvent être remplis
 ############################################################
-############################################################
-# Test 
-############################################################
-############################################################
-############################################################
+def test_chose_sorted_sens(chosed_option):
+    print("test_chose_sorted_sens")
+    chosed_option = 'Ascending'
+    #Test 0:
+    print("Test 0",'Descending' == chosed_option(chosed_option))
+    #Test 1:
+    chosed_option = 'Descending'
+    print("Test 1", 'Ascending' == chosed_option(chosed_option))
+
+def test_filtrer():
+    print("test_filter")
+    #Test 0
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 1
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 2
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 3
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 4
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 5
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 6
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 7
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 8
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+    #Test 9
+    f, colonne, data_Frame = 0,0,0
+    print(f,colonne,data_Frame)
+    print(filter(f,colonne,data_Frame))
+
+if __name__ == '__main__':
+    test = input("Tester les fonctions du script ? (0/1) : ")
+    if test : 
+        test_chose_sorted_sens()
+        test_filtrer()
+    

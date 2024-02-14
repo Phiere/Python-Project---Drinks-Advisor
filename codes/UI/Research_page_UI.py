@@ -1,26 +1,26 @@
 ############################################################
 ############################################################
 ############################################################
-#DESCRIPTION
+#Contient le script pour constuire la page recherche, rassemblant les options de filtres, les options 
+#de tris et les éléments filtrés.
 ############################################################
 ############################################################
 ############################################################
 
 import sys
 from PyQt5.QtGui import QIcon, QMouseEvent
-from PyQt5.QtWidgets import QApplication, QWidget, QVBoxLayout,QHBoxLayout,QPushButton,QComboBox,QLabel,QListWidget,QListWidgetItem,QMessageBox
-from PyQt5.QtCore import Qt, QObject, pyqtSignal,QEvent
+from PyQt5.QtWidgets import (QApplication, QWidget, QVBoxLayout,QHBoxLayout,QPushButton,
+                             QComboBox,QLabel,QListWidget,QListWidgetItem,QMessageBox)
+from PyQt5.QtCore import Qt
 sys.path.append('codes/BackEnd/')
 import Db_gestions as Db
 import Research_page_back as RB 
-import time
+
 
 init = 0
-
 ############################################################
 #Création des options de tri
 ############################################################
-#V0.2
 class NumberOfElementChoice(QComboBox):
     """Combo box permettant de choisir le nombre d'éléments à afficher.
     
@@ -38,7 +38,7 @@ class NumberOfElementChoice(QComboBox):
         self.addItem('100')
         self.activated[str].connect(upload_screen)
 
-#V0.2
+
 class SortColumnChoice(QComboBox):
     """Crée une combobox sur le nom de la colonne sur laquelle le tri d'affichage sera fait 
     
@@ -60,8 +60,6 @@ class SortColumnChoice(QComboBox):
             self.addItem(name)
     
 
-            
-#V0.2
 class OrderSensChoice(QPushButton):
     """Crée un bouton pour choisir le sens de tri : croissant ou décroissant.
     
@@ -99,8 +97,7 @@ class OrderSensChoice(QPushButton):
         self.setIcon(self.iconasc)
         self.setText("Ascending")
 
-    
-#V0.2   
+     
 class FilterOptionsBar(QHBoxLayout):
     """Barre d'options pour gérer l'affichage de la liste filtrée. Regroupant le choix de la data_base, le nombre d'élément, la colonne et le sens de tri
     
@@ -126,7 +123,6 @@ class FilterOptionsBar(QHBoxLayout):
         self.sort_column_choice.update()
      
 
-#V0.2   
 class BaseDeDonneChoice(QComboBox):
     """Combo box permettant de choisir la data_base à associer à la recherche
     
@@ -153,7 +149,6 @@ class BaseDeDonneChoice(QComboBox):
 ############################################################
 #Création du tableau d'affichage
 ############################################################
-#V0.2
 class CustomListAffichageTri(QWidget):
     """Classe permettant l'affichage des lignes de la database choisie
     
@@ -180,7 +175,7 @@ class CustomListAffichageTri(QWidget):
         Db.index_boisson = self.indexx
         self.appel_a_description()
 
-#V0.2
+
 class ColumnCategoriesNames(QWidget):
     """Label indiquant à quoi correspondent les données de la colonne associée
     
@@ -197,7 +192,7 @@ class ColumnCategoriesNames(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(label)
 
-#V0.2
+
 class LineOfCategoriesNames(QHBoxLayout):
      """Layout des noms des colonnes mis en ligne"""
      def __init__(self):
@@ -215,7 +210,7 @@ class LineOfCategoriesNames(QHBoxLayout):
             Etiquette = ColumnCategoriesNames(title)
             self.addWidget(Etiquette)
 
-#V0.2
+
 class ColumnOfFilter(QVBoxLayout):
     """Assemblage des filtres sur un layout vertical
     
@@ -236,10 +231,10 @@ class ColumnOfFilter(QVBoxLayout):
         for filter in self.filters_list :
             self.addWidget(filter.name_edit)
 
+
 ############################################################
 #Ecran principal
 ############################################################
-#V0.2
 class ScreenResearch(QWidget):
     """Assemblage des différents blocs de recherche : filtres, affichage des éléments et options de recherche.
     
@@ -335,6 +330,7 @@ class ScreenResearch(QWidget):
         else:
             super().keyPressEvent(event)
     
+
 ############################################################
 ############################################################
 ############################################################

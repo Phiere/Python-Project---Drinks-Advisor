@@ -1,7 +1,12 @@
+##############################
+#Ce script contient les fonctions de back_end pour la création de l'écran edit. Toutes
+#les fonctions crées ici seront utilisées dans le script : Edit_page_UI.
+##############################
+
 import pandas as pd
 import Db_gestions as Db
 
-#V0.1
+
 def edit_drink(get_text):
     """Modifie la boisson choisie avec les nouveaux paramètres rentrés.
     
@@ -26,7 +31,7 @@ def edit_drink(get_text):
   
    
     add_uniques_element(get_text=get_text)
-#V0.1
+
 def add_uniques_element(get_text):
     """Rajoute les nouveaux éléments aux éléments uniques au besoin
     
@@ -74,6 +79,9 @@ def add_uniques_element(get_text):
 
     Db.dbsall[Db.choix_de_la_data_base][1] = new_unique_element
 
-
+########
+#Test : ces fonctions modifiants directement la base de données, on les testera en regardant si les éléments créer
+#apparaissent bien dans la bdd visuellment.
+########
 
 

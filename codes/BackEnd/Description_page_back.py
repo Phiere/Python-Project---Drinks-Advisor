@@ -1,7 +1,12 @@
+##############################
+#Ce script contient les fonctions de back_end pour la création de l'écran description. Toutes
+#les fonctions crées ici seront utilisées dans le script : Description_page_UI.
+##############################
+
 import Db_gestions as Db
 import pandas as pd
 
-#V0.2
+
 def get_name_from_drink():
     """Récupère le nom principal de la boisson"""
     db,index = Db.choix_de_la_data_base,Db.index_boisson
@@ -9,7 +14,7 @@ def get_name_from_drink():
     name = boisson['Name']
     return name 
 
-#V0.1
+
 def get_description_from_drink():
     """Récupère les éléments de description de la boisson en les mettant en forme correctement"""
     db,index = Db.choix_de_la_data_base,Db.index_boisson
@@ -52,7 +57,7 @@ def get_description_from_drink():
             skip_next_iterations = True            
     return text
 
-#V0.2  
+
 def get_status_favori():
     """Récupère le statut de favori de la boisson"""
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
@@ -65,7 +70,7 @@ def get_status_favori():
     else :
         return favory == 1.0 or favory == 1
 
-#V0.2
+
 def update_status_favori():
     """Met à jour le statut de favori la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
@@ -73,7 +78,7 @@ def update_status_favori():
     Db.dbsall[db][0].at[index,'Favorite'] = not(favory)
     return favory
 
-#V0.2
+
 def get_comment():
     """Récupère le commentaire associée à la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
@@ -81,7 +86,7 @@ def get_comment():
     if pd.isna(comment): return 'Leave a comment on the drink...'
     return comment
 
-#V0.2
+
 def update_comment(commentary):
     """Met à jour le commentaire de la boisson choisie
     
@@ -89,7 +94,7 @@ def update_comment(commentary):
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     Db.dbsall[db][0].at[index,'Comment'] = commentary
 
-#V0.2
+
 def get_rating():
     """Récupère la note de la boisson choisie
     
@@ -98,7 +103,7 @@ def get_rating():
     rating = Db.dbsall[db][0].at[index,'PersonalRating']
     return rating
 
-#V0.2
+
 def update_rating(rating):
     """Met à jour la note de la boisson choisie
     
@@ -106,7 +111,9 @@ def update_rating(rating):
     db,index =  Db.choix_de_la_data_base,Db.index_boisson
     Db.dbsall[db][0].at[index,'PersonalRating'] = rating
 
-##Tests   
+########
+##Tests 
+########  
     
 def test_get_name_from_drink():
     """Fonction de test sur get_name_from_drink"""
@@ -146,33 +153,35 @@ def test_get_description_from_drink():
     print("test_get_description_from_drink")
     #Test 0
     Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name0 = 0
-    print('Test 0 : ',get_description_from_drink() ==name0)
+    print('Test 0 : ',get_description_from_drink())
 
     #Test 1
     Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name1 = 0
-    print('Test 1 : ',get_description_from_drink() ==name1)
+    print('Test 1 : ',get_description_from_drink())
 
     #Test 2
     Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name2 = 0
-    print('Test 2 : ',get_description_from_drink() ==name2)
+    print('Test 2 : ',get_description_from_drink())
 
     #Test 3
     Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name3 = 0
-    print('Test 3 : ',get_description_from_drink() ==name3)
+    print('Test 3 : ',get_description_from_drink())
 
     #Test 4
     Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name4 = 0
-    print('Test 4 : ',get_description_from_drink() ==name4)
+    print('Test 4 : ',get_description_from_drink())
 
     #Test 5
     Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name5 = 0
-    print('Test 5 : ',get_description_from_drink() ==name5)
+    print('Test 5 : ',get_description_from_drink())
+
+    #Test 6
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    print('Test 5 : ',get_description_from_drink())
+
+    #Test 7
+    Db.choix_de_la_data_base, Db.index_boisson = 0,0
+    print('Test 5 : ',get_description_from_drink())
 
 def test_get_status_favory():
     """Fonction de test sur get_status_favori"""

@@ -10,13 +10,14 @@
 
 import sys
 from PyQt5.QtGui import QPixmap,QIcon
-from PyQt5.QtWidgets import QLabel,QHBoxLayout,QWidget,QApplication,QVBoxLayout,QScrollArea,QPushButton,QLineEdit
+from PyQt5.QtWidgets import (QLabel,QHBoxLayout,QWidget,QApplication,
+                             QVBoxLayout,QScrollArea,QPushButton,QLineEdit)
 from PyQt5.QtCore import Qt
 
 sys.path.append('codes/BackEnd/')
 import Description_page_back as Dp
 
-#V0.2
+
 class LabelPrincipal(QWidget):
     """Label mettant en valeur le nom principal de la boisson
     
@@ -38,7 +39,7 @@ class LabelPrincipal(QWidget):
         drink_name = Dp.get_name_from_drink()
         self.drink_name.setText(f'<font color="red"><b>Drink : {drink_name}</b></font>')
 
-#V0.2
+
 class InformationsDisplay(QScrollArea):
     """Affichage des informations de la boisson choisie
     
@@ -63,7 +64,7 @@ class InformationsDisplay(QScrollArea):
         texte =  Dp.get_description_from_drink()
         self.description_text.setText(texte)
 
-#V0.2
+
 class FavoriteInteraction(QPushButton):
     """Bouton de sélection des favoris. 
     
@@ -90,8 +91,6 @@ class FavoriteInteraction(QPushButton):
         self.update_icon()
 
     
-        
-#V0.2
 class CommentInteracton(QHBoxLayout):
     """Affiche une interface pour commenter la boisson choisie
     
@@ -125,7 +124,7 @@ class CommentInteracton(QHBoxLayout):
     def comment(self):
         Dp.update_comment(self.texte.text())
 
-#V0.2
+
 class RatingInteraction(QHBoxLayout):
     """Affiche une interface pour noter la boisson choisie
     
@@ -195,7 +194,7 @@ class RatingInteraction(QHBoxLayout):
         Dp.update_rating(self.new_rating)
         self.update_icon()
     
-#V0.2
+
 class NotationsInteractions(QVBoxLayout):
     """Assemblage vertical des différents éléments de notation"""
     def __init__(self):
@@ -215,7 +214,7 @@ class NotationsInteractions(QVBoxLayout):
         self.rating_interaction.update_icon()
         self.comment_interaction.update()
 
-#V0.2
+
 class GoEditButton(QPushButton):
     """Bouton déclencheur de l'édition de la boisson choisie
     
@@ -226,7 +225,7 @@ class GoEditButton(QPushButton):
         self.setText("Edit")
         self.clicked.connect(go_to_edit)
 
-#V0.2
+
 class Description(QWidget):
     """Ecran d'assemblage des différents éléments de description : appel à l'édition, nom princpal, éléments de description, éléments de notation
     
@@ -257,6 +256,7 @@ class Description(QWidget):
         self.informations_display.update()
         self.notations_interactions.update()
 
+
 ############################################################
 ############################################################
 ############################################################
@@ -272,7 +272,6 @@ class Description(QWidget):
 ############################################################
 ############################################################
                   
-
 def display_test():
     
     app = QApplication(sys.argv)

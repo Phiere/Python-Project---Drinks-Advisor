@@ -1,7 +1,12 @@
+##############################
+#Ce script contient les fonctions de back_end pour la création de l'écran création. Toutes
+#les fonctions crées ici seront utilisées dans le script : Creation_page_UI.
+##############################
+
 import pandas as pd
 import Db_gestions as Db
 
-#V0.2
+
 def texte_vides(recovered_text):
     """Fonction permettant de vérifier si les entrées des nouvelles boissons sont vides et au bon format."""
     strInvalid = []
@@ -19,7 +24,6 @@ def texte_vides(recovered_text):
     else:
         return all(s == "" for s in recovered_text),None
 
-#V0.2
 def create_new_drink(recovered_text,recovered_names):
     """Créer une nouvelle ligne dans la data base choisie avec les informations complétées.
     
@@ -52,7 +56,6 @@ def create_new_drink(recovered_text,recovered_names):
     Db.dbsall[data_base_index][0].at[new_index,'Favorite'] = 0
     add_uniques_element(recovered_text,recovered_names)
 
-#V0.2
 def add_uniques_element(recovered_text,recovered_names):
     """Ajoute si nécessaire les éléments ajoutés dans le data_frame des éléments uniques"""
     data_base_index = Db.choix_de_la_data_base
@@ -93,14 +96,30 @@ def add_uniques_element(recovered_text,recovered_names):
 
     Db.dbsall[Db.choix_de_la_data_base][1] = new_unique_element
 
-
-####TEST
+########
+#TEST
+########
     
 def test_text_vides():
-    pass
+    print("Test_text_vides")
+    #Test 0
+    test0 = []
+    print("Test 0 : ",test0)
+    print(texte_vides(test0))
+
+    #Test 1
+    test1 = []
+    print("Test 1 : ",test1)
+    print(texte_vides(test1))
+
+    #Test 2
+    test2 = []
+    print("Test 2 : ",test2)
+    print(texte_vides(test2))
     
 def test_create_new_drink():
     """Test la fonction create_new_drink en comparant l'entrée de la fonction et la dernière ligne des data_base modifiée"""
+    print("test_create_new_drink")
     #Test vin
     Db.choix_de_la_data_base = 0
     texte0 = ["Us","Lovely","",54,54,"Supop","Supop","Supop","Supop",0,"",0]
@@ -136,9 +155,25 @@ def test_create_new_drink():
     create_new_drink()
     print("Test 4 : ",Db.dbsall[Db.choix_de_la_data_base][0].tail(1) == test_texte4)
 
-
 def test_add_uniques_element():
-    pass
+    print("test_add_uniques_element")
+    #Test 0
+    test0,names0 = [],[]
+    print("Test 0 :",test0,names0)
+    add_uniques_element(test0,names0)
+    print(texte_vides(test0))
+
+    #Test 1
+    test1,names1 = [],[]
+    print("Test 0 :",test1,names1)
+    add_uniques_element(test1,names1)
+    print(texte_vides(test1))
+
+    #Test 2
+    test2,names2 = [],[]
+    print("Test 0 :",test2,names2)
+    add_uniques_element(test2,names2)
+    print(texte_vides(test2))
 
 if __name__ == '__main__':
     test = input("Tester les fonctions du script ? (0/1) : ")

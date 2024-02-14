@@ -8,7 +8,7 @@ Labels :
 - F : utilisée pour le filtrage de la recherche 
 
 
-- data_bases sur le vin : (10 colonnes x 150k lignes)
+- data_base sur le vin : (10 colonnes x 150k lignes)
     - Country (S,T,F): The country that the wine is from
     - Description : A few sentences from a sommelier describing the wine's taste, smell, look, feel, etc.
     - Designation (S,T,F): The vineyard within the winery where the grapes that made the wine are from
@@ -18,3 +18,49 @@ Labels :
     - Region_1/ Region_2 (S,T): The wine growing area in a province or state (ie Napa)
     - winery (S,F): The winery that made the wine
     - variety (S,F): The type of grapes used to make the wine (ie Pinot Noir)
+
+- data_base sur le café : (12 colonnes x ??? lignes)
+    - name: Name of the blend
+    - roaster: Name of the roaster
+    - roast: Type of roast (Light, Medium-Light, Medium, Medium-Dark, Dark)
+    - loc_country: Location of the roaster
+    - origin_1/origin_2: Origin of the beans
+    - 100g_USD: price per 100g of beans in US dolalrs
+    - rating: Rating of the coffee
+    - review_date: Date of the coffee review
+    - desc_1/desc_2/desc_3: Text of review #1
+
+- data_base sur les mocktails : (7 colonnes x ??? lignes)
+    - Cocktail Name : self
+    - Ingredient 1,Ingredient 2,Ingredient 3 : self
+    - Flavor Profile 1, Flavor Profile 2 : self
+    - User rating : self
+
+- data_base sur les bières : (13 colonnes  x 1500k lignes)
+    - brewery_name : self
+    - review_time : self
+    - review_overall : self
+    - review_aroma : self
+    - review_appearance : self
+    - review_profilename : self
+    - beer_style : self
+    - review_palate : self
+    - review_state : self
+    - beer_name : self
+    - beer_abv : self
+    - beer_beerid : self
+
+- data_base sur les cocktails : (41 colonnes x 546 lignes)
+    - strDrink : cocktail name
+    - dateModified : self
+    - idDrink : self
+    - strAlcoholic : self
+    - strCategory : self
+    - strDrinkThumb : self
+    - strGlass : self
+    - strIBA : self
+    - strIngredient1-15: self
+    - strMeasure1-15 : self
+    - strVideo : self
+
+

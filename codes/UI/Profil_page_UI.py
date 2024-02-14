@@ -24,7 +24,6 @@ import Db_gestions as Db
 #################
 #Tableau des favoris
 #################
-#V0.2
 class FavoriesTitle(QHBoxLayout):
     """Construit l'affichage stylisé au dessus du tableau des favoris.
     
@@ -59,7 +58,7 @@ class FavoriesTitle(QHBoxLayout):
     def update(self,nb_favories):
             self.nb_favories_label.setText(f"{nb_favories} drinks")
 
-#V0.2
+
 class FavorieDataDisplay(QVBoxLayout):
     """Construit la liste des éléments favoris
     
@@ -100,7 +99,7 @@ class FavorieDataDisplay(QVBoxLayout):
             self.listWidget.addItem(listItem)
             self.listWidget.setItemWidget(listItem, customItemWidget)
 
-#V0.2
+
 class CustomListAffichageTri(QWidget):
     """Liste de lignes regroupant les boissons mises en favori.
     
@@ -125,7 +124,7 @@ class CustomListAffichageTri(QWidget):
         Db.index_boisson = self.index_boisson
         self.appel_a_description()
 
-#V0.2
+
 class ColumnCategoriesNames(QWidget):
     """Case d'affichage pour les titres de colonne des favoris"""
     def __init__(self,texte):
@@ -136,7 +135,7 @@ class ColumnCategoriesNames(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(label)
 
-#V0.2
+
 class LineOfCategoriesNames(QHBoxLayout):
      """Ligne des titres des colonnes utilisées pour l'affichage des favoris"""
      def __init__(self):
@@ -154,10 +153,10 @@ class LineOfCategoriesNames(QHBoxLayout):
             Etiquette = ColumnCategoriesNames(title)
             self.addWidget(Etiquette)
 
+
 #################
 #1er graphique : Histogramme du nombre de boissons notées par catégorie
 #################
-#V0.2
 class RatedByCategories(QWidget):
     """Graphique montrant le nombre de boissons notées par data base
     
@@ -201,7 +200,6 @@ class RatedByCategories(QWidget):
 #################
 #2ème graphique : Histogramme des moyennes des notes par catégorie
 ################# 
-#V0.2
 class MeanByCategories(QWidget):
     """Graphique illustrant les moyennes des notes des boissons notées par data base
     
@@ -247,7 +245,6 @@ class MeanByCategories(QWidget):
 
 #################
 #Création de l'écran
-#V0.2
 ################# 
 class ScreenProfile(QWidget):
     """Ecran principal regroupant la liste des favoris ainsi que deux graphiques sur le nombre de boissons notées et les moyennes

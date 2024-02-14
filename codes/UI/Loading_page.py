@@ -1,9 +1,17 @@
+############################################################
+############################################################
+############################################################
+#Ceci construit l'écran de chargement qui s'affiche lorsque le logiciel charge les données. 
+############################################################
+############################################################
+############################################################
+
 from PyQt5.QtWidgets import QApplication, QGraphicsView, QGraphicsScene, QGraphicsEllipseItem
 from PyQt5.QtCore import QTimer, QPointF, pyqtSignal
 from PyQt5.QtGui import QColor, QTransform
 import sys
 
-#V0.2
+
 class LoadingScreen(QGraphicsView):
     """ Création d'un écran de chargement avec des points qui tournent au milieu de l'écran
     
@@ -81,7 +89,6 @@ class LoadingScreen(QGraphicsView):
 ############################################################
 ############################################################
                   
-
 def display_test():
     
     app = QApplication(sys.argv)

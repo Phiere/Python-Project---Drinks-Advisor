@@ -10,11 +10,15 @@
 ####################################
 ####################################
 
+##############################
+#Ce script contient l'ensemble des paramètres expliquant comment gérer les données.
+##############################
+
 import pandas
 import sys
 sys.path.append('codes/UI/Screens/')
 
-#V0.1
+
 def data_frames_reding(path_db_clean,path_unique_elements,filtrage,titles,descriptions,sort):
     """Prend tous les paramètres d'un data_frame décidé au préalable et donne une liste de dataframe utilisable par l'application
     
@@ -106,4 +110,8 @@ def changes_save():
         db_elements.to_csv(save_path_uniques[i])
         print("Enregistrement effectué : ",i," /",len(save_path_samples))
 
-
+########
+##Tests  Ces fonctions sont compliquées à tester au vu de ce qu'elle retourner. Leur fonctionnement peut être étudié en regardant
+# 1 - Le nombre de boisson affiché correspond à celui des data_bases
+# 2 - Eteindre et relancer le script conserve les actions faites sur les boissons.
+########

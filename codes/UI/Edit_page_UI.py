@@ -1,13 +1,14 @@
 ############################################################
 ############################################################
 ############################################################
-#    
+# Script qui Créer l'écran d'édition des boissons pour modifier des données dans la
+# base de données
 ############################################################
 ############################################################
 ############################################################
 
 import sys
-from PyQt5.QtWidgets import (QApplication, QWidget, QHBoxLayout, QVBoxLayout, QLineEdit,
+from PyQt5.QtWidgets import (QApplication, QWidget, QHBoxLayout, QVBoxLayout,
                                     QListWidget,QListWidgetItem, QPushButton,QLabel,
                                     QTextEdit)
 from PyQt5.QtCore import QSize
@@ -17,8 +18,6 @@ import Db_gestions as Db
 import Edit_page_back as Eb
 
 
-
-#V0.2
 class  ModificationLayout(QWidget):
     """Layout contenant la ligne à modifiée ainsi que son titre afin de se reprérer.
     
@@ -36,7 +35,7 @@ class  ModificationLayout(QWidget):
         box_layout.addWidget(self.contenu)
         self.setLayout(box_layout)
 
-#V0.2
+
 class ListeElementToComplete(QListWidget):
     """Assemblage des lignes de modification"""
     def __init__(self)-> None:
@@ -73,7 +72,7 @@ class ListeElementToComplete(QListWidget):
   
         return text_list, self.names
     
-#V0.2
+
 class EditButton(QPushButton):
     """Effectue la modification de la data base et retourne à descritpion
     
@@ -92,7 +91,7 @@ class EditButton(QPushButton):
         Eb.edit_drink(self.function)
         self.go_to_description()
 
-#V0.2
+
 class ScreenEdition(QWidget):
     """Création de l'écran regroupant les éléments à compléter pour modifier la databse
     

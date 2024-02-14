@@ -19,7 +19,6 @@ import Db_gestions as Db
 import Creation_page_back as Cb
 
 
-#V0.2
 class DataBaseChoice(QComboBox):
     """Combo box permettant de choisir la base de données sur laquelle se fera la création.
     
@@ -43,7 +42,7 @@ class DataBaseChoice(QComboBox):
         Db.choix_de_la_data_base = index
         self.fonction()
 
-#V0.2
+
 class ListeElementToComplete(QListWidget):
     """Créations des colonnes à compléter pour décrire la boisson sous forme d'une liste verticale 
     
@@ -93,10 +92,8 @@ class ListeElementToComplete(QListWidget):
 
                 text_list.append(texte)
                 name_list.append(name)
-        print(name_list)
         for i in range(len(name_list)):
             name_list[i] = name_list[i].replace(" if more than 1 split with ',' ",'')
-        print(name_list)
         return text_list,name_list
     
     def reset_fields(self):
@@ -106,7 +103,7 @@ class ListeElementToComplete(QListWidget):
             if isinstance(widget, QLineEdit):
                 widget.clear()
     
-#V0.2
+
 class CircleAnimationWidget(QWidget):
     """Animation de chargement pour le bouton création
     
@@ -157,7 +154,7 @@ class CircleAnimationWidget(QWidget):
         self.animation_steps = int(self.animation_duration / 100)
         self.timer.start(100)
 
-#V0.2
+
 class CreationButton(QPushButton):
     """Ajout du bouton Création ("Add") permettant l'ajout d'une boisson dans un dataframe existant
     
@@ -240,7 +237,7 @@ class CreationButton(QPushButton):
                 self.create_new_drink()
                 self.animation_widget.pixmap_item.setPixmap(QPixmap())
 
-#V0.2
+
 class ScreenCreation(QWidget):
     """Création de l'écran regroupant le choix de la database, les éléments à compléter et ceux de notation
     
