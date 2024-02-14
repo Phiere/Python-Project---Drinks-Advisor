@@ -123,7 +123,19 @@ def filtrer(f, colonne, data_Frame):
         except ValueError:
             return value
 
-    if "," not in f:
+    if not (colonne in Db.list_elements) :
+        f = convert_to_numeric(f)
+        tempdf = data_Frame[data_Frame[colonne] == f]
+    
+    else :
+        f = f.split(",")
+        tempdf = data_Frame.copy()
+        for i in f:
+            if i != "":
+                i = convert_to_numeric(i)
+                tempdf = tempdf[tempdf[colonne].apply(lambda x: i in x)]
+        
+    """if "," not in f:
         f = convert_to_numeric(f)
         tempdf = data_Frame[data_Frame[colonne] == f]
     else:
@@ -132,7 +144,10 @@ def filtrer(f, colonne, data_Frame):
         for i in f:
             if i != "":
                 i = convert_to_numeric(i)
-                tempdf = data_Frame[data_Frame[colonne] == i]
+                print(i)
+                #tempdf = data_Frame[data_Frame[colonne] == i]
+                tempdf = tempdf[tempdf[colonne].apply(lambda x: i in x)]
+        """
     return tempdf
 
 

@@ -208,9 +208,9 @@ beers_new_column_names = {'brewery_name' : 'Brewery', 'beer_style' : 'Style',
                         'review_aroma' : 'Aroma', 'review_appearance' : 'Appearance', 'review_palate' : 'Palate', 'review_taste' : 'Taste', 
                         'beer_abv' : 'BeerABV','Commentary' : 'Comment', 'Favories' : 'Favorite'}
 
-if __name__ == '__main__':
-    test = input("Relancer ce script réinitialise les data_bases, continuer ? (0/1) : ")
-    if test :
+
+def normalise_data_base():
+        """Fonction qui lance le traitement de toutes les bases de données"""
         print("0/5")
         raw_data_traitement(wines_raw_data_frame_path,wines_listed_data_frame_path,wines_uniques_element_data_frame_path,wines_unnecessary_columns,wines_new_column_names)
         print("1/5")
@@ -222,6 +222,12 @@ if __name__ == '__main__':
         print("4/5")
         raw_data_traitement(beers_raw_data_frame_path,beers_listed_data_frame_path,beers_uniques_element_data_frame_path,beers_unnecessary_columns,beers_new_column_names)
         print("5/5")
+
+if __name__ == '__main__':
+    test = input("Relancer ce script réinitialise les data_bases, continuer ? (0/1) : ")
+    if test :
+         normalise_data_base()
+        
 ############################################################
 ############################################################
 ############################################################

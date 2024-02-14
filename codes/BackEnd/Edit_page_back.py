@@ -5,7 +5,7 @@
 
 import pandas as pd
 import Db_gestions as Db
-
+from PyQt5.QtWidgets import QMessageBox
 
 def edit_drink(get_text):
     """Modifie la boisson choisie avec les nouveaux paramètres rentrés.
@@ -14,12 +14,20 @@ def edit_drink(get_text):
     data_base_index = Db.choix_de_la_data_base
     index_boisson = Db.index_boisson
     textes_recuperees,names = get_text()
+
+    if all(element == '' for element in textes_recuperees):
+        msg_box = QMessageBox()
+        msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
+        msg_box.setWindowTitle("Warning")
+        msg_box.setText("Don't leave all fields empty")
+        msg_box.exec_()
+        return None
     
     print(names)
     for i in range(len(textes_recuperees)):
         texte = textes_recuperees[i]
         colonne = names[i]
-
+        
         try :
             texte = float(texte)
         except :

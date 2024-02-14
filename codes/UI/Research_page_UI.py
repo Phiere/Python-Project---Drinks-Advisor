@@ -101,11 +101,11 @@ class LabelNumberOfDrink(QLabel):
     """Label indinquant le nombre de boisson dans la recherche"""
     def __init__(self,) -> None:
         super().__init__()
-        self.setText("Nombre de résultats de la recherche : " + str(len(Db.dbsall[Db.choix_de_la_data_base][0])))
+        self.setText("Number of search results : " + str(len(Db.dbsall[Db.choix_de_la_data_base][0])))
     def update1(self):
-        self.setText("Nombre de résultats de la recherche : " + str(len(Db.dbsall[Db.choix_de_la_data_base][0])))
+        self.setText("Number of search results : " + str(len(Db.dbsall[Db.choix_de_la_data_base][0])))
     def update2(self):
-        self.setText("Nombre de résultats de la recherche : " + str(Db.research_length))
+        self.setText("Number of search results : " + str(Db.research_length))
 
      
 class FilterOptionsBar(QHBoxLayout):

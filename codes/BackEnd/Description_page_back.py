@@ -11,9 +11,29 @@ import random
 def get_name_from_drink():
     """Récupère le nom principal de la boisson"""
     db,index = Db.choix_de_la_data_base,Db.index_boisson
-    boisson = Db.dbsall[db][0].iloc[index]
-    name = boisson['Name']
-    return name 
+    try :
+        boisson = Db.dbsall[db][0].iloc[index]
+    except IndexError:
+        IndexError("single positional indexer is out-of-bounds")
+        name = "Unfilled(errorindex)"
+    else:
+        name = boisson['Name']
+    finally:
+        return name 
+
+try:
+    # Code à tester
+    resultat = 10 / 0
+except ZeroDivisionError:
+    # Code pour gérer l'erreur spécifique
+    print("Erreur : Division par zéro.")
+else:
+    # Code à exécuter si le bloc try ne lève pas d'exception
+    print("La division a réussi !")
+finally:
+    # Code de nettoyage, exécuté qu'il y ait eu une erreur ou non
+    print("Opération de division terminée.")
+
 
 
 def get_description_from_drink():
@@ -84,7 +104,7 @@ def get_comment():
     """Récupère le commentaire associée à la boisson"""
     db,index =  Db.choix_de_la_data_base, Db.index_boisson
     comment = Db.dbsall[db][0].at[index,'Comment']
-    if pd.isna(comment): return 'Leave a comment on the drink...'
+    if pd.isna(comment): return 'Unfilled'
     return comment
 
 
