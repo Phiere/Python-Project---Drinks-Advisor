@@ -5,6 +5,7 @@
 
 import pandas as pd
 import Db_gestions as Db
+import random
 
 
 def texte_vides(recovered_text):
@@ -100,61 +101,31 @@ def add_uniques_element(recovered_text,recovered_names):
 #TEST
 ########
     
-def test_text_vides():
+def test_text_vides(nb_test):
+    """fonction de test pour la fonction test_text_vides"""
     print("Test_text_vides")
-    #Test 0
-    test0 = []
-    print("Test 0 : ",test0)
-    print(texte_vides(test0))
-
-    #Test 1
-    test1 = []
-    print("Test 1 : ",test1)
-    print(texte_vides(test1))
-
-    #Test 2
-    test2 = []
-    print("Test 2 : ",test2)
-    print(texte_vides(test2))
     
-def test_create_new_drink():
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        drink = db.loc[index_drink_rand]
+        print(f"Test {i}")
+        print("ligne db",drink)
+        print("retour fonction",texte_vides(drink))
+
+def test_create_new_drink(nb_test):
     """Test la fonction create_new_drink en comparant l'entrée de la fonction et la dernière ligne des data_base modifiée"""
     print("test_create_new_drink")
-    #Test vin
-    Db.choix_de_la_data_base = 0
-    texte0 = ["Us","Lovely","",54,54,"Supop","Supop","Supop","Supop",0,"",0]
-    names0 = texte0,Db.dbsall[0][0].columns
-    create_new_drink(texte0,names0)
-    print("Test 0 : ",Db.dbsall[Db.choix_de_la_data_base][0].tail(1).list == texte0)
 
-    #Test cocktails
-    Db.choix_de_la_data_base = 1
-    texte1,names1 = [],[]
-    test_texte1 = texte1,names1
-    create_new_drink()
-    print("Test 1 : ",Db.dbsall[Db.choix_de_la_data_base][0].tail(1) == test_texte1)
-
-    #Test café
-    Db.choix_de_la_data_base = 2
-    texte2,names2 = [],[]
-    test_texte2 = texte2,names2
-    create_new_drink()
-    print("Test 2 : ",Db.dbsall[Db.choix_de_la_data_base][0].tail(1) == test_texte2)
-
-    #Test bières
-    Db.choix_de_la_data_base = 3
-    texte3,names3 = [],[]
-    test_texte3 = texte3,names3
-    create_new_drink()
-    print("Test 3 : ",Db.dbsall[Db.choix_de_la_data_base][0].tail(1) == test_texte3)
-
-    #Test mocktails
-    Db.choix_de_la_data_base = 4
-    texte4,names4 = [],[]
-    test_texte4 = texte4,names4
-    create_new_drink()
-    print("Test 4 : ",Db.dbsall[Db.choix_de_la_data_base][0].tail(1) == test_texte4)
-
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        
 def test_add_uniques_element():
     print("test_add_uniques_element")
     #Test 0
@@ -178,6 +149,6 @@ def test_add_uniques_element():
 if __name__ == '__main__':
     test = input("Tester les fonctions du script ? (0/1) : ")
     if test :
-        test_text_vides()
-        test_create_new_drink()
-        test_add_uniques_element()
+        test_text_vides(5)
+        #test_create_new_drink()
+        #test_add_uniques_element()

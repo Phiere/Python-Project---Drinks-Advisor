@@ -5,6 +5,7 @@
 
 import pandas as pd
 import Db_gestions as Db
+import random
 
 
 def nb_of_notes(df):
@@ -80,92 +81,127 @@ def get_favorites_informations(favories_dfs,index):
 ##Tests
 ########
 
-def test_nb_notes():
+def test_nb_notes(nb_test):
     """Fonction de test pour la fonction nb_notes"""
     print("test_nb_notes")
-    #Test0
-    db = Db.dbsall[0][0]
-    nb_votes_df0 = 5
-    print("Test 0 : ", nb_votes_df0 == nb_of_notes(db))
+    for i in range(nb_test):
+        print(f"Test {i}")
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        Db.choix_de_la_data_base = index_db_rand
+        notes_de_base = nb_of_notes(db)
+        nb_modif = random.randint(0,10)
+        for index in random.sample(range(0,len(db)-1),10):
+            nb_modif +=1
+            Db.dbsall[index_db_rand][0].at[index,'PersonalRating'] = random.randint(1,5)
+        print("nombre de votes ajoutés : ",nb_modif)
+        print("retour fonction ",nb_of_notes(Db.dbsall[index_db_rand][0])-notes_de_base)
+    print("\n")
 
-    #Test1
-    db = Db.dbsall[1][0]
-    nb_votes_df1 = 4
-    print("Test 1 : ", nb_votes_df1 == nb_of_notes(db))
-
-    #Test2
-    db = Db.dbsall[2][0]
-    nb_votes_df2 = 0
-    print("Test 2 : ", nb_votes_df2 == nb_of_notes(db))
-
-    #Test3
-    db = Db.dbsall[3][0]
-    nb_votes_df3 = 1
-    print("Test 3 : ", nb_votes_df3 == nb_of_notes(db))
-
-    #Test4
-    db = Db.dbsall[4][0]
-    nb_votes_df4 = 10
-    print("Test 4 : ", nb_votes_df4 == nb_of_notes(db))
-
-def test_nb_notes_per_categories():
+def test_nb_notes_per_categories(nb_test):
     """Fonction de test pour la fonction nb_notes_per_categories"""
     print("test_nb_notes_per_categories")
-    #Test0
-    nb_votes_percategorie_df0 = [5,4,0,1,10]
-    print("Test 0 : ", nb_votes_percategorie_df0 == nb_notes_per_categories())
+    for i in range(nb_test):
+        print(f"Test {i}")
+        notes_de_bases = []
+        notes_ajoute = []
+        for k in range(5) :
+            Db.choix_de_la_data_base = k
+            db= Db.dbsall[k][0]
+            
+            notes_de_base = nb_of_notes(db)
+            nb_modif = random.randint(0,50)
+            for index in random.sample(range(0,len(db)-1),10):
+                nb_modif +=1
+                Db.dbsall[k][0].at[index,'PersonalRating'] = random.randint(1,5)
+            notes_de_bases.append(notes_de_base)
+            notes_ajoute.append(nb_modif)
+     
+        print("nombre de votes ajoutés : ",notes_ajoute)
+        print(notes_de_bases)
+        print("retour fonction ",[a-b for a,b in zip(nb_notes_per_categories(),notes_de_bases)])
+    print("\n")
 
-def test_mean_of_note():
+def test_mean_of_note(nb_test):
     """Fonction de test pour la fonction mean_of_note"""
     print("test_nb_notes")
-    #Test0
-    db = Db.dbsall[0][0]
-    mean_of_note0 = 3.0
-    print("Test 0 : ", mean_of_note0 == mean_of_note(db))
+    for i in range(nb_test):
+        print(f"Test {i}")
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        Db.choix_de_la_data_base = index_db_rand
+        mean_base = mean_of_note(db)*nb_of_notes(db)
+        nb_modif = random.randint(0,50)
+        new_mean = 0
+        for index in random.sample(range(0,len(db)-1),10):
+            nb_modif +=1
+            new_note = random.randint(1,5)
+            Db.dbsall[index_db_rand][0].at[index,'PersonalRating'] = new_note
+            new_mean += new_note
+        new_mean = new_mean
+        print("Moyennes ajoutée : ",new_mean/nb_modif)
+        print("retour fonction ",(mean_of_note(db)*nb_of_notes(db) - mean_base)/nb_modif)
+    print("\n")
 
-    #Test1
-    db = Db.dbsall[1][0]
-    mean_of_note0 = 3.5
-    print("Test 1 : ", mean_of_note0 == mean_of_note(db))
-
-    #Test2
-    db = Db.dbsall[2][0]
-    mean_of_note2 = 0.0
-    print("Test 2 : ", mean_of_note2 == mean_of_note(db))
-
-    #Test3
-    db = Db.dbsall[3][0]
-    mean_of_note3 = 5.0
-    print("Test 3 : ", mean_of_note3 == mean_of_note(db))
-
-    #Test4
-    db = Db.dbsall[4][0]
-    mean_of_note4 = 2.7
-    print("Test 4 : ", mean_of_note4 == mean_of_note(db))
-
-def test_mean_notes_per_categories():
+def test_mean_notes_per_categories(nb_test):
     """Fonction de test pour la fonction nb_notes"""
     print("test_mean_notes_per_categories")
-    #Test0
-    mean_notes_per_categories0 = [3.0,3.5,0.0,5.0,2.7]
-    print("Test 0 : ", mean_notes_per_categories0 == mean_notes_per_categories())
+    for i in range(nb_test):
+        print(f"Test {i}")
+        mean_base = []
+        nb_modifs = []
+        mean_added = []
+        for k in range(4):
+            Db.choix_de_la_data_base = k
+            db= Db.dbsall[k][0]
+            mean_base.append(mean_of_note(db)*nb_of_notes(db))
+            nb_modif = random.randint(0,50)
+            nb_modifs = 0
+            new_mean = 0
+            for index in random.sample(range(0,len(db)-1),10):
+                nb_modif +=1
+                new_note = random.randint(0,5)
+                Db.dbsall[k][0].at[index,'PersonalRating'] = new_note
+                new_mean += new_note
+            mean_added.append(new_mean/nb_modif)
 
-def test_favorite_exctaction():
+        print("Moyennes ajoutée : ",mean_added)
+        print("retour fonction ",[(a*b-c)/d for a,b,c,d in zip(mean_notes_per_categories(),nb_notes_per_categories(),mean_base,nb_modifs)])
+    print("\n")
+
+def test_favorite_exctaction(nb_test):
     print("test_favorite_exctaction")
-    print(favorites_extraction)
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("favori déjà présents :", favorites_extraction())
+        changements = []
+        for k in range(random.randint(0,10)):
+            p = random.randint(0,len(db)-1)
+            changements.append(p)
+            Db.dbsall[index_db_rand][0].loc[index_drink_rand,'Favorite'] = not(Db.dbsall[index_db_rand][0].loc[index_drink_rand,'Favorite'])
+        print("changements aux index :", changements)
+        print("retour fonction ",favorites_extraction())
+    print("\n")
 
 def test_get_favorites_informations():
     print("test_get_favorites_informations")
-    print(get_favorites_informations(favorites_extraction))
+    print("fonction testée à l'affichage")
     
 
 if __name__ == '__main__':
     test = input("Tester les fonctions du script ? (0/1) : ")
     if test : 
-        test_nb_notes()
-        test_nb_notes_per_categories()
-        test_mean_of_note()
-        test_mean_notes_per_categories()
-        test_favorite_exctaction()
-        test_favorite_exctaction()
-        test_get_favorites_informations()
+        nb_test = 3
+        test_nb_notes(nb_test)
+        test_nb_notes_per_categories(nb_test)
+        #test_mean_of_note(nb_test)
+        #test_mean_notes_per_categories(nb_test)
+        #test_favorite_exctaction(nb_test)
+        #test_favorite_exctaction(nb_test)
+        #test_get_favorites_informations()

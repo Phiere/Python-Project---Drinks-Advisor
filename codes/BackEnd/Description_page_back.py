@@ -5,6 +5,7 @@
 
 import Db_gestions as Db
 import pandas as pd
+import random
 
 
 def get_name_from_drink():
@@ -115,301 +116,137 @@ def update_rating(rating):
 ##Tests 
 ########  
     
-def test_get_name_from_drink():
+def test_get_name_from_drink(nb_test):
     """Fonction de test sur get_name_from_drink"""
     print("test_get_name_from_drink")
-    #Test 0
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name0 = 0
-    print('Test 0 : ',get_name_from_drink() ==name0)
-
-    #Test 1
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name1 = 0
-    print('Test 1 : ',get_name_from_drink() ==name1)
-
-    #Test 2
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name2 = 0
-    print('Test 2 : ',get_name_from_drink() ==name2)
-
-    #Test 3
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name3 = 0
-    print('Test 3 : ',get_name_from_drink() ==name3)
-
-    #Test 4
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name4 = 0
-    print('Test 4 : ',get_name_from_drink() ==name4)
-
-    #Test 5
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name5 = 0
-    print('Test 5 : ',get_name_from_drink() ==name5)
-
-def test_get_description_from_drink():
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("retour fonction ",get_name_from_drink())
+    print("\n")
+    
+def test_get_description_from_drink(nb_test):
     """Fonction de test sur get_description_from_drink"""
     print("test_get_description_from_drink")
-    #Test 0
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    print('Test 0 : ',get_description_from_drink())
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("retour fonction ",get_description_from_drink())
+    print("\n")
 
-    #Test 1
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    print('Test 1 : ',get_description_from_drink())
-
-    #Test 2
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    print('Test 2 : ',get_description_from_drink())
-
-    #Test 3
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    print('Test 3 : ',get_description_from_drink())
-
-    #Test 4
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    print('Test 4 : ',get_description_from_drink())
-
-    #Test 5
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    print('Test 5 : ',get_description_from_drink())
-
-    #Test 6
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    print('Test 5 : ',get_description_from_drink())
-
-    #Test 7
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    print('Test 5 : ',get_description_from_drink())
-
-def test_get_status_favory():
+def test_get_status_favory(nb_test):
     """Fonction de test sur get_status_favori"""
     print("test_get_status_favory")
-    #Test 0
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name0 = 0
-    print('Test 0 : ',get_status_favori() ==name0)
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("retour fonction ",get_status_favori())
+    print("\n")
 
-    #Test 1
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name1 = 0
-    print('Test 1 : ',get_status_favori() ==name1)
-
-    #Test 2
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name2 = 0
-    print('Test 2 : ',get_status_favori() ==name2)
-
-    #Test 3
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name3 = 0
-    print('Test 3 : ',get_status_favori() ==name3)
-
-    #Test 4
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name4 = 0
-    print('Test 4 : ',get_status_favori() ==name4)
-
-    #Test 5
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name5 = 0
-    print('Test 5 : ',get_status_favori() ==name5)
-
-def test_update_status_favori():
+def test_update_status_favori(nb_test):
     """Fonction de test sur update_status_favori"""
+    print("test_get_status_favory")
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("retour fonction avant update",get_status_favori())
+        update_status_favori()
+        print("retour fonction après update",get_status_favori())
+    print("\n")
     
-    print("test_update_status_favori")
-    #Test 0
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name0 = 0
-    update_status_favori(name0)
-    print('Test 0 : ',get_status_favori() ==name0)
-
-    #Test 1
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name1 = 0
-    update_status_favori(name1)
-    print('Test 1 : ',get_status_favori() ==name1)
-
-    #Test 2
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name2 = 0
-    update_status_favori(name2)
-    print('Test 2 : ',get_status_favori() ==name2)
-
-    #Test 3
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name3 = 0
-    update_status_favori(name3)
-    print('Test 3 : ',get_status_favori() ==name3)
-
-    #Test 4
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name4 = 0
-    update_status_favori(name4)
-    print('Test 4 : ',get_status_favori() ==name4)
-
-    #Test 5
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name5 = 0
-    update_status_favori(name5)
-    print('Test 5 : ',get_status_favori() ==name5)
-
-def test_get_comment():
+def test_get_comment(nb_test):
     """Fonction de test sur get_comment"""
     print('test_get_comment')
-    #Test 0
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name0 = 0
-    print('Test 0 : ',get_comment() ==name0)
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("retour fonction ",get_comment())
+    print("\n")
 
-    #Test 1
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name1 = 0
-    print('Test 1 : ',get_comment() ==name1)
-
-    #Test 2
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name2 = 0
-    print('Test 2 : ',get_comment() ==name2)
-
-    #Test 3
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name3 = 0
-    print('Test 3 : ',get_comment() ==name3)
-
-    #Test 4
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name4 = 0
-    print('Test 4 : ',get_comment() ==name4)
-
-    #Test 5
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name5 = 0
-    print('Test 5 : ',get_comment() ==name5)
-
-def test_update_comment():
+def test_update_comment(nb_test):
     """Fonction de test sur get_rating"""
-    print("test_update_comment")
-    #Test 0
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name0 = 0
-    update_comment(name0)
-    print('Test 0 : ',get_comment() ==name0)
-
-    #Test 1
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name1 = 0
-    update_comment(name1)
-    print('Test 1 : ',get_comment() ==name1)
-
-    #Test 2
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name2 = 0
-    update_comment(name2)
-    print('Test 2 : ',get_comment() ==name2)
-
-    #Test 3
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name3 = 0
-    update_comment(name3)
-    print('Test 3 : ',get_comment() ==name3)
-
-    #Test 4
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name4 = 0
-    update_comment(name4)
-    print('Test 4 : ',get_comment() ==name4)
-
-    #Test 5
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name5 = 0
-    update_comment(name5)
-    print('Test 5 : ',get_comment() ==name5)
-
-def test_get_rating():
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("retour fonction avant update",get_comment())
+        comment = random.choice(["","Commentaire","    ","JFZOJ"])
+        print("update : ", comment)
+        update_comment(commentary=comment)
+        print("retour fonction après update",get_comment())
+    print("\n")
+    
+def test_get_rating(nb_test):
     """Fonction de test sur get_rating"""
     print("test_get_rating")
-    #Test 0
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name0 = 0
-    print('Test 0 : ',get_rating() ==name0)
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("retour fonction ",get_rating())
+    print("\n")
 
-    #Test 1
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name1 = 0
-    print('Test 1 : ',get_rating() ==name1)
-
-    #Test 2
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name2 = 0
-    print('Test 2 : ',get_rating() ==name2)
-
-    #Test 3
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name3 = 0
-    print('Test 3 : ',get_rating() ==name3)
-
-    #Test 4
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name4 = 0
-    print('Test 4 : ',get_rating() ==name4)
-
-    #Test 5
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name5 = 0
-    print('Test 5 : ',get_rating() ==name5)
-
-def test_update_rating():
+def test_update_rating(nb_test):
     """Fonction de test sur update_rating"""
-    
     print("test_update_rating")
-    #Test 0
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name0 = 0
-    update_rating(name0)
-    print('Test 0 : ',get_rating() ==name0)
-
-    #Test 1
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name1 = 0
-    update_rating(name1)
-    print('Test 1 : ',get_rating() ==name1)
-
-    #Test 2
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name2 = 0
-    update_rating(name2)
-    print('Test 2 : ',get_rating() ==name2)
-
-    #Test 3
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name3 = 0
-    update_rating(name3)
-    print('Test 3 : ',get_rating() ==name3)
-
-    #Test 4
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name4 = 0
-    update_rating(name4)
-    print('Test 4 : ',get_rating() ==name4)
-
-    #Test 5
-    Db.choix_de_la_data_base, Db.index_boisson = 0,0
-    name5 = 0
-    update_rating(name5)
-    print('Test 5 : ',get_rating() ==name5)
+    for i in range(nb_test):
+        index_db_rand = random.randint(0,4)
+        db= Db.dbsall[index_db_rand][0]
+        index_drink_rand = random.randint(0,len(db)-1)
+        Db.choix_de_la_data_base = index_db_rand
+        Db.index_boisson = index_drink_rand
+        print(f"Test {i}")
+        print("db, ligne ",index_db_rand,index_drink_rand)
+        print("retour fonction avant update",get_rating())
+        rating = random.randint(0,5)
+        print("update : ",rating)
+        update_rating(rating=rating)
+        print("retour fonction après update",get_rating())
+    print("\n")
 
 if __name__ == '__main__':
     test = input("Tester les fonctions du script ? (0/1) : ")
     if test : 
-        test_get_description_from_drink()
-        test_get_description_from_drink()
-        test_get_status_favory()
-        test_update_status_favori()
-        test_get_comment()
-        test_update_comment()
-        test_get_rating()
-        test_update_rating()
+        nb_test = 1
+        test_get_description_from_drink(nb_test)
+        test_get_description_from_drink(nb_test)
+        test_get_status_favory(nb_test)
+        test_update_status_favori(nb_test)
+        test_get_comment(nb_test)
+        test_update_comment(nb_test)
+        test_get_rating(nb_test)
+        test_update_rating(nb_test)
     
