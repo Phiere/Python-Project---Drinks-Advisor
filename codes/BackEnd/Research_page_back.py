@@ -79,7 +79,7 @@ def from_filters_to_newDF(filters_list,number_of_element,colonne_to_sort,sorted_
             df_temporary = df_temporary.sort_values(colonne_to_sort,ascending=sorted_state)
 
         n = int(number_of_element)
-        
+        Db.research_length = len(df_temporary)
         if not(df_temporary.empty) and len(df_temporary) > n:
             if colonne_to_sort == 'Random':
                 L = random.sample(range(len(df_temporary)), n)

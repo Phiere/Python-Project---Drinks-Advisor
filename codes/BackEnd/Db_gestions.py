@@ -85,6 +85,7 @@ list_elements = ['Region','Ingredients']
 dbs = dbsall[0]
 choix_de_la_data_base = 0
 index_boisson = 0
+research_length = str(len(dbsall[0][0]))
 
 def changes_save():
     """Sauvegarde tous les changements effectués dans les data_base pour la prochaine fois"""

@@ -97,6 +97,16 @@ class OrderSensChoice(QPushButton):
         self.setIcon(self.iconasc)
         self.setText("Ascending")
 
+class LabelNumberOfDrink(QLabel):
+    """Label indinquant le nombre de boisson dans la recherche"""
+    def __init__(self,) -> None:
+        super().__init__()
+        self.setText("Nombre de résultats de la recherche : " + str(len(Db.dbsall[Db.choix_de_la_data_base][0])))
+    def update1(self):
+        self.setText("Nombre de résultats de la recherche : " + str(len(Db.dbsall[Db.choix_de_la_data_base][0])))
+    def update2(self):
+        self.setText("Nombre de résultats de la recherche : " + str(Db.research_length))
+
      
 class FilterOptionsBar(QHBoxLayout):
     """Barre d'options pour gérer l'affichage de la liste filtrée. Regroupant le choix de la data_base, le nombre d'élément, la colonne et le sens de tri
@@ -109,6 +119,7 @@ class FilterOptionsBar(QHBoxLayout):
 
         self.choixbdd = BaseDeDonneChoice(upload_screen)
         self.ascgo = OrderSensChoice(upload_text)
+        self.nb_of_drinks = LabelNumberOfDrink()
         self.sort_column_choice = SortColumnChoice(upload_text)
         self.number_of_element_choice = NumberOfElementChoice(upload_text)
         
@@ -116,11 +127,13 @@ class FilterOptionsBar(QHBoxLayout):
         self.addWidget(self.choixbdd)
         self.addWidget(self.sort_column_choice)
         self.addStretch()
+        self.addWidget(self.nb_of_drinks)
         self.addWidget(self.number_of_element_choice)
         self.addWidget(self.ascgo)
 
     def update(self):
         self.sort_column_choice.update()
+        self.nb_of_drinks.update1()
      
 
 class BaseDeDonneChoice(QComboBox):
@@ -288,9 +301,9 @@ class ScreenResearch(QWidget):
         sorting_sens = self.optionsdefiltres.ascgo.get_satus()
         filters_column = self.column_of_filter.filters_list
         sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
-        
         number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
         indexes,L,textes = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
+        self.optionsdefiltres.nb_of_drinks.update2()
         self.changer_text(indexes,L,textes)
 
     
@@ -319,7 +332,7 @@ class ScreenResearch(QWidget):
             sorting_column = self.optionsdefiltres.sort_column_choice.currentText()
             sorting_sens = self.optionsdefiltres.ascgo.get_satus()
             number_of_element =  self.optionsdefiltres.number_of_element_choice.currentText()
-            indexes,_,_ = RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
+            indexes,_,_= RB.from_filters_to_newDF(filters_column,number_of_element,sorting_column,sorting_sens)
             if indexes == [] :
                 msg_box = QMessageBox()
                 msg_box.setStyleSheet("background-color: #404040; color: #ffffff;")
