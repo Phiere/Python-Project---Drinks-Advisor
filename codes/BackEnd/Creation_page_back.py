@@ -147,7 +147,7 @@ def test_add_uniques_element():
     print(texte_vides(test2))
 
 if __name__ == '__main__':
-    test = input("Tester les fonctions du script ? (0/1) : ")
+    test = input("Tester les fonctions du script ? "+"\n"+"Attention les tests doivent être faits sur des bases de données non modifies (0/1) : ")
     if test :
         test_text_vides(5)
         #test_create_new_drink()

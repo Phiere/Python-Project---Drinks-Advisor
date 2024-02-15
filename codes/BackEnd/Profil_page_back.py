@@ -195,13 +195,13 @@ def test_get_favorites_informations():
     
 
 if __name__ == '__main__':
-    test = input("Tester les fonctions du script ? (0/1) : ")
+    test = input("Tester les fonctions du script ? "+"\n"+"Attention les tests doivent être faits sur des bases de données non modifies (0/1) : ")
     if test : 
         nb_test = 3
         test_nb_notes(nb_test)
         test_nb_notes_per_categories(nb_test)
-        #test_mean_of_note(nb_test)
-        #test_mean_notes_per_categories(nb_test)
-        #test_favorite_exctaction(nb_test)
-        #test_favorite_exctaction(nb_test)
-        #test_get_favorites_informations()
+        test_mean_of_note(nb_test)
+        test_mean_notes_per_categories(nb_test)
+        test_favorite_exctaction(nb_test)
+        test_favorite_exctaction(nb_test)
+        test_get_favorites_informations()

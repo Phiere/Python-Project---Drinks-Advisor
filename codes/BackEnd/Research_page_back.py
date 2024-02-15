@@ -123,6 +123,7 @@ def filtrer(f, colonne, data_Frame):
         except ValueError:
             return value
 
+    #A commenter si on veut une recherche moins itérative, plus directe
     if not (colonne in Db.list_elements) :
         f = convert_to_numeric(f)
         tempdf = data_Frame[data_Frame[colonne] == f]
@@ -135,19 +136,7 @@ def filtrer(f, colonne, data_Frame):
                 i = convert_to_numeric(i)
                 tempdf = tempdf[tempdf[colonne].apply(lambda x: i in x)]
         
-    """if "," not in f:
-        f = convert_to_numeric(f)
-        tempdf = data_Frame[data_Frame[colonne] == f]
-    else:
-        f = f.split(",")
-        tempdf = data_Frame.copy()
-        for i in f:
-            if i != "":
-                i = convert_to_numeric(i)
-                print(i)
-                #tempdf = data_Frame[data_Frame[colonne] == i]
-                tempdf = tempdf[tempdf[colonne].apply(lambda x: i in x)]
-        """
+    
     return tempdf
 
 
@@ -211,7 +200,7 @@ def test_filtrer():
     print(filter(f,colonne,data_Frame))
 
 if __name__ == '__main__':
-    test = input("Tester les fonctions du script ? (0/1) : ")
+    test = input("Tester les fonctions du script ? "+"\n"+"Attention les tests doivent être faits sur des bases de données non modifies (0/1) : ")
     if test : 
         test_chose_sorted_sens()
         test_filtrer()

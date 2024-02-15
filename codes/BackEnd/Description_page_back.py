@@ -21,20 +21,6 @@ def get_name_from_drink():
     finally:
         return name 
 
-try:
-    # Code à tester
-    resultat = 10 / 0
-except ZeroDivisionError:
-    # Code pour gérer l'erreur spécifique
-    print("Erreur : Division par zéro.")
-else:
-    # Code à exécuter si le bloc try ne lève pas d'exception
-    print("La division a réussi !")
-finally:
-    # Code de nettoyage, exécuté qu'il y ait eu une erreur ou non
-    print("Opération de division terminée.")
-
-
 
 def get_description_from_drink():
     """Récupère les éléments de description de la boisson en les mettant en forme correctement"""
@@ -258,7 +244,7 @@ def test_update_rating(nb_test):
     print("\n")
 
 if __name__ == '__main__':
-    test = input("Tester les fonctions du script ? (0/1) : ")
+    test = input("Tester les fonctions du script ? "+"\n"+"Attention les tests doivent être faits sur des bases de données non modifies (0/1) : ")
     if test : 
         nb_test = 1
         test_get_description_from_drink(nb_test)

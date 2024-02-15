@@ -58,6 +58,7 @@ class SortColumnChoice(QComboBox):
         self.addItem('Random')
         for name in names :
             self.addItem(name)
+        
     
 
 class OrderSensChoice(QPushButton):

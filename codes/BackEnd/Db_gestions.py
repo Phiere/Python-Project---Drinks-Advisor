@@ -65,7 +65,7 @@ beers_df = data_frames_reding(path_db_clean='dataBases/Samples/beer_samples.csv'
                               filtrage=['Name','Style','Brewery','OverallReview','Aroma','Appearance','Palate','Taste','ReviewsNumber'],
                               titles=['Name','Style','Brewery','OverallReview'],
                               descriptions=['Brewery','Style','OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste'],
-                              sort=['Name','Style','Brewery','OverallReview','Aroma','Appearance','Palate','Taste','PersonalRating']
+                              sort=['Name','Style','Brewery','OverallReview','Aroma','Appearance','Palate','Taste','BeerABV','PersonalRating']
                               )
 
 mocktails_df = data_frames_reding(path_db_clean='dataBases/Samples/mocktail_samples.csv',
@@ -79,9 +79,9 @@ mocktails_df = data_frames_reding(path_db_clean='dataBases/Samples/mocktail_samp
 #Données globales pour l'application
 dbsall = [wines_df,cocktails_df,beers_df,coffees_df,mocktails_df]
 categories = ['Wines', 'Cocktails', 'Beers', 'Coffees', 'Mocktails']
-favories_titles = ['Type','Name','Personnal Rating']
+favories_titles = ['Type','Name','Personnal Rating','Origin']
 number_elements = ['Price', 'Points', 'OverallReview','ReviewsNumber','Aroma','Appearance','Palate','Taste', 'UserRating']
-list_elements = ['Region','Ingredients']
+list_elements = ['Region','Ingredients',"FlavorProfile"]
 dbs = dbsall[0]
 choix_de_la_data_base = 0
 index_boisson = 0
