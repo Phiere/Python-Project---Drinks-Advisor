@@ -1,9 +1,9 @@
-,Name,UserRating,Ingredients,FlavorProfile
-0,Apple Cider Spritz,4.1,Apple Cider,Sweet
-1,Banana Mango Smoothie,4.2,Banana,
-2,Beetroot Tonic,,Beetroot Juice,Bitter
+,Name,FlavorProfile,Ingredients,UserRating
+0,Apple Cider Spritz,Sweet,Apple Cider,4.1
+1,Banana Mango Smoothie,,Banana,4.2
+2,Beetroot Tonic,Bitter,Beetroot Juice,
 3,Bitter Orange Spritzer,,Orange Juice,
-4,Blackberry Ginger Spritzer,4.3,Ginger Beer,Sour
+4,Blackberry Ginger Spritzer,Sour,Ginger Beer,4.3
 5,Blackberry Lemonade,,Lemonade,
 6,Blackberry Sage Spritzer,,Blackberry Syrup,
 7,Blackberry Thyme Smash,,Blackberries,
@@ -12,24 +12,24 @@
 10,Blueberry Lemon Spritzer,,,
 11,Carrot Ginger Tonic,,Carrot Juice,
 12,Celery Tonic,,Celery Juice,
-13,Cherry Cola,4.0,Cherry Syrup,
+13,Cherry Cola,,Cherry Syrup,4.0
 14,Cherry Vanilla Soda,,,
-15,Chocolate Banana Shake,,Milk,Creamy
+15,Chocolate Banana Shake,Creamy,Milk,
 16,Citrus Mint Cooler,,,
 17,Coconut Cream Chai,,Chai Tea,
 18,Coconut Creamsicle,,Coconut Milk,
 19,Coconut Lime Cooler,,Coconut Water,
 20,Cranberry Lime Spritzer,,Cranberry Juice,
 21,Cranberry Orange Spritzer,,,
-22,Cranberry Spritz,,,Tart
+22,Cranberry Spritz,Tart,,
 23,Cranberry Thyme Spritzer,,,
 24,Cucumber Cooler,,Cucumber Juice,
-25,Cucumber Limeade,,,Refreshing
+25,Cucumber Limeade,Refreshing,,
 26,Cucumber Mint Cooler,,,
 27,Dandelion Tea Spritz,,Dandelion Root Tea,
 28,Fruit Punch,,,
 29,Ginger Ale Spritzer,,Ginger Ale,
-30,Ginger Lime Fizz,,Ginger Syrup,Spicy
+30,Ginger Lime Fizz,Spicy,Ginger Syrup,
 31,Ginger Lime Rickey,,Lime Juice,
 32,Ginger Peach Iced Tea,,Peach Tea,
 33,Grapefruit Jalapeno Cooler,,Grapefruit Juice,
@@ -55,10 +55,10 @@
 53,Mango Habanero Mocktail,,Mango Juice,
 54,Mango Lassi,,Mango,
 55,Matcha Green Tea Latte,,Matcha Powder,
-56,Mint Julep Mocktail,,Mint Leaves,Herbal
+56,Mint Julep Mocktail,Herbal,Mint Leaves,
 57,Minty Lemonade,,,
 58,Minty Lime Refresher,,,
-59,Orange Creamsicle,4.4,,
+59,Orange Creamsicle,,,4.4
 60,Orange Ginger Fizz,,,
 61,Orange Sunrise,,,
 62,Passionfruit Habanero Cooler,,Passionfruit Juice,
@@ -107,27 +107,27 @@
 105,,,Club Soda,
 107,,,Tonic Water,
 112,,,Thyme Syrup,
-114,,,,Fruity
+114,,Fruity,,
 115,,,Blueberries,
 116,,,Ginger Juice,
 118,,,Cola,
-123,,,,Citrusy
+123,,Citrusy,,
 138,,,Jalapeno Slices,
 142,,,Sage Leaves,
 143,,,Soda Water,
-146,,,,Floral
-149,,,,Minty
+146,,Floral,,
+149,,Minty,,
 152,,,Lavender,
 154,,,Basil Syrup,
 156,,,Rosemary Syrup,
 157,,,Cilantro Syrup,
 158,,,Habanero Syrup,
 159,,,Yogurt,
-160,,,,Earthy
+160,,Earthy,,
 168,,,Passionfruit Syrup,
 169,,,Agave Syrup,
 172,,,Peach Syrup,
-173,,,,Nutty
+173,,Nutty,,
 178,,,Jalapeno,
 179,,,Mint Syrup,
 184,,,Raspberries,
@@ -135,59 +135,59 @@
 190,,,Lavender Syrup,
 191,,,Sparkling Water,
 192,,,Cinnamon Stick,
-193,,,Chili Powder,Fizzy
+193,,Fizzy,Chili Powder,
 194,,,Jalapeno Syrup,
 196,,,Cream Cheese,
 200,,,Pineapple,
-205,,,Worcestershire Sauce,Savory
+205,,Savory,Worcestershire Sauce,
 207,,,Coconut Cream,
-210,,,,"['Sweet', 'Refreshing']"
-211,,,,"['Sweet', 'Creamy']"
-212,,,,"['Bitter', 'Refreshing']"
+210,,"['Sweet', 'Refreshing']",,
+211,,"['Sweet', 'Creamy']",,
+212,,"['Bitter', 'Refreshing']",,
 213,,,,
-214,,,,"['Sour', 'Refreshing']"
+214,,"['Sour', 'Refreshing']",,
 215,,,Simple Syrup,
-216,,,,"['Sweet', 'Herbal']"
-217,,,Lime,"['Sour', 'Herbal']"
+216,,"['Sweet', 'Herbal']",,
+217,,"['Sour', 'Herbal']",Lime,
 218,,,,
-219,,,,"['Sour', 'Fruity']"
-220,,,,"['Sweet', 'Fruity']"
-221,,,,"['Bitter', 'Spicy']"
+219,,"['Sour', 'Fruity']",,
+220,,"['Sweet', 'Fruity']",,
+221,,"['Bitter', 'Spicy']",,
 222,,,,
 223,,,Cherry,
 224,,,Vanilla Extract,
-225,,,Chocolate Syrup,"['Creamy', 'Sweet']"
+225,,"['Creamy', 'Sweet']",Chocolate Syrup,
 226,,,,
-227,,,Honey,"['Creamy', 'Spicy']"
-228,,,,"['Creamy', 'Citrusy']"
+227,,"['Creamy', 'Spicy']",Honey,
+228,,"['Creamy', 'Citrusy']",,
 229,,,,
 230,,,,
 231,,,,
-232,,,,"['Tart', 'Refreshing']"
+232,,"['Tart', 'Refreshing']",,
 233,,,,
 234,,,,
-235,,,,"['Refreshing', 'Sweet']"
-236,,,,"['Refreshing', 'Herbal']"
+235,,"['Refreshing', 'Sweet']",,
+236,,"['Refreshing', 'Herbal']",,
 237,,,,
 238,,,,
 239,,,,
-240,,,,"['Spicy', 'Refreshing']"
-241,,,,"['Sour', 'Spicy']"
+240,,"['Spicy', 'Refreshing']",,
+241,,"['Sour', 'Spicy']",,
 242,,,Peach Slice,
 243,,,,
 244,,,,
-245,,,,"['Sour', 'Bitter']"
-246,,,Rosemary,"['Tart', 'Herbal']"
+245,,"['Sour', 'Bitter']",,
+246,,"['Tart', 'Herbal']",Rosemary,
 247,,,,
 248,,,Grapefruit Slice,
-249,,,,"['Refreshing', 'Bitter']"
+249,,"['Refreshing', 'Bitter']",,
 250,,,,
-251,,,,"['Tart', 'Floral']"
+251,,"['Tart', 'Floral']",,
 252,,,Basil Leaves,
 253,,,,
-254,,,,"['Sour', 'Minty']"
+254,,"['Sour', 'Minty']",,
 255,,,,
-256,,,Strawberry,"['Refreshing', 'Fruity']"
+256,,"['Refreshing', 'Fruity']",Strawberry,
 257,,,,
 258,,,,
 259,,,,
@@ -196,10 +196,10 @@
 262,,,,
 263,,,,
 264,,,Sugar,
-265,,,,"['Creamy', 'Earthy']"
-266,,,,"['Herbal', 'Minty']"
+265,,"['Creamy', 'Earthy']",,
+266,,"['Herbal', 'Minty']",,
 267,,,,
-268,,,,"['Refreshing', 'Tart']"
+268,,"['Refreshing', 'Tart']",,
 269,,,,
 270,,,,
 271,,,,
@@ -209,15 +209,15 @@
 275,,,,
 276,,,,
 277,,,,
-278,,,,"['Creamy', 'Nutty']"
-279,,,,"['Creamy', 'Fruity']"
+278,,"['Creamy', 'Nutty']",,
+279,,"['Creamy', 'Fruity']",,
 280,,,,
-281,,,,"['Sweet', 'Minty']"
+281,,"['Sweet', 'Minty']",,
 282,,,,
 283,,,"Simple Syrup, Lime",
 284,,,,
-285,,,,"['Bitter', 'Sweet']"
-286,,,Lemon,"['Tart', 'Fruity']"
+285,,"['Bitter', 'Sweet']",,
+286,,"['Tart', 'Fruity']",Lemon,
 287,,,,
 288,,,,
 289,,,,
@@ -226,10 +226,10 @@
 292,,,,
 293,,,Maraschino Cherry,
 294,,,,
-295,,,,"['Sweet', 'Floral']"
+295,,"['Sweet', 'Floral']",,
 296,,,,
 297,,,Star Anise,
-298,,,,"['Spicy', 'Fizzy']"
+298,,"['Spicy', 'Fizzy']",,
 299,,,,
 300,,,,
 301,,,,
@@ -239,9 +239,9 @@
 305,,,,
 306,,,,
 307,,,Vanilla Syrup,
-308,,,,"['Creamy', 'Herbal']"
+308,,"['Creamy', 'Herbal']",,
 309,,,,
-310,,,Tabasco Sauce,"['Spicy', 'Savory']"
+310,,"['Spicy', 'Savory']",Tabasco Sauce,
 311,,,,
 312,,,Pineapple Slice,
 313,,,Ice,

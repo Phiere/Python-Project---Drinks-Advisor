@@ -9,7 +9,7 @@ import Raw_database_traitements
 
 launch = input("First time on the app ? (1/0) : ")
 
-if launch :
+if launch == '0' :
     Raw_database_traitements.normalise_data_base()
 
 Navigation.main()
