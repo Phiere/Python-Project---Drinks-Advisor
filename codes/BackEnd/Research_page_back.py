@@ -146,6 +146,7 @@ def filtrer(f, colonne, data_Frame):
 # 1 - Lorsqu'on écrit dans un filtre des options déroulantes s'affiche en accord avec ce qui est écrit
 # 2 - Lorsqu'on appuie sur entré en ayant navigué dans options avec les flèches cela complète le texte
 # 3 - Les filtres correspondent aux colonnes de filtre des base de données et peuvent être remplis
+# 4 - Il est possible de retoruver 10 boissons choisi aléatoirement grâce aux filtres dynamiques
 ############################################################
 def test_chose_sorted_sens(chosed_option):
     print("test_chose_sorted_sens")
@@ -155,49 +156,6 @@ def test_chose_sorted_sens(chosed_option):
     #Test 1:
     chosed_option = 'Descending'
     print("Test 1", 'Ascending' == chosed_option(chosed_option))
-
-def test_filtrer():
-    print("test_filter")
-    #Test 0
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 1
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 2
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 3
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 4
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 5
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 6
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 7
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 8
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
-    #Test 9
-    f, colonne, data_Frame = 0,0,0
-    print(f,colonne,data_Frame)
-    print(filter(f,colonne,data_Frame))
 
 if __name__ == '__main__':
     test = input("Tester les fonctions du script ? "+"\n"+"Attention les tests doivent être faits sur des bases de données non modifies (0/1) : ")

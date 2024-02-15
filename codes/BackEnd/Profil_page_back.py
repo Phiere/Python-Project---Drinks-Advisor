@@ -189,11 +189,19 @@ def test_favorite_exctaction(nb_test):
         print("retour fonction ",favorites_extraction())
     print("\n")
 
-def test_get_favorites_informations():
-    print("test_get_favorites_informations")
-    print("fonction testée à l'affichage")
-    
+def test_get_favorites_informations(nb_test):
+    """Test de la fonction get_favorites_informations"""
+    print("Test get favorite exctraction")
+    favoris = favorites_extraction()
+    print("favoris :", favoris)
+    taille = len(favoris)-1
+    if taille < nb_test : return "Trop de test"
+    print("retour fonction :")
+    for i in random.sample(range(0,taille),nb_test):
+        print(get_favorites_informations(favoris,i))
+    print("\n")
 
+    
 if __name__ == '__main__':
     test = input("Tester les fonctions du script ? "+"\n"+"Attention les tests doivent être faits sur des bases de données non modifies (0/1) : ")
     if test : 
@@ -202,6 +210,5 @@ if __name__ == '__main__':
         test_nb_notes_per_categories(nb_test)
         test_mean_of_note(nb_test)
         test_mean_notes_per_categories(nb_test)
-        test_favorite_exctaction(nb_test)
         test_favorite_exctaction(nb_test)
         test_get_favorites_informations()

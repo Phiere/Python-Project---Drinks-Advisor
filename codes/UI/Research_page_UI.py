@@ -60,7 +60,6 @@ class SortColumnChoice(QComboBox):
             self.addItem(name)
         
     
-
 class OrderSensChoice(QPushButton):
     """Crée un bouton pour choisir le sens de tri : croissant ou décroissant.
     
@@ -97,6 +96,7 @@ class OrderSensChoice(QPushButton):
     def set_asc(self):
         self.setIcon(self.iconasc)
         self.setText("Ascending")
+
 
 class LabelNumberOfDrink(QLabel):
     """Label indinquant le nombre de boisson dans la recherche"""

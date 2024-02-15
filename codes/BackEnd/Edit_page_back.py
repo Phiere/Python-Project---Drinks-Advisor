@@ -52,17 +52,16 @@ def add_uniques_element(get_text):
     Db.dbsall[data_base_index][1] = Db.dbsall[data_base_index][1]._append(new_row, ignore_index=True)
     new_index = len(Db.dbsall[data_base_index][1]) - 1      
     colomn_with_list_index = []
-
+    print("texts_recuperees",textes_recuperees)
     for i in range(len(textes_recuperees)) :
         texte = textes_recuperees[i]
-        if ',' in texte :
-            colomn_with_list_index.append(i)
+        if not(isinstance(texte,float)) and not(isinstance(texte,int)):
+            if ',' in texte :
+                colomn_with_list_index.append(i)
         else :
             colonne = names[i]
             Db.dbsall[Db.choix_de_la_data_base][1].at[new_index,colonne] = texte
     
-    
-
     for index in colomn_with_list_index :
         texte_list = textes_recuperees[index]
         texte_list = texte_list.split(",")
@@ -73,7 +72,6 @@ def add_uniques_element(get_text):
 
             Db.dbsall[Db.choix_de_la_data_base][1].at[new_index+number_element,colonne] = texte
             number_element +=1
-
 
     uniques_elements_columns_list = []
 

@@ -61,14 +61,22 @@ class ListeElementToComplete(QListWidget):
 
     def get_texts(self):
         text_list = []
-
+        number_elements = Db.number_elements
         for index in range(self.count()):
             item = self.item(index)
             widget = self.itemWidget(item)
 
             if isinstance(widget, ModificationLayout): 
-                texte = widget.contenu.toPlainText()  
-                text_list.append(texte)
+                texte = widget.contenu.toPlainText() 
+                if self.names[index] in number_elements :
+                    try :
+                        text = float(texte)
+                    except :
+                        text_list.append(0)
+                    else :
+                        text_list.append(text)
+                else :
+                    text_list.append(str(texte))
   
         return text_list, self.names
     
