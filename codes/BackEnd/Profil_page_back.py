@@ -156,7 +156,7 @@ def test_mean_notes_per_categories(nb_test):
             db= Db.dbsall[k][0]
             mean_base.append(mean_of_note(db)*nb_of_notes(db))
             nb_modif = random.randint(0,50)
-            nb_modifs = 0
+            nb_modif = 0
             new_mean = 0
             for index in random.sample(range(0,len(db)-1),10):
                 nb_modif +=1
@@ -164,6 +164,7 @@ def test_mean_notes_per_categories(nb_test):
                 Db.dbsall[k][0].at[index,'PersonalRating'] = new_note
                 new_mean += new_note
             mean_added.append(new_mean/nb_modif)
+            nb_modifs.append(nb_modif)
 
         print("Moyennes ajoutée : ",mean_added)
         print("retour fonction ",[(a*b-c)/d for a,b,c,d in zip(mean_notes_per_categories(),nb_notes_per_categories(),mean_base,nb_modifs)])
@@ -211,4 +212,4 @@ if __name__ == '__main__':
         test_mean_of_note(nb_test)
         test_mean_notes_per_categories(nb_test)
         test_favorite_exctaction(nb_test)
-        test_get_favorites_informations()
+        test_get_favorites_informations(nb_test)

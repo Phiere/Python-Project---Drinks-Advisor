@@ -135,7 +135,7 @@ def raw_data_traitement(raw_data_frame_path,listed_data_frame_path,uniques_eleme
         - new_column_names : dictionnaire des nouveaux nom des colonnes choisis """
         try:
             raw_data_frame = pandas.read_csv(raw_data_frame_path)
-            raw_data_frame = raw_data_frame.head(1000) #A enlever pour la version finale
+            raw_data_frame = raw_data_frame.head(10000) #A enlever pour la version finale
         except FileNotFoundError:
             print("Fichier pas présent sur l'ordinateur. Présent seulement en local sur l'odinateur de Pierre")
 

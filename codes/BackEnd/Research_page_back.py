@@ -148,18 +148,18 @@ def filtrer(f, colonne, data_Frame):
 # 3 - Les filtres correspondent aux colonnes de filtre des base de données et peuvent être remplis
 # 4 - Il est possible de retoruver 10 boissons choisi aléatoirement grâce aux filtres dynamiques
 ############################################################
-def test_chose_sorted_sens(chosed_option):
+def test_chose_sorted_sens():
     print("test_chose_sorted_sens")
     chosed_option = 'Ascending'
     #Test 0:
-    print("Test 0",'Descending' == chosed_option(chosed_option))
+    print("Test 0",'Descending' == chose_sorted_sens(chosed_option))
     #Test 1:
     chosed_option = 'Descending'
-    print("Test 1", 'Ascending' == chosed_option(chosed_option))
+    print("Test 1", 'Ascending' == chose_sorted_sens(chosed_option))
 
 if __name__ == '__main__':
     test = input("Tester les fonctions du script ? "+"\n"+"Attention les tests doivent être faits sur des bases de données non modifies (0/1) : ")
     if test : 
         test_chose_sorted_sens()
-        test_filtrer()
+  
     
